@@ -105,10 +105,11 @@ class Userlib extends Library {
         if ($user){
             if ($user->password == $this->hash($password)){
                 //check if already loggedin using different location ?
+                /*
                 if ($this->is_online($user->session_id)){
                     $this->_error_message = 'Sorry...You or some one else is logged in using this account in another machine. Please log out from the machine and continue.';
                     return FALSE;
-                }
+                }*/
                 
                 //generate token
                 $token = $this->generate_token($user->id);
