@@ -2,8 +2,8 @@
 date_default_timezone_set('Asia/Jakarta');
 
 $path = dirname(__FILE__);
-$testing = '/home/sloki/user/k8721830/sites/indonesiasatu.nasabah.co/www';
-$production = '/home/sloki/user/k8721830/sites/www.nasabah.co/www';
+$testing = '/home/sloki/user/k2427808/sites/pre.indonesiasatu.co/www';
+$production = '/home/sloki/user/k2427808/sites/www.indonesiasatu.co/www';
 
 switch ($path){
     case $production: define('ENVIRONMENT', 'production'); break;
