@@ -24,11 +24,14 @@ class Category extends MY_News {
         if ($is_tag){
             $articles = $this->_tag_news(urldecode($slug), 20);
         }else{
-            //get category id from slug
-            $category_id = $this->category_m->get_value('id', array('slug'=>$slug));
-            if (!$category_id){exit('Can not find category id for '.$slug);}
+            //get category from slug
+            $category = $this->category_m->get_by(array('slug'=>$slug), TRUE);
+            if (!$category){exit('Can not find category id for '.$slug);}
+            $category_id = $category->id;
             $this->data['active_menu'] = $slug;
             $articles = $this->_category_news($category_id, 20);
+            
+            $this->data['meta_title'] = $this->data['meta_title'] . ' - ' .$category->title;
         }
         $this->data['articles'] = array();
         foreach ($articles as $index => $item){
