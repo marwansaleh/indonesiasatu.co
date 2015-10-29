@@ -18,7 +18,7 @@
                         <table role="table" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Kurs <?php echo strtoupper($rate->bank); ?></th>
+                                    <th>Kurs</th>
                                     <th class="text-right">Jual</th>
                                     <th class="text-right">Beli</th>
                                 </tr>
