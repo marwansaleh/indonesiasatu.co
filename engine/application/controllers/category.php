@@ -31,7 +31,7 @@ class Category extends MY_News {
             $this->data['active_menu'] = $slug;
             $articles = $this->_category_news($category_id, 20);
             
-            $this->data['meta_title'] = $this->data['meta_title'] . ' - ' .$category->title;
+            $this->data['meta_title'] = $this->data['meta_title'] . ' - ' .$category->name;
         }
         $this->data['articles'] = array();
         foreach ($articles as $index => $item){
@@ -103,6 +103,7 @@ class Category extends MY_News {
             show_404();exit;
         }
         $this->data['category'] = $category;
+        $this->data['meta_title'] = $this->data['meta_title'] . ' - ' .$category->name;
         $this->data['active_menu'] = $slug;
         
         //Load popular news
