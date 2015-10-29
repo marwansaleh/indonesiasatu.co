@@ -2,7 +2,7 @@
     <div class="inner">
         <?php if ($rates): ?>
         <div class="tabbable"> <!-- Only required for left/right tabs -->
-            <ul class="nav nav-tabs" id="tab-stocks">
+            <ul class="nav nav-tabs">
                 <?php foreach ($rates as $index=>$rate): ?>
                 <li <?php echo $index==0?'class="first-child active"':''; ?>>
                     <a data-toggle="tab" href="#tab_<?php echo $rate->bank; ?>">
@@ -13,12 +13,12 @@
             </ul>
             <div class="tab-content">
                 <?php foreach ($rates as $index=>$rate): ?>
-                <div id="#tab_<?php echo $rate->bank; ?>" class="tab-pane <?php echo $index==0?' active':''; ?>">
+                <div id="tab_<?php echo $rate->bank; ?>" class="tab-pane <?php echo $index==0?' active':''; ?>">
                     <div class="nicescroll" style="height:280px;overflow:hidden;">
                         <table role="table" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Kurs <?php echo $rate->bank; ?></th>
+                                    <th>Kurs <?php echo strtoupper($rate->bank); ?></th>
                                     <th class="text-right">Jual</th>
                                     <th class="text-right">Beli</th>
                                 </tr>
