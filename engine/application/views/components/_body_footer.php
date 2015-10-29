@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4 footer-widget">
-                <h3>About</h3>
+                <h3>Redaksi</h3>
                 <p>
                     Sewaktu hidup, co-pilot Germanwings, Andreas Lubitz, 
                     pernah mengatakan bahwa semua orang bakal mengenal 
