@@ -36,6 +36,8 @@ class Detail extends MY_News {
             exit;
         }
         
+        $this->data['meta_title'] = $this->data['meta_title'] . ' - ' .$article->title;
+        
         $this->_article_view_counter($article->id);
         
         //Does article has multi images
@@ -85,6 +87,8 @@ class Detail extends MY_News {
             redirect('home');
             exit;
         }
+        
+        $this->data['meta_title'] = $this->data['meta_title'] . ' - ' .$article->title;
         
         $this->_article_view_counter($article->id);
         
