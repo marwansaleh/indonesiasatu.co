@@ -6,6 +6,6 @@
         <li <?php echo $active_menu==$menu->slug?'class="active"':''; ?>><a href="<?php echo site_url('category/'.$menu->slug); ?>"><?php echo $menu->name; ?></a></li>
         <?php endforeach; ?>
         <?php endif; ?>
-        <li <?php echo $active_menu=='contact'?'class="active"':''; ?>><a href="<?php echo site_url('contact'); ?>">Kontak</a></li>
+        <li <?php echo $active_menu=='newsindex'?'class="active"':''; ?>><a href="<?php echo site_url('newsindex'); ?>">Indeks</a></li>
     </ul>
 </nav>
