@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo site_url('home'); ?>">
-                NASABAH.CO
+                IndonesiaSatu
             </a>
         </div>
         <div class="collapse navbar-collapse" id="nasabah-navbar">
