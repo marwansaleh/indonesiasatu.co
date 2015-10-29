@@ -1,11 +1,11 @@
 <div class="widget">
     <div class="inner">
         <?php if ($rates): ?>
-        <div role="tabpanel" class="tabbable"> <!-- Only required for left/right tabs -->
+        <div class="tabbable"> <!-- Only required for left/right tabs -->
             <ul class="nav nav-tabs" id="tab-stocks">
                 <?php foreach ($rates as $index=>$rate): ?>
-                <li role="presentation" <?php echo $index==0?'class="first-child active"':''; ?>>
-                    <a aria-controls="tab_<?php echo $rate->bank; ?>" role="tab" data-toggle="tab" href="#tab_<?php echo $rate->bank; ?>">
+                <li <?php echo $index==0?'class="first-child active"':''; ?>>
+                    <a data-toggle="tab" href="#tab_<?php echo $rate->bank; ?>">
                         <div class="inner-tab"><?php echo strtoupper($rate->bank); ?></div>
                     </a>
                 </li>
@@ -13,7 +13,7 @@
             </ul>
             <div class="tab-content">
                 <?php foreach ($rates as $index=>$rate): ?>
-                <div role="tabpanel" id="#tab_<?php echo $rate->bank; ?>" class="tab-pane<?php echo $index==0?' active':''; ?>">
+                <div id="#tab_<?php echo $rate->bank; ?>" class="tab-pane <?php echo $index==0?' active':''; ?>">
                     <div class="nicescroll" style="height:280px;overflow:hidden;">
                         <table role="table" class="table table-striped">
                             <thead>
