@@ -42,7 +42,10 @@
         <article>
             <div class="inner">
                 <figure>
-                    <img src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SMALL); ?>" alt="">
+                    <a href="<?php echo site_url('detail/'.$article->url_title); ?>">
+                        <img src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SMALL); ?>" alt="">
+                    </a>
+                    
                 </figure>
                 <div class="text">
                     <div class="inner-border">
