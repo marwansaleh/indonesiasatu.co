@@ -114,6 +114,12 @@ class Article extends MY_AdminController {
             
             //convert date string to int
             $postdata['date'] = strtotime($postdata['date']);
+            //set day,month and year from date
+            $article_date = getdate($postdata['date']);
+            $postdata['day'] = $article_date['mday'];
+            $postdata['month'] = $article_date['mon'];
+            $postdata['year'] = $article_date['year'];
+                    
             //convert article types to string
             $postdata['types'] = $postdata['types'] ? implode('|', $postdata['types']):'';
             //remove all images from article images table
