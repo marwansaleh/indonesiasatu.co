@@ -2,11 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12"><h3>Semua Kategori</h3></div>
-            <?php for($i=0;$i<4;$i++): ?>
+            <?php foreach($categories_articles as $cat_articles): ?>
             <div class="col-sm-3">
                 <div class="list-group">
-                    <?php if (!isset($categories_articles[$i])) break; ?>
-                    <?php foreach ($categories_articles[$i] as $catbottom): ?>
+                    <?php foreach ($cat_articles as $catbottom): ?>
                     <a class="list-group-item" href="<?php echo site_url('category/'.$catbottom->slug); ?>">
                         <span class="badge"><?php echo $catbottom->article_count; ?></span>
                         <?php echo $catbottom->name; ?>
@@ -14,7 +13,7 @@
                     <?php endforeach; ?>
                 </div>
             </div>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </footer>
