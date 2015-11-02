@@ -416,6 +416,7 @@ class MY_News extends MY_Controller {
         $this->load->model(array('article/article_m','article/category_m','article/tags_m'));
         
         $this->data['newstickers'] = $this->_newsticker(5);
+        $this->data['categories_articles'] = $this->_all_categories_articles_count(0,2);
     }
     
     protected function _slider_news($num=5, $condition=NULL){
@@ -519,10 +520,15 @@ class MY_News extends MY_Controller {
         return $this->newsticker_m->get_offset('*',array('active'=>1),0,$num);
     }
     
-    protected function _allmenus(){
+    protected function _allmenus($all=FALSE){
         $allmenu = array('items'=>array(),'parents'=>array());
         
-        $result = $this->category_m->get_offset('id,name,parent,slug',array('is_menu'=>1));
+        $condition = array('is_menu'=>1);
+        if ($all){
+            $condition = NULL;
+        }
+        
+        $result = $this->category_m->get_offset('id,name,parent,slug',$condition);
         foreach ($result as $item){
             $allmenu['parents'] [$item->parent] [] = $item->id;
             $allmenu['items'][$item->id] = $item;
@@ -551,6 +557,35 @@ class MY_News extends MY_Controller {
         $result = $this->category_m->get_offset('*',array('is_home'=>1),0,$num);
         foreach ($result as $category){
             $categories [] = $category;
+        }
+        
+        return $categories;
+    }
+    
+    protected function _all_categories_articles_count($limit=NULL,$groupin=0){
+        $categories = array();
+        $result = $this->category_m->get_offset('id,name,parent,slug',NULL,0,$limit);
+        
+        $last_group = 0;
+        foreach ($result as $item){
+            $item->article_count = $this->article_m->get_count(array('category_id'=>$item->id));
+            
+            if ($groupin>0){
+                //create array for group
+                if (!isset($categories[$last_group])){
+                    $categories[$last_group] = array();
+                }
+                
+                //increase group counter
+                if (count($categories[$last_group])==$groupin){
+                    $last_group++;
+                    $categories[$last_group] = array();
+                }
+                $categories[$last_group][] = $item;
+                
+            }else{
+                $categories [] = $item;
+            }
         }
         
         return $categories;
