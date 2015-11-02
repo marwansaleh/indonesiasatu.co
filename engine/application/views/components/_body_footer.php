@@ -5,6 +5,7 @@
             <?php for($i=0;$i<4;$i++): ?>
             <div class="col-sm-3">
                 <div class="list-group">
+                    <?php if (!isset($categories_articles[$i])) break; ?>
                     <?php foreach ($categories_articles[$i] as $catbottom): ?>
                     <a class="list-group-item" href="<?php echo site_url('category/'.$catbottom->slug); ?>">
                         <span class="badge"><?php echo $catbottom->article_count; ?></span>
