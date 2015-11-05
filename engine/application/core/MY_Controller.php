@@ -261,11 +261,11 @@ class MY_Controller extends MY_BaseController {
         $this->og_set_default();
     }
     
-    private function _get_today_indonesia($timestamp=NULL){
+    private function _get_today_indonesia($timestamp=FALSE){
         $hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
         $bulan = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember');
         
-        $date = getdate($timestamp);
+        $date = getdate($timestamp ? $timestamp : time());
         $today = array(
             'hari'      => $hari[$date['wday']],
             'tanggal'   => $date['mday'],
