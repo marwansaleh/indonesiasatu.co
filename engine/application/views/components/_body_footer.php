@@ -29,6 +29,7 @@
                         <td>Divisi Publishing PT. VERITAS DHARMA SATYA</td>
                     </tr>
                 </table>
+                <p>IndoONEsia1@20015</p>
             </div>
             <div class="col-sm-4">
                 <img src="<?php echo site_url('assets/img/logo.png'); ?>" class="img-responsive center-block" />
