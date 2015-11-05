@@ -259,11 +259,11 @@ header .breaking-news .header-news li {
   margin: 5px 0 0 0;
 }
 footer table.redaksi {color: #fff; border: none;}
-footer table.redaksi td {border: none;}
+footer table.redaksi td {border: none; padding: 2px;}
 footer .kanal-list { margin: 0; padding: 0; list-style: none;}
 footer .kanal-list li {float: left; display: block; padding: 5px 0 0 0;}
 footer .kanal-list li a {color: #fff;}
-footer .alamat {background-color: #DB3937; display: block; padding: 5px; margin-top: 10px;}
+footer .alamat {background-color: #DB3937; display: block; padding: 2px; margin-top: 10px;}
 /* Ticker Styling */
 .ticker {
   width: 100%;
