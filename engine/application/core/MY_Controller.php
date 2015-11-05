@@ -255,8 +255,25 @@ class MY_Controller extends MY_BaseController {
         //is user loggedin
         $this->data['is_logged_in'] = $this->users->isLoggedin();
         
+        $this->data['today'] = $this->_get_today_indonesia();
+        
         $this->meta_set_default();
         $this->og_set_default();
+    }
+    
+    private function _get_today_indonesia($timestamp=NULL){
+        $hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
+        $bulan = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember');
+        
+        $date = getdate($timestamp);
+        $today = array(
+            'hari'      => $hari[$date['wday']],
+            'tanggal'   => $date['mday'],
+            'bulan'     => $bulan[$date['mon']],
+            'tahun'     => $date['year']
+        );
+        
+        return $today;
     }
     
     protected function meta_set_props($arr_meta){
