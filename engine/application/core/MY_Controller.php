@@ -433,7 +433,7 @@ class MY_News extends MY_Controller {
         $this->load->model(array('article/article_m','article/category_m','article/tags_m'));
         
         $this->data['newstickers'] = $this->_newsticker(5);
-        $this->data['categories_articles'] = $this->_all_categories_articles_count(0,2);
+        $this->data['categories_articles'] = $this->_all_categories_articles_count(0,3);
     }
     
     protected function _slider_news($num=5, $condition=NULL){
@@ -583,22 +583,21 @@ class MY_News extends MY_Controller {
         $categories = array();
         $result = $this->category_m->get_offset('id,name,parent,slug',NULL,0,$limit);
         
+        $group_index = 0;
         $last_group = 0;
         foreach ($result as $item){
             $item->article_count = $this->article_m->get_count(array('category_id'=>$item->id));
             
             if ($groupin>0){
+                if ($group_index==$groupin){
+                    $group_index = 0;
+                }
                 //create array for group
-                if (!isset($categories[$last_group])){
-                    $categories[$last_group] = array();
+                if (!isset($categories[$group_index])){
+                    $categories[$group_index] = array();
                 }
                 
-                //increase group counter
-                if (count($categories[$last_group])==$groupin){
-                    $last_group++;
-                    $categories[$last_group] = array();
-                }
-                $categories[$last_group][] = $item;
+                $categories[$group_index++][] = $item;
                 
             }else{
                 $categories [] = $item;
