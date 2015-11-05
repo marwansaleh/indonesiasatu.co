@@ -2,7 +2,12 @@
     
     <div class="container">
         <div class="row top-header">
-            <div class="col-sm-3">
+            <div class="col-sm-3 hidden-xs">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <img src="<?php echo site_url('assets/img/cuaca/hujan-ringan.gif'); ?>" />
+                    </div>
+                </div>
                 <p class="header-date"><span class="red-text"><?php echo $today['hari'] ?></span>, <?php echo $today['tanggal'] . ' '. $today['bulan'] .' '. $today['tahun']; ?></p>
             </div>
             <div class="col-sm-6">
@@ -10,7 +15,7 @@
             </div>
             <div class="col-sm-3">
                 <div class="row">
-                    <div class="col-sm-12 top-menu">
+                    <div class="col-sm-12 top-menu hidden-xs">
                         <div class="pull-right">
                             <ul>
                                 <li>
