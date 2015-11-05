@@ -406,6 +406,17 @@ if (!function_exists('file_extension')){
     }
 }
 
+if (!function_exists('userfiles_baseurl')){
+    function userfiles_baseurl(){
+        $base_url = config_item('userfiles_base_url');
+        if ($base_url=='' || !$base_url){
+            return site_url();
+        }else{
+            return $base_url;
+        }
+    }
+}
+
 if (!function_exists('get_image_base')){
     function get_image_base($type=IMAGE_THUMB_LARGE, $full_url=TRUE){
         $base_url = '';
