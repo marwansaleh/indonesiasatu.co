@@ -1,40 +1,59 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12"><h3>Semua Kategori</h3></div>
-            <?php foreach($categories_articles as $cat_articles): ?>
-            <div class="col-sm-3">
-                <div class="list-group">
-                    <?php foreach ($cat_articles as $catbottom): ?>
-                    <a class="list-group-item" href="<?php echo site_url('category/'.$catbottom->slug); ?>">
-                        <span class="badge"><?php echo $catbottom->article_count; ?></span>
-                        <?php echo $catbottom->name; ?>
-                    </a>
+            <div class="col-sm-4">
+                <h3>Redaksi</h3>
+                <table class="table table-condensed redaksi small">
+                    <tr>
+                        <td>Pendiri</td>
+                        <td>Valens Daki-Soo</td>
+                    </tr>
+                    <tr>
+                        <td>Pemimpin Redaksi</td>
+                        <td>Simon Leya</td>
+                    </tr>
+                    <tr>
+                        <td>Dewan Redaksi</td>
+                        <td>Kiki Syahnakri, Valens Daki-Soo, Maximus Ali, Ricardus Mosa</td>
+                    </tr>
+                    <tr>
+                        <td>Redaktur Pelaksana</td>
+                        <td>Very Herdimanto</td>
+                    </tr>
+                    <tr>
+                        <td>Redaktur</td>
+                        <td>Ferdyn Hasiman, ANdy Javia, Gusti Tetiro</td>
+                    </tr>
+                    <tr>
+                        <td>Staf Redaksi</td>
+                        <td>Marteen Djawa, Emy Elu Wea, Yohanes D Scares, Paul Liwun</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <img src="<?php echo site_url('assets/img/logo.png'); ?>" class="img-responsive center-block" />
+                
+                <div class="col-sm-12 alamat">
+                    <div class="text-center">
+                        <h5><span class="text-bold">Alamat Redaksi</span></h5>
+                        <p>Gedung ITC Roxy Mas Blok D3 No.33 <br>Jl. K.H. Hasyim Ashari No.125 Gambir<br>Jakarta Pusat<br>Kontak Iklan<br>redaksi@indonesiasatu.co</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3>KANAL BERITA</h3>
+                <div class="row">
+                    <?php foreach($categories_articles as $cat_articles): ?>
+                    <div class="col-sm-4">
+                        <ul class="kanal-list">
+                            <?php foreach ($cat_articles as $catbottom): ?>
+                            <li><a href="<?php echo site_url('category/'.$catbottom->slug); ?>"><?php echo $catbottom->name; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
-            <?php endforeach; ?>
         </div>
     </div>
 </footer>
-
-<!--
-<div class="sub-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 copyright">
-                Copyright &copy; <a href="<?php echo site_url(); ?>">Nasabah.co</a> 2015 - 2016.
-            </div>
-            
-            <div class="col-sm-3 social-links">
-                <ul>
-                    <li><a href="#" class="facebook">Facebook</a></li>
-                    <li><a href="#" class="twitter">Twitter</a></li>
-                    <li><a href="#" class="pinterest">Pinterest</a></li>
-                    <li><a href="#" class="googleplus">Google+</a></li>
-                </ul>
-            </div>
-        </div>
-        <a href="#" class="back-to-top hidden-xs" style="display: inline;">Scroll Top</a>
-    </div>
-</div>-->
