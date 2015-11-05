@@ -5,7 +5,7 @@
                 <h3>Redaksi</h3>
                 <table class="table table-condensed redaksi small">
                     <tr>
-                        <td>Pendiri</td>
+                        <td style="width: 130px;">Pendiri/Pemimpin Umum</td>
                         <td>Valens Daki-Soo</td>
                     </tr>
                     <tr>
@@ -13,20 +13,20 @@
                         <td>Simon Leya</td>
                     </tr>
                     <tr>
-                        <td>Dewan Redaksi</td>
-                        <td>Kiki Syahnakri, Valens Daki-Soo, Maximus Ali, Ricardus Mosa</td>
+                        <td>Dewan Pakar</td>
+                        <td>Letjen TNI (Purn) Kiki Syahnakri, K.H. Maman Imanulhaq, Dr. Yan Riberu, Ansel da Lopez, Dr.Ignas Iryanto Djou, Dr. Hanna R. Simatupang</td>
                     </tr>
                     <tr>
-                        <td>Redaktur Pelaksana</td>
-                        <td>Very Herdimanto</td>
+                        <td>Iklan</td>
+                        <td>Wayan Pradnya Paramitha</td>
                     </tr>
                     <tr>
-                        <td>Redaktur</td>
-                        <td>Ferdyn Hasiman, ANdy Javia, Gusti Tetiro</td>
+                        <td>Konsultan Hukum</td>
+                        <td>Law Firm "VDS &amp; Partner"</td>
                     </tr>
                     <tr>
-                        <td>Staf Redaksi</td>
-                        <td>Marteen Djawa, Emy Elu Wea, Yohanes D Scares, Paul Liwun</td>
+                        <td>Penerbit</td>
+                        <td>Divisi Publishing PT. VERITAS DHARMA SATYA</td>
                     </tr>
                 </table>
             </div>
