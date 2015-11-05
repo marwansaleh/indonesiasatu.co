@@ -32,7 +32,7 @@
                 <p>IndoONEsia1@20015</p>
             </div>
             <div class="col-sm-4">
-                <img src="<?php echo site_url('assets/img/logo.png'); ?>" class="img-responsive center-block" />
+                <img src="<?php echo site_url('assets/img/logo-putih.png'); ?>" class="img-responsive center-block" />
                 
                 <div class="col-sm-12 alamat">
                     <div class="text-center">
