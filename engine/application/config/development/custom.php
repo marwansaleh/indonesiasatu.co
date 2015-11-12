@@ -3,6 +3,10 @@ $config['captcha'] = 'userfiles/captcha/';
 
 $config['path_lib'] = 'lib/';
 $config['path_assets'] = 'assets/';
+
+$config['userfiles_base_url'] = '';
+$config['userfiles_base_path'] = '';
+
 $config['images'] = 'userfiles/images/';
 $config['thumbs'] = 'userfiles/thumbs/';
 $config['th_large'] = $config['thumbs'] . 'large/';
