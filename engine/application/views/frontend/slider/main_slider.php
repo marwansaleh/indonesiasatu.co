@@ -12,7 +12,7 @@
                                     <div class="description"><?php echo $slider->synopsis; ?></div>
                                 </div>
                             </div>
-                            <img src="<?php echo site_url(config_item('images').$slider->image_url); ?>" alt="">
+                            <img src="<?php echo get_image_thumb($slider->image_url, IMAGE_THUMB_ORI); ?>" alt="">
                         </div>
                     </li>
                     <?php endforeach; ?>
