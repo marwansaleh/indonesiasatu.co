@@ -407,12 +407,25 @@ if (!function_exists('file_extension')){
 }
 
 if (!function_exists('userfiles_baseurl')){
-    function userfiles_baseurl(){
+    function userfiles_baseurl($url=''){
         $base_url = config_item('userfiles_base_url');
         if ($base_url=='' || !$base_url){
-            return site_url();
+            return site_url($url);
         }else{
-            return $base_url;
+            $base_url = rtrim($base_url, '/') .'/';
+            return  $base_url . $url;
+        }
+    }
+}
+
+if (!function_exists('userfiles_basepath')){
+    function userfiles_basepath($path=''){
+        $base_path = config_item('userfiles_base_path');
+        if ($base_path=='' || !$base_path){
+            return $path;
+        }else{
+            $base_path = rtrim($base_path, '/') .'/';
+            return  $base_path . $path;
         }
     }
 }
@@ -433,9 +446,9 @@ if (!function_exists('get_image_base')){
         }
         
         if ($full_url){
-            $base_url = site_url($base_url);
+            $base_url = userfiles_baseurl($base_url);
         }
-        return trim($base_url,'/') .'/';
+        return rtrim($base_url,'/') .'/';
     }
 }
 
