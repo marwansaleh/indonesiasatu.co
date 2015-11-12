@@ -8,6 +8,7 @@ $config['userfiles_base_url'] = 'http://images.indonesiasatu.co/';
 $config['userfiles_base_path'] = '/u/k2427808/sites/images.indonesiasatu.co/www/';
 
 $config['images'] = 'userfiles/images/';
+$config['rfthumbs'] = 'userfiles/rfthumbs/';
 $config['thumbs'] = 'userfiles/thumbs/';
 $config['th_large'] = $config['thumbs'] . 'large/';
 $config['th_medium'] = $config['thumbs'] . 'medium/';

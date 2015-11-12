@@ -8,6 +8,7 @@ $config['userfiles_base_url'] = '';
 $config['userfiles_base_path'] = '';
 
 $config['images'] = 'userfiles/images/';
+$config['rfthumbs'] = 'userfiles/rfthumbs/';
 $config['thumbs'] = 'userfiles/thumbs/';
 $config['th_large'] = $config['thumbs'] . 'large/';
 $config['th_medium'] = $config['thumbs'] . 'medium/';
