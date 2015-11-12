@@ -28,11 +28,17 @@ $base_url =
 	$_SERVER['HTTP_HOST']; // DON'T TOUCH (base url (only domain) of site (without final /)).
  * 
  */
-$base_url = 'http://localhost/projects/htdocs/nasabahco';
+/*
+ * $base_url = 'http://localhost/projects/htdocs/nasabahco';
 $upload_dir = '/userfiles/images/'; // path from base_url to base of upload folder (with start and final /)
 $current_path = '../../userfiles/images/'; // relative path from filemanager folder to upload folder (with final /)
 //thumbs folder can't put inside upload folder
 $thumbs_base_path = '../../userfiles/rfthumbs/'; // relative path from filemanager folder to thumbs folder (with final /)
+*/
+$base_url = $_SESSION['FILEMANAGER']['FM_BASEURL'];
+$upload_dir = $_SESSION['FILEMANAGER']['FM_UPLOAD_DIR'];
+$current_path = $_SESSION['FILEMANAGER']['FM_CURRENT_PATH'];
+$thumbs_base_path = $_SESSION['FILEMANAGER']['FM_THUMB_PATH'];
 
 // OPTIONAL SECURITY
 // if set to true only those will access RF whose url contains the access key(akey) like: 
