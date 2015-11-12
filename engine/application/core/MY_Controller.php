@@ -388,9 +388,24 @@ class MY_AdminController extends MY_Controller {
         //set user loggedin info
         $this->data['avatar_url_me'] = $this->users->get_avatar_url();
         $this->data['me'] = $this->users->me();
+        
+        //set parameter for filemanager
+        $this->_filemanager_setup();
     }
     
-    
+    private function _filemanager_setup(){
+        if (!session_id()){
+            session_start();
+        }
+        
+        $filemanager = array(
+            'FM_BASEURL'        => rtrim(site_url(), '/'),
+            'FM_UPLOAD_DIR'     => '/' . ltrim(userfiles_basepath(config_item('images')), '/'),
+            'FM_CURRENT_PATH'   => '../../'. ltrim(userfiles_basepath(config_item('images')), '/'),
+            'FM_THUMB_PATH'     => '../../'. ltrim(userfiles_basepath('userfiles/rfthumbs/'), '/')
+        );
+        $_SESSION['FILEMANAGER'] = $filemanager;
+    }
 }
 
 /**
