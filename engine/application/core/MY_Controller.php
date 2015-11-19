@@ -500,8 +500,11 @@ class MY_News extends MY_Controller {
     }
     
     protected function _latest_news($num=10, $condition=NULL){
+        if (!isset($this->category_m)){
+            $this->load->model('article/category_m');
+        }
         $articles = array();
-        $fields = 'title,url_title,image_url,comment,date,created_by';
+        $fields = 'title,category_id,url_title,image_url,comment,date,created_by';
         
         $where = array('published'=>ARTICLE_PUBLISHED);
         if ($condition){
@@ -512,6 +515,8 @@ class MY_News extends MY_Controller {
         $result = $this->article_m->get_offset($fields,$where,0,$num);
         foreach ($result as $item){
             //$item->created_by_name = $this->user_m->get_value('full_name',array('id'=>$item->created_by));
+            //get category
+            $item->category = $this->category_m->get_value('name',array('id'=>$item->category_id));
             $articles [] = $item;
         }
         
