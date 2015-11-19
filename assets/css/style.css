@@ -644,8 +644,9 @@ header .logo-line .logo a {
   font-weight: normal;
 }
 #main .blog-page article h1.title {
-  font-size: 17px;
-  line-height: 18px;
+  font-size: 23px;
+  font-weight: bold;
+  line-height: 23px;
   margin: 0;
   background-color: #f9f9f9;
   padding: 12px 15px;
