@@ -44,4 +44,5 @@
         <![endif]-->
     </head>
     <body <?php echo isset($body_class) && $body_class?'class="'.$body_class.'"':''; ?>>
+        <div id="fb-root"></div>
     
