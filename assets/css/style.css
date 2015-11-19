@@ -463,7 +463,7 @@ header .logo-line .logo a {
   color: #1e1e1e;
   line-height: 16px;
   margin: 0 0 5px 0;
-  font-weight: normal;
+  font-weight: bold;
 }
 #main .article-showcase .half article h3 a {
   color: #1e1e1e;
@@ -491,6 +491,9 @@ header .logo-line .logo a {
   font-family: Abel;
   font-size: 17px;
   color: black;
+}
+#main .article-showcase .big-article .title span a{
+    font-weight: bolder;
 }
 #main .article-showcase .big-article figure {
   width: 100%;
@@ -864,6 +867,7 @@ header .logo-line .logo a {
   position: relative;
   z-index: 2;
   padding-right: 5px;
+  font-weight: bolder;
 }
 #main .box-title .title-line {
   background-color: #d3d2d2;
@@ -936,6 +940,9 @@ header .logo-line .logo a {
   font-size: 17px;
   color: black;
 }
+#main .articles-slider .main-article .title span a {
+    font-weight: bolder;
+}
 #main .articles-slider .main-article figure {
   width: 100%;
 }
@@ -1004,6 +1011,7 @@ header .logo-line .logo a {
 #main .article-box article h3 a {
   color: #1e1e1e;
   text-decoration: none;
+  font-weight: bolder;
 }
 #main .article-box article .info {
   font-family: "Droid Serif";
