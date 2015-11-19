@@ -53,6 +53,7 @@
                     <img src="<?php echo get_image_thumb($latest->image_url, IMAGE_THUMB_SQUARE); ?>" alt="">
                 </figure>
                 <div class="text">
+                    <span class="text-muted small"><?php echo strtoupper($latest->category); ?></span>
                     <h3><a href="<?php echo site_url('detail/'.$latest->url_title); ?>"><?php echo $latest->title; ?></a></h3>
                     <span class="info"><?php echo date('d/m/Y',$latest->date); ?>, <?php echo number_format($latest->comment); ?> comments</span>
                 </div>
