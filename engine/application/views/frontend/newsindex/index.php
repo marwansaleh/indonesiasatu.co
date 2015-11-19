@@ -46,7 +46,7 @@
             <span class="text-muted small"><em><?php echo date('D, d M Y',$article->date); ?></em></span>
             <p>
                 <?php echo $article->synopsis; ?> 
-                <a href="<?php echo site_url('detail/'.$article->url_title); ?>">...more</a>
+                ...<a class="text-bold text-blue" href="<?php echo site_url('detail/'.$article->url_title); ?>">more</a>
             </p>
         </li>
         <?php endforeach; ?>
