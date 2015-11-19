@@ -16,6 +16,7 @@
                     <a href="#"><?php echo $article->created_by_name; ?></a>
                 </div>
                 <?php echo $article->content; ?>
+                <p class="text-muted small"><em>---Ditulis oleh <?php echo $article->created_by_name; ?></em></p>
                 <?php if ($article->tags): ?>
                 <div class="tag-container">
                     <div class="tag-title">Tags: </div>
