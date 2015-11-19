@@ -27,20 +27,14 @@
                 </div>
                 <?php endif; ?>
             </div>
-            <!--
+            
             <div class="blog-bottom">
                 <div class="share-title">Share</div>
                 <div class="share-content">
-                    <div class="addthis_toolbox addthis_default_style ">
-                    <a class="addthis_button_facebook_like at300b" fb:like:layout="button_count"><div class="fb-like fb_iframe_widget" data-ref=".VRbpIF-htIw.like" data-layout="button_count" data-show_faces="false" data-action="like" data-width="90" data-font="arial" data-href="http://teothemes.com/html/Voxis/blog.html" data-send="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=172525162793917&amp;container_width=77&amp;font=arial&amp;href=http%3A%2F%2Fteothemes.com%2Fhtml%2FVoxis%2Fblog.html&amp;layout=button_count&amp;locale=en_US&amp;ref=.VRbpIF-htIw.like&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90"><span style="vertical-align: bottom; width: 77px; height: 20px;"><iframe name="f39399c624" width="90px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like Facebook Social Plugin" src="http://www.facebook.com/plugins/like.php?action=like&amp;app_id=172525162793917&amp;channel=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2F6Dg4oLkBbYq.js%3Fversion%3D41%23cb%3Df1c4a787f4%26domain%3Dteothemes.com%26origin%3Dhttp%253A%252F%252Fteothemes.com%252Ffe901047%26relation%3Dparent.parent&amp;container_width=77&amp;font=arial&amp;href=http%3A%2F%2Fteothemes.com%2Fhtml%2FVoxis%2Fblog.html&amp;layout=button_count&amp;locale=en_US&amp;ref=.VRbpIF-htIw.like&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90" style="border: none; visibility: visible; width: 77px; height: 20px;" class=""></iframe></span></div></a>
-                    <a class="addthis_button_tweet at300b"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.7d9dd43d4f18b1bb51cc9d8f0997995e.en.html#_=1427564835114&amp;count=horizontal&amp;counturl=http%3A%2F%2Fteothemes.com%2Fhtml%2FVoxis%2Fblog.html&amp;dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fteothemes.com%2Fhtml%2FVoxis%2Fblog.html&amp;size=m&amp;text=Voxis%20Magazine%3A&amp;url=http%3A%2F%2Fteothemes.com%2Fhtml%2FVoxis%2Fblog.html%23.VRbpIDQ81TE.twitter" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 109px; height: 20px;"></iframe></a>
-                    <a class="addthis_button_pinterest_pinit at300b"><span class="at_PinItButton"></span></a>
-                    <a class="addthis_counter addthis_pill_style addthis_nonzero" href="#" style="display: inline-block;"><a class="atc_s addthis_button_compact"><span></span></a><a class="addthis_button_expanded" target="_blank" title="View more services" href="#">23</a></a>
-                    <div class="atclear"></div></div>
-                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5133cbfc3c9054b8"></script>
-                    
+                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=<?php echo urlencode('IndonesiaSatu.co: '.$article->title); ?>&amp;url=<?php echo urlencode($article->share_url); ?>" data-size="default">Tweet</a>
+                    <div style="margin-top: -3px;" class="fb-share-button" data-href="<?php echo $article->share_url; ?>" data-layout="button_count"></div>
                 </div>
-            </div>-->
+            </div>
         </article>
     </div>
 </div>
@@ -67,4 +61,27 @@
         </div>
     </div>
 </div>
-<?php endif; 
+<?php endif; ?>
+<script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id; js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+
+
+    function share_fb(link){
+
+        FB.ui({
+          method: 'share',
+          href: link
+        }, function(response){});
+    }
+    function share_tw(obj){
+        var url = document.getElementById(obj).href;
+        var tw_window = window.open(url,"tw_sta","width=500,height=300,toolbar=no, scrollbars=yes, resizable=no")
+        tw_window.focus();
+    }
+</script>
