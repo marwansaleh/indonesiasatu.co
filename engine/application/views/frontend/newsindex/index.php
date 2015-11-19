@@ -37,29 +37,15 @@
 </div>
     
 <div class="row">
-    <?php foreach ($articles as $article): ?>
-    <div class="blog-style">
-        <article>
-            <div class="inner">
-                <figure>
-                    <a href="<?php echo site_url('detail/'.$article->url_title); ?>">
-                        <img src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SMALL); ?>" alt="">
-                    </a>
-                    
-                </figure>
-                <div class="text">
-                    <div class="inner-border">
-                        <div class="title"><a href="<?php echo site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></div>
-                        <div class="description">
-                            <div class="date"><?php echo number_format($article->comment); ?> comments, <?php echo date('d M Y',$article->date); ?> </div>
-                            <div class="excerpt">
-                                <p><?php echo $article->synopsis; ?> <a href="<?php echo site_url('detail/'.$article->url_title); ?>">Read more...</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-    </div>
-    <?php endforeach; ?>
+    <ul class="newslist">
+        <?php foreach ($articles as $article): ?>
+        <li>
+            <h4>
+                <a href="<?php echo site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a>
+            </h4>
+            <span class="text-muted small"><em><?php echo date('D, d M Y',$article->date); ?></em></span>
+            <p><?php echo $article->synopsis; ?></p>
+        </li>
+        <?php endforeach; ?>
+    </ul>
 </div>
