@@ -1266,6 +1266,20 @@ header .logo-line .logo a {
 #main .shortcodes-box .buttons-container.margin-top {
   margin-top: 15px;
 }
+#main .newslist{
+    margin: 0; padding: 0;
+    list-style: none;
+}
+#main .newslist li {
+    float: left;
+    padding: 10px 0 10px 0;
+    border-bottom: solid 1px #cce;
+    width: 98%;
+}
+#main .newslist li:last-child {border: none;}
+#main .newslist li h4 {
+    margin-bottom: 0;
+}
 .page404 {
   text-align: center;
 }
