@@ -43,20 +43,26 @@
             </div>
         </div>
 
-        <div class="row breaking-news">
-            <div class="col-sm-2 title">
-               <span>Breaking News</span>
-            </div>
-            <div class="col-sm-10 header-news">
-                <?php if (isset($newstickers)): ?>
-                <div class="ticker">
-                    <ul>
-                        <?php foreach ($newstickers as $ticker): ?>
-                        <li><?php echo $ticker->news_text; ?></li>
-                        <?php endforeach; ?>
-                    </ul>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-12 breaking-news">
+                    <div class="row">
+                        <div class="col-sm-2 title">
+                           <span>Breaking News</span>
+                        </div>
+                        <div class="col-sm-10 header-news">
+                            <?php if (isset($newstickers)): ?>
+                            <div class="ticker">
+                                <ul>
+                                    <?php foreach ($newstickers as $ticker): ?>
+                                    <li><?php echo $ticker->news_text; ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
-                <?php endif; ?>
             </div>
         </div>
         
