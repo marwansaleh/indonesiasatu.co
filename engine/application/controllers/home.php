@@ -68,6 +68,13 @@ class Home extends MY_News {
             );
         }
         
+        /*
+        $this->data['widgets'][] = 'inspirasi';
+        if (in_array(WIDGET_INSPIRATION, $this->data['widgets'])){
+            //store photo news
+            $this->data['inspirasi'] = $this->data['selected_news_category']['articles'][0];
+        }*/
+        
         //Load slider news
         $this->data['slider_news'] = $this->_slider_news(5);
         //Load highlight news
