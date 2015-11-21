@@ -479,7 +479,7 @@ if (!function_exists('variable_type_cast')){
 
 if (!function_exists('widget_exists')){
     function widget_exists($widget){
-        $widgets = array(WIDGET_FACEBOOK,WIDGET_NEWSGROUP,WIDGET_NEWSLATEST,WIDGET_NEWSPHOTO,WIDGET_SOCMED_COUNTERS,WIDGET_STOCKS,WIDGET_VIDEO,WIDGET_SELECTED_CATEGORY);
+        $widgets = array(WIDGET_FACEBOOK,WIDGET_NEWSGROUP,WIDGET_NEWSLATEST,WIDGET_NEWSPHOTO,WIDGET_SOCMED_COUNTERS,WIDGET_STOCKS,WIDGET_VIDEO,WIDGET_INSPIRATION,WIDGET_SELECTED_CATEGORY);
         
         return in_array($widget, $widgets);
     }
