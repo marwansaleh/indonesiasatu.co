@@ -64,5 +64,6 @@ define('WIDGET_NEWSGROUP','group_news');
 define('WIDGET_NEWSPHOTO','photo_news');
 define('WIDGET_VIDEO','feature_video');
 define('WIDGET_NEWSLATEST','latest_news');
+define('WIDGET_SELECTED_CATEGORY','selected_news_category');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
