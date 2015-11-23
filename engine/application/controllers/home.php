@@ -68,6 +68,8 @@ class Home extends MY_News {
             );
         }
         
+        $this->data['inspirasi'] = $this->data['selected_news_category']['articles'][0];
+        
         /*
         $this->data['widgets'][] = 'inspirasi';
         if (in_array(WIDGET_INSPIRATION, $this->data['widgets'])){
