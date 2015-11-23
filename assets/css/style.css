@@ -981,6 +981,10 @@ header .logo-line .logo a {
 #main .articles-slider article .text {
   margin-left: 120px !important;
 }
+#main .articles-inspiration .articles-inspiration-info {
+    float: left;
+    padding: 10px;
+}
 #main .article-box article {
   width: 100%;
   display: inline-block;
