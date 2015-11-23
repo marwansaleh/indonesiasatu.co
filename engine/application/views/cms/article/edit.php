@@ -41,7 +41,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Google Short URL</label>
-                                        <input readonly="true" type="text" id="url_short" name="url_short" class="form-control disabled" placeholder="Url short ..." value="<?php echo $item->url_short; ?>">
+                                        <input type="text" id="url_short" name="url_short" class="form-control" placeholder="Url short ..." value="<?php echo $item->url_short; ?>">
                                     </div>
                                 </div>
                             </div>
