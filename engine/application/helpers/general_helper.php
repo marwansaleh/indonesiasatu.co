@@ -438,6 +438,7 @@ if (!function_exists('get_image_base')){
         switch ($type){
             case IMAGE_THUMB_ORI: $base_url= config_item('images'); break;
             case IMAGE_THUMB_LARGE: $base_url= config_item('th_large'); break;
+            case IMAGE_THUMB_PORTRAIT: $base_url= config_item('th_portrait'); break;
             case IMAGE_THUMB_MEDIUM: $base_url= config_item('th_medium'); break;
             case IMAGE_THUMB_SMALL: $base_url= config_item('th_small'); break;
             case IMAGE_THUMB_SQUARE: $base_url= config_item('th_square'); break;
