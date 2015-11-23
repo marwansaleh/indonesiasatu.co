@@ -68,14 +68,7 @@ class Home extends MY_News {
             );
         }
         
-        $this->data['inspirasi'] = $this->data['selected_news_category']['articles'][0];
-        
-        /*
-        $this->data['widgets'][] = 'inspirasi';
-        if (in_array(WIDGET_INSPIRATION, $this->data['widgets'])){
-            //store photo news
-            $this->data['inspirasi'] = $this->data['selected_news_category']['articles'][0];
-        }*/
+        $this->data['inspirasi'] = $this->_inspiration();
         
         //Load slider news
         $this->data['slider_news'] = $this->_slider_news(5);
@@ -131,6 +124,24 @@ class Home extends MY_News {
         
         $this->data['subview'] = 'mobile/home/index';
         $this->load->view('_layout_mobile', $this->data);
+    }
+    
+    function _inspiration(){
+        //get category id for inspiration
+        $category_id = $this->category_m->get_value('id', array('slug' => 'inspirasi'));
+        if ($category_id){
+            $category = $this->category_m->get_select_where('id',array('parent'=>0, 'is_menu'=>1, 'is_home'=>1), TRUE);
+            if ($category){
+                $category_id = $category->id;
+            }
+        }
+        //get the article
+        $inspiration = $this->article_m->get_select_where('*', array('category_id'=>$category_id, 'published'=>1), TRUE);
+        
+        if ($inspiration && $inspiration->ext_attributes){
+            $inspiration->ext_attributes = json_decode($inspiration->ext_attributes);
+        }
+        return $inspiration;
     }
 }
 
