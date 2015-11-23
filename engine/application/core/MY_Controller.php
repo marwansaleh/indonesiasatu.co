@@ -400,14 +400,14 @@ class MY_AdminController extends MY_Controller {
         
         if (ENVIRONMENT == 'development'){
             $filemanager = array(
-                'FM_BASEURL'        => rtrim(site_url(), '/'),
+                'FM_BASEURL'        => rtrim(userfiles_baseurl(), '/'),
                 'FM_UPLOAD_DIR'     => '/' . ltrim(userfiles_basepath(config_item('images')), '/'),
                 'FM_CURRENT_PATH'   => '../../'. ltrim(userfiles_basepath(config_item('images')), '/'),
                 'FM_THUMB_PATH'     => '../../'. ltrim(userfiles_basepath(config_item('rfthumbs')), '/')
             );
         }else{
             $filemanager = array(
-                'FM_BASEURL'        => rtrim(site_url(), '/'),
+                'FM_BASEURL'        => rtrim(userfiles_baseurl(), '/'),
                 'FM_UPLOAD_DIR'     => '/' . ltrim(userfiles_basepath(config_item('images')), '/'),
                 'FM_CURRENT_PATH'   => '../../../../images.indonesiasatu.co/www/'. config_item('images'),
                 'FM_THUMB_PATH'     => '../../../../images.indonesiasatu.co/www/'. config_item('rfthumbs'),
