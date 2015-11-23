@@ -11,6 +11,7 @@ $config['images'] = 'userfiles/images/';
 $config['rfthumbs'] = 'userfiles/rfthumbs/';
 $config['thumbs'] = 'userfiles/thumbs/';
 $config['th_large'] = $config['thumbs'] . 'large/';
+$config['th_portrait'] = $config['thumbs'] . 'portrait/';
 $config['th_medium'] = $config['thumbs'] . 'medium/';
 $config['th_small'] = $config['thumbs'] . 'small/';
 $config['th_square'] = $config['thumbs'] . 'square/';
