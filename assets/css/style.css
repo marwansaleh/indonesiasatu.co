@@ -981,9 +981,31 @@ header .logo-line .logo a {
 #main .articles-slider article .text {
   margin-left: 120px !important;
 }
-#main .articles-inspiration .articles-inspiration-info {
+#main .article-inspiration .article-inspiration-info {
     float: left;
+    width: 100%;
     padding: 10px;
+    margin-top: -150px;
+    max-height: 150px;
+    overflow-y: hidden;
+    color: #fff;
+    z-index: 1000;
+    position: absolute;
+}
+#main .article-inspiration .article-inspiration-info h4.name  {
+    padding: 0; margin: 0;
+    font-family: Abel,Arial;
+    font-size: 16px;
+    text-align: right;
+}
+#main .article-inspiration .article-inspiration-info h2.article-title  {
+    padding: 0; margin: 0;
+    color: #DB3937;
+    text-align: right;
+}
+#main .article-inspiration .article-inspiration-info p.synopsis  {
+    padding: 0; margin: 10px 0 0;
+    text-align: justify;
 }
 #main .article-box article {
   width: 100%;
