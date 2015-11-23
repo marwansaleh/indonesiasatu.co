@@ -10,6 +10,7 @@
         <?php endif; ?>
         
         <form role="form" method="post" action="<?php echo $submit_url; ?>">
+            <input type="hidden" id="has_ext_attributes" name="has_ext_attributes" value="<?php echo $ext_attributes?count($ext_attributes):0;  ?>" />
             <div class="row">
                 <div class="col-sm-8">
                     <div class="box box-default">
@@ -48,7 +49,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label>Category</label>
-                                        <select name="category_id" class="form-control selectpicker" data-live-search="true" data-size="5">
+                                        <select id="category_id" name="category_id" class="form-control selectpicker" data-live-search="true" data-size="5">
                                             <option value="0">-- No Category--</option>
                                             <?php foreach ($categories as $category): ?>
                                             <option value="<?php echo $category->id; ?>" <?php echo $category->id==$item->category_id?'selected':''; ?>><?php echo $category->name; ?></option>
@@ -75,6 +76,20 @@
                                             <option value="1" <?php echo $item->published==1?'selected':''; ?>>Published</option>
                                         </select>
                                     </div>
+                                </div>
+                            </div>
+                            <div id="attribute_ext_container" class="well well-sm <?php echo $ext_attributes?'':'hidden'; ?>">
+                                <div class="row">
+                                    <?php if ($ext_attributes): ?>
+                                    <?php foreach ($ext_attributes as $ext): ?>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label><?php echo $ext->attr_label ? $ext->attr_label : $ext->attr_name; ?></label>
+                                            <input type="<?php echo $ext->attr_type ? $ext->attr_type : 'text' ?>" name="<?php echo $ext->attr_name; ?>" class="form-control" value="<?php echo isset($item->ext_attributes->{$ext->name})?$item->ext_attributes->{$ext->name}:''; ?>">
+                                        </div>
+                                    </div>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -280,6 +295,12 @@
             $('input#image_url').val(images.join('|'));
             
         });
+        
+        $('#category_id').on('change', function (){
+            if ($(this).val() > 0){
+                ArticleManagers.loadExtendedAttributes($(this).val());
+            }
+        });
     });
     
     tinymce.init({
@@ -366,4 +387,34 @@
             }
         }
     }
+    
+    var ArticleManagers = {
+        hasExtAttrElementId: 'has_ext_attributes',
+        extAttrContainerId: 'attribute_ext_container',
+        loadExtendedAttributes: function (categoryID){
+            var _this = this;
+            $.getJSON('<?php echo site_url('cms/article/get_category_ext_attributes'); ?>/'+categoryID, function (data){
+                if (data){
+                    $('#'+_this.hasExtAttrElementId).val(1);
+                    $('#'+_this.extAttrContainerId).removeClass('hidden');
+                    $('#'+_this.extAttrContainerId +' .row').empty();
+                    var s = '';
+                    for (var i in data){
+                        var ext = data[i];
+                        s= '<div class="col-sm-6">';
+                            s+= '<div class="form-group">';
+                                s+= '<label>'+ (ext.attr_label ? ext.attr_label : ext.attr_name) +'</label>';
+                                s+= '<input type="'+ (ext.attr_type ? ext.attr_type : 'text')+'" name="'+ext.attr_name+'" class="form-control" value="">';
+                            s+= '</div>';
+                        s+= '</div>';
+                        
+                        $('#'+_this.extAttrContainerId +' .row').append(s);
+                    }
+                }else{
+                    $('#'+_this.hasExtAttrElementId).val(0);
+                    $('#'+_this.extAttrContainerId).addClass('hidden');
+                }
+            });
+        }
+    };
 </script>
