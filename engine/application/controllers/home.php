@@ -144,9 +144,6 @@ class Home extends MY_News {
         return $inspiration;
     }
     
-    function teshttps(){
-        echo json_decode(file_get_contents('https://www.googleapis.com/urlshortener/v1/url'));
-    }
 }
 
 /*
