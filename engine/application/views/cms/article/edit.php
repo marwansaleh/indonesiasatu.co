@@ -316,9 +316,9 @@
         toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
         //toolbar2: "",
         image_advtab: true,
-        external_filemanager_path:"<?php echo site_url(config_item('path_lib').'filemanager'); ?>/",
-        filemanager_title:"Responsive Filemanager" ,
-        external_plugins: { "filemanager" : "<?php echo site_url(config_item('path_lib').'filemanager/plugin.min.js'); ?>"},
+        external_filemanager_path:"/<?php echo config_item('path_lib').'filemanager'; ?>/",
+        filemanager_title:"Filemanager" ,
+        external_plugins: { "filemanager" : "/<?php echo config_item('path_lib').'filemanager/plugin.min.js'; ?>"},
         filemanager_access_key:"",
         relative_urls: false,
         //document_base_url: "<?php echo site_url(); ?>"
