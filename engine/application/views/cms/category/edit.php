@@ -13,11 +13,11 @@
             <div class="box-body">
                 <div class="form-group">
                     <label>Category Title</label>
-                    <input type="text" name="name" class="form-control" placeholder="Title ..." value="<?php echo $item->name; ?>">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Title ..." value="<?php echo $item->name; ?>">
                 </div>
                 <div class="form-group">
                     <label>Category Slug</label>
-                    <input type="text" name="slug" class="form-control" placeholder="Short category ..." value="<?php echo $item->slug; ?>">
+                    <input type="text" id="slug" name="slug" class="form-control" placeholder="Short category ..." value="<?php echo $item->slug; ?>">
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
@@ -78,3 +78,21 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('input#name').on('blur', function (){
+            if (!$('input#slug').val()){
+                create_url_title('name', 'slug');
+            }
+        });
+    });
+    
+    function create_url_title(sourceField,targetField){
+        var url = $.trim($('#'+sourceField).val());
+        url = url.replace('%','-persen');
+        //replace everything not alpha numeric
+        url = url.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+        //url = url.replace(/[ \t\r]+/g,"-");
+        $('#'+targetField).val(url);
+    }
+</script>
