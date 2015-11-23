@@ -138,7 +138,7 @@
                                 <div class="input-group">
                                     <input type="text" readonly="true" class="form-control disabled" id="selected_image" name="selected_image" placeholder="Browse image..">
                                     <div class="input-group-btn">
-                                        <a href="<?php echo site_url(config_item('path_lib').'filemanager/dialog.php?type=1&field_id=selected_image&iframe=true&width=80%&height=80%'); ?>"  rel="prettyPhoto" class="btn btn-default"><i class="fa fa-upload"></i> Browse Image</a>
+                                        <a href="<?php echo site_url(config_item('path_lib').'filemanager/dialog.php?type=1&field_id=selected_image&relative_url=1&iframe=true&width=80%&height=80%'); ?>"  rel="prettyPhoto" class="btn btn-default"><i class="fa fa-upload"></i> Browse Image</a>
                                     </div>
                                 </div>
                             </div>
