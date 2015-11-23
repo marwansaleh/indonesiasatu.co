@@ -162,7 +162,7 @@ class Article extends MY_AdminController {
                 $ext_attributes = $this->get_category_ext_attributes($postdata['category_id']);
                 $ext_attributes_data = new stdClass();
                 foreach ($ext_attributes as $ext){
-                    $ext_attributes_data->{$ext->name} = $this->input->post($ext->name);
+                    $ext_attributes_data->{$ext->attr_name} = $this->input->post($ext->attr_name);
                 }
                 
                 $postdata['ext_attributes'] = json_encode($ext_attributes_data);
