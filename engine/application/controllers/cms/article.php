@@ -60,6 +60,9 @@ class Article extends MY_AdminController {
         
         if ($id){
             $item = $this->article_m->get($id);
+            if ($item){
+                $item->ext_attributes = json_decode($item->ext_attributes);
+            }
         }else{
             $item = $this->article_m->get_new();
             $item->created = time();
@@ -91,6 +94,7 @@ class Article extends MY_AdminController {
         }
         $this->data['categories'] = $this->category_m->get();
         $this->data['article_types'] = $this->global_category_m->get();
+        $this->data['ext_attributes'] = $id ? $this->get_category_ext_attributes($item->category_id) : NULL;
         
         //set breadcumb
         breadcumb_add($this->data['breadcumb'], 'Articles', site_url('cms/article/index?page='.$page));
@@ -152,6 +156,18 @@ class Article extends MY_AdminController {
             
             $postdata['image_url'] = isset($image_arr[0])?$image_arr[0]:'';
             
+            //check if any extended attributes
+            if ($this->input->post('has_ext_attributes')){
+                //get the attributes for the selected category
+                $ext_attributes = $this->get_category_ext_attributes($postdata['category_id']);
+                $ext_attributes_data = new stdClass();
+                foreach ($ext_attributes as $ext){
+                    $ext_attributes_data->{$ext->name} = $this->input->post($ext->name);
+                }
+                
+                $postdata['ext_attributes'] = json_encode($ext_attributes_data);
+            }
+            
             if (($article_id=$this->article_m->save($postdata, $id))){
                 //save articles image if multi
                 if ($postdata['image_type']==IMAGE_TYPE_MULTI){
@@ -207,6 +223,21 @@ class Article extends MY_AdminController {
         }
         
         redirect('cms/article/index?page='.$page);
+    }
+    
+    function get_category_ext_attributes($category_id){
+        if (!isset($this->attributes_m)){
+            $this->load->model('article/attributes_m');
+        }
+        
+        $result = $this->attributes_m->get_by(array('category_id'=>$category_id));
+        
+        //return type/format by request
+        if ($this->input->is_ajax_request()){
+            echo json_encode($result);
+        }else{
+            return $result;
+        }
     }
 }
 
