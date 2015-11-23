@@ -39,6 +39,16 @@
     </div>
 </div><!-- end highlight news -->
 
+<!-- insert advert -->
+<div class="row">
+    <div class="col-sm-12">
+        <a href="<?php echo site_url(); ?>">
+            <img src="<?php echo site_url('adverts/Iklan_arta_graha_231115.jpg'); ?>" class="img-responsive" />
+        </a>
+    </div>
+</div>
+<!-- end advert -->
+
 <div class="row">
     <!-- Latest news -->
     <div class="col-sm-6 article-box">
