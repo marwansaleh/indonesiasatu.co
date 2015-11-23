@@ -7,5 +7,14 @@
         </div>
         <?php $this->load->view('components/_side_right'); ?>
     </div>
+    
 </div>
+<div id="advert-bottom-bar">
+    <div class="container">
+        <div class="row">
+            <img src="<?php echo site_url('adverts/iklan_mercure_galuh_mas_231115.jpg'); ?>" class="img-responsive" />
+        </div>
+    </div>
+</div>
+
 <?php $this->load->view('components/_body_footer');
