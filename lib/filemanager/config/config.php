@@ -36,7 +36,7 @@ $current_path = '../../userfiles/images/'; // relative path from filemanager fol
 //thumbs folder can't put inside upload folder
 $thumbs_base_path = '../../userfiles/rfthumbs/'; // relative path from filemanager folder to thumbs folder (with final /)
 */
-$base_url = $_SESSION['FILEMANAGER']['FM_BASEURL'];
+$base_url = '';//$_SESSION['FILEMANAGER']['FM_BASEURL'];
 $upload_dir = $_SESSION['FILEMANAGER']['FM_UPLOAD_DIR'];
 $current_path = $_SESSION['FILEMANAGER']['FM_CURRENT_PATH'];
 $thumbs_base_path = $_SESSION['FILEMANAGER']['FM_THUMB_PATH'];
