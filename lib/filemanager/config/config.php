@@ -219,7 +219,15 @@ $JAVAMaxSizeUpload = 200; //Gb
 // PS if there isn't write permission in your destination folder you must set it
 // 
 $fixed_image_creation                   = TRUE; //activate or not the creation of one or more image resized with fixed path from filemanager folder
-$fixed_path_from_filemanager            = array('../../userfiles/thumbs/large/','../../userfiles/thumbs/portrait/','../../userfiles/thumbs/medium/','../../userfiles/thumbs/small/','../../userfiles/thumbs/square/','../../userfiles/thumbs/smaller/','../../userfiles/thumbs/tiny/'); //fixed path of the image folder from the current position on upload folder
+$fixed_path_from_filemanager            = array(
+    $_SESSION['FILEMANAGER']['FM_RESIZE_PATH'] . 'large/',
+    $_SESSION['FILEMANAGER']['FM_RESIZE_PATH'] . 'portrait/',
+    $_SESSION['FILEMANAGER']['FM_RESIZE_PATH'] . 'medium/',
+    $_SESSION['FILEMANAGER']['FM_RESIZE_PATH'] . 'small/',
+    $_SESSION['FILEMANAGER']['FM_RESIZE_PATH'] . 'square/',
+    $_SESSION['FILEMANAGER']['FM_RESIZE_PATH'] . 'smaller/',
+    $_SESSION['FILEMANAGER']['FM_RESIZE_PATH'] . 'tiny/'
+); //fixed path of the image folder from the current position on upload folder
 $fixed_image_creation_name_to_prepend   = array('','','','','','',''); //name to prepend on filename
 $fixed_image_creation_to_append         = array('','','','','','',''); //name to appendon filename
 $fixed_image_creation_width             = array(726,555,362,230,70,57,42); //width of image (you can leave empty if you set height)
