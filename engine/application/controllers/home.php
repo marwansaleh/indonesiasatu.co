@@ -129,7 +129,7 @@ class Home extends MY_News {
     function _inspiration(){
         //get category id for inspiration
         $category_id = $this->category_m->get_value('id', array('slug' => 'inspirasi'));
-        if ($category_id){
+        if (!$category_id){
             $category = $this->category_m->get_select_where('id',array('parent'=>0, 'is_menu'=>1, 'is_home'=>1), TRUE);
             if ($category){
                 $category_id = $category->id;
