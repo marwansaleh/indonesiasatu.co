@@ -20,7 +20,7 @@
                     <input type="text" id="slug" name="slug" class="form-control" placeholder="Short category ..." value="<?php echo $item->slug; ?>">
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label>Category Parent</label>
                             <select name="parent" class="form-control selectpicker" data-live-search="true" data-size="5">
@@ -31,24 +31,15 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label>Sort / Order</label>
                             <input type="number" name="sort" class="form-control" min="0" step="1" value="<?php echo $item->sort; ?>">
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Is Menu ?</label>
-                            <select name="is_menu" class="form-control">
-                                <option value="0" <?php echo $item->is_menu==0?'selected':''; ?>>Not menu</option>
-                                <option value="1" <?php echo $item->is_menu==1?'selected':''; ?>>Menu</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label>Is Menu ?</label>
                             <select name="is_menu" class="form-control">
@@ -57,7 +48,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label>Show in Home ?</label>
                             <select name="is_home" class="form-control">
