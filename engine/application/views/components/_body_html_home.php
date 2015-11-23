@@ -13,7 +13,7 @@
                                 <div class="title">
                                     <span><a href="<?php echo site_url('detail/'.$highlight->url_title); ?>"><?php echo $highlight->title ?></a></span>
                                 </div>
-                                <figure>
+                                <figure style="max-height: 205px; overflow-y: hidden;">
                                     <img src="<?php echo get_image_thumb($highlight->image_url, IMAGE_THUMB_MEDIUM); ?>" alt="">
                                 </figure>
                                 <div class="main-text">
@@ -53,10 +53,16 @@
                     </div>
                     <div class="articles-slider">
                         <div class="flex-viewport article-inspiration">
-                            <img src="<?php echo get_image_thumb($inspirasi->image_url, IMAGE_THUMB_MEDIUM); ?>" class="img-responsive">
-                            <div class="article-inspiration-info">
-                                
-                            </div>
+                            <a href="<?php echo site_url('detail/'. $inspirasi->url_title); ?>">
+                                <figure style="max-height: 350px; overflow-y: hidden;">
+                                    <img src="<?php echo get_image_thumb($inspirasi->image_url, IMAGE_THUMB_PORTRAIT); ?>" class="img-responsive">
+                                </figure>
+                                <div class="article-inspiration-info">
+                                    <h4 class="name">Panglima TNI Jend. Gatot Nurmantyo</h4>
+                                    <h2 class="article-title"><?php echo $inspirasi->title; ?></h2>
+                                    <p class="synopsis"><?php echo $inspirasi->synopsis; ?></p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
