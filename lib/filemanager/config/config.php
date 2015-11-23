@@ -219,11 +219,11 @@ $JAVAMaxSizeUpload = 200; //Gb
 // PS if there isn't write permission in your destination folder you must set it
 // 
 $fixed_image_creation                   = TRUE; //activate or not the creation of one or more image resized with fixed path from filemanager folder
-$fixed_path_from_filemanager            = array('../../userfiles/thumbs/large/','../../userfiles/thumbs/medium/','../../userfiles/thumbs/small/','../../userfiles/thumbs/square/','../../userfiles/thumbs/smaller/','../../userfiles/thumbs/tiny/'); //fixed path of the image folder from the current position on upload folder
-$fixed_image_creation_name_to_prepend   = array('','','','','',''); //name to prepend on filename
-$fixed_image_creation_to_append         = array('','','','','',''); //name to appendon filename
-$fixed_image_creation_width             = array(726,362,230,70,57,42); //width of image (you can leave empty if you set height)
-$fixed_image_creation_height            = array('','','',70,57,42); //height of image (you can leave empty if you set width)
+$fixed_path_from_filemanager            = array('../../userfiles/thumbs/large/','../../userfiles/thumbs/portrait/','../../userfiles/thumbs/medium/','../../userfiles/thumbs/small/','../../userfiles/thumbs/square/','../../userfiles/thumbs/smaller/','../../userfiles/thumbs/tiny/'); //fixed path of the image folder from the current position on upload folder
+$fixed_image_creation_name_to_prepend   = array('','','','','','',''); //name to prepend on filename
+$fixed_image_creation_to_append         = array('','','','','','',''); //name to appendon filename
+$fixed_image_creation_width             = array(726,555,362,230,70,57,42); //width of image (you can leave empty if you set height)
+$fixed_image_creation_height            = array('',582,'','',70,57,42); //height of image (you can leave empty if you set width)
 /*
 #             $option:     0 / exact = defined size;
 #                          1 / portrait = keep aspect set height;
@@ -231,7 +231,7 @@ $fixed_image_creation_height            = array('','','',70,57,42); //height of 
 #                          3 / auto = auto;
 #                          4 / crop= resize and crop;
  */
-$fixed_image_creation_option            = array('auto','auto','auto','crop','crop','crop'); //set the type of the crop
+$fixed_image_creation_option            = array('auto','crop','auto','auto','crop','crop','crop'); //set the type of the crop
 
 
 // New image resized creation with relative path inside to upload folder after uploading (thumbnails in relative mode)
