@@ -11,6 +11,22 @@ class Tags_m extends MY_Model {
     protected $_primary_key = 'tag';
     protected $_primary_filter = 'strval';
     protected $_order_by = 'tag';
+    
+    public function save_tags($data) {
+        $sql = "INSERT IGNORE INTO ". $this->db->dbprefix($this->_table_name)." (tag) VALUES ";
+        if (is_array($data)){
+            $tags = array();
+            foreach ($data as $tag){
+                $tags [] = "('$tag')";
+            }
+            
+            $sql .= implode(',', $tags);
+        }else{
+            $sql .= "('$data')";
+        }
+        
+        $this->db->simple_query($sql);
+    }
 }
 
 /*
