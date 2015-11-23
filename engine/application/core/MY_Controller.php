@@ -410,7 +410,7 @@ class MY_AdminController extends MY_Controller {
                 'FM_BASEURL'        => rtrim(userfiles_baseurl(), '/'),
                 'FM_UPLOAD_DIR'     => '/' . ltrim(userfiles_basepath(config_item('images')), '/'),
                 'FM_CURRENT_PATH'   => '../../../../images.indonesiasatu.co/www/'. config_item('images'),
-                'FM_THUMB_PATH'     => 'images.indonesiasatu.co/www/'. config_item('rfthumbs'),
+                'FM_THUMB_PATH'     => '../../../../images.indonesiasatu.co/www/'. config_item('rfthumbs'),
             );
         }
         $_SESSION['FILEMANAGER'] = $filemanager;
