@@ -130,15 +130,15 @@ class Article extends MY_AdminController {
             //save tags to master tags
             if ($postdata['tags']){
                 $tags = explode(',', $postdata['tags']);
-                $post_tags = array();
-                foreach ($tags as $tag){
-                    if ($tag){
-                        $post_tags[] = array('tag'=>$tag);
-                    }
-                }
+//                $post_tags = array();
+//                foreach ($tags as $tag){
+//                    if ($tag){
+//                        $post_tags[] = array('tag'=>$tag);
+//                    }
+//                }
                 
-                if (count($post_tags)){
-                    $this->tags_m->save_batch($post_tags);
+                if (count($tags)){
+                    $this->tags_m->save_tags($tags);
                 }
             }
             
