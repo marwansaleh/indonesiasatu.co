@@ -394,7 +394,7 @@
         loadExtendedAttributes: function (categoryID){
             var _this = this;
             $.getJSON('<?php echo site_url('cms/article/get_category_ext_attributes'); ?>/'+categoryID, function (data){
-                if (data){
+                if (data && data.length > 0){
                     $('#'+_this.hasExtAttrElementId).val(1);
                     $('#'+_this.extAttrContainerId).removeClass('hidden');
                     $('#'+_this.extAttrContainerId +' .row').empty();
