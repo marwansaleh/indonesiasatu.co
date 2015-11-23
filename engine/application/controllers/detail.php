@@ -9,8 +9,6 @@ class Detail extends MY_News {
         parent::__construct();
         
         $this->data['mainmenus'] = $this->_mainmenu(0); //no submenu
-        $this->data['active_menu'] = 'home';
-        
         //load model
         $this->load->model('article/article_image_m', 'image_m');
     }
@@ -74,6 +72,9 @@ class Detail extends MY_News {
             //store photo news
             $this->data['photo_news'] = $this->_photo_news(isset($parameters['LAYOUT_NEWSPHOTO_NUM'])?$parameters['LAYOUT_NEWSPHOTO_NUM']:10);
         }
+        
+        $category_slug = $this->category_m->get_value('slug', array('id'=>$article->category_id));
+        $this->data['active_menu'] = $category_slug;
         
         //$this->data['main_slider'] = TRUE;
         $this->data['subview'] = 'frontend/detail/index';
