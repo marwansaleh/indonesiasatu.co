@@ -5,9 +5,10 @@
         <div class="content col-sm-8">
             <?php $this->load->view($subview);?>
         </div>
-        <?php $this->load->view('components/_side_right'); ?>
+        <aside class="col-sm-4">
+            <?php $this->load->view('components/_side_right'); ?>
+        </aside>
     </div>
-    
 </div>
 <div id="advert-bottom-bar">
     <div class="container">
