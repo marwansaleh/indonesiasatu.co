@@ -869,6 +869,7 @@ header .logo-line .logo a {
   z-index: 2;
   padding-right: 5px;
   font-weight: bolder;
+  margin-top: 10px;
 }
 #main .box-title .title-line {
   background-color: #d3d2d2;
