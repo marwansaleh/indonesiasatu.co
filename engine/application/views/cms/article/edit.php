@@ -233,7 +233,7 @@
 </div>
 <script src="<?php echo site_url(config_item('path_lib').'tinymce/tinymce.min.js'); ?>"></script>
 <script type="text/javascript">
-    var base_normal = "<?php echo site_url(config_item('images')); ?>";
+    var base_normal = "<?php echo get_image_base(IMAGE_THUMB_ORI); ?>";
     var base_small = "<?php echo get_image_base(IMAGE_THUMB_SMALLER); ?>";
     var base_medium = "<?php echo get_image_base(IMAGE_THUMB_MEDIUM); ?>";
     
