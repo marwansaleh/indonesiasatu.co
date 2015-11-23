@@ -85,7 +85,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label><?php echo $ext->attr_label ? $ext->attr_label : $ext->attr_name; ?></label>
-                                            <input type="<?php echo $ext->attr_type ? $ext->attr_type : 'text' ?>" name="<?php echo $ext->attr_name; ?>" class="form-control" value="<?php echo isset($item->ext_attributes->{$ext->name})?$item->ext_attributes->{$ext->name}:''; ?>">
+                                            <input type="<?php echo $ext->attr_type ? $ext->attr_type : 'text' ?>" name="<?php echo $ext->attr_name; ?>" class="form-control" value="<?php echo isset($item->ext_attributes->{$ext->attr_name})?$item->ext_attributes->{$ext->attr_name}:''; ?>">
                                         </div>
                                     </div>
                                     <?php endforeach; ?>
