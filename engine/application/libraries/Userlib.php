@@ -306,7 +306,7 @@ class Userlib extends Library {
     
     public function get_default_avatars(){
         $list = array();
-        $avatar_def_path = $this->ci->config->item('avatar') .'default/';
+        $avatar_def_path = userfiles_basepath ($this->ci->config->item('avatar') .'default/');
         foreach (glob($avatar_def_path . '*.*') as $avatar){
             $list [] = $avatar;
         }
