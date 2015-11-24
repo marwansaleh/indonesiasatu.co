@@ -36,7 +36,7 @@ class Attributes_m extends MY_Model {
     );
     
     public function save($data, $id = NULL) {
-        if ($id && $this->get_count(array('id!='=>$id,'category_id'=>$data['category_id'], 'attr_name'=>$data['attr_name']))){
+        if ($id && $this->get_count(array('id !='=>$id,'category_id'=>$data['category_id'], 'attr_name'=>$data['attr_name']))){
             $this->_last_message = 'Duplicate entry for '.$data['attr_name'].' in category_id:'.$data['category_id'];
             return FALSE;
         }else if (!$id && $this->get_count(array('category_id'=>$data['category_id'], 'attr_name'=>$data['attr_name']))){
