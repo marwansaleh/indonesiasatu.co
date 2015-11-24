@@ -5,6 +5,7 @@
  * @author marwansaleh
  */
 class Ext_attrib extends MY_AdminController {
+    private $_attr_types = array ('text','number','email','tel','date','time','month');
     function __construct() {
         parent::__construct();
         $this->data['active_menu'] = 'system';
@@ -53,26 +54,27 @@ class Ext_attrib extends MY_AdminController {
         $id = $this->input->get('id', TRUE);
         $page = $this->input->get('page', TRUE);
         
-        $item = $id ? $this->category_m->get($id):$this->category_m->get_new();
+        $item = $id ? $this->attributes_m->get($id):$this->attributes_m->get_new();
         
-        if ((!$id && !$this->users->has_access('CATEGORY_CREATE'))||($id && !$this->users->has_access('CATEGORY_EDIT'))){
-            $this->session->set_flashdata('message_type','error');
-            $this->session->set_flashdata('message', 'Sorry. You dont have access for this feature');
-            redirect('cms/category/index?page='.$page);
-        }
+//        if ((!$id && !$this->users->has_access('CATEGORY_CREATE'))||($id && !$this->users->has_access('CATEGORY_EDIT'))){
+//            $this->session->set_flashdata('message_type','error');
+//            $this->session->set_flashdata('message', 'Sorry. You dont have access for this feature');
+//            redirect('cms/category/index?page='.$page);
+//        }
         
         $this->data['item'] = $item;
         
         //data support
-        $this->data['parents'] = $this->category_m->get_by(array('id !='=>$id));
+        $this->data['attr_types'] = $this->_attr_types;
+        $this->data['categories'] = $this->category_m->get();
         
         //set breadcumb
-        breadcumb_add($this->data['breadcumb'], 'Categories', site_url('cms/category'));
+        breadcumb_add($this->data['breadcumb'], 'Extended Attributes', site_url('cms/ext_attrib'));
         breadcumb_add($this->data['breadcumb'], 'Update Item', NULL, TRUE);
         
-        $this->data['submit_url'] = site_url('cms/category/save?id='.$id.'&page='.$page);
-        $this->data['back_url'] = site_url('cms/category/index?page='.$page);
-        $this->data['subview'] = 'cms/category/edit';
+        $this->data['submit_url'] = site_url('cms/ext_attrib/save?id='.$id.'&page='.$page);
+        $this->data['back_url'] = site_url('cms/ext_attrib/index?page='.$page);
+        $this->data['subview'] = 'cms/ext_attrib/edit';
         $this->load->view('_layout_admin', $this->data);
     }
     
@@ -80,26 +82,26 @@ class Ext_attrib extends MY_AdminController {
         $id = $this->input->get('id', TRUE);
         $page = $this->input->get('page', TRUE);
         
-        if ((!$id && !$this->users->has_access('CATEGORY_CREATE'))||($id && !$this->users->has_access('CATEGORY_EDIT'))){
-            $this->session->set_flashdata('message_type','error');
-            $this->session->set_flashdata('message', 'Sorry. You dont have access for this feature');
-            redirect('cms/category/index?page='.$page);
-        }
+//        if ((!$id && !$this->users->has_access('CATEGORY_CREATE'))||($id && !$this->users->has_access('CATEGORY_EDIT'))){
+//            $this->session->set_flashdata('message_type','error');
+//            $this->session->set_flashdata('message', 'Sorry. You dont have access for this feature');
+//            redirect('cms/category/index?page='.$page);
+//        }
         
-        $rules = $this->category_m->rules;
+        $rules = $this->attributes_m->rules;
         $this->form_validation->set_rules($rules);
         //exit(print_r($rules));
         if ($this->form_validation->run() != FALSE) {
-            $postdata = $this->category_m->array_from_post(array('name','slug','parent','sort','is_menu','is_home'));
+            $postdata = $this->attributes_m->array_from_post(array('attr_name','attr_label','attr_type','category_id'));
             
-            if ($this->category_m->save($postdata, $id)){
+            if ($this->attributes_m->save($postdata, $id)){
                 $this->session->set_flashdata('message_type','success');
-                $this->session->set_flashdata('message', 'Data category item saved successfully');
+                $this->session->set_flashdata('message', 'Data extended attributes item saved successfully');
                 
-                redirect('cms/category/index?page='.$page);
+                redirect('cms/ext_attrib/index?page='.$page);
             }else{
                 $this->session->set_flashdata('message_type','error');
-                $this->session->set_flashdata('message', $this->category_m->get_last_message());
+                $this->session->set_flashdata('message', $this->attributes_m->get_last_message());
             }
         }
         
@@ -108,38 +110,38 @@ class Ext_attrib extends MY_AdminController {
             $this->session->set_flashdata('message', validation_errors());
         }
         
-        redirect('cms/category/edit?id='.$id.'&page='.$page);
+        redirect('cms/ext_attrib/edit?id='.$id.'&page='.$page);
     }
     
     function delete(){
         $id = $this->input->get('id', TRUE);
         $page = $this->input->get('page', TRUE);
         
-        if (!$this->users->has_access('CATEGORY_DELETE')){
-            $this->session->set_flashdata('message_type','error');
-            $this->session->set_flashdata('message', 'Sorry. You dont have access for this feature');
-            redirect('cms/category/index?page='.$page);
-        }
+//        if (!$this->users->has_access('CATEGORY_DELETE')){
+//            $this->session->set_flashdata('message_type','error');
+//            $this->session->set_flashdata('message', 'Sorry. You dont have access for this feature');
+//            redirect('cms/category/index?page='.$page);
+//        }
         
         //check if found data item
-        $item = $this->category_m->get($id);
+        $item = $this->attributes_m->get($id);
         if (!$item){
             $this->session->set_flashdata('message_type','error');
-            $this->session->set_flashdata('message', 'Could not find data category item. Delete item failed!');
+            $this->session->set_flashdata('message', 'Could not find data item. Delete item failed!');
         }else{
-            if ($this->category_m->delete($id)){
+            if ($this->attributes_m->delete($id)){
                 $this->session->set_flashdata('message_type','success');
-                $this->session->set_flashdata('message', 'Data category item deleted successfully');
+                $this->session->set_flashdata('message', 'Data item deleted successfully');
             }else{
                 $this->session->set_flashdata('message_type','error');
-                $this->session->set_flashdata('message', $this->category_m->get_last_message());
+                $this->session->set_flashdata('message', $this->attributes_m->get_last_message());
             }
         }
         
-        redirect('cms/category/index?page='.$page);
+        redirect('cms/ext_attrib/index?page='.$page);
     }
 }
 
 /*
- * file location: engine/application/controllers/cms/category.php
+ * file location: engine/application/controllers/cms/ext_attrib.php
  */
