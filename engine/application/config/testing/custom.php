@@ -19,3 +19,4 @@ $config['th_smaller'] = $config['thumbs'] . 'smaller/';
 $config['th_tiny'] = $config['thumbs'] . 'tiny/';
 
 $config['avatar'] = 'userfiles/avatar/';
+$config['advert'] = 'userfiles/advert/';
