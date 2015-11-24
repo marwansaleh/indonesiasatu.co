@@ -33,7 +33,7 @@ class Advtype_m extends MY_Model {
             $this->_last_message = 'Duplicate entry for '.$data['name'];
             return FALSE;
         }
-        parent::save($data, $id);
+        return parent::save($data, $id);
     }
 }
 
