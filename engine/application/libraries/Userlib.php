@@ -286,7 +286,7 @@ class Userlib extends Library {
                 $base_avatar_path = $this->ci->config->item('avatar');
             }
             
-            return $this->ci->config->site_url($base_avatar_path . $avatar);
+            return userfiles_baseurl($base_avatar_path . $avatar);
         }
     }
     
