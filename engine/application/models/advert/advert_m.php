@@ -11,6 +11,19 @@ class Advert_m extends MY_Model {
     protected $_primary_key = 'id';
     protected $_primary_filter = 'intval';
     protected $_order_by = 'start_date desc, end_date desc';
+    
+    public $rules = array(
+        'name' => array(
+            'field' => 'name',
+            'label' => 'Advert name', 
+            'rules' => 'required|trim|xss_clean'
+        ),
+        'type' => array(
+            'field' => 'type',
+            'label' => 'Advert type', 
+            'rules' => 'trim|xss_clean'
+        ),
+    );
 }
 
 /*
