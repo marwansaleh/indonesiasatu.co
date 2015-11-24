@@ -53,7 +53,7 @@ class Advert_type extends MY_AdminController {
         $id = $this->input->get('id', TRUE);
         $page = $this->input->get('page', TRUE);
         
-        $item = $id ? $this->attributes_m->get($id):$this->attributes_m->get_new();
+        $item = $id ? $this->advtype_m->get($id):$this->advtype_m->get_new();
         
 //        if ((!$id && !$this->users->has_access('CATEGORY_CREATE'))||($id && !$this->users->has_access('CATEGORY_EDIT'))){
 //            $this->session->set_flashdata('message_type','error');
@@ -63,17 +63,13 @@ class Advert_type extends MY_AdminController {
         
         $this->data['item'] = $item;
         
-        //data support
-        $this->data['attr_types'] = $this->_attr_types;
-        $this->data['categories'] = $this->category_m->get();
-        
         //set breadcumb
-        breadcumb_add($this->data['breadcumb'], 'Extended Attributes', site_url('cms/ext_attrib'));
+        breadcumb_add($this->data['breadcumb'], 'Advert Types', site_url('cms/advert_type'));
         breadcumb_add($this->data['breadcumb'], 'Update Item', NULL, TRUE);
         
-        $this->data['submit_url'] = site_url('cms/ext_attrib/save?id='.$id.'&page='.$page);
-        $this->data['back_url'] = site_url('cms/ext_attrib/index?page='.$page);
-        $this->data['subview'] = 'cms/ext_attrib/edit';
+        $this->data['submit_url'] = site_url('cms/advert_type/save?id='.$id.'&page='.$page);
+        $this->data['back_url'] = site_url('cms/advert_type/index?page='.$page);
+        $this->data['subview'] = 'cms/advert_type/edit';
         $this->load->view('_layout_admin', $this->data);
     }
     
@@ -87,20 +83,20 @@ class Advert_type extends MY_AdminController {
 //            redirect('cms/category/index?page='.$page);
 //        }
         
-        $rules = $this->attributes_m->rules;
+        $rules = $this->advtype_m->rules;
         $this->form_validation->set_rules($rules);
         //exit(print_r($rules));
         if ($this->form_validation->run() != FALSE) {
-            $postdata = $this->attributes_m->array_from_post(array('attr_name','attr_label','attr_type','category_id'));
+            $postdata = $this->advtype_m->array_from_post(array('name','description'));
             
-            if ($this->attributes_m->save($postdata, $id)){
+            if ($this->advtype_m->save($postdata, $id)){
                 $this->session->set_flashdata('message_type','success');
-                $this->session->set_flashdata('message', 'Data extended attributes item saved successfully');
+                $this->session->set_flashdata('message', 'Data item saved successfully');
                 
-                redirect('cms/ext_attrib/index?page='.$page);
+                redirect('cms/advert_type/index?page='.$page);
             }else{
                 $this->session->set_flashdata('message_type','error');
-                $this->session->set_flashdata('message', $this->attributes_m->get_last_message());
+                $this->session->set_flashdata('message', $this->advtype_m->get_last_message());
             }
         }
         
@@ -109,34 +105,32 @@ class Advert_type extends MY_AdminController {
             $this->session->set_flashdata('message', validation_errors());
         }
         
-        redirect('cms/ext_attrib/edit?id='.$id.'&page='.$page);
+        redirect('cms/advert_type/edit?id='.$id.'&page='.$page);
     }
     
     function copy(){
         $id = $this->input->get('id', TRUE);
         $page = $this->input->get('page', TRUE);
         
-        $item = $this->attributes_m->get($id);
+        $item = $this->advtype_m->get($id);
         if (!$item){
             $this->session->set_flashdata('message_type','error');
             $this->session->set_flashdata('message', 'Could not find data item. Copy item failed!');
         }else{
             $copy_data = array(
-                'attr_name' => $item->attr_name .'_'.time(),
-                'attr_label' => $item->attr_label,
-                'attr_type' => $item->attr_type,
-                'category_id' => $item->category_id
+                'name' => $item->name .'_'.time(),
+                'description' => $item->description
             );
-            if ($this->attributes_m->save($copy_data)){
+            if ($this->advtype_m->save($copy_data)){
                 $this->session->set_flashdata('message_type','success');
                 $this->session->set_flashdata('message', 'Data item copied successfully');
             }else{
                 $this->session->set_flashdata('message_type','error');
-                $this->session->set_flashdata('message', $this->attributes_m->get_last_message());
+                $this->session->set_flashdata('message', $this->advtype_m->get_last_message());
             }
         }
         
-        redirect('cms/ext_attrib/index?page='.$page);
+        redirect('cms/advert_type/index?page='.$page);
     }
     
     function delete(){
@@ -150,24 +144,24 @@ class Advert_type extends MY_AdminController {
 //        }
         
         //check if found data item
-        $item = $this->attributes_m->get($id);
+        $item = $this->advtype_m->get($id);
         if (!$item){
             $this->session->set_flashdata('message_type','error');
             $this->session->set_flashdata('message', 'Could not find data item. Delete item failed!');
         }else{
-            if ($this->attributes_m->delete($id)){
+            if ($this->advtype_m->delete($id)){
                 $this->session->set_flashdata('message_type','success');
                 $this->session->set_flashdata('message', 'Data item deleted successfully');
             }else{
                 $this->session->set_flashdata('message_type','error');
-                $this->session->set_flashdata('message', $this->attributes_m->get_last_message());
+                $this->session->set_flashdata('message', $this->advtype_m->get_last_message());
             }
         }
         
-        redirect('cms/ext_attrib/index?page='.$page);
+        redirect('cms/advert_type/index?page='.$page);
     }
 }
 
 /*
- * file location: engine/application/controllers/cms/ext_attrib.php
+ * file location: engine/application/controllers/cms/advert_type.php
  */
