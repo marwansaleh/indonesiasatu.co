@@ -16,11 +16,34 @@ class Ext_attrib extends MY_AdminController {
     }
     
     function index(){
-        //Load suporting data
-        $this->data['categories'] = $this->category_m->get();
+        $page = $this->input->get('page', TRUE) ? $this->input->get('page', TRUE):1;
+        
+        $this->data['page'] = $page;
+        $offset = ($page-1) * $this->REC_PER_PAGE;
+        $this->data['offset'] = $offset;
+        
+        $where = NULL;
+        
+        //count totalRecords
+        $this->data['totalRecords'] = $this->attributes_m->get_count($where);
+        //count totalPages
+        $this->data['totalPages'] = ceil ($this->data['totalRecords']/$this->REC_PER_PAGE);
+        $this->data['items'] = array();
+        if ($this->data['totalRecords']>0){
+            $items = $this->attributes_m->get_offset('*',$where,$offset,  $this->REC_PER_PAGE);
+            if ($items){
+                foreach($items as $item){
+                    $item->category = $this->category_m->get_value('name',array('id'=>$item->category_id));
+                    $this->data['items'][] = $item;
+                }
+                $url_format = site_url('cms/ext_attrib/index?page=%i');
+                $this->data['pagination'] = smart_paging($this->data['totalPages'], $page, $this->_pagination_adjacent, $url_format, $this->_pagination_pages, array('records'=>count($items),'total'=>$this->data['totalRecords']));
+            }
+        }
+        $this->data['pagination_description'] = smart_paging_description($this->data['totalRecords'], count($this->data['items']));
         
         //set breadcumb
-        breadcumb_add($this->data['breadcumb'], 'Categories', site_url('cms/category'), TRUE);
+        breadcumb_add($this->data['breadcumb'], 'Extended Attributes', site_url('cms/ext_attrib'), TRUE);
         
         $this->data['subview'] = 'cms/ext_attrib/index';
         $this->load->view('_layout_admin', $this->data);
