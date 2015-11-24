@@ -26,7 +26,7 @@
                             <th>Category</th>
                             <th>Attribute Label</th>
                             <th>Attribute Type</th>
-                            <th style="width: 90px">Action</th>
+                            <th style="width: 120px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +39,7 @@
                             <td><?php echo $item->attr_type ? ucfirst($item->attr_type) : 'Text'; ?></td>
                             <td class="text-center">
                                 <a class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit" href="<?php echo site_url('cms/ext_attrib/edit?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-pencil-square"></i></a>
+                                <a class="btn btn-xs btn-success" data-toggle="tooltip" title="Copy" href="<?php echo site_url('cms/ext_attrib/copy?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-copy"></i></a>
                                 <a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="<?php echo site_url('cms/ext_attrib/delete?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-minus-square"></i></a>
                             </td>
                         </tr>
