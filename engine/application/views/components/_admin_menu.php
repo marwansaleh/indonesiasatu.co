@@ -34,6 +34,7 @@
         <a href="#"><i class="fa fa-cogs"></i> <span>Configuration</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
             <li><a href="<?php echo site_url('cms/sysconf'); ?>">System configuration</a></li>
+            <li><a href="<?php echo site_url('cms/ext_attrib'); ?>">Extended Attributes</a></li>
             <li><a href="#">System log</a></li>
             <li><a href="<?php echo site_url('cms/database'); ?>">Database Backup</a></li>
         </ul>
