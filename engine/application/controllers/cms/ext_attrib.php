@@ -113,6 +113,33 @@ class Ext_attrib extends MY_AdminController {
         redirect('cms/ext_attrib/edit?id='.$id.'&page='.$page);
     }
     
+    function copy(){
+        $id = $this->input->get('id', TRUE);
+        $page = $this->input->get('page', TRUE);
+        
+        $item = $this->attributes_m->get($id);
+        if (!$item){
+            $this->session->set_flashdata('message_type','error');
+            $this->session->set_flashdata('message', 'Could not find data item. Copy item failed!');
+        }else{
+            $copy_data = array(
+                'attr_name' => $item->attr_name .'_'.time(),
+                'attr_label' => $item->attr_label,
+                'attr_type' => $item->attr_type,
+                'category_id' => $item->category_id
+            );
+            if ($this->attributes_m->save($copy_data)){
+                $this->session->set_flashdata('message_type','success');
+                $this->session->set_flashdata('message', 'Data item copied successfully');
+            }else{
+                $this->session->set_flashdata('message_type','error');
+                $this->session->set_flashdata('message', $this->attributes_m->get_last_message());
+            }
+        }
+        
+        redirect('cms/ext_attrib/index?page='.$page);
+    }
+    
     function delete(){
         $id = $this->input->get('id', TRUE);
         $page = $this->input->get('page', TRUE);
