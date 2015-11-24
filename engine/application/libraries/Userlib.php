@@ -305,10 +305,11 @@ class Userlib extends Library {
     }
     
     public function get_default_avatars(){
+        $sub_folder = 'default/';
         $list = array();
-        $avatar_def_path = userfiles_basepath ($this->ci->config->item('avatar') .'default/');
+        $avatar_def_path = userfiles_basepath ($this->ci->config->item('avatar') .$sub_folder);
         foreach (glob($avatar_def_path . '*.*') as $avatar){
-            $list [] = $avatar;
+            $list [] = $sub_folder . basename($avatar);
         }
         
         return $list;
@@ -320,9 +321,10 @@ class Userlib extends Library {
         //get user's avatar path
         $user_avatar_path = $this->get_userid();
         if ($user_avatar_path){
-            $user_avatar_path = $this->ci->config->item('avatar') .$user_avatar_path .'/';
-            foreach (glob($user_avatar_path . '*.*') as $avatar){
-                $list [] = $avatar;
+            $user_avatar_path .= '/';
+            $avatar_path = $this->ci->config->item('avatar') .$user_avatar_path;
+            foreach (glob($avatar_path . '*.*') as $avatar){
+                $list [] = $user_avatar_path . basename($avatar);
             }
         }
         
