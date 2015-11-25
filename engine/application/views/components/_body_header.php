@@ -1,5 +1,4 @@
 <header>
-    
     <div class="container">
         <div class="row top-header">
             <div class="col-sm-3 hidden-xs">
