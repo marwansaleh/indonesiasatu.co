@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Upload file</label>
-                        <input type="file" id="file" name="file" class="form-control file file-loading" data-allowed-file-extensions='["jpg", "png", "gif", "mp4"]'>
+                        <input type="file" id="file" name="file" class="form-control file">
                     </div>
                 </div>
                 <div class="box-footer clearfix">
@@ -68,12 +68,19 @@
             $(this).parents('.input-group').find('input.datepicker').focus();
         });
         
-        $('#file').on('fileuploaded', function(event, data, previewId, index) {
+        $('input#file').fileinput({
+            showCaption: false,
+            allowedFileExtensions: ["jpg", "png", "gif", "mp4"]
+        })
+        .on('fileuploaded', function(event, data, previewId, index) {
             var form = data.form, files = data.files, extra = data.extra, 
             response = data.response, reader = data.reader;
             console.log('File uploaded triggered');
-});
-        });
+        })
+        .on('filebrowse', function (){
+            alert('Huh..it browsed');
+        })
+    });
     var AdvertManager = {
         
     };
