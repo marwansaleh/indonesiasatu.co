@@ -269,7 +269,7 @@ class MY_Controller extends MY_BaseController {
         $today = array(
             'hari'      => $hari[$date['wday']],
             'tanggal'   => $date['mday'],
-            'bulan'     => $bulan[$date['mon']],
+            'bulan'     => $bulan[$date['mon']-1],
             'tahun'     => $date['year']
         );
         
