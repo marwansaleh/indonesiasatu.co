@@ -992,7 +992,7 @@ header .logo-line .logo a {
 }
 #main .article-inspiration .article-inspiration-info {
     float: left;
-    width: 100%;
+    width: 99%;
     padding: 10px;
     margin-top: -150px;
     max-height: 150px;
@@ -1000,6 +1000,7 @@ header .logo-line .logo a {
     color: #fff;
     z-index: 1000;
     position: absolute;
+    background-image: url('../img/transparent-black.png');
 }
 #main .article-inspiration .article-inspiration-info h4.name  {
     padding: 0; margin: 0;
