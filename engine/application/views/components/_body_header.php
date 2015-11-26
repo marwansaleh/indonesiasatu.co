@@ -12,7 +12,9 @@
                 <p class="header-date"><span class="red-text"><?php echo $weather['indonesia_date']['hari'] ?></span>, <?php echo $weather['indonesia_date']['tanggal'] . ' '. $weather['indonesia_date']['bulan'] .' '. $weather['indonesia_date']['tahun']; ?></p>
             </div>
             <div class="col-sm-6">
-                <img src="<?php echo site_url('assets/img/logo.png'); ?>" class="img-responsive center-block" />
+                <a href="<?php echo site_url(); ?>">
+                    <img src="<?php echo site_url('assets/img/logo.png'); ?>" class="img-responsive center-block" />
+                </a>
             </div>
             <div class="col-sm-3">
                 <div class="row">
