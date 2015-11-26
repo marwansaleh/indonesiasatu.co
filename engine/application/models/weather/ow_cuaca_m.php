@@ -10,7 +10,7 @@ class Ow_cuaca_m extends MY_Model {
     protected $_table_name = 'owm_forecast';
     protected $_primary_key = 'id';
     protected $_primary_filter = 'intval';
-    protected $_order_by = 'city_id';
+    protected $_order_by = 'last_checked_time desc';
 }
 
 /*
