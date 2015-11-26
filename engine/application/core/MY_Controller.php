@@ -459,7 +459,7 @@ class MY_News extends MY_Controller {
         $this->data['newstickers'] = $this->_newsticker(5);
         $this->data['categories_articles'] = $this->_all_categories_articles_count(0,4);
         $this->data['inspirasi_category'] = $this->get_inspirasi();
-        $this->data['today'] = $this->_get_today_indonesia();
+        $this->data['weather'] = $this->get_weather();
     }
     
     protected function _slider_news($num=5, $condition=NULL){
