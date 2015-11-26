@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
     <ul class="nav nav-justified">
         <li <?php echo $active_menu=='home'?'class="active"':''; ?>><a href="<?php echo site_url(); ?>">
-                <img src="<?php echo site_url('assets/img/one.png'); ?>" > Home
+                <img src="<?php echo site_url('assets/img/one.png'); ?>" >
             </a></li>
         <?php if (isset($mainmenus)): ?>
         <?php foreach ($mainmenus as $menu): ?>
