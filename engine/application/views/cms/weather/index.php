@@ -35,7 +35,7 @@
                             <td><?php echo ($offset+$i++); ?>.</td>
                             <td><?php echo $item->last_checked_date; ?></td>
                             <td><?php echo $item->city_name; ?></td>
-                            <td><?php echo $ite->api_result_summary; ?></td>
+                            <td><?php echo $item->api_result_summary; ?></td>
                             <td><?php echo date('d-M-Y H:i', $item->last_checked_time); ?></td>
                             <td class="text-center">
                                 <a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="<?php echo site_url('cms/weather/delete?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-minus-square"></i></a>
