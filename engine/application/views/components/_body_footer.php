@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <h3>KANAL BERITA</h3>
+                        <h3>KANAL</h3>
                         <div class="row">
                             <?php foreach($categories_articles as $cat_articles): ?>
                             <div class="col-sm-3">
