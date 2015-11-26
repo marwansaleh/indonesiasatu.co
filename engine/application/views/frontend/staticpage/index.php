@@ -3,7 +3,7 @@
         <article>
             <h1 class="title"><?php echo $staticpage->title; ?></h1>
             <div class="blog-content">
-                <?php echo $article->content; ?>
+                <?php echo $staticpage->content; ?>
             </div>
             
             <div class="blog-bottom">
