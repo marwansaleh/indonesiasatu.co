@@ -9,7 +9,7 @@ class Staticpage extends MY_News {
         parent::__construct();
         
         $this->data['mainmenus'] = $this->_mainmenu(0); //no submenu
-        $this->data['active_menu'] = 'home';
+        $this->data['active_menu'] = 'lainnya';
         $this->load->model('article/static_m');
     }
     
@@ -26,7 +26,7 @@ class Staticpage extends MY_News {
         $parameters = $this->get_sys_parameters('LAYOUT');
         $this->data['parameters'] = $parameters;
         
-        $widgets = explode(',',$parameters['LAYOUT_CUSTOM_WIDGETS']);
+        $widgets = explode(',',$parameters['LAYOUT_DETAIL_WIDGETS']);
         $this->data['widgets'] = $widgets;
         if (in_array(WIDGET_NEWSGROUP, $widgets)){
             //Load popular news
