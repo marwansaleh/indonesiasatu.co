@@ -305,7 +305,7 @@ header .logo-line .logo a {
 .main-nav .navbar .navbar-brand {height: 45px;}
 .navbar ul li {border-right: solid 1px #E3E3E3;}
 .navbar ul li:last-child {border-right: none;}
-.navbar ul li a {border-bottom: solid 3px #E3E3E3; }
+.navbar ul li a {border-bottom: solid 3px #E3E3E3; font-size: 14px; }
 .navbar ul li a:hover,.navbar ul li.active a {border-bottom: solid 3px #DB3937;}
 .navbar-default {
     box-shadow: none;
