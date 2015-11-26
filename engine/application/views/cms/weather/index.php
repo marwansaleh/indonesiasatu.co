@@ -24,7 +24,7 @@
                             <th style="width: 10px">#</th>
                             <th>Date</th>
                             <th>City</th>
-                            <th>Summary</th>
+                            <th colspan="2">Summary</th>
                             <th>Check Date</th>
                             <th>Action</th>
                         </tr>
@@ -35,6 +35,7 @@
                             <td><?php echo ($offset+$i++); ?>.</td>
                             <td><?php echo $item->last_checked_date; ?></td>
                             <td><?php echo $item->city_name; ?></td>
+                            <td style="width: 70px;"><img src="<?php echo site_url($item->icon_local_url); ?>"></td>
                             <td><?php echo $item->api_result_summary; ?></td>
                             <td><?php echo date('d-M-Y H:i', $item->last_checked_time); ?></td>
                             <td class="text-center">
