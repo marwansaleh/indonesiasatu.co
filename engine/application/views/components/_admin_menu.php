@@ -31,7 +31,7 @@
         </ul>
     </li>
     <li class="treeview  <?php echo $active_menu=='weather'?'active':''; ?>">
-        <a href="#"><i class="fa fa-adn"></i> <span>Open Weather</span>  <i class="fa fa-angle-left pull-right"></i></a>
+        <a href="#"><i class="fa fa-cloud"></i> <span>Open Weather</span>  <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
             <li><a href="<?php echo site_url('cms/weather'); ?>">Weather</a></li>
             <li><a href="<?php echo site_url('cms/weather'); ?>">Set Cities</a></li>
