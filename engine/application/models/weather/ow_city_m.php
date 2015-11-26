@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Description of Advert_m
+ * Description of Ow_city_m
  *
  * @author Marwan
  * @email amazzura.biz@gmail.com
