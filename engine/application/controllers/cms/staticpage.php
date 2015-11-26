@@ -7,9 +7,9 @@
 class Staticpage extends MY_AdminController {
     function __construct() {
         parent::__construct();
-        $this->data['active_menu'] = 'advert';
-        $this->data['page_title'] = '<i class="fa fa-cogs"></i> Static Pages';
-        $this->data['page_description'] = 'List and update adverts';
+        $this->data['active_menu'] = 'static';
+        $this->data['page_title'] = 'Static Pages';
+        $this->data['page_description'] = 'List and update static pages';
         
         //load models
         $this->load->model(array('article/static_m'));
@@ -52,14 +52,8 @@ class Staticpage extends MY_AdminController {
         $id = $this->input->get('id', TRUE);
         $page = $this->input->get('page', TRUE);
         
-        $item = $id ? $this->static_m->get($id):$this->advert_m->get_new();
-        
-//        if ((!$id && !$this->users->has_access('CATEGORY_CREATE'))||($id && !$this->users->has_access('CATEGORY_EDIT'))){
-//            $this->session->set_flashdata('message_type','error');
-//            $this->session->set_flashdata('message', 'Sorry. You dont have access for this feature');
-//            redirect('cms/category/index?page='.$page);
-//        }
-        
+        $item = $id ? $this->static_m->get($id):$this->static_m->get_new();
+      
         $this->data['item'] = $item;
         
         
