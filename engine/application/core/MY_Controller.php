@@ -459,7 +459,7 @@ class MY_News extends MY_Controller {
         $this->load->model(array('article/article_m','article/category_m','article/tags_m'));
         
         $this->data['newstickers'] = $this->_newsticker(5);
-        $this->data['categories_articles'] = $this->_all_categories_articles_count(0,3);
+        $this->data['categories_articles'] = $this->_all_categories_articles_count(0,4);
         $this->data['inspirasi_category'] = $this->get_inspirasi();
     }
     
