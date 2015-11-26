@@ -258,12 +258,20 @@ header .breaking-news .header-news {
 header .breaking-news .header-news li {
   margin: 5px 0 0 0;
 }
-footer table.redaksi {color: #fff; border: none;}
-footer table.redaksi td {border: none; padding: 2px;}
+footer .redaksi-container {
+    background-color: #DB3937; display: block; padding: 8px; margin-top: 10px;
+    border-radius: 5px; font-size: 9px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+footer .redaksi-container .redaksi {color: #fff;}
+footer .redaksi-container .alamat {color: #373737; text-align: right; margin-top: 10px; padding-bottom: 0; margin-bottom: 0;}
+footer .redaksi-container .alamat .alamat-judul {color: white;}
+footer .kanal-berita {}
 footer .kanal-list { margin: 0; padding: 0; list-style: none;}
-footer .kanal-list li {float: left; display: block; padding: 5px 0 0 0;}
+footer .kanal-list li {float: left; display: block; padding: 5px 0 0 0; width:100%;}
 footer .kanal-list li a {color: #fff;}
-footer .alamat {background-color: #DB3937; display: block; padding: 2px; margin-top: 10px;}
+
 /* Ticker Styling */
 .ticker {
   width: 100%;
@@ -1611,6 +1619,7 @@ aside .widget .tab-content figure {
 footer .container {
   background-color: #373737;
   border-top: solid 3px #db3937;
+  border-bottom: solid 3px #db3937;
 }
 footer .footer-widget {
   padding-top: 10px;
