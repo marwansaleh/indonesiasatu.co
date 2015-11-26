@@ -5,11 +5,14 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <img src="<?php echo site_url($weather['weather']->icon_local_url); ?>" />
-                        <span class=""><?php echo $weather['weather']->api_result_summary; ?></span><br>
-                        <span class="text-bold">Jakarta</span>
+                        <span style="font-weight: bold;">Jakarta</span><br>
+                        <span class=""><?php echo ucfirst($weather['weather']->api_result_summary); ?></span><br>
+                        <span class="">Humidity: <?php echo $weather['weather']->humidity; ?></span><br>
+                        <span class="">Pressure: <?php echo $weather['weather']->pressure; ?></span><br>
+                        <span class="">Temperature: <?php echo $weather['weather']->temp; ?></span>
                     </div>
                 </div>
-                <p class="header-date"><span class="red-text"><?php echo $weather['indonesia_date']['hari'] ?></span>, <?php echo $weather['indonesia_date']['tanggal'] . ' '. $weather['indonesia_date']['bulan'] .' '. $weather['indonesia_date']['tahun']; ?></p>
+                <p class="header-date" style="margin-top: 40px; font-size: 14px;"><span class="red-text"><?php echo $weather['indonesia_date']['hari'] ?></span>, <?php echo $weather['indonesia_date']['tanggal'] . ' '. $weather['indonesia_date']['bulan'] .' '. $weather['indonesia_date']['tahun']; ?></p>
             </div>
             <div class="col-sm-6">
                 <a href="<?php echo site_url(); ?>">
@@ -33,14 +36,16 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <form method="post" action="<?php echo site_url('search'); ?>">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control" type="text" name="search" placeholder="Search...">
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default" style="background: transparent;"><span class="glyphicon glyphicon-search"></span></button>
+                        <div style="display: block; margin-top: 100px;">
+                            <form method="post" action="<?php echo site_url('search'); ?>">
+                                <div class="input-group input-group-sm">
+                                    <input class="form-control" type="text" name="search" placeholder="Search...">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default" style="background: transparent;"><span class="glyphicon glyphicon-search"></span></button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
