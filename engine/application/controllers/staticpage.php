@@ -19,6 +19,9 @@ class Staticpage extends MY_News {
             $condition = array('name' => $name);
         }
         $staticpage = $this->static_m->get_by($condition, TRUE);
+        if (!$staticpage){
+            $staticpage = $this->static_m->get_by(NULL, TRUE);
+        }
         $this->data['staticpage'] = $staticpage;
         $this->data['meta_title'] = $this->data['meta_title'] .' - '. $staticpage->title;
         
