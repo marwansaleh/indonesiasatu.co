@@ -31,11 +31,11 @@
                             <div class="col-sm-6">
                                 <h3>PROFIL</h3>
                                 <ul class="kanal-list">
-                                    <li><a href="#">Tentang kami</a></li>
-                                    <li><a href="#">Redaksi</a></li>
-                                    <li><a href="#">Info iklan</a></li>
-                                    <li><a href="#">Hubungi kami</a></li>
-                                    <li><a href="#">Karir</a></li>
+                                    <li><a href="<?php echo site_url('staticpage'); ?>">Tentang kami</a></li>
+                                    <li><a href="<?php echo site_url('staticpage/index/redaksi'); ?>">Redaksi</a></li>
+                                    <li><a href="<?php echo site_url('staticpage'); ?>">Info iklan</a></li>
+                                    <li><a href="<?php echo site_url('contact'); ?>">Hubungi kami</a></li>
+                                    <li><a href="<?php echo site_url('staticpage'); ?>">Karir</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm-6">
