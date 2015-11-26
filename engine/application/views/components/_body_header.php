@@ -4,10 +4,12 @@
             <div class="col-sm-3 hidden-xs">
                 <div class="row">
                     <div class="col-sm-12">
-                        <img src="<?php echo site_url('assets/img/cuaca/hujan-ringan.gif'); ?>" />
+                        <img src="<?php echo site_url($weather['weather']->icon_local_url); ?>" />
+                        <span class=""><?php echo $weather['weather']->api_result_summary; ?></span><br>
+                        <span class="text-bold">Jakarta</span>
                     </div>
                 </div>
-                <p class="header-date"><span class="red-text"><?php echo $today['hari'] ?></span>, <?php echo $today['tanggal'] . ' '. $today['bulan'] .' '. $today['tahun']; ?></p>
+                <p class="header-date"><span class="red-text"><?php echo $weather['indonesia_date']['hari'] ?></span>, <?php echo $weather['indonesia_date']['tanggal'] . ' '. $weather['indonesia_date']['bulan'] .' '. $weather['indonesia_date']['tahun']; ?></p>
             </div>
             <div class="col-sm-6">
                 <img src="<?php echo site_url('assets/img/logo.png'); ?>" class="img-responsive center-block" />
