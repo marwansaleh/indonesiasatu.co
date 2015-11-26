@@ -8,7 +8,7 @@
     <li <?php echo $active_menu=='comment'?'class="active"':''; ?>><a href="#"><i class="fa fa-comments"></i> <span>Comments</span></a></li>
     
     <li class="treeview  <?php echo $active_menu=='static'?'active':''; ?>">
-        <a href="#"><i class="fa fa-adn"></i> <span>Adverts</span>  <i class="fa fa-angle-left pull-right"></i></a>
+        <a href="#"><i class="fa fa-adn"></i> <span>Static Elements</span>  <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
             <li><a href="<?php echo site_url('cms/newsticker'); ?>">Newsticker</a></li>
             <li><a href="<?php echo site_url('cms/staticpage'); ?>">Static Pages</a></li>
