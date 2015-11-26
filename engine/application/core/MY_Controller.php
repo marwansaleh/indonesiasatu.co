@@ -460,6 +460,7 @@ class MY_News extends MY_Controller {
         
         $this->data['newstickers'] = $this->_newsticker(5);
         $this->data['categories_articles'] = $this->_all_categories_articles_count(0,3);
+        $this->data['inspirasi_category'] = $this->get_inspirasi();
     }
     
     protected function _slider_news($num=5, $condition=NULL){
@@ -638,6 +639,53 @@ class MY_News extends MY_Controller {
         return $categories;
     }
     
+    protected function get_inspirasi($category_id=NULL){
+        if (!$category_id){
+            //get category id from session if exists
+            if (!$this->session->userdata('INSPIRASI_CATEGORY_ID')){
+                $category_id = $this->category_m->get_value('id', array('slug'=>'inspirasi'));
+                if (!$category_id){
+                    $category = $this->category_m->get_select_where('id',NULL,TRUE);
+                    $category_id = $category->id;
+                }
+                $this->session->set_userdata('INSPIRASI_CATEGORY_ID', $category_id);
+            }else{
+                $category_id = $this->session->userdata('INSPIRASI_CATEGORY_ID');
+            }
+        }
+        if ($this->session->userdata('INSPIRASI_CATEGORY')){
+            $inspirasi = $this->session->userdata('INSPIRASI_CATEGORY');
+            if (isset($inspirasi[$category_id])){
+                return $inspirasi[$category_id];
+            }
+        }
+        
+        //get inspirasi category and its children
+        $inspirasi = $this->get_category_inherits($category_id);
+        $this->session->set_userdata('INSPIRASI_CATEGORY', array($category_id => $inspirasi));
+        
+        return $inspirasi;
+    }
+    
+    protected function get_category_inherits($category_id){
+        $category = NULL;
+        $result = $this->_allmenus(TRUE);
+        
+        if (isset($result['items'][$category_id])){
+            $category = $result['items'][$category_id];
+            $category->children = array();
+            //get category children
+            if (isset($result['parents'][$category->id])){
+                foreach ($result['parents'][$category->id] as $id){
+                    $category->children [] = $result['items'][$id];
+                }
+            }
+        }
+        
+        return $category;
+    }
+
+
     protected function _photo_news($num=10){
         $this->load->model('photo/photo_m');
         
