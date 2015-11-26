@@ -146,6 +146,9 @@ class MY_Model extends CI_Model {
         if ($where){
             $this->db->where($where);
         }
+        if (!count($this->db->ar_orderby)) {
+            $this->db->order_by($this->_order_by);            
+        }
         return $this->get(NULL, $single);
     }
     
