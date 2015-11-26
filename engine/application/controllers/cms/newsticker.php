@@ -7,7 +7,7 @@
 class Newsticker extends MY_AdminController {
     function __construct() {
         parent::__construct();
-        $this->data['active_menu'] = 'newstiker';
+        $this->data['active_menu'] = 'static';
         $this->data['page_title'] = 'Newsticker';
         $this->data['page_description'] = 'List and update newsticker';
         
