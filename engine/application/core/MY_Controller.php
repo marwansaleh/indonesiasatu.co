@@ -615,7 +615,6 @@ class MY_News extends MY_Controller {
         $result = $this->category_m->get_offset('id,name,parent,slug',NULL,0,$limit);
         
         $group_index = 0;
-        $last_group = 0;
         foreach ($result as $item){
             $item->article_count = $this->article_m->get_count(array('category_id'=>$item->id));
             
