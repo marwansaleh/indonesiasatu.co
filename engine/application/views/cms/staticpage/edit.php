@@ -41,30 +41,44 @@
 <script src="<?php echo site_url(config_item('path_lib').'tinymce/tinymce.min.js'); ?>"></script>
 <script type="text/javascript">
     $(document).ready( function () {
-        
+        $('input#caption').on('blur', function(){
+            if ($('input#name').val()==''){
+                SPManager.createNameFromCaption('caption', 'name');
+            }
+        });
     });
     var SPManager = {
-        
+        init: function (){
+            tinymce.init({
+                selector: "textarea.texteditor",
+                theme: 'modern',
+                //width: '100%',
+                height: '220',
+                plugins : [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste responsivefilemanager"
+                ],
+                toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+                //toolbar2: "",
+                image_advtab: true,
+                external_filemanager_path:"/<?php echo config_item('path_lib').'filemanager'; ?>/",
+                filemanager_title:"Filemanager" ,
+                external_plugins: { "filemanager" : "<?php echo site_url(config_item('path_lib').'filemanager/plugin.min.js'); ?>"},
+                filemanager_access_key:"",
+                relative_urls: false,
+                //document_base_url: "<?php echo site_url(); ?>"
+            });
+        },
+        createNameFromCaption: function (sourceField,targetField) {
+            var url = $.trim($('#'+sourceField).val());
+            url = url.replace('%','-persen');
+            //replace everything not alpha numeric
+            url = url.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+            //url = url.replace(/[ \t\r]+/g,"-");
+            $('#'+targetField).val(url);
+        }
     };
     
-    tinymce.init({
-        selector: "textarea.texteditor",
-        theme: 'modern',
-        //width: '100%',
-        height: '220',
-        plugins : [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste responsivefilemanager"
-        ],
-        toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
-        //toolbar2: "",
-        image_advtab: true,
-        external_filemanager_path:"/<?php echo config_item('path_lib').'filemanager'; ?>/",
-        filemanager_title:"Filemanager" ,
-        external_plugins: { "filemanager" : "<?php echo site_url(config_item('path_lib').'filemanager/plugin.min.js'); ?>"},
-        filemanager_access_key:"",
-        relative_urls: false,
-        //document_base_url: "<?php echo site_url(); ?>"
-    });
+    SPManager.init();
 </script>
