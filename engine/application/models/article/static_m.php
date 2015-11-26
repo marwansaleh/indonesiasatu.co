@@ -11,7 +11,7 @@ class Static_m extends MY_Model {
     protected $_primary_key = 'id';
     protected $_primary_filter = 'intval';
     protected $_order_by = 'name';
-    protected $_timestamps = TRUE;
+    protected $_timestamps = FALSE;
     
     public $rules = array(
         'caption' => array(
