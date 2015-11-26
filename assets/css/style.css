@@ -1012,7 +1012,9 @@ header .logo-line .logo a {
     padding: 0; margin: 0;
     color: #DB3937;
     text-align: right;
-    font-weight: bold;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: bolder;
 }
 #main .article-inspiration .article-inspiration-info p.synopsis  {
     padding: 0; margin: 10px 0 0;
