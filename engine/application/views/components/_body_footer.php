@@ -39,14 +39,14 @@
                                 </ul>
                             </div>
                             <div class="col-sm-6">
-                                <h3>INSPIRASI</h3>
+                                <h3><a style="color: white;" href="<?php echo site_url('category/'.$inspirasi_category->slug); ?>">INSPIRASI</a></h3>
+                                <?php if (count($inspirasi_category->children)):?>
                                 <ul class="kanal-list">
-                                    <li><a href="#">Tentang kami</a></li>
-                                    <li><a href="#">Redaksi</a></li>
-                                    <li><a href="#">Info iklan</a></li>
-                                    <li><a href="#">Hubungi kami</a></li>
-                                    <li><a href="#">Karir</a></li>
+                                    <?php foreach ($inspirasi_category->children as $ins_child): ?>
+                                    <li><a href="<?php echo site_url('category/'.$ins_child->slug); ?>"><?php echo $ins_child->name; ?></a></li>
+                                    <?php endforeach; ?>
                                 </ul>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
