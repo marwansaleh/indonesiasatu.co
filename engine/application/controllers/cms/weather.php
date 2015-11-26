@@ -90,6 +90,9 @@ class Weather extends MY_AdminController {
             'api_end_point' => $api_end_point,
             'api_result' => $wheather_data_json,
             'api_result_summary' => $wheather_data->weather[0]->description,
+            'temp'  => $wheather_data->main->temp,
+            'pressure' => $wheather_data->main->pressure,
+            'humidity' => $wheather_data->main->humidity,
             'icon' => $wheather_data->weather[0]->icon,
             'icon_original_url' => $this->icon_base . $wheather_data->weather[0]->icon . $this->icon_ext,
             'icon_local_url' => $this->icon_local_path . $wheather_data->weather[0]->icon . $this->icon_ext
