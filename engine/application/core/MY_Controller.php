@@ -255,13 +255,11 @@ class MY_Controller extends MY_BaseController {
         //is user loggedin
         $this->data['is_logged_in'] = $this->users->isLoggedin();
         
-        $this->data['today'] = $this->_get_today_indonesia();
-        
         $this->meta_set_default();
         $this->og_set_default();
     }
     
-    private function _get_today_indonesia($timestamp=FALSE){
+    protected function _get_today_indonesia($timestamp=FALSE){
         $hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
         $bulan = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember');
         
@@ -461,6 +459,7 @@ class MY_News extends MY_Controller {
         $this->data['newstickers'] = $this->_newsticker(5);
         $this->data['categories_articles'] = $this->_all_categories_articles_count(0,4);
         $this->data['inspirasi_category'] = $this->get_inspirasi();
+        $this->data['today'] = $this->_get_today_indonesia();
     }
     
     protected function _slider_news($num=5, $condition=NULL){
@@ -747,6 +746,23 @@ class MY_News extends MY_Controller {
         
         $items = $this->rates_m->get_by(array('bank'=>$bank,'last_update'=>$last_update));
         return $items;
+    }
+    
+    protected function get_weather(){
+        if (!isset($this->ow_cuaca_m)){
+            $this->load->model('weather/ow_cuaca_m');
+        }
+        $today = date('Y-m-d');
+        
+        $result = $this->ow_cuaca_m->get_by(array('last_checked_date' => $today), TRUE);
+        
+        $cuaca = array(
+            'date' => $today,
+            'indonesia_date' => $this->_get_today_indonesia(strtotime($today)),
+            'weather' => $result
+        );
+        
+        return $cuaca;
     }
 }
 
