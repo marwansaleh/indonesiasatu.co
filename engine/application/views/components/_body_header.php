@@ -9,7 +9,7 @@
                         <span class=""><?php echo ucfirst($weather['weather']->api_result_summary); ?></span><br>
                         <span class="">Humidity: <?php echo $weather['weather']->humidity; ?></span><br>
                         <span class="">Pressure: <?php echo $weather['weather']->pressure; ?></span><br>
-                        <span class="">Temperature: <?php echo $weather['weather']->temp; ?></span>
+                        <span class="">Temperature: <?php echo kelvin_2_celcius($weather['weather']->temp); ?> &deg;C</span>
                     </div>
                 </div>
                 <p class="header-date" style="margin-top: 40px; font-size: 14px;"><span class="red-text"><?php echo $weather['indonesia_date']['hari'] ?></span>, <?php echo $weather['indonesia_date']['tanggal'] . ' '. $weather['indonesia_date']['bulan'] .' '. $weather['indonesia_date']['tahun']; ?></p>
