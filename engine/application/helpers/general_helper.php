@@ -486,6 +486,14 @@ if (!function_exists('widget_exists')){
     }
 }
 
+if (!function_exists('kelvin_2_celcius')){
+    function kelvin_2_celcius($degree){
+        $constant = 273.15;
+        
+        return $degree-$constant;
+    }
+}
+
 /*
  * file location: /application/helpers/general_helper.php
  */
