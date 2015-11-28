@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="redaksi-container">
-                            <p class="redaksi">
+                            <p class="redaksi small">
                                 Pendiri/Pemimpin Umum: Letjen TNI (Purn) Kiki Syahnakri, Valens Daki-Soo<br>
                                 Pemimpin Redaksi: Valens Daki-Soo<br>
                                 Redaksi Pelaksana: Simon Leya<br>
