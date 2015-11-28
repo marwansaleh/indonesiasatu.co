@@ -458,8 +458,9 @@ class MY_News extends MY_Controller {
         
         $this->data['newstickers'] = $this->_newsticker(5);
         $this->data['categories_articles'] = $this->_all_categories_articles_count(0,4);
-        $this->data['inspirasi_category'] = $this->get_inspirasi();
+        //$this->data['inspirasi_category'] = $this->get_inspirasi();
         $this->data['weather'] = $this->get_weather();
+        $this->data['channels'] = $this->get_channels();
     }
     
     protected function _slider_news($num=5, $condition=NULL){
@@ -663,6 +664,34 @@ class MY_News extends MY_Controller {
         $this->session->set_userdata('INSPIRASI_CATEGORY', array($category_id => $inspirasi));
         
         return $inspirasi;
+    }
+    
+    protected function get_channels(){
+        $result = array();
+        
+        //get allmenu as base data
+        $all_menus = $this->_allmenus(TRUE);
+        //get all main categories
+        $main_categories = $this->category_m->get_by(array('parent'=>0));
+        foreach ($main_categories as $item){
+            $category = new stdClass();
+            $category->id = $item->id;
+            $category->name = $item->name;
+            $category->slug = $item->slug;
+            $category->children = array();
+            //get category children
+            if (isset($all_menus['parents'][$category->id])){
+                foreach ($all_menus['parents'][$category->id] as $id){
+                    $category->children [] = $all_menus['items'][$id];
+                }
+            }
+            
+            //add to collection
+            $result[] = $category;
+        }
+        
+        
+        return $result;
     }
     
     protected function get_category_inherits($category_id){
