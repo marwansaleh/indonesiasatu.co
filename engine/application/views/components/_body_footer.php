@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-sm-9">
                         <h3>KANAL</h3>
-                        <div class="row">
+                        <div class="row small">
                             <?php $i=1; foreach ($channels as $channel): ?>
                             <div class="col-sm-3" <?php if ($i%5==0) echo 'style="clear:both;"'; ?>>
                                 <h5 style="margin-bottom: 0;"><a style="color: orange!important;" href="<?php echo site_url('category/'.$channel->slug); ?>"><?php echo $channel->name; ?></a></h5>
