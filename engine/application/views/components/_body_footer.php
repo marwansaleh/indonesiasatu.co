@@ -53,6 +53,18 @@
                     <div class="col-sm-9">
                         <h3>KANAL</h3>
                         <div class="row">
+                            <?php foreach ($channels as $channel): ?>
+                            <div class="col-sm-3">
+                                <h5><a href="<?php echo site_url('category/'.$channel->slug); ?>"><?php echo $channel->name; ?></a></h5>
+                                <ul class="kanal-list">
+                                    <?php foreach ($channel->children as $channel_child): ?>
+                                    <li><?php echo site_url('category/'.$channel_child->slug); ?>"><?php echo $channel_child->name; ?></a></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="row">
                             <?php foreach($categories_articles as $cat_articles): ?>
                             <div class="col-sm-3">
                                 <ul class="kanal-list">
