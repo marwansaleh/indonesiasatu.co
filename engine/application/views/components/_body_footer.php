@@ -55,7 +55,7 @@
                         <div class="row">
                             <?php foreach ($channels as $channel): ?>
                             <div class="col-sm-3">
-                                <h5 class="text-orange"><a href="<?php echo site_url('category/'.$channel->slug); ?>"><?php echo $channel->name; ?></a></h5>
+                                <h5 style="margin-bottom: 0;"><a href="<?php echo site_url('category/'.$channel->slug); ?>"><span class="text-orange"><?php echo $channel->name; ?></span></a></h5>
                                 <ul class="kanal-list">
                                     <?php foreach ($channel->children as $channel_child): ?>
                                     <li><a href="<?php echo site_url('category/'.$channel_child->slug); ?>"><?php echo $channel_child->name; ?></a></li>
