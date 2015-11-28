@@ -26,9 +26,9 @@
             </div>
             <div class="col-sm-9 kanal-berita">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <h3>PROFIL</h3>
                                 <ul class="kanal-list">
                                     <li><a href="<?php echo site_url('staticpage/index/about'); ?>">Tentang kami</a></li>
@@ -38,19 +38,19 @@
                                     <li><a href="<?php echo site_url('staticpage/karir'); ?>">Karir</a></li>
                                 </ul>
                             </div>
-                            <div class="col-sm-6">
-                                <h3><a style="color: white;" href="<?php echo site_url('category/'.$inspirasi_category->slug); ?>">INSPIRASI</a></h3>
-                                <?php if (count($inspirasi_category->children)):?>
+<!--                            <div class="col-sm-6">
+                                <h3><a style="color: white;" href="<?php //echo site_url('category/'.$inspirasi_category->slug); ?>">INSPIRASI</a></h3>
+                                <?php //if (count($inspirasi_category->children)):?>
                                 <ul class="kanal-list">
-                                    <?php foreach ($inspirasi_category->children as $ins_child): ?>
-                                    <li><a href="<?php echo site_url('category/'.$ins_child->slug); ?>"><?php echo $ins_child->name; ?></a></li>
-                                    <?php endforeach; ?>
+                                    <?php // ($inspirasi_category->children as $ins_child): ?>
+                                    <li><a href="<?php //echo site_url('category/'.$ins_child->slug); ?>"><?php //echo $ins_child->name; ?></a></li>
+                                    <?php //endforeach; ?>
                                 </ul>
-                                <?php endif; ?>
-                            </div>
+                                <?php //endif; ?>
+                            </div>-->
                         </div>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-9">
                         <h3>KANAL</h3>
                         <div class="row">
                             <?php foreach($categories_articles as $cat_articles): ?>
