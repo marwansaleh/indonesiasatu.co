@@ -64,17 +64,17 @@
                             </div>
                             <?php endforeach; ?>
                         </div>
-                        <div class="row">
-                            <?php foreach($categories_articles as $cat_articles): ?>
+<!--                        <div class="row">
+                            <?php //foreach($categories_articles as $cat_articles): ?>
                             <div class="col-sm-3">
                                 <ul class="kanal-list">
-                                    <?php foreach ($cat_articles as $catbottom): ?>
-                                    <li><a href="<?php echo site_url('category/'.$catbottom->slug); ?>"><?php echo $catbottom->name; ?></a></li>
-                                    <?php endforeach; ?>
+                                    <?php //foreach ($cat_articles as $catbottom): ?>
+                                    <li><a href="<?php //echo site_url('category/'.$catbottom->slug); ?>"><?php //echo $catbottom->name; ?></a></li>
+                                    <?php //endforeach; ?>
                                 </ul>
                             </div>
-                            <?php endforeach; ?>
-                        </div>
+                            <?php //endforeach; ?>
+                        </div>-->
                     </div>
                 </div>
             </div>
