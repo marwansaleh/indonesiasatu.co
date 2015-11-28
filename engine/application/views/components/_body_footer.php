@@ -55,7 +55,9 @@
                         <div class="row small">
                             <?php $i=1; foreach ($channels as $channel): ?>
                             <div class="col-sm-3" <?php if ($i%5==0) echo 'style="clear:both;"'; ?>>
-                                <h5 style="margin-bottom: 0;"><a style="color: orange!important;" href="<?php echo site_url('category/'.$channel->slug); ?>"><?php echo $channel->name; ?></a></h5>
+                                <h6 style="font-size:12px; margin-bottom: 0;">
+                                    <a style="color: orange!important;" href="<?php echo site_url('category/'.$channel->slug); ?>"><?php echo $channel->name; ?></a>
+                                </h6>
                                 <ul class="kanal-list">
                                     <?php foreach ($channel->children as $channel_child): ?>
                                     <li><a href="<?php echo site_url('category/'.$channel_child->slug); ?>"><?php echo $channel_child->name; ?></a></li>
