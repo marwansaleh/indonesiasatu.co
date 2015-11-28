@@ -8,16 +8,16 @@
                     <div class="col-sm-12">
                         <div class="redaksi-container">
                             <p class="redaksi">
-                                Advisor: Letjen TNI (Purn) Kiki Syahnakri<br>
-                                Pendiri/Pemimpin Umum: Valens Daki-Soo<br>
-                                Pemimpin Redaksi: Simon Leya<br>
-                                Penerbit: PT Veritas Dharma Satya 
+                                Pendiri/Pemimpin Umum: Letjen TNI (Purn) Kiki Syahnakri, Valens Daki-Soo<br>
+                                Pemimpin Redaksi: Valens Daki-Soo<br>
+                                Redaksi Pelaksana: Simon Leya<br>
+                                Penerbit: PT VERITAS DHARMA SATYA 
                             </p>
                             <p class="alamat">
                                 <span class="text-bold alamat-judul">Alamat Redaksi:</span><br>
-                                Jl. Serut No.06 RT.06, RW.04, Kel.<br>
-                                Kayu Putih, Kec. Pulogadung, Jaktim<br>
-                                Telp/Fax:021 - 4756205<br>
+                                Gedung ITC Roxy Mas Blok D3<br>
+                                No.33 Jl. KH. Hasyim Ashari <br>
+                                No.125, Gambir, Jakarta Pusat<br>
                                 Email: redaksi.indonesiasatu@gmail.com
                             </p>
                         </div>
