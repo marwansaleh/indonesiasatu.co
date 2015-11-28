@@ -270,6 +270,7 @@ footer .redaksi-container .alamat .alamat-judul {color: white;}
 footer .kanal-berita {}
 footer .kanal-list { margin: 0; padding: 0; list-style: none;}
 footer .kanal-list li {float: left; display: block; padding: 2px 0 0 0; width:100%;}
+footer .kanal-list li:first-child {padding-top: 0;}
 footer .kanal-list li a {color: #fff;}
 
 /* Ticker Styling */
