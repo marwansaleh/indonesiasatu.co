@@ -136,7 +136,17 @@ class Category extends MY_News {
     private function _category_news($category_id, $num=10){
         $fields = 'id,title, url_title, image_url, image_type, date, synopsis, comment, created_by';
         
-        return $this->article_m->get_offset($fields, array('published'=>ARTICLE_PUBLISHED,'category_id'=>$category_id),0,$num);
+        $category_id_list = array($category_id);
+        //get children category
+        $children_categories = $this->category_m->get_select_where('id',array('parent'=>$category_id));
+        if ($children_categories){
+            foreach ($children_categories as $child){
+                $category_id_list [] = $child->id;
+            }
+        }
+        $this->db->where_in('category_id', $category_id_list);
+        $result = $this->article_m->get_offset($fields, array('published'=>ARTICLE_PUBLISHED,'category_id'=>$category_id),0,$num);
+        return $result;
     }
     
     private function _tag_news($tag, $num=10){
