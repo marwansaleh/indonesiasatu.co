@@ -111,7 +111,7 @@ class Home extends MY_News {
         
         $articles = array();
         $this->db->where_in('category_id', $category_id_list);
-        $result = $this->article_m->get_offset('*',NULL,0,$num);
+        $result = $this->article_m->get_offset('*',array('published' => ARTICLE_PUBLISHED),0,$num);
         foreach ($result as $item){
             $item->created_by_name = $this->user_m->get_value('full_name', array('id'=>$item->created_by));
             $articles [] = $item;
