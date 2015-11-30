@@ -172,15 +172,6 @@
                                 </a>
                                 <?php endforeach; ?>
                             </div>
-<!--                            <div id="avatar-container" class="box-sizing" style="float:left; height: 240px; overflow: auto; width:98%">
-                                <div class="col-sm-12">
-                                    <?php //foreach ($avatars as $avatar): ?>
-                                    <a class="avatar-item">
-                                        <img src="<?php //echo $avatar; ?>" />
-                                    </a>
-                                    <?php //endforeach; ?>
-                                </div>
-                            </div>-->
                         </div>
                     </div>
                 </div>
