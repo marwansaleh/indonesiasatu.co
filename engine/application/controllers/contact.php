@@ -8,7 +8,7 @@ class Contact extends MY_News {
     function __construct() {
         parent::__construct();
         
-        $this->data['mainmenus'] = $this->_mainmenu(0); //no submenu
+        //$this->data['mainmenus'] = $this->_mainmenu(0); //no submenu
         $this->data['active_menu'] = 'contact';
     }
     
@@ -39,6 +39,25 @@ class Contact extends MY_News {
         if (in_array(WIDGET_NEWSPHOTO, $widgets)){
             //store photo news
             $this->data['photo_news'] = $this->_photo_news(isset($parameters['LAYOUT_NEWSPHOTO_NUM'])?$parameters['LAYOUT_NEWSPHOTO_NUM']:10);
+        }
+        
+        if (in_array(WIDGET_SELECTED_CATEGORY, $widgets)){
+            //get category name
+            $selected_category_name = $parameters['LAYOUT_WIDGET_SELECTED_CATEGORY'];
+            $selected_category = NULL;
+            if ($selected_category_name){
+                //get category id
+                $selected_category = $this->category_m->get_by(array('slug'=>$selected_category_name),TRUE);
+                if (!$selected_category){
+                    $selected_category = $this->category_m->get_select_where('id,name',NULL,TRUE);
+                }
+            }
+            
+            $this->data['selected_news_category'] = array(
+                'category'  => $selected_category,
+                'articles' => $this->_article_categories($selected_category->id, 
+                    isset($parameters['LAYOUT_HOME_CAT_ARTICLE_NUM'])?$parameters['LAYOUT_HOME_CAT_ARTICLE_NUM']:3)
+            );
         }
         
         if ($this->session->flashdata('message_type') && $this->session->flashdata('message_type')=='success'){
