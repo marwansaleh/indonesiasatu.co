@@ -577,7 +577,7 @@ class MY_News extends MY_Controller {
             $condition = NULL;
         }
         
-        $result = $this->category_m->get_offset('id,name,parent,slug',$condition);
+        $result = $this->category_m->get_offset('id,name,parent,slug',$condition,0,0);
         foreach ($result as $item){
             $allmenu['parents'] [$item->parent] [] = $item->id;
             $allmenu['items'][$item->id] = $item;
