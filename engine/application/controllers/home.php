@@ -100,9 +100,18 @@ class Home extends MY_News {
         if (!isset($this->article_m)){
             $this->load->model('article/article_m');
         }
+        $category_id_list = array($category_id);
+        //get children category
+        $children_categories = $this->category_m->get_select_where('id',array('parent'=>$category_id));
+        if ($children_categories){
+            foreach ($children_categories as $child){
+                $category_id_list [] = $child->id;
+            }
+        }
         
         $articles = array();
-        $result = $this->article_m->get_offset('*',array('category_id'=>$category_id),0,$num);
+        $this->db->where_in('category_id', $category_id_list);
+        $result = $this->article_m->get_offset('*',NULL,0,$num);
         foreach ($result as $item){
             $item->created_by_name = $this->user_m->get_value('full_name', array('id'=>$item->created_by));
             $articles [] = $item;
