@@ -66,11 +66,12 @@ class Weather extends MY_Controller {
 
         //check if we have the icon on local
         if (!file_exists($data['icon_local_url'])) {
-            $result_icon = $this->_save_weather_icon($data['icon_original_url'],$data['icon_local_url']);
+            $copied_message = '';
+            $result_icon = $this->_save_weather_icon($data['icon_original_url'],$data['icon_local_url'], $copied_message);
             if ($result_icon){
                 $result['icon'] = 'Icon copied successfully';
             }else{
-                $result['icon'] = 'Icon failed to copy from server';
+                $result['icon'] = $copied_message;
             }
         }else{
             $result['icon'] = 'Icon exists';
@@ -85,12 +86,17 @@ class Weather extends MY_Controller {
         return $city_id;
     }
     
-    private function _save_weather_icon($url, $save_name) {
+    private function _save_weather_icon($url, $save_name, &$message) {
         $image = file_get_contents($url);
-        if ($image){
+        if ($image!==FALSE){
             if (file_put_contents($save_name, $image)){
+                $message = 'Success copy icon';
                 return TRUE;
+            }else{
+                $message = 'Can not write content to file';
             }
+        }else{
+            $message = 'Can not get content of file';
         }
         
         return FALSE;
