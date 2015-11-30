@@ -8,7 +8,7 @@
                     <div class="col-sm-12">
                         <div class="redaksi-container">
                             <p class="redaksi small">
-                                Pendiri: Letjen TNI (Purn) Kiki Syahnakri, Valens Daki-Soo<br>
+                                Pendiri: Letjen TNI (Purn) Kiki Syahnakri<br>Valens Daki-Soo<br>
                                 Pemimpin Redaksi: Valens Daki-Soo<br>
                                 Redaktur Pelaksana: Simon Leya<br>
                                 Penerbit: PT VERITAS DHARMA SATYA 
