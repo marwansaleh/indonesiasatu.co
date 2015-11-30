@@ -47,6 +47,20 @@ class Weather extends REST_Api {
         $this->response($this->result);
     }
     
+    function last_get($city_id=NULL){
+        if ($city_id){
+            $result = $this->ow_cuaca_m->get_by(array('city_id' => $city_id), TRUE);
+        }else{
+            $result = $this->ow_cuaca_m->get_by(NULL, TRUE);
+        }
+        if (isset($result->last_checked_time)){
+            $result->last_checked_time = date('Y-m-d H:i:s', $result->last_checked_time);
+        }
+        $this->result = $this->remap_fields(array('city_name'=>'city','api_result_summary'=>'summary','last_checked_date' => 'last_date', 'last_checked_time' => 'last_time'), $result);
+        
+        $this->response($this->result);
+    }
+    
     function sync_get($city_id=NULL){
         $api_key = '3330aaf0f92c101dc121d1c537a1406e';
         $api_base = 'http://api.openweathermap.org/data/2.5/weather?appid=' . $api_key . '&id=';
