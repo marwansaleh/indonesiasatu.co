@@ -165,15 +165,22 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                            <div id="avatar-container" class="box-sizing" style="float:left; height: 240px; overflow: auto; width:98%">
-                                <div class="col-sm-12">
-                                    <?php foreach ($avatars as $avatar): ?>
-                                    <a class="avatar-item">
-                                        <img src="<?php echo $avatar; ?>" />
-                                    </a>
-                                    <?php endforeach; ?>
-                                </div>
+                            <div class="avatar-container">
+                                <?php $i=0; foreach ($avatars as $avatar): ?>
+                                <a class="avatar-item <?php echo $avatar==$user->avatar?'active':''; ?>">
+                                    <img data-src="<?php echo $avatar; ?>" src="<?php echo userfiles_baseurl(config_item('avatar').$avatar); ?>" <?php echo $i==0?'class="first-item"':''; $i++; ?> />
+                                </a>
+                                <?php endforeach; ?>
                             </div>
+<!--                            <div id="avatar-container" class="box-sizing" style="float:left; height: 240px; overflow: auto; width:98%">
+                                <div class="col-sm-12">
+                                    <?php //foreach ($avatars as $avatar): ?>
+                                    <a class="avatar-item">
+                                        <img src="<?php //echo $avatar; ?>" />
+                                    </a>
+                                    <?php //endforeach; ?>
+                                </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -183,16 +190,23 @@
 </div>
 
 <script>
+    var avatar_base_url = "<?php echo userfiles_baseurl(config_item('avatar')); ?>/";
     $(document).ready(function(){
         /* Start rowGrid.js */
         $(".avatar-container").rowGrid({itemSelector: ".item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item"});
-        
-        $('#avatar-container').on('click','.avatar-item',function(){
-            var image_avatar = $(this).find('img').attr('src');
-            $('#avatar').val(image_avatar);
+        $('.avatar-container').on('click','.avatar-item',function(){
+            var image_avatar_datasrc = $(this).find('img').attr('data-src');
+            $('#avatar').val(image_avatar_datasrc);
             if ($('#author').val()===$('#id').val()){
-                $('img.user-active-image').attr('src', image_avatar);
+                $('img.user-active-image').attr('src', avatar_base_url + image_avatar_datasrc);
             }
+            
+            //change class
+            $('.avatar-item').each(function(){
+                $(this).removeClass('active');
+            });
+            
+            $(this).addClass('active');
         });
     });
 </script>
