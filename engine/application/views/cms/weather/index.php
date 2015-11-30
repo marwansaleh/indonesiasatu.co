@@ -11,7 +11,7 @@
                         <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 250px;" placeholder="Search">
                         <div class="input-group-btn">
                             <button type="submit" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                            <a class="btn btn-sm btn-primary" data-toggle="tooltip" title="Syncronize from API" href="<?php echo site_url('cms/weather/sync'); ?>"><i class="fa fa-cloud"></i></a>
+                            <a class="btn btn-sm btn-primary" data-toggle="tooltip" title="Syncronize from API" href="javascript:syncWeather();"><i class="fa fa-cloud"></i></a>
                         </div>
                     </div>
                 </div>
@@ -55,3 +55,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function syncWeather(){
+        $.getJSON('<?php echo site_url('service/weather/sync'); ?>', function (data){
+            alert('Done !. Please check console for the message');
+            console.log('Message:' + data.message);
+            console.log('Icon:'+ data.icon);
+        });
+    }
+</script>
