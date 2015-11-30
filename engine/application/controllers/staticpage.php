@@ -8,7 +8,7 @@ class Staticpage extends MY_News {
     function __construct() {
         parent::__construct();
         
-        $this->data['mainmenus'] = $this->_mainmenu(0); //no submenu
+        //$this->data['mainmenus'] = $this->_mainmenu(0); //no submenu
         $this->data['active_menu'] = 'lainnya';
         $this->load->model('article/static_m');
     }

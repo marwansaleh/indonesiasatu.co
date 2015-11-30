@@ -9,7 +9,7 @@ class Home extends MY_News {
         parent::__construct();
         
         $this->data['main_slider'] = TRUE;
-        $this->data['mainmenus'] = $this->_mainmenu(0); //no submenu
+        //$this->data['mainmenus'] = $this->_mainmenu(0); //no submenu
         $this->data['active_menu'] = 'home';
     }
     
