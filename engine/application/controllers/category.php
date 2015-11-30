@@ -145,7 +145,7 @@ class Category extends MY_News {
             }
         }
         $this->db->where_in('category_id', $category_id_list);
-        $result = $this->article_m->get_offset($fields, array('published'=>ARTICLE_PUBLISHED,'category_id'=>$category_id),0,$num);
+        $result = $this->article_m->get_offset($fields, array('published'=>ARTICLE_PUBLISHED),0,$num);
         return $result;
     }
     
