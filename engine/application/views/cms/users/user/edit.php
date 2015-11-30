@@ -167,7 +167,7 @@
                         <div class="row">
                             <div class="avatar-container">
                                 <?php $i=0; foreach ($avatars as $avatar): ?>
-                                <a class="avatar-item <?php echo $avatar==$user->avatar?'active':''; ?>">
+                                <a class="avatar-item <?php echo $avatar==$item->avatar?'active':''; ?>">
                                     <img data-src="<?php echo $avatar; ?>" src="<?php echo userfiles_baseurl(config_item('avatar').$avatar); ?>" <?php echo $i==0?'class="first-item"':''; $i++; ?> />
                                 </a>
                                 <?php endforeach; ?>
