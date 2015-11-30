@@ -51,7 +51,9 @@ class Detail extends MY_News {
         $this->data['related_news'] = $this->_related_news(explode(',',$article->tags), 3, array('id !='=>$article->id));
         
         $widgets = explode(',',$parameters['LAYOUT_DETAIL_WIDGETS']);
-        $this->data['widgets'] = $widgets;
+        foreach ($widgets as $widget){
+            $this->data['widgets'] [] = trim($widget);
+        }
         if (in_array(WIDGET_NEWSGROUP, $widgets)){
             //Load popular news
             $this->data['popular_news'] = $this->_popular_news(isset($parameters['LAYOUT_NEWSGROUP_NUM'])?$parameters['LAYOUT_NEWSGROUP_NUM']:4);
