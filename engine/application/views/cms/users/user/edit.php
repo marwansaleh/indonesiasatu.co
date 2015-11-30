@@ -3,6 +3,7 @@
       float: left;
       margin-bottom: 15px; 
       cursor:pointer;
+      border: solid 1px #fff;
     }
     .avatar-item img {
       max-width: 100%;
@@ -159,19 +160,13 @@
             </div>
             <div class="col-sm-4"> <!-- user avatar -->
                 <input type="hidden" name="avatar" id="avatar" value="<?php echo $item->avatar; ?>" />
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <h3 class="box-title">User Avatar</h3>
-                    </div>
-                    <div class="box-body">
-                        <div class="avatar-container">
-                            <?php $i=0; foreach ($avatars as $avatar): ?>
-                            <a class="avatar-item <?php echo $avatar==$item->avatar?'active':''; ?>">
-                                <img data-src="<?php echo $avatar; ?>" src="<?php echo userfiles_baseurl(config_item('avatar').$avatar); ?>" <?php echo $i==0?'class="first-item"':''; $i++; ?> />
-                            </a>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
+                <legend>Select Avatar</legend>
+                <div class="avatar-container">
+                    <?php $i=0; foreach ($avatars as $avatar): ?>
+                    <a class="avatar-item <?php echo $avatar==$item->avatar?'active':''; ?>">
+                        <img data-src="<?php echo $avatar; ?>" src="<?php echo userfiles_baseurl(config_item('avatar').$avatar); ?>" <?php echo $i==0?'class="first-item"':''; $i++; ?> />
+                    </a>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </form>
