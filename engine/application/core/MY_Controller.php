@@ -460,7 +460,10 @@ class MY_News extends MY_Controller {
         $this->data['categories_articles'] = $this->_all_categories_articles_count(0,4);
         //$this->data['inspirasi_category'] = $this->get_inspirasi();
         $this->data['weather'] = $this->get_weather();
-        $this->data['channels'] = $this->get_channels();
+        
+        $all_channel_and_childrens = $this->get_channels();
+        $this->data['channels'] = $all_channel_and_childrens;
+        $this->data['mainmenus'] = $all_channel_and_childrens;
     }
     
     protected function _slider_news($num=5, $condition=NULL){
@@ -586,10 +589,9 @@ class MY_News extends MY_Controller {
         return $allmenu;
     }
     
-    protected function _mainmenu($parent=0, $allmenus=NULL){
-        if (!$allmenus || !is_array($allmenus)){
-            $allmenus = $this->_allmenus();
-        }
+    protected function _mainmenu($parent=0){
+        $allmenus = $this->_allmenus(TRUE);
+        
         $menus = array();
         foreach ($allmenus['parents'][$parent] as $menu_id){
             if (isset($allmenus['items'][$menu_id])){
