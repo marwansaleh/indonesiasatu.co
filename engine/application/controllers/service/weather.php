@@ -4,20 +4,50 @@
  *
  * @author marwansaleh
  */
-class Weather extends MY_Controller {
+class Weather extends REST_Api {
     protected $icon_base = 'http://openweathermap.org/img/w/';
     protected $icon_ext = '.png';
     protected $icon_local_path = 'assets/img/cuaca/';
     
-    function __construct() {
-        parent::__construct();
+    function __construct($config='rest') {
+        parent::__construct($config);
         //load models
         $this->load->model(array('weather/ow_city_m','weather/ow_cuaca_m'));
     }
     
-    function sync($city_id=NULL){
-        $result = array();
+    function index_get($id=NULL){
+        $remap_fields = array(
+            'id'    => 'id',
+            'city_name' => 'city',
+            'api_result_summary' => 'summary',
+            'temp'  => 'temperature',
+            'pressure' => 'pressure',
+            'humidity' => 'humidity',
+            'icon_original_url' => 'original_icon_url',
+            'icon_local_url' => 'icon_url'
+        );
+        if ($id){
+            $item = $this->ow_cuaca_m->get($id);
+            if (isset($item->icon_local_url)){
+                $item->icon_local_url = site_url($item->icon_local_url);
+            }
+            $this->result['item'] = $this->remap_fields($remap_fields, $item);
+        }else{
+            $items = $this->ow_cuaca_m->get();
+            $result = array();
+            foreach ($items as $item){
+                if (isset($item->icon_local_url)){
+                    $item->icon_local_url = site_url($item->icon_local_url);
+                }
+                $result [] = $item;
+            }
+            $this->result['items'] = $this->remap_fields($remap_fields, $result);
+        }
         
+        $this->response($this->result);
+    }
+    
+    function sync_get($city_id=NULL){
         $api_key = '3330aaf0f92c101dc121d1c537a1406e';
         $api_base = 'http://api.openweathermap.org/data/2.5/weather?appid=' . $api_key . '&id=';
 
@@ -34,11 +64,11 @@ class Weather extends MY_Controller {
         $api_end_point = $api_base . $city_id;
         $wheather_data_json = file_get_contents($api_end_point);
         if (!$wheather_data_json) {
-            $result['message'] = 'Can not get api content';
+            $this->result['message'] = 'Can not get api content';
         }
         $wheather_data = json_decode($wheather_data_json);
         if (!$wheather_data) {
-            $result['message'] = 'Can not parsing data return from api';
+            $this->result['message'] = 'Can not parsing data return from api';
         }
 
         //insert into database
@@ -59,9 +89,9 @@ class Weather extends MY_Controller {
         );
 
         if ($this->ow_cuaca_m->save($data)) {
-            $result['message'] = 'New data api inserted into database successfully';
+            $this->result['message'] = 'New data api inserted into database successfully';
         } else {
-            $result['message'] = 'Failed to save data api into database';
+            $this->result['message'] = 'Failed to save data api into database';
         }
 
         //check if we have the icon on local
@@ -69,15 +99,15 @@ class Weather extends MY_Controller {
             $copied_message = '';
             $result_icon = $this->_save_weather_icon($data['icon_original_url'],$data['icon_local_url'], $copied_message);
             if ($result_icon){
-                $result['icon'] = 'Icon copied successfully';
+                $this->result['icon'] = 'Icon copied successfully';
             }else{
-                $result['icon'] = $copied_message;
+                $this->result['icon'] = $copied_message;
             }
         }else{
-            $result['icon'] = 'Icon exists';
+            $this->result['icon'] = 'Icon exists';
         }
         
-        echo json_encode($result);
+        $this->response($this->result);
     }
     
     private function _get_cityId($city_name) {
