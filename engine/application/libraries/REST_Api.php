@@ -8,8 +8,7 @@
 
 class REST_Api extends REST_Controller {
     protected $_recs_per_page = 100;
-    
-    protected $_error_messages = array();
+    protected $result = array();
     
     function __construct($config = 'rest') {
         parent::__construct($config);
