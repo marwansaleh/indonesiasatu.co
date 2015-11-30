@@ -66,7 +66,14 @@ class Weather extends MY_Controller {
 
         //check if we have the icon on local
         if (!file_exists($data['icon_local_url'])) {
-            $this->_save_weather_icon($data['icon_original_url'],$data['icon_local_url']);
+            $result_icon = $this->_save_weather_icon($data['icon_original_url'],$data['icon_local_url']);
+            if ($result_icon){
+                $result['icon'] = 'Icon copied successfully';
+            }else{
+                $result['icon'] = 'Icon failed to copy from server';
+            }
+        }else{
+            $result['icon'] = 'Icon exists';
         }
         
         echo json_encode($result);
@@ -79,13 +86,21 @@ class Weather extends MY_Controller {
     }
     
     private function _save_weather_icon($url, $save_name) {
-        $ch = curl_init($url);
-        $fp = fopen($save_name, 'wb');
-        curl_setopt($ch, CURLOPT_FILE, $fp);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_exec($ch);
-        curl_close($ch);
-        fclose($fp);
+        $image = file_get_contents($url);
+        if ($image){
+            if (file_put_contents($save_name, $image)){
+                return TRUE;
+            }
+        }
+        
+        return FALSE;
+//        $ch = curl_init($url);
+//        $fp = fopen($save_name, 'wb');
+//        curl_setopt($ch, CURLOPT_FILE, $fp);
+//        curl_setopt($ch, CURLOPT_HEADER, 0);
+//        curl_exec($ch);
+//        curl_close($ch);
+//        fclose($fp);
     }
     
 }
