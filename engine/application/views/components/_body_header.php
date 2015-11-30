@@ -4,7 +4,7 @@
             <div class="col-sm-3 hidden-xs">
                 <div class="row">
                     <div class="col-sm-12">
-                        <img src="<?php echo site_url($weather['weather']->icon_local_url); ?>" />
+                        <img src="<?php echo file_exists($weather['weather']->icon_local_url)?site_url($weather['weather']->icon_local_url):$weather['weather']->icon_original_url; ?>" />
                         <span style="font-weight: bold;">Jakarta</span><br>
                         <span class=""><?php echo ucfirst($weather['weather']->api_result_summary); ?></span><br>
                         <span class="">Humidity: <?php echo $weather['weather']->humidity; ?></span><br>
