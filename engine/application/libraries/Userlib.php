@@ -342,6 +342,7 @@ class Userlib extends Library {
             $user->username = $this->ci->session->userdata('username');
             $user->avatar = $this->ci->session->userdata('avatar');
             $user->created_on = $this->ci->session->userdata('created_on');
+            $user->email = $this->ci->session->userdata('email');
             
         }else {
             $user = $this->ci->user_m->get($this->get_userid());
@@ -401,6 +402,7 @@ class Userlib extends Library {
             'is_administrator'  => $this->is_admin($user->group_id),
             'last_login'        => $user->last_login>0 ? $user->last_login : time(),
             'avatar'            => $user->avatar ? $user->avatar : $this->ci->config->item('avatar') .'default/default.jpg',
+            'email'             => $user->email,
             'created_on'        => $user->created_on,
             'token'             => $user->token
         );
