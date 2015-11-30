@@ -46,7 +46,9 @@ class Category extends MY_News {
         
         
         $widgets = explode(',',$parameters['LAYOUT_CATEGORY_WIDGETS']);
-        $this->data['widgets'] = $widgets;
+        foreach ($widgets as $widget){
+            $this->data['widgets'] [] = trim($widget);
+        }
         if (in_array(WIDGET_NEWSGROUP, $widgets)){
             //Load popular news
             $this->data['popular_news'] = $this->_popular_news(isset($parameters['LAYOUT_NEWSGROUP_NUM'])?$parameters['LAYOUT_NEWSGROUP_NUM']:4);
