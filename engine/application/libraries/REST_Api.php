@@ -21,4 +21,29 @@ class REST_Api extends REST_Controller {
         $this->result['message'] = 'Service not found';
         $this->response($this->result);
     }
+    
+    protected function remap_fields($arr_map, $data){
+        $result = NULL;
+        
+        if (is_array($data)){
+            $result = array();
+            foreach ($data as $item){
+                $result [] = $this->_remap_object_properties($arr_map, $item);
+            }
+        }else{
+            $result = $this->_remap_object_properties($arr_map, $data);
+        }
+        
+        return $result;
+    }
+    
+    private function _remap_object_properties($maps,$object){
+        $new_class = new stdClass();
+        foreach ($object as $key => $value){
+            if (isset($maps[$key])){
+                $new_class->{$maps[$key]} = $value;
+            }
+        }
+        return $new_class;
+    }
 }
