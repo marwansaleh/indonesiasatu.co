@@ -60,11 +60,11 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label>Article Date (dd-mm-yyyy)</label>
-                                        <div class="input-group">
-                                            <input type="text" name="date" class="form-control datepicker"value="<?php echo date('d-m-Y', $item->date?$item->date:time()); ?>">
-                                            <div class="input-group-btn">
-                                                <button type="button" class="btn btn-default btn-calender"><span class="glyphicon glyphicon-calendar"></span></button>
-                                            </div>
+                                        <div class="input-group datetimepicker">
+                                            <input type="text" name="date" class="form-control" value="<?php echo date('d-m-Y H:i', $item->date?$item->date:time()); ?>">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
