@@ -1,7 +1,11 @@
 <div class="row">
     <div class="blog-page">
         <article>
-            <h1 class="title"><?php echo $article->title; ?></h1>
+            <h1 class="title">
+                <span style="font-size:13px;"><?php echo date('d-M-Y H:i', $article->date); ?></span><br>
+                
+                <?php echo $article->title; ?>
+            </h1>
             <?php if ($article->image_type==IMAGE_TYPE_MULTI): ?>
             <?php $this->load->view('frontend/slider/detail_slider', array('images'=>$article->images)); ?>
             <?php else: ?>
