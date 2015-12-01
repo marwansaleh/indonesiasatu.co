@@ -86,7 +86,7 @@
                         <h3>KANAL</h3>
                         <div class="row small">
                             <?php $i=1; foreach ($channels as $channel): ?>
-                            <div class="col-sm-3" <?php if ($i%5==0) echo 'style="clear:both;"'; ?>>
+                            <div class="col-md-15 col-lg-15" <?php if ($i%6==0) echo 'style="clear:both;"'; ?>>
                                 <h6 style="font-size:12px; margin-top: 2px; margin-bottom: 0;">
                                     <a style="color: orange!important;" href="<?php echo site_url('category/'.$channel->slug); ?>"><?php echo $channel->name; ?></a>
                                 </h6>
@@ -98,17 +98,6 @@
                             </div>
                             <?php $i++; endforeach; ?>
                         </div>
-<!--                        <div class="row">
-                            <?php //foreach($categories_articles as $cat_articles): ?>
-                            <div class="col-sm-3">
-                                <ul class="kanal-list">
-                                    <?php //foreach ($cat_articles as $catbottom): ?>
-                                    <li><a href="<?php //echo site_url('category/'.$catbottom->slug); ?>"><?php //echo $catbottom->name; ?></a></li>
-                                    <?php //endforeach; ?>
-                                </ul>
-                            </div>
-                            <?php //endforeach; ?>
-                        </div>-->
                     </div>
                 </div>
             </div>
