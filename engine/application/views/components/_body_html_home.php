@@ -1,3 +1,7 @@
+<style type="text/css">
+    .flexslider {margin-bottom: 5px;}
+</style>
+
 <?php $this->load->view('components/_body_header'); ?>
 <?php if (isset($main_slider)&& $main_slider) { $this->load->view('frontend/slider/main_slider'); }?>
 <div id="main">
@@ -74,9 +78,32 @@
         <!-- insert advert -->
         <div class="row">
             <div class="col-sm-12">
-                <a href="<?php echo site_url(); ?>">
-                    <img src="<?php echo site_url('adverts/Iklan_arta_graha_231115.jpg'); ?>" class="img-responsive" />
-                </a>
+                <div class="flexslider flexslider-mid-advert">
+                    <ul class="slides">
+                        <li>
+                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag01.jpg'); ?>" />
+                        </li>
+                        <li>
+                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag02.jpg'); ?>" />
+                        </li>
+                        <li>
+                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag03.jpg'); ?>" />
+                        </li>
+                        <li>
+                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag04.jpg'); ?>" />
+                        </li>
+                        <li>
+                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag05.jpg'); ?>" />
+                        </li>
+                        <li>
+                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag06.jpg'); ?>" />
+                        </li>
+                        <li>
+                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag07.jpg'); ?>" />
+                        </li>
+                        <!-- items mirrored twice, total of 12 -->
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- end advert -->
@@ -91,12 +118,18 @@
     </div>
     
 </div>
-<div id="advert-bottom-bar">
-    <div class="container">
-        <div class="row">
-            <img src="<?php echo site_url('adverts/iklan_mercure_galuh_mas_231115.jpg'); ?>" class="img-responsive" />
-        </div>
-    </div>
-</div>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('.flexslider-mid-advert').flexslider({
+            animation: "slide",
+            slideshow: true,
+            controlNav: false,
+            animationLoop: true,
+            itemWidth: 300,
+            itemMargin: 5
+        });
+    });
+</script>
 
 <?php $this->load->view('components/_body_footer');
