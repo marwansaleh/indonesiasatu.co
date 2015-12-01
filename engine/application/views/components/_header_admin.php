@@ -17,7 +17,7 @@
         <link href="<?php echo site_url(config_item('path_assets').'css/skins/skin-blue.min.css'); ?>" rel="stylesheet">
         <link href="<?php echo site_url(config_item('path_lib').'iCheck/minimal/blue.css'); ?>" rel="stylesheet">
         <link href="<?php echo site_url(config_item('path_lib').'bootstrap-select/css/bootstrap-select.min.css'); ?>" rel="stylesheet">
-        <link href="<?php echo site_url(config_item('path_lib').'datepicker/datepicker3.css'); ?>" rel="stylesheet">
+        <link href="<?php echo site_url(config_item('path_lib').'datetimepicker/css/bootstrap-datetimepicker.min.css'); ?>" rel="stylesheet">
         <link href="<?php echo site_url(config_item('path_lib').'tagsinput/bootstrap-tagsinput.css'); ?>" rel="stylesheet">
         
         <link href="<?php echo site_url(config_item('path_lib').'ionicons/css/ionicons.min.css'); ?>" rel="stylesheet">
