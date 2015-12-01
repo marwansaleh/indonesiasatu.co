@@ -1,3 +1,6 @@
+<style type="text/css">
+    .flexslider {margin-bottom: 5px;}
+</style>
 <div class="container">
     <div class="row">
         <div class="flexslider flexslider-bottom-advert">
