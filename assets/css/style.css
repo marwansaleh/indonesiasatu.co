@@ -1643,7 +1643,7 @@ footer h3 {
   font-weight: normal;
   border-bottom: solid 1px #4c4c4c;
   padding-bottom: 5px;
-  margin-bottom: 25px;
+  margin-bottom: 0;
 }
 footer p {
   font-family: "Open Sans";
