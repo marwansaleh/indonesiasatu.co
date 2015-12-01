@@ -8,7 +8,7 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <img src="<?php echo site_url('assets/img/logo-putih.png'); ?>" class="img-responsive center-block" />
                 
                 <div class="row">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9 kanal-berita">
+            <div class="col-sm-8 kanal-berita">
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="row">
