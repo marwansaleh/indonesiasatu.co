@@ -1747,7 +1747,25 @@ footer .flickr-gallery img {
 
 .tinynav {display: none;}
 
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+
 @media (min-width: 1170px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
   #main .blog-style article .text .inner-border {
     width: 100%;
   }
@@ -1779,6 +1797,10 @@ footer .flickr-gallery img {
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
   header .main-nav nav ul li .inner a {
     font-size: 11px;
   }
@@ -1813,6 +1835,10 @@ footer .flickr-gallery img {
   }
 }
 @media (min-width: 200px) and (max-width: 767px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
   .back-to-top {
     display: none;
   }
