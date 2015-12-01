@@ -1835,7 +1835,7 @@ footer .flickr-gallery img {
   }
 }
 @media (min-width: 200px) and (max-width: 767px) {
-    .col-md-15 {
+    .col-sm-15 {
         width: 20%;
         float: left;
     }
