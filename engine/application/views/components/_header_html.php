@@ -31,6 +31,8 @@
         <link href="<?php echo site_url(config_item('path_lib').'font-awesome-4.1.0/css/font-awesome.min.css'); ?>" rel="stylesheet" />    
         <link href="<?php echo site_url(config_item('path_lib').'prettyPhoto/3.15/css/prettyPhoto.css'); ?>" rel="stylesheet" />    
         <link href="<?php echo site_url(config_item('path_lib').'flexslider/2.4/flexslider.css'); ?>" rel="stylesheet" />    
+        <!-- slider slick -->
+        
         <!-- Custom styles -->
         <link href="<?php echo site_url(config_item('path_assets').'css/style.css'); ?>" rel="stylesheet">
 
