@@ -17,10 +17,12 @@
                 //selectpicker
                 $('select.selectpicker').selectpicker();
                 //datepicker
-                $('.datepicker').datepicker({
-                    format: 'dd-mm-yyyy',
+//                $('.datepicker').datepicker({
+//                    format: 'dd-mm-yyyy',
+//                });
+                $('.datetimepicker').datetimepicker({
+                    format: 'DD-MM-YYYY HH:mm',
                 });
-                
                 $('.confirmation').on('click',function(){
                     var confirm_text = 'Are you sure to delete this item?';
                     if ($(this).attr('data-confirmation')){
@@ -70,8 +72,9 @@
         <script src="<?php echo site_url(config_item('path_lib').'iCheck/icheck.min.js'); ?>"></script>
         <!-- Bootstrap select -->
         <script src="<?php echo site_url(config_item('path_lib').'bootstrap-select/js/bootstrap-select.min.js'); ?>"></script>
-        <!-- Bootstrap datepicker -->
-        <script src="<?php echo site_url(config_item('path_lib').'datepicker/bootstrap-datepicker.js'); ?>"></script>
+        <!-- Bootstrap datetimepicker -->
+        <script src="<?php echo site_url(config_item('path_lib').'momentjs/moment.min.js'); ?>"></script>
+        <script src="<?php echo site_url(config_item('path_lib').'datetimepicker/js/bootstrap-datetimepicker.min.js'); ?>"></script>
         <!-- Bootstrap Typeahead & TagsInput -->
         <script src="<?php echo site_url(config_item('path_lib').'bootstrap-typeahead/bootstrap3-typeahead.js'); ?>"></script>
         <script src="<?php echo site_url(config_item('path_lib').'angular/angular.min.js'); ?>"></script>
