@@ -1,33 +1,7 @@
-<style type="text/css">
-    .flexslider {margin-bottom: 5px;}
-</style>
-<div class="container">
-    <div class="row">
-        <div class="flexslider flexslider-bottom-advert">
-            <ul class="slides">
-                <li>
-                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag01.jpg'); ?>" />
-                </li>
-                <li>
-                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag02.jpg'); ?>" />
-                </li>
-                <li>
-                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag03.jpg'); ?>" />
-                </li>
-                <li>
-                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag04.jpg'); ?>" />
-                </li>
-                <li>
-                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag05.jpg'); ?>" />
-                </li>
-                <li>
-                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag06.jpg'); ?>" />
-                </li>
-                <li>
-                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag07.jpg'); ?>" />
-                </li>
-                <!-- items mirrored twice, total of 12 -->
-            </ul>
+<div id="advert-bottom-bar">
+    <div class="container">
+        <div class="row">
+            <img src="http://www.indonesiasatu.co/adverts/iklan_mercure_galuh_mas_231115.jpg" class="img-responsive">
         </div>
     </div>
 </div>
