@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="redaksi-container">
-                            <p class="redaksi small">
+                            <p class="redaksi">
                                 Penasehat: Letjen TNI (Purn) Kiki Syahnakri<br>
                                 Pendiri: Valens Daki-Soo<br>
                                 Pemimpin Redaksi: Valens Daki-Soo<br>
@@ -35,7 +35,7 @@
             </div>
             <div class="col-sm-8 kanal-berita">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="row">
                             <div class="col-sm-12">
                                 <h3>PROFIL</h3>
@@ -47,19 +47,9 @@
                                     <li><a href="<?php echo site_url('staticpage/karir'); ?>">Karir</a></li>
                                 </ul>
                             </div>
-<!--                            <div class="col-sm-6">
-                                <h3><a style="color: white;" href="<?php //echo site_url('category/'.$inspirasi_category->slug); ?>">INSPIRASI</a></h3>
-                                <?php //if (count($inspirasi_category->children)):?>
-                                <ul class="kanal-list">
-                                    <?php // ($inspirasi_category->children as $ins_child): ?>
-                                    <li><a href="<?php //echo site_url('category/'.$ins_child->slug); ?>"><?php //echo $ins_child->name; ?></a></li>
-                                    <?php //endforeach; ?>
-                                </ul>
-                                <?php //endif; ?>
-                            </div>-->
                         </div>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-10">
                         <h3>KANAL</h3>
                         <div class="row small">
                             <?php $i=1; foreach ($channels as $channel): ?>
