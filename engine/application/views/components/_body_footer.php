@@ -1,27 +1,27 @@
 <div class="container">
     <div class="row">
-        <div class="flexslider">
+        <div class="flexslider flexslider-bottom-advert">
             <ul class="slides">
                 <li>
-                    <img src="<?php echo site_url(config_item('advert').'ag01.jpg'); ?>" />
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag01.jpg'); ?>" />
                 </li>
                 <li>
-                    <img src="<?php echo site_url(config_item('advert').'ag02.jpg'); ?>" />
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag02.jpg'); ?>" />
                 </li>
                 <li>
-                    <img src="<?php echo site_url(config_item('advert').'ag03.jpg'); ?>" />
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag03.jpg'); ?>" />
                 </li>
                 <li>
-                    <img src="<?php echo site_url(config_item('advert').'ag04.jpg'); ?>" />
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag04.jpg'); ?>" />
                 </li>
                 <li>
-                    <img src="<?php echo site_url(config_item('advert').'ag05.jpg'); ?>" />
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag05.jpg'); ?>" />
                 </li>
                 <li>
-                    <img src="<?php echo site_url(config_item('advert').'ag06.jpg'); ?>" />
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag06.jpg'); ?>" />
                 </li>
                 <li>
-                    <img src="<?php echo site_url(config_item('advert').'ag07.jpg'); ?>" />
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag07.jpg'); ?>" />
                 </li>
                 <!-- items mirrored twice, total of 12 -->
             </ul>
@@ -118,10 +118,12 @@
 
 <script type="text/javascript">
     $(document).ready(function (){
-        $('.flexslider').flexslider({
+        $('.flexslider-bottom-advert').flexslider({
             animation: "slide",
+            slideshow: true,
+            controlNav: false,
             animationLoop: true,
-            itemWidth: 210,
+            itemWidth: 300,
             itemMargin: 5
         });
     });
