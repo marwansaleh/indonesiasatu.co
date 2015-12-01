@@ -259,9 +259,6 @@
                 $('#btn-gen-slug').click();
             }
         });
-        $('.btn-calender').on('click', function(){
-            $(this).parents('.input-group').find('input.datepicker').focus();
-        });
         
         $('#tags').tagsinput({
             typeahead: {
