@@ -49,7 +49,7 @@
                                 <i class="fa fa-check-circle-o text-gray" data-toggle="tooltip" title="Slider news"></i>
                                 <?php endif; ?>
                             </td>
-                            <td class="text-center"><?php echo date('d-m-Y', $item->date); ?></td>
+                            <td class="text-center"><?php echo date('d-m-Y H:i', $item->date); ?></td>
                             <td class="text-right"><?php echo number_format($item->view_count); ?></td>
                             <td class="text-center">
                                 <?php if ($item->published==1): ?>
