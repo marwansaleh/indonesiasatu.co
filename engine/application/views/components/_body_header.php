@@ -36,7 +36,10 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <div style="display: block; margin-top: 100px;">
+                        <img src="<?php echo site_url('assets/img/logo-ap.png'); ?>" class="img-responsive pull-right" style="margin-top: -20px;; padding: 0;" />
+                    </div>
+                    <div class="col-sm-12">
+                        <div style="display: block; margin-top: 5px;">
                             <form method="post" action="<?php echo site_url('search'); ?>">
                                 <div class="input-group input-group-sm">
                                     <input class="form-control" type="text" name="search" placeholder="Search...">
