@@ -1,1 +1,4 @@
 /userfiles/
+/nbproject/*
+.DS_Store
+google*.html
