@@ -268,7 +268,7 @@ footer .redaksi-container {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
-footer .redaksi-container .redaksi {color: #fff; font-weight: bold;}
+footer .redaksi-container .redaksi {color: #fff; font-weight: bold; font-size: 11px;}
 footer .redaksi-container .alamat {color: #373737; text-align: right; margin-top: 10px; padding-bottom: 0; margin-bottom: 0;}
 footer .redaksi-container .alamat .alamat-judul {color: white;}
 footer .kanal-berita {}
