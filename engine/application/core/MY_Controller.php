@@ -40,8 +40,7 @@ class MY_BaseController extends CI_Controller {
         if (!get_cookie($this->_cookie_visitor)){
             $cookie = array(
                 'name'   => $this->_cookie_visitor,
-                'value'  => md5(time() . $this->input->ip_address()),
-                'expire' => strtotime('December 31 2020')
+                'value'  => md5(time() . $this->input->ip_address())
             );
             set_cookie($cookie);
             
