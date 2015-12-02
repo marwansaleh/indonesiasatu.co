@@ -97,6 +97,15 @@ class Detail extends MY_News {
         $category_slug = $this->category_m->get_value('slug', array('id'=>$article->category_id));
         $this->data['active_menu'] = $category_slug;
         
+        //set og properties
+        $this->og_set_props(array(
+            'title'         => $article->title,
+            'url'           => $article->share_url, 
+            'description'   => $article->synopsis,
+            'type'          => 'article',
+            'article:author'=> $article->created_by_name,
+            'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE)
+        ));
         //$this->data['main_slider'] = TRUE;
         $this->data['subview'] = 'frontend/detail/index';
         $this->load->view('_layout_main', $this->data);
