@@ -259,6 +259,22 @@ class MY_Controller extends MY_BaseController {
         $this->og_set_default();
     }
     
+    protected function get_FB_ID(){
+        $param = 'FB_APP_ID';
+        if (!$this->session->userdata($param)){
+            
+            $sysvar = $this->get_sys_parameters($param);
+            if (!$sysvar){
+                $sysvar[$param] = '966242223397117';
+            }
+            $this->session->set_userdata($param, $sysvar[$param]);
+            
+            return $sysvar[$param];
+        }else{
+            return $this->session->userdata($param);
+        }
+    }
+    
     protected function _get_today_indonesia($timestamp=FALSE){
         $hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
         $bulan = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember');
@@ -368,7 +384,7 @@ class MY_Controller extends MY_BaseController {
             'site_name'         =>  'Indonesia Satu',
             'description'       =>  'Berita online yang mengulas secara lengkap tentang kejadian yang terjadi setiap hari nasional dan internasional',          
             'url'               =>  current_url(),
-            'fb:app_id'         => '',//$this->get_sys_var('FB_APP_ID'),
+            'fb:app_id'         =>  $this->get_FB_ID(),
             'type'              => 'article',
             'local'             => 'id',
             'article:author'    => 'IndonesiaSatu.co',
