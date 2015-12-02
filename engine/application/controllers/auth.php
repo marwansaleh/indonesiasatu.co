@@ -23,6 +23,9 @@ class Auth extends MY_Controller {
         
         if ($this->session->flashdata('message')){
             $this->data['message_error'] = create_alert_box($this->session->flashdata('message'), $this->session->flashdata('message_type'));
+            $this->_write_log('Flashsession:'.$this->session->flashdata('message'));
+        }else{
+            $this->_write_log('Flashsession:--empty---');
         }
         
         $cookie_login = $this->input->cookie('cookie-login');
