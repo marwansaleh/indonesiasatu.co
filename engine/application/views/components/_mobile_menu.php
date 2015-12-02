@@ -2,10 +2,13 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nasabah-navbar">
-                <img src="<?php echo site_url('assets/img/one.png'); ?>" class="img-responsive">
+                <span class="sr-only">Mainmenu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo site_url('home'); ?>">
-                <img src="<?php echo site_url('assets/img/one.png'); ?>" class="img-responsive"> <span style="display: inline-block;">IndonesiaSatu</span>
+                <img src="<?php echo site_url('assets/img/logo-mobile.png'); ?>" class="img-responsive">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="nasabah-navbar">
