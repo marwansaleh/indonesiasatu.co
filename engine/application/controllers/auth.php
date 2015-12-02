@@ -31,6 +31,9 @@ class Auth extends MY_Controller {
         }else{
             $this->data['remember'] = NULL;
         }
+        
+        $this->_write_log('Try to login');
+        
         $this->data['submit'] = site_url('auth/login');
         $this->data['subview'] = 'login/index';
         //var_dump($cookie_login);
@@ -54,8 +57,7 @@ class Auth extends MY_Controller {
             if ($remember){
                 $cookie = array(
                     'name'   => 'cookie-login',
-                    'value'  => json_encode(array('username'=>$username, 'password'=>$password)),
-                    'expire' => strtotime('December 31 2020')
+                    'value'  => json_encode(array('username'=>$username, 'password'=>$password))
                 );
 
                 $this->input->set_cookie($cookie);
@@ -65,15 +67,27 @@ class Auth extends MY_Controller {
             
             $user = $this->users->login($username, $password);
             
+            $this->_write_log('Login using username:'.$username.' and password:'.$password);
+            
             if (!$user){
                 $this->session->set_flashdata('message_type','error');
                 $this->session->set_flashdata('message', $this->users->get_message());
+                $this->_write_log('Failed login');
+            }else{
+                $this->_write_log('Success with return value:' . json_encode($user));
+                if ($this->users->has_access('CAN_CP')){
+                    redirect('cms/dashboard');
+                }else{
+                    redirect('home');
+                }
             }
         }
         
         if (validation_errors()){
             $this->session->set_flashdata('message_type','error');
             $this->session->set_flashdata('message', validation_errors());
+            
+            $this->_write_log('Failed login with message:'. validation_errors());
         }
         
         redirect('auth');
