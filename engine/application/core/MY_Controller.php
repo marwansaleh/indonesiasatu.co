@@ -487,13 +487,13 @@ class MY_News extends MY_Controller {
         $this->load->model(array('article/article_m','article/category_m','article/tags_m'));
         
         $this->data['newstickers'] = $this->_newsticker(5);
-        $this->data['categories_articles'] = $this->_all_categories_articles_count(0,4);
+        //$this->data['categories_articles'] = $this->_all_categories_articles_count(0,4);
         //$this->data['inspirasi_category'] = $this->get_inspirasi();
         $this->data['weather'] = $this->get_weather();
         
         $all_channel_and_childrens = $this->get_channels();
         $this->data['channels'] = $all_channel_and_childrens;
-        $this->data['mainmenus'] = $all_channel_and_childrens;
+        $this->data['mainmenus'] = $this->_mainmenu() ;//$all_channel_and_childrens;
     }
     
     protected function _article_categories($category_id, $num=3){
@@ -643,14 +643,22 @@ class MY_News extends MY_Controller {
         return $allmenu;
     }
     
-    protected function _mainmenu($parent=0){
+    protected function _mainmenu(){
+        //get as basis
         $allmenus = $this->_allmenus(TRUE);
-        
+        //get main categories parent=0,is_menu=1
+        $mainmenus = $this->category_m->get_by(array('parent'=>0,'is_menu'=>1));
         $menus = array();
-        foreach ($allmenus['parents'][$parent] as $menu_id){
-            if (isset($allmenus['items'][$menu_id])){
-                $menus[] = $allmenus['items'][$menu_id];
+        
+        //iterate selected mainmenus to get its children
+        foreach($mainmenus as $mm){
+            $mm->children = array();
+            if (isset($allmenus['parents'][$mm->id])){
+                foreach ($allmenus['parents'][$mm->id] as $child_id){
+                    $mm->children [] = $allmenus['items'][$child_id];
+                }
             }
+            $menus [] = $mm;
         }
         
         return $menus;
