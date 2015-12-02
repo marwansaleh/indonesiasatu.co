@@ -24,7 +24,6 @@ var Nasabah = {
         
         $('ul#mainmenu li a').on('mouseover', function (){
             var $li = $(this).parent('li');
-            console.log('hovered');
             $('#submenu ul').empty();
             if ($li.attr('data-children')){
                 var children = JSON.parse($li.attr('data-children'));
@@ -33,7 +32,6 @@ var Nasabah = {
 
                     $('#submenu ul').append(s);
                 }
-                console.log(children.length);
             }
         });
 
