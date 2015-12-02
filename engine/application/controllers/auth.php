@@ -75,11 +75,6 @@ class Auth extends MY_Controller {
                 $this->_write_log('Failed login');
             }else{
                 $this->_write_log('Success with return value:' . json_encode($user));
-                if ($this->users->has_access('CAN_CP')){
-                    redirect('cms/dashboard');
-                }else{
-                    redirect('home');
-                }
             }
         }
         
