@@ -110,7 +110,7 @@ class Detail extends MY_News {
             'url'           => site_url('detail/'.$article->url_title), 
             'description'   => $article->synopsis,
             'type'          => 'article',
-            'article:author'=> $article->created_by_name,
+            //'article:author'=> $article->created_by_name,
             'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE)
         ));
         //$this->data['main_slider'] = TRUE;
