@@ -100,7 +100,7 @@ class Detail extends MY_News {
         //set og properties
         $this->og_set_props(array(
             'title'         => $article->title,
-            'url'           => $article->share_url, 
+            'url'           => site_url('detail/'.$article->url_title), 
             'description'   => $article->synopsis,
             'type'          => 'article',
             'article:author'=> $article->created_by_name,
