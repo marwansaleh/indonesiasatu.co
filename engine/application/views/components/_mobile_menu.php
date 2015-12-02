@@ -2,10 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nasabah-navbar">
-                <span class="sr-only">Mainmenu</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+                <img src="<?php echo site_url('assets/img/one.png'); ?>" class="img-responsive">
             </button>
             <a class="navbar-brand" href="<?php echo site_url('home'); ?>">
                 <img src="<?php echo site_url('assets/img/one.png'); ?>" class="img-responsive"> <span style="display: inline-block;">IndonesiaSatu</span>
