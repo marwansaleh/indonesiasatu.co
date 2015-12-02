@@ -384,7 +384,7 @@ class MY_Controller extends MY_BaseController {
             'url'               =>  current_url(),
             'fb:app_id'         =>  $this->get_FB_ID(),
             'type'              => 'article',
-            'local'             => 'id',
+            //'local'             => 'id',
             //'article:author'    => 'IndonesiaSatu.co',
             //'article:publisher' => 'IndonesiaSatu.co'
         );
