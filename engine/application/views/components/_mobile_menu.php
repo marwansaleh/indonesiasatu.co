@@ -16,7 +16,20 @@
                 <li <?php echo $active_menu=='home'?'class="active"':''; ?>><a href="<?php echo site_url(); ?>">Home</a></li>
                 <?php if (isset($mainmenus)): ?>
                 <?php foreach ($mainmenus as $menu): ?>
+                <?php if (count($menu->children)): ?>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <?php echo ucwords($menu->name); ?> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <?php foreach ($menu->children as $child): ?>
+                        <li><a href="<?php echo $child->url; ?>"><?php echo ucfirst($child->name); ?></a></li>
+                        <?php endforeach;?>
+                    </ul>
+                </li>
+                <?php else: ?> 
                 <li <?php echo $active_menu==$menu->slug?'class="active"':''; ?>><a href="<?php echo site_url('category/'.$menu->slug); ?>"><?php echo $menu->name; ?></a></li>
+                <?php endif; ?>
                 <?php endforeach; ?>
                 <?php endif; ?>
             </ul>
