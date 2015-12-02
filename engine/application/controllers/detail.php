@@ -43,7 +43,8 @@ class Detail extends MY_News {
             //load all images
             $article->images = $this->image_m->get_by(array('article_id'=>$article->id));
         }
-        $article->share_url = $article->url_short ? $article->url_short : current_url();
+        //$article->share_url = $article->url_short ? $article->url_short : current_url();
+        $article->share_url = current_url();
         //get author name
         $article->created_by_name = $this->user_m->get_value('full_name', array('id'=>$article->created_by));
         
