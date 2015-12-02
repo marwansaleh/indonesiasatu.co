@@ -21,6 +21,21 @@ var Nasabah = {
             clearInterval(intervalID);
             intervalID = setInterval( Nasabah.moveSliders, 5000 );
         });
+        
+        $('ul#mainmenu li a').on('mouseover', function (){
+            var $li = $(this).parent('li');
+            console.log('hovered');
+            $('#submenu ul').empty();
+            if ($li.attr('data-children')){
+                var children = JSON.parse($li.attr('data-children'));
+                for (var i in children){
+                    var s = '<li><a href="'+children[i].url+'">' + children[i].name + '</a></li>';
+
+                    $('#submenu ul').append(s);
+                }
+                console.log(children.length);
+            }
+        });
 
         var intervalID = setInterval( Nasabah.moveSliders, 5000 );
         $('.slider-navigation .navigation-item:first-child').click();
@@ -56,19 +71,4 @@ var Nasabah = {
 
 $(document).ready(function(){
     Nasabah.init();
-    
-    $('ul#mainmenu li a').on('hover', function (){
-            console.log('hovered');
-            $('#submenu ul').empty();
-            if ($(this).attr('data-children')){
-                var children = $(this).attr('data-children');
-                for (var i in children){
-                    var s = '<li>' + children[i].name + '</li>';
-
-                    $('#submenu ul').append(s);
-                }
-                console.log(children.length);
-            }
-            $('#submenu ul').removeClass('hidden');
-        });
 });
