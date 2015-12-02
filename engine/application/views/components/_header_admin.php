@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" type="image/gif" href="<?php echo site_url('favicon.png'); ?>"/>
+        <link rel="shortcut icon" type="image/gif" href="<?php echo site_url('assets/img/one.png'); ?>"/>
         <base href="<?php echo site_url(); ?>">
         <title><?php echo $meta_title; ?></title>
 
