@@ -40,9 +40,10 @@ class MY_BaseController extends CI_Controller {
         if (!get_cookie($this->_cookie_visitor)){
             $cookie = array(
                 'name'   => $this->_cookie_visitor,
-                'value'  => md5(time() . $this->input->ip_address())
+                'value'  => md5(time() . $this->input->ip_address()),
+                'expire' => 8640 * 365
             );
-            set_cookie($cookie);
+            $this->input->set_cookie($cookie);
             
             //register new user
             $this->_visitor_register();
