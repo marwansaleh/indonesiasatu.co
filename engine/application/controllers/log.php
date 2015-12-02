@@ -12,6 +12,7 @@ class Log extends MY_BaseController {
     function index($lines=5,$token=NULL){
         if ($token && $token == 'melog'){
             $log = $this->read_log($lines);
+            echo "ENVIRONMENT:". ENVIRONMENT .'<hr>';
             echo '<pre>'.$log.'</pre>';
         }else{
             show_404();
