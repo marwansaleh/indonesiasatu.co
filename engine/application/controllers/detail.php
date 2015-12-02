@@ -137,6 +137,23 @@ class Detail extends MY_News {
         $this->data['article'] = $article;
         $this->data['related_news'] = $this->_related_news(explode(',',$article->tags), 6, array('id !='=>$article->id));
         
+        $this->meta_set_props(array(
+            'author'            => 'IndonesiaSatu.co',
+            'description'       => $article->synopsis,
+            'keywords'          => $article->title,
+            'canonical'         => current_url()
+        ));
+        
+        //set og properties
+        $this->og_set_props(array(
+            'title'         => $article->title,
+            'url'           => site_url('detail/'.$article->url_title), 
+            'description'   => $article->synopsis,
+            'type'          => 'article',
+            //'article:author'=> $article->created_by_name,
+            'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE)
+        ));
+        
         //$this->data['main_slider'] = TRUE;
         $this->data['subview'] = 'mobile/detail/index';
         $this->load->view('_layout_mobile', $this->data);
