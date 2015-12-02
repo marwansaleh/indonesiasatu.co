@@ -349,14 +349,30 @@ class MY_Controller extends MY_BaseController {
         return NULL;
     }
     
+    protected function og_set_props($arr_prop){
+        $_ogg_properties = array('title','site_name','description','url','fb:app_id','type','local','article:author','article:publisher','image');
+        if (is_array($arr_prop)){
+            $oggs = array();
+            foreach ($arr_prop as $prop => $value){
+                if (in_array($prop, $_ogg_properties)){
+                    $oggs [$prop] = $value;
+                }
+            }
+            $this->data['og_props'] = $oggs;
+        }
+    }
+    
     private function og_set_default(){
         $this->data['og_props'] = array(
             'title'             =>  'Indonesia Satu',
             'site_name'         =>  'Indonesia Satu',
             'description'       =>  'Berita online yang mengulas secara lengkap tentang kejadian yang terjadi setiap hari nasional dan internasional',          
             'url'               =>  current_url(),
-            'fb:app_id'         => '',//$this->get_sys_var('FB_APP_ID'),
-            'type'              => 'article'
+            'fb:app_id'         => $this->get_sys_var('FB_APP_ID'),
+            'type'              => 'article',
+            'local'             => 'id',
+            'article:author'    => 'IndonesiaSatu.co',
+            'article:publisher' => 'IndonesiaSatu.co'
         );
     }
 }
