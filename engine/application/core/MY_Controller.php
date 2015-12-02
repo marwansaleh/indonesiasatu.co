@@ -652,10 +652,13 @@ class MY_News extends MY_Controller {
         
         //iterate selected mainmenus to get its children
         foreach($mainmenus as $mm){
+            $mm->url = site_url('category/'.$mm->slug);
             $mm->children = array();
             if (isset($allmenus['parents'][$mm->id])){
                 foreach ($allmenus['parents'][$mm->id] as $child_id){
-                    $mm->children [] = $allmenus['items'][$child_id];
+                    $children = $allmenus['items'][$child_id];
+                    $children->url = site_url('category/'.$children->slug);
+                    $mm->children [] = $children;
                 }
             }
             $menus [] = $mm;
