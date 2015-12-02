@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo site_url('home'); ?>">
-                <img src="<?php echo site_url('assets/img/one.png'); ?>" class="img-responsive"> IndonesiaSatu
+                <img src="<?php echo site_url('assets/img/one.png'); ?>" class="img-responsive"> <span style="display: inline-block;">IndonesiaSatu</span>
             </a>
         </div>
         <div class="collapse navbar-collapse" id="nasabah-navbar">
