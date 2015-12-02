@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" type="image/gif" href="<?php echo site_url('favicon.png'); ?>"/>
+        <link rel="shortcut icon" type="image/png" href="<?php echo site_url('assets/img/one.png'); ?>"/>
         <!-- Meta tags -->
         <?php if (isset($meta)&&  is_array($meta)): ?>
         <?php foreach($meta as $key=>$val): ?>
@@ -13,7 +13,7 @@
         <!-- Meta Og properties -->
         <?php if (isset($og_props)&&  is_array($og_props)): ?>
         <?php foreach($og_props as $prop=>$val): ?>
-        <?php if (strpos($prop,'fb')!==FALSE): ?>
+        <?php if (strpos($prop,':')!==FALSE): ?>
         <meta property="<?php echo $prop; ?>" content="<?php echo $val; ?>" />
         <?php else: ?>
         <meta property="og:<?php echo $prop; ?>" content="<?php echo $val; ?>" />
