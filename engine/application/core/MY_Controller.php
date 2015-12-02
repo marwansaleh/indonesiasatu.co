@@ -368,7 +368,7 @@ class MY_Controller extends MY_BaseController {
             'site_name'         =>  'Indonesia Satu',
             'description'       =>  'Berita online yang mengulas secara lengkap tentang kejadian yang terjadi setiap hari nasional dan internasional',          
             'url'               =>  current_url(),
-            'fb:app_id'         => $this->get_sys_var('FB_APP_ID'),
+            'fb:app_id'         => '',//$this->get_sys_var('FB_APP_ID'),
             'type'              => 'article',
             'local'             => 'id',
             'article:author'    => 'IndonesiaSatu.co',
