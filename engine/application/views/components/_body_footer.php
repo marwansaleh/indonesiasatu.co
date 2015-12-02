@@ -1,10 +1,4 @@
-<div id="advert-bottom-bar">
-    <div class="container">
-        <div class="row">
-            <img src="http://www.indonesiasatu.co/adverts/iklan_mercure_galuh_mas_231115.jpg" class="img-responsive">
-        </div>
-    </div>
-</div>
+
 <footer>
     <div class="container">
         <div class="row">
