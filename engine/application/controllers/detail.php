@@ -97,6 +97,13 @@ class Detail extends MY_News {
         $category_slug = $this->category_m->get_value('slug', array('id'=>$article->category_id));
         $this->data['active_menu'] = $category_slug;
         
+        $this->meta_set_props(array(
+            'author'            => 'IndonesiaSatu.co',
+            'description'       => $article->synopsis,
+            'keywords'          => $article->title,
+            'canonical'         => current_url()
+        ));
+        
         //set og properties
         $this->og_set_props(array(
             'title'         => $article->title,
