@@ -13,7 +13,7 @@
         <!-- Meta Og properties -->
         <?php if (isset($og_props)&&  is_array($og_props)): ?>
         <?php foreach($og_props as $prop=>$val): ?>
-        <?php if (strpos($prop,'fb')!==FALSE): ?>
+        <?php if (strpos($prop,':')!==FALSE): ?>
         <meta property="<?php echo $prop; ?>" content="<?php echo $val; ?>" />
         <?php else: ?>
         <meta property="og:<?php echo $prop; ?>" content="<?php echo $val; ?>" />
