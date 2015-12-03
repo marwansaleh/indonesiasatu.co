@@ -104,6 +104,7 @@ class Weather extends REST_Api {
 
         if ($this->ow_cuaca_m->save($data)) {
             $this->result['message'] = 'New data api inserted into database successfully';
+            $this->result['data'] = $data;
         } else {
             $this->result['message'] = 'Failed to save data api into database';
         }
