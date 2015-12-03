@@ -39,10 +39,8 @@ class REST_Api extends REST_Controller {
     
     private function _remap_object_properties($maps,$object){
         $new_class = new stdClass();
-        foreach ($object as $key => $value){
-            if (isset($maps[$key])){
-                $new_class->{$maps[$key]} = $value;
-            }
+        foreach ($maps as $src => $dest){
+            $new_class->{$dest} = isset($object->{$src})? $object->{$src} : NULL;
         }
         return $new_class;
     }
