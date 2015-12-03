@@ -19,6 +19,7 @@ class Article extends REST_Api {
             'category_name'     => 'category',
             'title'             => 'title',
             'url_title'         => 'url_title',
+            'link_href'         => 'link_href',
             'date'              => 'article_date',
             'day'               => 'day',
             'month'             => 'month',
@@ -62,7 +63,6 @@ class Article extends REST_Api {
             }
             
             $items = $this->article_m->get_offset('*',array('published'=>1),($page-1)*$limit,$limit);
-            $this->result['items'] = array();
             foreach ($items as $item){
                 $this->result [] = $this->remap_fields($remap_fields, $this->_article_proccess($item));
             }
@@ -78,7 +78,9 @@ class Article extends REST_Api {
             'small' => IMAGE_THUMB_SMALL, 'smaller' => IMAGE_THUMB_SMALLER,
             'square' => IMAGE_THUMB_SQUARE, 'tiny' => IMAGE_THUMB_TINY
         );
+        $item->date = date('d-M-Y H:i', $item->date);
         $item->category_name = $this->category_m->get_value('name',array('id'=>$item->category_id));
+        $item->link_href = site_url('detail/'.$item->url_title);
         if ($item->image_url){
             $image_url = $item->image_url;
             $item->image_url = new stdClass();
