@@ -1,3 +1,4 @@
+<input type="hidden" id="limit" value="<?php echo $limit; ?>">
 <div class="main">
     <ul id="news-list" class="media-list">
     </ul>
@@ -6,13 +7,21 @@
 
 <script type="text/javascript">
     var News = {
+        categoryId: 0,
         dataLimit: 15,
         page: 1,
         inProccess: false,
         reachLimit: false,
+        setCategory: function(category){
+            this.categoryId = parseInt(category);
+        },
+        setDataLimit: function (limit){
+            this.dataLimit = parseInt(limit);
+        },
         init: function(){
             var _this = this;
-            this.loadNews();
+            //if exists
+            _this.loadNews();
         },
         loadNews: function (){
             var _this = this;
@@ -58,6 +67,7 @@
     
     
     $(document).ready(function(){
+        News.setDataLimit($('#limit').val());
         News.init();
         //lastAddedLiveFunc();
         $(window).scroll(function(){
