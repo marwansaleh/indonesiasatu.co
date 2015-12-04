@@ -1551,6 +1551,7 @@ aside .widget .list figure {
   width: 42px;
   height: 42px;
   margin: 3px 10px 0 10px;
+  overflow: hidden;
 }
 aside .widget .nav-tabs {
   border-bottom: none;
