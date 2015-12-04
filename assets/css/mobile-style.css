@@ -21,8 +21,9 @@ a:hover {
     transition: all .4s ease-in-out;
     background-color: white;
 }
-.media-list .first-item .media-heading { font-size: 14px; }
 .media-list .media-heading { font-size: 13px; font-weight: normal; }
+.media-list .first-item .media-heading { font-size: 14px; font-weight: bold; }
+
 .media-list .media-body { padding:5px 5px 0 0; }
 .media-list .first-item .media-body { padding:5px; }
 .media-list .media:hover{background-color: #ccedfc;}
