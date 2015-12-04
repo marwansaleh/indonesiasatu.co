@@ -494,6 +494,7 @@ class MY_News extends MY_Controller {
         $all_channel_and_childrens = $this->get_channels();
         $this->data['channels'] = $all_channel_and_childrens;
         $this->data['mainmenus'] = $this->_mainmenu() ;//$all_channel_and_childrens;
+        $this->data['FB_ID'] = $this->get_FB_ID();
     }
     
     protected function _article_categories($category_id, $num=3){
