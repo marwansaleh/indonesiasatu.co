@@ -77,17 +77,9 @@ class Detail extends MY_News {
             $this->data['photo_news'] = $this->_photo_news(isset($parameters['LAYOUT_NEWSPHOTO_NUM'])?$parameters['LAYOUT_NEWSPHOTO_NUM']:10);
         }
         if (in_array(WIDGET_SELECTED_CATEGORY, $widgets)){
-            //get category name
-            $selected_category_name = $parameters['LAYOUT_WIDGET_SELECTED_CATEGORY'];
-            $selected_category = NULL;
-            if ($selected_category_name){
-                //get category id
-                $selected_category = $this->category_m->get_by(array('slug'=>$selected_category_name),TRUE);
-                if (!$selected_category){
-                    $selected_category = $this->category_m->get_select_where('id,name',NULL,TRUE);
-                }
-            }
             
+            //get category
+            $selected_category = $this->category_m->get($article->category_id);
             $this->data['selected_news_category'] = array(
                 'category'  => $selected_category,
                 'articles' => $this->_article_categories($selected_category->id, 
