@@ -21,9 +21,14 @@
 <ul class="media-list">
     <?php foreach($related_news as $news): ?>
     <li class="media" data-href="<?php echo site_url('detail/'.$news->url_title); ?>">
+        <div class="media-left">
+            <a href="<?php echo site_url('detail/'.$news->url_title); ?>">
+                <img class="media-object" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SQUARE); ?>" alt="<?php echo $news->url_title ?>">
+            </a>
+        </div>
         <div class="media-body">
             <h4 class="media-heading"><a href="<?php echo site_url('detail/'.$news->url_title); ?>"><?php echo $news->title; ?></a></h4>
-            <?php echo $news->synopsis; ?>
+            <p class="date"><?php echo date('d-M-Y H:i', $news->date); ?></p>
         </div>
     </li>
     <?php endforeach;?>
