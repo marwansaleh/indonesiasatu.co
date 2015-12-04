@@ -9,21 +9,25 @@ var ImageDefaultManager = {
         if ( index>=0 && index<this.availableName.length ){
             var sizeText = this.availableWidth[index]+'x'+this.availableHeight[index];
 
-            return this._baseUrl+sizeText;
+            return this._baseUrl+sizeText+'?text=default';
         }
     },
     init: function() {
+        //console.log('ImageDefaultMnager is running');
         var _this = this;
         $('img').on('error',function(){
             //check if image tag has class
-            if ($(this).className){
+            if ($(this).attr('class')){
                 for (var i in _this.availableName){
                     if ($(this).hasClass(_this.availableName[i])){
                         $(this).attr('src', _this.getDefaultImage(_this.availableName[i]));
+                        //console.log('error_image:'+_this.availableName[i]+' replaced by:'+_this.getDefaultImage(_this.availableName[i]));
                         return;
                     }
                 }
+                console.log('Error on image load, but colud not find its replacement');
             }
+            
         });
     },
 };
