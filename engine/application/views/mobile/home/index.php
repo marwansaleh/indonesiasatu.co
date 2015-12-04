@@ -39,7 +39,7 @@
                         var s = '<li data-id="'+data[i].id+'" class="media '+(_this.page==1&&i==0?'first-item':'')+'" data-href="'+data[i].link_href+'">';
                         if (_this.page==1 &&i==0){
                             s+= '<a href="'+data[i].link_href+'">';
-                                s+= '<img class="media-object img-responsive" src="'+data[i].image_url.medium+'" alt="'+data[i].title+'">' ;
+                                s+= '<img class="media-object img-responsive" src="'+data[i].image_url.large+'" alt="'+data[i].title+'">' ;
                             s+= '</a>';
                         }else{
                             s+= '<div class="media-left">';
