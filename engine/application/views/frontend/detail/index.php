@@ -35,8 +35,12 @@
             <div class="blog-bottom">
                 <div class="share-title">Share</div>
                 <div class="share-content">
-                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=<?php echo urlencode('IndonesiaSatu.co: '.$article->title); ?>&amp;url=<?php echo urlencode($article->share_url); ?>" data-size="default">Tweet</a>
-                    <div style="margin-top: -3px;" class="fb-share-button" data-href="<?php echo $article->share_url; ?>" data-layout="button_count"></div>
+<!--                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=<?php echo urlencode('IndonesiaSatu.co: '.$article->title); ?>&amp;url=<?php echo urlencode($article->share_url); ?>" data-size="default">Tweet</a>
+                    <div style="margin-top: -3px;" class="fb-share-button" data-href="<?php echo $article->share_url; ?>" data-layout="button_count"></div>-->
+                    <a class="btn btn-default" href="mailto:redaksi@indonesiasatu.co?Subject=<?php echo urlencode($article->title); ?>"><span class="glyphicon glyphicon-envelope"></span> Email</a>
+                    <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode($article->share_url); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
+                    <a class="btn btn-social btn-google-plus"><span class="fa fa-google-plus"></span> Google</a>
+                    <a class="btn btn-social btn-facebook" href="javascript:share_fb('<?php echo urlencode($article->share_url); ?>');"><span class="fa fa-facebook"></span> Facebook</a>
                 </div>
             </div>
         </article>
@@ -77,15 +81,20 @@
 
 
     function share_fb(link){
-
+        var url = "https://www.facebook.com/dialog/share?app_id=<?php echo $FB_ID; ?>&display=popup&href="+link+"&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer";
+        var fb_window = window.open(url, 'FB-Share');
+        fb_window.focus();
+        /*
         FB.ui({
           method: 'share',
-          href: link
-        }, function(response){});
+          href: link,
+          app_id: 570841689714924 //"<?php //echo $FB_ID; ?>"
+        }, function(response){}); */
+        
+        return false;
     }
-    function share_tw(obj){
-        var url = document.getElementById(obj).href;
-        var tw_window = window.open(url,"tw_sta","width=500,height=300,toolbar=no, scrollbars=yes, resizable=no")
+    function share_tw(encoded_url){
+        var tw_window = window.open('https://twitter.com/intent/tweet?url='+encoded_url,'Twitter-Web-Intent');
         tw_window.focus();
     }
 </script>
