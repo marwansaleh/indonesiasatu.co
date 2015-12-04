@@ -9,7 +9,7 @@
             <?php $i=1; foreach ($latest_news as $latest): ?>
             <article <?php echo $i==1?'class="first-child"':'';$i++; ?>>
                 <figure>
-                    <img src="<?php echo get_image_thumb($latest->image_url, IMAGE_THUMB_SQUARE); ?>" alt="">
+                    <img class="square" src="<?php echo get_image_thumb($latest->image_url, IMAGE_THUMB_SQUARE); ?>" alt="">
                 </figure>
                 <div class="text">
                     <span class="text-muted small"><?php echo strtoupper($latest->category); ?></span>
@@ -39,7 +39,7 @@
                         <span><a href="<?php echo site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></span>
                     </div>
                     <figure>
-                        <img src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_MEDIUM); ?>" alt="">
+                        <img class="medium" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_MEDIUM); ?>" alt="">
                     </figure>
                     <div class="main-text">
                         <div class="inner">
