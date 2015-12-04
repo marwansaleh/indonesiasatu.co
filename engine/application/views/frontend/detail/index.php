@@ -81,14 +81,10 @@
 
 
     function share_fb(link){
-        //var url = "https://www.facebook.com/dialog/share?app_id=<?php echo $FB_ID; ?>&display=popup&href="+link+"&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer";
-        //var fb_window = window.open(url, 'FB-Share');
-        //fb_window.focus();
         
         FB.ui({
           method: 'share',
-          href: link,
-          app_id: "<?php echo $FB_ID; ?>"
+          href: link
         }, function(response){}); 
         
         return false;
