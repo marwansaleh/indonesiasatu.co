@@ -231,7 +231,7 @@ $fixed_path_from_filemanager            = array(
 $fixed_image_creation_name_to_prepend   = array('','','','','','',''); //name to prepend on filename
 $fixed_image_creation_to_append         = array('','','','','','',''); //name to appendon filename
 $fixed_image_creation_width             = array(726,555,362,230,70,57,42); //width of image (you can leave empty if you set height)
-$fixed_image_creation_height            = array('',582,'','',70,57,42); //height of image (you can leave empty if you set width)
+$fixed_image_creation_height            = array('',582,'',147,70,57,42); //height of image (you can leave empty if you set width)
 /*
 #             $option:     0 / exact = defined size;
 #                          1 / portrait = keep aspect set height;
