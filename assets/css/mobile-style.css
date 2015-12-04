@@ -29,7 +29,7 @@ a:hover {
 .media-list .media:last-child {border-bottom: none;}
 
 .media-list .first-item img {display:block;}
-.media-list .first-item .media-body { margin-top: -80px; height: 80px;  position: absolute; display: block; width:90%; float: left; overflow:hidden;}
+.media-list .first-item .media-body { margin-top: -60px; height: 60px;  position: absolute; display: block; width:90%; float: left; overflow:hidden;}
 .media-list .first-item .media-body .media-heading, .media-list .first-item .media-body a, .media-list .first-item .media-body p { color: white!important; }
 .media-list .media-body p.date, .media-list .first-item .media-body p.date { font-style: italic; font-size: 11px;  }
 article figure {margin-bottom: 20px;}
