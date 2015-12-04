@@ -103,7 +103,7 @@ class Detail extends MY_News {
             'description'   => $article->synopsis,
             'type'          => 'article',
             //'article:author'=> $article->created_by_name,
-            'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE)
+            'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_ORI)
         ));
         
         //$this->data['main_slider'] = TRUE;
