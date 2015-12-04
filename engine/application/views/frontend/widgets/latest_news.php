@@ -8,7 +8,7 @@
                 <li>
                     <a title="" href="<?php echo site_url('detail/'.$latest->url_title); ?>">
                         <figure>
-                            <img src="<?php echo get_image_thumb($latest->image_url, IMAGE_THUMB_TINY); ?>" alt="">
+                            <img class="tiny" src="<?php echo get_image_thumb($latest->image_url, IMAGE_THUMB_TINY); ?>" alt="">
                         </figure>
                         <p><?php echo $latest->title; ?> <br> <span> <?php echo date('d M Y',$latest->date); ?> </span></p>
                     </a>
