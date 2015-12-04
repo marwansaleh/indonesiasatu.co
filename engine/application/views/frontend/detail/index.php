@@ -40,7 +40,7 @@
                     <a class="btn btn-default" href="mailto:redaksi@indonesiasatu.co?Subject=<?php echo urlencode($article->title); ?>"><span class="glyphicon glyphicon-envelope"></span> Email</a>
                     <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode($article->share_url); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
                     <a class="btn btn-social btn-google-plus"><span class="fa fa-google-plus"></span> Google</a>
-                    <a class="btn btn-social btn-facebook" href="javascript:share_fb('<?php echo urlencode($article->share_url); ?>');"><span class="fa fa-facebook"></span> Facebook</a>
+                    <a class="btn btn-social btn-facebook" href="javascript:share_fb('<?php echo urlencode(current_url()); ?>');"><span class="fa fa-facebook"></span> Facebook</a>
                 </div>
             </div>
         </article>
