@@ -7,7 +7,7 @@
         </div>
 
         <figure>
-            <img class="img-responsive" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_MEDIUM); ?>" alt="Article image">
+            <img class="img-responsive" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
         </figure>
         <div class="content">
             <?php echo $article->content; ?>
