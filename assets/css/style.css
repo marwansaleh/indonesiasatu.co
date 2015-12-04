@@ -592,6 +592,7 @@ header .logo-line .logo a {
 #main .blog-style article .inner {
   border: solid 1px #d3d2d2;
   display: inline-block;
+  width: 100%;
 }
 #main .blog-style article figure {
   float: left;
