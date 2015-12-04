@@ -39,8 +39,14 @@
                     <div style="margin-top: -3px;" class="fb-share-button" data-href="<?php echo $article->share_url; ?>" data-layout="button_count"></div>-->
                     <a class="btn btn-default" href="mailto:redaksi@indonesiasatu.co?Subject=<?php echo urlencode($article->title); ?>"><span class="glyphicon glyphicon-envelope"></span> Email</a>
                     <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode($article->share_url); ?>','<?php echo urlencode($article->title); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
-                    <a class="btn btn-social btn-google-plus"><span class="fa fa-google-plus"></span> Google</a>
+                    <a id="btn-google" class="btn btn-social btn-google-plus" 
+                       href="https://plus.google.com/share?url=<?php echo urlencode(current_url()); ?>" 
+                       onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600'); return false;">
+                        <span class="fa fa-google-plus"></span> Google
+                    </a>
                     <a class="btn btn-social btn-facebook" href="javascript:share_fb('<?php echo urlencode(current_url()); ?>');"><span class="fa fa-facebook"></span> Facebook</a>
+                    
                 </div>
             </div>
         </article>
@@ -70,14 +76,31 @@
     </div>
 </div>
 <?php endif; ?>
+<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
 <script type="text/javascript">
-    window.twttr = (function (d, s, id) {
-      var t, js, fjs = d.getElementsByTagName(s)[0];
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '<?php echo $FB_ID; ?>',
+          xfbml      : true,
+          version    : 'v2.5'
+        });
+    };
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id; js.src= "https://platform.twitter.com/widgets.js";
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.5";
       fjs.parentNode.insertBefore(js, fjs);
-      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
-    }(document, "script", "twitter-wjs"));
+    }(document, 'script', 'facebook-jssdk'));
+
+    /* Twitter Sdk */
+//    window.twttr = (function (d, s, id) {
+//      var t, js, fjs = d.getElementsByTagName(s)[0];
+//      if (d.getElementById(id)) return;
+//      js = d.createElement(s); js.id = id; js.src= "https://platform.twitter.com/widgets.js";
+//      fjs.parentNode.insertBefore(js, fjs);
+//      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+//    }(document, "script", "twitter-wjs"));
 
 
     function share_fb(link){
