@@ -114,7 +114,7 @@ class Detail extends MY_News {
             //'article:author'=> $article->created_by_name,
             'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE)
         ));
-        $this->data['FB_ID'] = $this->get_FB_ID();
+        
         //$this->data['main_slider'] = TRUE;
         $this->data['subview'] = 'frontend/detail/index';
         $this->load->view('_layout_main', $this->data);
