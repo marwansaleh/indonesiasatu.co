@@ -49,6 +49,9 @@ class Detail extends MY_News {
         $article->created_by_name = $this->user_m->get_value('full_name', array('id'=>$article->created_by));
         
         $this->data['article'] = $article;
+        //get category
+        $selected_category = $this->category_m->get($article->category_id);
+        $this->data['category'] = $selected_category;
         $this->data['related_news'] = $this->_related_news(explode(',',$article->tags), 3, array('id !='=>$article->id));
         
         $widgets = explode(',',$parameters['LAYOUT_DETAIL_WIDGETS']);
@@ -77,9 +80,6 @@ class Detail extends MY_News {
             $this->data['photo_news'] = $this->_photo_news(isset($parameters['LAYOUT_NEWSPHOTO_NUM'])?$parameters['LAYOUT_NEWSPHOTO_NUM']:10);
         }
         if (in_array(WIDGET_SELECTED_CATEGORY, $widgets)){
-            
-            //get category
-            $selected_category = $this->category_m->get($article->category_id);
             $this->data['selected_news_category'] = array(
                 'category'  => $selected_category,
                 'articles' => $this->_article_categories($selected_category->id, 
