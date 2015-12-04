@@ -2,9 +2,9 @@
     <div class="blog-page">
         <article>
             <h1 class="title">
-                <span style="font-size:13px;"><?php echo date('d-M-Y H:i', $article->date); ?></span><br>
-                <span style="font-size:15px;"><?php echo $category->name; ?></span><br>
+                <span style="font-size:15px; display:block;line-height:20px;padding:0;margin-bottom:10px;"><?php echo strtoupper($category->name); ?></span>
                 <?php echo $article->title; ?>
+                <span style="font-size:13px;display:block;line-height:15px;padding:0;margin-top:10px;"><?php echo date('d-M-Y H:i', $article->date); ?></span>
             </h1>
             <?php if ($article->image_type==IMAGE_TYPE_MULTI): ?>
             <?php $this->load->view('frontend/slider/detail_slider', array('images'=>$article->images)); ?>
