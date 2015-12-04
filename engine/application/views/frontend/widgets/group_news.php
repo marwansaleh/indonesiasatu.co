@@ -20,7 +20,7 @@
                         <li>
                             <a title="" href="<?php echo site_url('detail/'.$popular->url_title); ?>">
                                 <figure>
-                                    <img src="<?php echo get_image_thumb($popular->image_url, IMAGE_THUMB_TINY); ?>" alt="">
+                                    <img class="tiny" src="<?php echo get_image_thumb($popular->image_url, IMAGE_THUMB_TINY); ?>" alt="">
                                 </figure>
                                 <p><?php echo $popular->title; ?> <br> <span> <?php echo date('d M Y',$popular->date); ?> </span>, <span> <?php echo number_format($popular->view_count); ?> views </span></p>
                             </a>
@@ -36,7 +36,7 @@
                         <li>
                             <a title="" href="<?php echo site_url('detail/'.$recent->url_title); ?>">
                                 <figure>
-                                    <img src="<?php echo get_image_thumb($recent->image_url, IMAGE_THUMB_TINY); ?>" alt="">
+                                    <img class="tiny" src="<?php echo get_image_thumb($recent->image_url, IMAGE_THUMB_TINY); ?>" alt="">
                                 </figure>
                                 <p><?php echo $recent->title; ?> <br> <span> <?php echo date('D, d M Y',$recent->date); ?> </span></p>
                             </a>
@@ -52,7 +52,7 @@
                         <li>
                             <a title="" href="<?php echo site_url('detail/'.$commented->url_title); ?>">
                                 <figure>
-                                    <img src="<?php echo get_image_thumb($commented->image_url, IMAGE_THUMB_TINY); ?>" alt="">
+                                    <img class="tiny" src="<?php echo get_image_thumb($commented->image_url, IMAGE_THUMB_TINY); ?>" alt="">
                                 </figure>
                                 <p><?php echo $commented->title; ?> <br> <span> <?php echo date('d M Y',$commented->date); ?> </span>, <span> <?php echo number_format($popular->comment); ?> views </span></p></p>
                             </a>
