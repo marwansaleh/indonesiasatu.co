@@ -50,7 +50,7 @@
                         }
                         s+= '<div class="media-body">';
                             s+= '<h4 class="media-heading"><a href="'+data[i].link_href+'">'+data[i].title+'</a></h4>';
-                            s+= '<p>'+data[i].synopsis+'</p>';
+                            s+= '<p class="date">'+data[i].article_date+'</p>';
                         s+= '</div>';
                         s+= '</li>';
 
