@@ -1,7 +1,40 @@
+var ImageDefaultManager = {
+    _baseUrl: 'http://placehold.it/',
+    availableName: ["tiny","smaller","square","small","medium","portrait","large"],
+    availableWidth: [42,57,70,230,362,555,726],
+    availableHeight: [42,57,70,147,205,350,463],
+    getDefaultImage: function (size){
+        //get default width and height if available
+        var index = this.availableName.indexOf(size);
+        if ( index>=0 && index<this.availableName.length ){
+            var sizeText = this.availableWidth[index]+'x'+this.availableHeight[index];
+
+            return this._baseUrl+sizeText;
+        }
+    },
+    init: function() {
+        var _this = this;
+        $('img').on('error',function(){
+            //check if image tag has class
+            if ($(this).className){
+                for (var i in _this.availableName){
+                    if ($(this).hasClass(_this.availableName[i])){
+                        $(this).attr('src', _this.getDefaultImage(_this.availableName[i]));
+                        return;
+                    }
+                }
+            }
+        });
+    },
+};
+            
 var Nasabah = {
-    
     slideCounter : 0,
     init: function (){
+        //nice scroll
+        $('html').niceScroll({cursorcolor:"#00F"});
+        $('.nicescroll').niceScroll({cursorcolor:"#00F"});
+        
         $('.ticker').ticker();
         $('#slider').flexslider({
             controlNav: false,
@@ -38,11 +71,10 @@ var Nasabah = {
         var intervalID = setInterval( Nasabah.moveSliders, 5000 );
         $('.slider-navigation .navigation-item:first-child').click();
         
-        
-        
         jQuery("a[rel^='prettyPhoto']").prettyPhoto({social_tools:''});
         
         Nasabah.articleShowcase();
+        ImageDefaultManager.init();
     },
     moveSliders : function() {
         var max = jQuery('.slider-navigation .navigation-item').length;
