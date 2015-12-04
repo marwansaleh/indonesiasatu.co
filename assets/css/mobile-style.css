@@ -1,7 +1,8 @@
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700,300,300italic,400italic");
 
 body{
-    padding-top: 50px;
+    padding-top: 40px;
+    background-color: #8aa4af;
 }
 a, a:hover {
   color: #000;
@@ -11,20 +12,26 @@ a:hover {
 }
 .media-list .media {
     cursor: pointer; 
-    margin: 0;
-    padding:10px; 
-    border-bottom: solid 1px #d3d2d2;
+    margin:5px; 
+    border:solid 1px #ccc ;
     -webkit-transition: all .4s ease-in-out;
     -moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -ms-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+    background-color: white;
 }
+.media-list .first-item .media-heading { font-size: 14px; }
+.media-list .media-heading { font-size: 13px; font-weight: normal; }
+.media-list .media-body { padding:5px 5px 0 0; }
+.media-list .first-item .media-body { padding:5px; }
 .media-list .media:hover{background-color: #ccedfc;}
 .media-list .media:last-child {border-bottom: none;}
 
-.media-list .first-item img {display:block; margin-bottom: 20px;}
-.media-list .media-heading {font-size: 15px;}
+.media-list .first-item img {display:block;}
+.media-list .first-item .media-body { margin-top: -80px; height: 80px;  position: absolute; display: block; width:90%; float: left; overflow:hidden;}
+.media-list .first-item .media-body .media-heading, .media-list .first-item .media-body a, .media-list .first-item .media-body p { color: white!important; }
+.media-list .media-body p.date, .media-list .first-item .media-body p.date { font-style: italic; font-size: 11px;  }
 article figure {margin-bottom: 20px;}
 article .info {font-style: italic; display: inline-block;}
 article .info .date {color: #001f3f;}
