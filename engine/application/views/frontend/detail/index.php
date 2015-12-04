@@ -35,7 +35,7 @@
             <div class="blog-bottom">
                 <div class="share-title">Share</div>
                 <div class="share-content">
-                    <a class="btn btn-default" href="mailto:redaksi@indonesiasatu.co?Subject=<?php echo urlencode($article->title); ?>" target="_blank"><span class="glyphicon glyphicon-envelope"></span> Email</a>
+                    <a class="btn btn-default" href="mailto:redaksi@indonesiasatu.co?Subject=<?php echo urlencode($article->title); ?>&body=<?php echo urlencode($article->synopsis); ?>" target="_blank"><span class="glyphicon glyphicon-envelope"></span> Email</a>
                     <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode($article->share_url); ?>','<?php echo urlencode($article->title); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
                     <a id="btn-google" class="btn btn-social btn-google-plus" 
                        href="https://plus.google.com/share?url=<?php echo current_url(); ?>&hl=id" 
