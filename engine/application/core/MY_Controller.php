@@ -275,6 +275,22 @@ class MY_Controller extends MY_BaseController {
         }
     }
     
+    protected function get_GA_Code(){
+        $param = 'GA_CODE';
+        if (!$this->session->userdata($param)){
+            
+            $sysvar = $this->get_sys_parameters($param);
+            if (!$sysvar){
+                $sysvar[$param] = 'UA-71024445-1';
+            }
+            $this->session->set_userdata($param, $sysvar[$param]);
+            
+            return $sysvar[$param];
+        }else{
+            return $this->session->userdata($param);
+        }
+    }
+    
     protected function _get_today_indonesia($timestamp=FALSE){
         $hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
         $bulan = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember');
@@ -495,6 +511,7 @@ class MY_News extends MY_Controller {
         $this->data['channels'] = $all_channel_and_childrens;
         $this->data['mainmenus'] = $this->_mainmenu() ;//$all_channel_and_childrens;
         $this->data['FB_ID'] = $this->get_FB_ID();
+        $this->data['GA_Code'] = $this->get_GA_Code();
     }
     
     protected function _article_categories($category_id, $num=3){
