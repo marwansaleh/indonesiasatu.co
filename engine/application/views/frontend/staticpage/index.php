@@ -10,7 +10,7 @@
                 <div class="share-title">Share</div>
                 <div class="share-content">
                     <a class="btn btn-default" href="mailto:redaksi@indonesiasatu.co?Subject=<?php echo urlencode(current_url()); ?>" target="_blank"><span class="glyphicon glyphicon-envelope"></span> Email</a>
-                    <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode(current_url()); ?>','<?php echo urlencode('Redaksi IndonesiaSatu'); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
+                    <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode(current_url()); ?>','<?php echo urlencode($staticpage->title); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
                     <a id="btn-google" class="btn btn-social btn-google-plus" 
                        href="https://plus.google.com/share?url=<?php echo current_url(); ?>&hl=id" 
                        onclick="javascript:window.open(this.href,
