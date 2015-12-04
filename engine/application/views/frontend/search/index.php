@@ -26,7 +26,7 @@
         <article>
             <div class="inner">
                 <figure>
-                    <img src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SMALL); ?>" alt="">
+                    <img class="small" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SMALL); ?>" alt="">
                 </figure>
                 <div class="text">
                     <div class="inner-border">
