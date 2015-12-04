@@ -9,8 +9,16 @@
             <div class="blog-bottom">
                 <div class="share-title">Share</div>
                 <div class="share-content">
-                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=<?php echo urlencode('IndonesiaSatu.co: '.$staticpage->title); ?>&amp;url=<?php echo urlencode(current_url()); ?>" data-size="default">Tweet</a>
-                    <div style="margin-top: -3px;" class="fb-share-button" data-href="<?php echo current_url(); ?>" data-layout="button_count"></div>
+                    <a class="btn btn-default" href="mailto:redaksi@indonesiasatu.co?Subject=<?php echo urlencode(current_url()); ?>" target="_blank"><span class="glyphicon glyphicon-envelope"></span> Email</a>
+                    <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode(current_url()); ?>','<?php echo urlencode('Redaksi IndonesiaSatu'); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
+                    <a id="btn-google" class="btn btn-social btn-google-plus" 
+                       href="https://plus.google.com/share?url=<?php echo current_url(); ?>&hl=id" 
+                       onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600'); return false;">
+                        <span class="fa fa-google-plus"></span> Google
+                    </a>
+                    <a class="btn btn-social btn-facebook" href="javascript:share_fb('<?php echo urlencode(current_url()); ?>');"><span class="fa fa-facebook"></span> Facebook</a>
+                    
                 </div>
             </div>
         </article>
@@ -18,25 +26,32 @@
 </div>
 
 <script type="text/javascript">
-    window.twttr = (function (d, s, id) {
-      var t, js, fjs = d.getElementsByTagName(s)[0];
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '<?php echo $FB_ID; ?>',
+          xfbml      : true,
+          version    : 'v2.5'
+        });
+    };
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id; js.src= "https://platform.twitter.com/widgets.js";
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.5";
       fjs.parentNode.insertBefore(js, fjs);
-      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
-    }(document, "script", "twitter-wjs"));
-
+    }(document, 'script', 'facebook-jssdk'));
 
     function share_fb(link){
-
+        
         FB.ui({
           method: 'share',
           href: link
-        }, function(response){});
+        }, function(response){}); 
+        
+        return false;
     }
-    function share_tw(obj){
-        var url = document.getElementById(obj).href;
-        var tw_window = window.open(url,"tw_sta","width=500,height=300,toolbar=no, scrollbars=yes, resizable=no")
+    function share_tw(encoded_url,text){
+        var tw_window = window.open('https://twitter.com/intent/tweet?url='+encoded_url+'&text='+text,'Twitter-Web-Intent');
         tw_window.focus();
     }
 </script>
