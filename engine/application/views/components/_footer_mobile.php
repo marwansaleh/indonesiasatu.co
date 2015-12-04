@@ -10,5 +10,7 @@
     
         <!-- bootstrap -->
         <script src="<?php echo site_url(config_item('path_lib').'bootstrap/js/bootstrap.min.js'); ?>"></script>
+        <!-- JScroll -->
+        <script src="<?php echo site_url(config_item('path_lib').'jscroll/jquery.jscroll.min.js'); ?>"></script>
     </body>
 </html>
