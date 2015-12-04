@@ -10,7 +10,7 @@
             <?php $this->load->view('frontend/slider/detail_slider', array('images'=>$article->images)); ?>
             <?php else: ?>
             <figure>
-                <img class="img-responsive" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
+                <img class="img-responsive large" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
             </figure>
             <?php endif; ?>
             <div class="blog-content">
@@ -65,7 +65,7 @@
                 <div class="inner">
                     <a href="<?php echo site_url('detail/'.$related->url_title); ?>">
                         <figure style="height: 105px; overflow: hidden;">
-                            <img src="<?php echo get_image_thumb($related->image_url, IMAGE_THUMB_SMALL); ?>" alt="">
+                            <img class="small" src="<?php echo get_image_thumb($related->image_url, IMAGE_THUMB_SMALL); ?>" alt="">
                         </figure>
                         <div class="title"><?php echo $related->title; ?></div>
                         <div class="date"><?php echo date('D d M Y', $related->date); ?></div>
