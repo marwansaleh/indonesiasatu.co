@@ -128,9 +128,10 @@ class Category extends MY_News {
         $this->data['active_menu'] = $slug;
         
         //Load popular news
-        $limit = isset($parameters['MOBILE_NEWS_NUM'])?$parameters['MOBILE_NEWS_NUM']:10;
+        $limit = isset($parameters['MOBILE_NEWS_NUM'])?$parameters['MOBILE_NEWS_NUM']:15;
         $this->data['limit'] = $limit;
-        $this->data['mobile_news'] = $this->_mobile_news($limit, array('category_id'=>$category->id));
+        //data load by ajax
+        //$this->data['mobile_news'] = $this->_mobile_news($limit, array('category_id'=>$category->id));
         
         $this->data['subview'] = 'mobile/category/index';
         $this->load->view('_layout_mobile', $this->data);
