@@ -28,8 +28,13 @@ class Newsindex extends MY_News {
         $this->data['indonesian_months'] = array(1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','Nopember','Desember');
         //prepare years
         $this->data['article_years'] = $this->_range_years();
-        $this->data['articles'] = $this->_get_index_list($this->data['index_date'], $this->data['index_month'], $this->data['index_year']);
         
+        $articles = $this->_get_index_list($this->data['index_date'], $this->data['index_month'], $this->data['index_year']);
+        $this->data['articles'] = array();
+        foreach ($articles as $article){
+            $article->category_name = $this->category_m->get_value('name',array('id'=>$article->category_id));
+            $this->data['articles'][] = $article;
+        }
         $widgets = explode(',',$parameters['LAYOUT_CUSTOM_WIDGETS']);
         foreach ($widgets as $widget){
             $this->data['widgets'] [] = trim($widget);
@@ -79,7 +84,7 @@ class Newsindex extends MY_News {
     }
     
     private function _get_index_list($day=NULL, $month=NULL, $year=NULL){
-        $fields = 'id,title, url_title, image_url, image_type, date, synopsis, comment, created_by';
+        $fields = 'id, title, category_id, url_title, image_url, image_type, date, synopsis, comment, created_by';
         
         $condition = array();
         if ($day){
