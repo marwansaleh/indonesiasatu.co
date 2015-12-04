@@ -76,7 +76,6 @@
     </div>
 </div>
 <?php endif; ?>
-<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
 <script type="text/javascript">
     window.fbAsyncInit = function() {
         FB.init({
