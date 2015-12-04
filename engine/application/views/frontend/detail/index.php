@@ -36,7 +36,7 @@
                 <div class="share-title">Share</div>
                 <div class="share-content">
                     <a class="btn btn-default" 
-                       href="mailto:?Subject=<?php echo urlencode($article->title); ?>&body=<?php echo urlencode($article->synopsis . ' <br>' . current_url()); ?>" 
+                       href="mailto:?Subject=<?php echo urlencode($article->title); ?>&body=<?php echo urlencode($article->synopsis . '. ' . current_url()); ?>" 
                        target="_blank"><span class="glyphicon glyphicon-envelope"></span> Email
                     </a>
                     <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode($article->share_url); ?>','<?php echo urlencode($article->title); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
