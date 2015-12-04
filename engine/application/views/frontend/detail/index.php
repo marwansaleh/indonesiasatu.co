@@ -3,7 +3,7 @@
         <article>
             <h1 class="title">
                 <span style="font-size:13px;"><?php echo date('d-M-Y H:i', $article->date); ?></span><br>
-                
+                <span style="font-size:15px;"><?php echo $category->name; ?></span><br>
                 <?php echo $article->title; ?>
             </h1>
             <?php if ($article->image_type==IMAGE_TYPE_MULTI): ?>
