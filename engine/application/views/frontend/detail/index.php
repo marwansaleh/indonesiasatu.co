@@ -37,7 +37,7 @@
                 <div class="share-content">
 <!--                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=<?php echo urlencode('IndonesiaSatu.co: '.$article->title); ?>&amp;url=<?php echo urlencode($article->share_url); ?>" data-size="default">Tweet</a>
                     <div style="margin-top: -3px;" class="fb-share-button" data-href="<?php echo $article->share_url; ?>" data-layout="button_count"></div>-->
-                    <a class="btn btn-default" href="mailto:redaksi@indonesiasatu.co?Subject=<?php echo urlencode($article->title); ?>"><span class="glyphicon glyphicon-envelope"></span> Email</a>
+                    <a class="btn btn-default" href="mailto:redaksi@indonesiasatu.co?Subject=<?php echo urlencode($article->title); ?>" target="_blank"><span class="glyphicon glyphicon-envelope"></span> Email</a>
                     <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode($article->share_url); ?>','<?php echo urlencode($article->title); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
                     <a id="btn-google" class="btn btn-social btn-google-plus" 
                        href="https://plus.google.com/share?url=<?php echo urlencode(current_url()); ?>&hl=id" 
