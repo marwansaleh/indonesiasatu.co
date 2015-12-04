@@ -38,7 +38,7 @@
 <!--                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=<?php echo urlencode('IndonesiaSatu.co: '.$article->title); ?>&amp;url=<?php echo urlencode($article->share_url); ?>" data-size="default">Tweet</a>
                     <div style="margin-top: -3px;" class="fb-share-button" data-href="<?php echo $article->share_url; ?>" data-layout="button_count"></div>-->
                     <a class="btn btn-default" href="mailto:redaksi@indonesiasatu.co?Subject=<?php echo urlencode($article->title); ?>"><span class="glyphicon glyphicon-envelope"></span> Email</a>
-                    <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode($article->share_url); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
+                    <a class="btn btn-social btn-twitter" href="javascript:share_tw('<?php echo urlencode($article->share_url); ?>','<?php echo $article->title; ?>');"><span class="fa fa-twitter"></span> Twitter</a>
                     <a class="btn btn-social btn-google-plus"><span class="fa fa-google-plus"></span> Google</a>
                     <a class="btn btn-social btn-facebook" href="javascript:share_fb('<?php echo urlencode(current_url()); ?>');"><span class="fa fa-facebook"></span> Facebook</a>
                 </div>
@@ -93,8 +93,8 @@
         
         return false;
     }
-    function share_tw(encoded_url){
-        var tw_window = window.open('https://twitter.com/intent/tweet?url='+encoded_url,'Twitter-Web-Intent');
+    function share_tw(encoded_url,text){
+        var tw_window = window.open('https://twitter.com/intent/tweet?url='+encoded_url+='&text='+text,'Twitter-Web-Intent');
         tw_window.focus();
     }
 </script>
