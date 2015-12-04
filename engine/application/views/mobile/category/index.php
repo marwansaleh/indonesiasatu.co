@@ -1,84 +1,77 @@
+<input type="hidden" id="category" value="<?php echo $category->id; ?>">
+<input type="hidden" id="limit" value="<?php echo $limit; ?>">
 <div class="main">
     <h3 style="margin: 5px 0 0 10px;"><?php echo $category->name; ?></h3>
     <ul id="news-list" class="media-list">
-        <?php foreach($mobile_news as $index => $news): ?>
-        <li data-id="<?php echo $news->id; ?>" class="media <?php echo $index==0?'first-item':''; ?>" data-href="<?php echo site_url('detail/'.$news->url_title); ?>">
-            <?php if ($index==0):?>
-            <a href="<?php echo site_url('detail/'.$news->url_title); ?>">
-                <img class="media-object img-responsive" src="<?php echo get_image_thumb($news->image_url, IMAGE_THUMB_MEDIUM); ?>" alt="<?php echo $news->title; ?>">
-            </a>
-            
-            <div class="media-body">
-                <h4 class="media-heading"><a href="<?php echo site_url('detail/'.$news->url_title); ?>"><?php echo $news->title; ?></a></h4>
-                <p><?php echo $news->synopsis; ?></p>
-            </div>
-            <?php else: ?>
-            <div class="media-left">
-                <a href="<?php echo site_url('detail/'.$news->url_title); ?>">
-                    <img class="media-object" src="<?php echo get_image_thumb($news->image_url, IMAGE_THUMB_SQUARE); ?>" alt="<?php echo $news->title; ?>">
-                </a>
-            </div>
-            
-            <div class="media-body">
-                <h4 class="media-heading"><?php echo $news->title; ?></h4>
-                <p><?php echo $news->synopsis; ?></p>
-            </div>
-            <?php endif; ?>
-        </li>
-        <?php endforeach;?>
     </ul>
     <div id="lastPostsLoader"></div>
-    <input type="hidden" id="limit" name="limit" value="<?php echo $limit; ?>">
-    <input type="hidden" id="category" name="category" value="<?php echo $category->id; ?>">
-    <input type="hidden" id="lastPage" name="lastPage" value="1">
 </div>
 
 <script type="text/javascript">
-    var in_process = false;
-    var list_id = [];
-    function lastAddedLiveFunc()
-    {
-        if (in_process){
-            return;
-        }
-        in_process = true;
-        $('div#lastPostsLoader').html('Loading news...');
- 
-        $.post('<?php echo site_url('ajax/news/category_news'); ?>',{last_page:$('input#lastPage').val(), limit:$('input#limit').val(), category:$('input#category').val()}, function(data){
-            if (data.status == 1) {
-                for (var i in data.items){
-                    var news = data.items[i];
-                    if (list_id.indexOf(news.id)>=0){
-                        continue;
-                    }
-                    list_id.push(news.id);
-                    var s = '<li class="media" data-href="'+news.data_href+'">';
-                        s+= '<div class="media-left">';
-                            s+= '<a href="'+news.data_href+'">';
-                                s+= '<img class="media-object" src="'+news.image_url+'" alt="'+news.title+'">' ;
-                            s+= '</a>';
-                        s+= '</div>';
-
-                        s+= '<div class="media-body">';
-                            s+= '<h4 class="media-heading"><a href="'+news.data_href+'">'+news.title+'</a></h4>';
-                            s+= '<p>'+news.synopsis+'</p>';
-                        s+= '</div>';
-                    s+= '</li>';
-                    
-                    $('#news-list').append(s);
-                }
+    var News = {
+        categoryId: 0,
+        dataLimit: 15,
+        page: 1,
+        inProccess: false,
+        reachLimit: false,
+        setCategory: function(category){
+            this.categoryId = parseInt(category);
+        },
+        setDataLimit: function (limit){
+            this.dataLimit = parseInt(limit);
+        },
+        init: function(){
+            var _this = this;
+            //if exists
+            _this.loadNews();
+        },
+        loadNews: function (){
+            var _this = this;
+            if (_this.reachLimit || _this.inProccess){
+                return;
             }
-            $('div#lastPostsLoader').empty();
-            $('#lastPage').val(data.last_page);
-            in_process = false;
-        },'json');
+            _this.inProccess = true;
+            $('div#lastPostsLoader').html('Loading news...');
+            
+            //load from service
+            $.getJSON("<?php echo site_url('service/article/index'); ?>",{limit:_this.dataLimit,page:_this.page,category:_this.categoryId}, function(data){
+                _this.inProccess = false;
+                if (data.length > 0){
+                    for (var i in data){
+                        var s = '<li data-id="'+data[i].id+'" class="media '+(_this.page==1&&i==0?'first-item':'')+'" data-href="'+data[i].link_href+'">';
+                        if (_this.page==1 &&i==0){
+                            s+= '<a href="'+data[i].link_href+'">';
+                                s+= '<img class="media-object img-responsive" src="'+data[i].image_url.medium+'" alt="'+data[i].title+'">' ;
+                            s+= '</a>';
+                        }else{
+                            s+= '<div class="media-left">';
+                                s+= '<a href="'+data[i].link_href+'">';
+                                    s+= '<img class="media-object" src="'+data[i].image_url.square+'" alt="'+data[i].title+'">' ;
+                                s+= '</a>';
+                            s+= '</div>';
+                        }
+                        s+= '<div class="media-body">';
+                            s+= '<h4 class="media-heading"><a href="'+data[i].link_href+'">'+data[i].title+'</a></h4>';
+                            s+= '<p>'+data[i].synopsis+'</p>';
+                        s+= '</div>';
+                        s+= '</li>';
+
+                        $('#news-list').append(s);
+                    }
+                    _this.page = _this.page+1;
+                }else{
+                    _this.reachLimit = true;
+                    $('div#lastPostsLoader').html('<hr><center><small><em>End of page</em></small></center>');
+                }
+            });
+        }
     };
     
+    
     $(document).ready(function(){
-        //store article ids
-        $('.media').each(function(){
-            list_id.push($(this).attr('data-id'));
-        });
+        News.setDataLimit($('#limit').val());
+        News.setCategory($('#category').val());
+        News.init();
         //lastAddedLiveFunc();
         $(window).scroll(function(){
 
@@ -87,7 +80,7 @@
 
             if  ((wintop/(docheight-winheight)) > scrolltrigger) {
              //console.log('scroll bottom');
-             lastAddedLiveFunc();
+             News.loadNews();
             }
         });
     });
