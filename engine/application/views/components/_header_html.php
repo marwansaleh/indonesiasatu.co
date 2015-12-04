@@ -53,7 +53,7 @@
                 FB.init({
                   appId      : '<?php echo $FB_ID; ?>',
                   xfbml      : true,
-                  version    : 'v2.0'
+                  version    : 'v2.5'
                 });
             };
             (function(d, s, id) {
