@@ -97,6 +97,44 @@ class Auth extends MY_Controller {
         redirect('auth');
     }
     
+    function twitter_redirect(){
+        $this->load->library('twconnect');
+
+        /* twredirect() parameter - callback point in your application */
+        /* by default the path from config file will be used */
+        $ok = $this->twconnect->twredirect('auth/twitter_callback');
+
+        if (!$ok) {
+            echo 'Could not connect to Twitter. Refresh the page or try again later.';
+        }
+    }
+    
+    function twitter_callback(){
+        $this->load->library('twconnect');
+
+        $ok = $this->twconnect->twprocess_callback();
+
+        if ( $ok ) { redirect('auth/twitter_success'); }
+        else { redirect ('auth/twitter_failure'); }
+    }
+    
+    function twitter_success(){
+        echo 'Twitter connect succeded<br/>';
+
+        $this->load->library('twconnect');
+
+        // saves Twitter user information to $this->twconnect->tw_user_info
+        // twaccount_verify_credentials returns the same information
+        $this->twconnect->twaccount_verify_credentials();
+
+        echo 'Authenticated user info ("GET account/verify_credentials"):<br/><pre>';
+        print_r($this->twconnect->tw_user_info); echo '</pre>';
+    }
+    
+    function twitter_failure(){
+        echo '<p>Twitter connect failed</p>';
+    }
+    
     
     function hashit(){
         $subject = $this->input->get('subject');
