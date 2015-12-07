@@ -13,5 +13,7 @@
         <script src="<?php echo site_url(config_item('path_lib').'jquery-ticker/jquery.ticker.js'); ?>"></script>
         <!-- Flexslider -->
         <script src="<?php echo site_url(config_item('path_lib').'flexslider/2.4/jquery.flexslider-min.js'); ?>"></script>
+        <!-- custom social media js -->
+        <script src="<?php echo site_url(config_item('path_assets').'js/socmed.js'); ?>"></script>
     </body>
 </html>
