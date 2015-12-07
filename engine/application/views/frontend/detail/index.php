@@ -193,8 +193,11 @@
                         $('form#form-comment')[0].reset();
                     }
                 });
-            }else{
+            }else if (!this.isLoggedIn){
                 alert('Maaf, komentar tidak diijinkan. Silahkan login terlebih dahulu.');
+                $('#login-dialog').modal('show');
+            }else{
+                alert('Maaf, komentar tidak diijinkan untuk artikel ini.');
             }
         },
         deleteComment: function(id){
