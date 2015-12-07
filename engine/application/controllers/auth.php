@@ -17,7 +17,11 @@ class Auth extends MY_Controller {
             if ($this->users->has_access('CAN_CP')){
                 redirect('cms/dashboard');
             }else{
-                redirect('home');
+                if ($this->session->userdata('success_redirect')){
+                    redirect($this->session->userdata('success_redirect'));
+                }else{
+                    redirect('home');
+                }
             }
         }
         
@@ -93,12 +97,13 @@ class Auth extends MY_Controller {
     
     function logout(){
         $can_cp = $this->users->has_access('CAN_CP');
+        $success_redirect = $this->input->get('redirect') ? $this->input->get('redirect') : site_url('home');
         
         $this->users->logout();
         if ($can_cp){
             redirect('auth');
         }else{
-            redirect('home');
+            redirect($success_redirect);
         }
     }
     
@@ -115,7 +120,8 @@ class Auth extends MY_Controller {
     
     function twitter_redirect(){
         $this->load->library('twconnect', $this->_get_twitter_params());
-
+        $success_redirect = $this->input->get('redirect') ? $this->input->get('redirect') : site_url('home');
+        $this->session->set_userdata('success_redirect', $success_redirect);
         /* twredirect() parameter - callback point in your application */
         /* by default the path from config file will be used */
         $ok = $this->twconnect->twredirect('auth/twitter_callback');
@@ -137,7 +143,7 @@ class Auth extends MY_Controller {
     function twitter_success(){
         $this->load->library('twconnect', $this->_get_twitter_params());
         //Load data model
-        $this->load->model('users/user_socmed_m', 'users/usergroup_m');
+        $this->load->model(array('users/user_socmed_m', 'users/usergroup_m'));
 
         // saves Twitter user information to $this->twconnect->tw_user_info
         // twaccount_verify_credentials returns the same information
