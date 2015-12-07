@@ -812,7 +812,7 @@ header .logo-line .logo a {
   color: black;
   font-size: 16px;
 }
-#main .related-news {
+#main .related-news, #main .comment-container {
   margin-top: 20px;
   float: left;
   width: 98%;
