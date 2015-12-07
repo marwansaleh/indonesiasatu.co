@@ -4,6 +4,12 @@
  *
  * @author marwansaleh
  */
+
+//required by facebook sdk
+if (session_status() != PHP_SESSION_ACTIVE){
+    session_start();
+}
+
 class Auth extends MY_Controller {
     function __construct() {
         parent::__construct();
