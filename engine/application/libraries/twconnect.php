@@ -69,12 +69,17 @@ class Twconnect extends TwitterOAuth {
 
 	/**
 	 * 1. Twconnect class constructor, // not yet - checks login and puts user information in $this->user array
+         * tw_config {consumer_key,consumer_secret,oauth_callback}
 	 */
-	public function Twconnect() {
+	public function Twconnect($tw_config=NULL) {
 		
 		$ci =& get_instance();
-		$ci->config->load('twitter', true);
-		$config = $ci->config->item('twitter');
+                if (!$tw_config || !is_array($tw_config)){
+                    $ci->config->load('twitter', true);
+                    $config = $ci->config->item('twitter');
+                }else{
+                    $config = $tw_config;
+                }
 
 		/* Try to retrieve user access token (permanent) from session */
 		$access_token = $ci->session->userdata('tw_access_token');
