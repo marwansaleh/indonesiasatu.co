@@ -106,6 +106,9 @@ class Detail extends MY_News {
             'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_ORI)
         ));
         
+        //support for comments
+        $this->data['is_admin'] = $this->users->isLoggedin() ? $this->users->is_admin() : FALSE;
+        
         //$this->data['main_slider'] = TRUE;
         $this->data['subview'] = 'frontend/detail/index';
         $this->load->view('_layout_main', $this->data);
