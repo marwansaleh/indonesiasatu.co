@@ -5,6 +5,17 @@
  * @author marwansaleh
  */
 class Comment extends REST_Api {
+    private $_remap_fields = array(
+        'id'                => 'id',
+        'sender'            => 'user_id',
+        'ip_address'        => 'ip_address',
+        'date'              => 'date',
+        'article_id'        => 'article',
+        'article_title'     => 'title',
+        'comment'           => 'comment',
+        'is_approved'       => 'approved'
+    );
+    
     function __construct($config='rest') {
         parent::__construct($config);
     }
@@ -13,20 +24,10 @@ class Comment extends REST_Api {
         //load models
         $this->load->model(array('article/article_m','article/comment_m','users/user_m'));
         $this->load->helper('general');
-        $remap_fields = array(
-            'id'                => 'id',
-            'sender'            => 'user_id',
-            'ip_address'        => 'ip_address',
-            'date'              => 'date',
-            'article_id'        => 'article_id',
-            'article_title'     => 'article_title',
-            'comment'           => 'comment',
-            'is_approved'       => 'approved'
-        );
         
         if ($id){
             $item = $this->comment_m->get($id);
-            $this->result = $this->remap_fields($remap_fields, $this->_proccess_item($item));
+            $this->result = $this->remap_fields($this->_remap_fields, $this->_proccess_item($item));
         }else{
             $limit = $this->get('limit') ? $this->get('limit') : 100;
             $page = $this->get('page') ? $this->get('page') : 1;
@@ -39,7 +40,7 @@ class Comment extends REST_Api {
             
             $items = $this->comment_m->get_offset('*',$condition,($page-1)*$limit,$limit);
             foreach ($items as $item){
-                $this->result [] = $this->remap_fields($remap_fields, $this->_proccess_item($item));
+                $this->result [] = $this->remap_fields($this->_remap_fields, $this->_proccess_item($item));
             }
         }
         
@@ -53,6 +54,45 @@ class Comment extends REST_Api {
         return $item;
     }
     
+    function index_post(){
+        $data = array(
+            'sender'        => $this->post('sender'),
+            'ip_address'    => $this->input->ip_address(),
+            'date'          => time(),
+            'article_id'    => $this->post('article'),
+            'comment'       => $this->post('comment'),
+            'is_approved'   => 0 //not apporove init
+        );
+        
+        if (($inserted_id=$this->comment_m->save($data))){
+            $this->result['status'] = TRUE;
+            $new_item = $this->comment_m->get($inserted_id);
+            $this->result['item'] = $this->remap_fields($this->_remap_fields, $this->_proccess_item($new_item));
+        }else{
+            $this->result['status'] = FALSE;
+            $this->result['message'] = $this->comment_m->get_last_message();
+        }
+        
+        $this->response($this->result);
+    }
+    
+    function index_delete($id){
+        $item = $this->comment_m->get($id);
+        if ($item){
+            if ($this->comment_m->delete($id)){
+                $this->result['status'] = TRUE;
+                $this->result['message'] = 'Data item has been deleted successfully.';
+            }else{
+                $this->result['status'] = FALSE;
+                $this->result['message'] = 'Failed to delete data item with message:'. $this->comment_m->get_last_message;
+            }
+        }else{
+            $this->result['status'] = FALSE;
+            $this->result['message'] = 'Can not find data item with ID:'.$id;
+        }
+        
+        $this->response($this->result);
+    }
 }
 
 /*
