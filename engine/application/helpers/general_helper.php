@@ -467,6 +467,12 @@ if (!function_exists('get_image_thumb')){
     }
 }
 
+if (!function_exists('boolval')){
+    function boolval($value){
+        return (bool) $value;
+    }
+}
+
 if (!function_exists('variable_type_cast')){
     function variable_type_cast($value, $type='string'){
         switch ($type){
