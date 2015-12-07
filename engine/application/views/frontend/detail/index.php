@@ -166,7 +166,7 @@
                         }
                     s+= '</li>';
                     
-                    $('#comment-list').prepend(s);
+                    $('#comment-list').append(s);
                 }
             });
         },
