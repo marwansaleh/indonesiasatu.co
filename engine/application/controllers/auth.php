@@ -92,16 +92,21 @@ class Auth extends MY_Controller {
     }
     
     function logout(){
+        $can_cp = $this->users->has_access('CAN_CP');
         
         $this->users->logout();
-        redirect('auth');
+        if ($can_cp){
+            redirect('auth');
+        }else{
+            redirect('home');
+        }
     }
     
     private function _get_twitter_params(){
         $params = $this->get_sys_parameters('TW_');
         $result = array(
             'consumer_key'      => isset($params['TW_API_KEY']) ? $params['TW_API_KEY'] : 'NXOtnYZ2qqSWPErSBWuVLnSaY',
-            'cosumer_secret'    => isset($params['TW_API_SECRET']) ? $params['TW_API_SECRET'] : 'QOcUJiQup7UciWXWWje4VpPS6JfKtzZ504C4FrQvELboYCcDEc',
+            'consumer_secret'   => isset($params['TW_API_SECRET']) ? $params['TW_API_SECRET'] : 'QOcUJiQup7UciWXWWje4VpPS6JfKtzZ504C4FrQvELboYCcDEc',
             'oauth_callback'    => isset($params['TW_OAUTH_CALLBACK']) ? $params['TW_OAUTH_CALLBACK'] : '/auth/twitter_callback',
         );
         
@@ -130,20 +135,67 @@ class Auth extends MY_Controller {
     }
     
     function twitter_success(){
-        echo 'Twitter connect succeded<br/>';
-
         $this->load->library('twconnect', $this->_get_twitter_params());
+        //Load data model
+        $this->load->model('users/user_socmed_m', 'users/usergroup_m');
 
         // saves Twitter user information to $this->twconnect->tw_user_info
         // twaccount_verify_credentials returns the same information
         $this->twconnect->twaccount_verify_credentials();
 
-        echo 'Authenticated user info ("GET account/verify_credentials"):<br/><pre>';
-        print_r($this->twconnect->tw_user_info); echo '</pre>';
+        //echo 'Authenticated user info ("GET account/verify_credentials"):<br/><pre>';
+        //print_r($this->twconnect->tw_user_info); echo '</pre>';
+        
+        $userinfo = $this->twconnect->tw_user_info;
+        
+        $username = CLIENTAPP_TWITTER .'_'. $userinfo->id;
+        $password = $userinfo->id;
+        //check if account exists
+        if (!$this->user_socmed_m->get_count(array('client_app' => CLIENTAPP_TWITTER, 'client_id' => $userinfo->id))){
+            
+            //create new user internall database
+            $user_id = $this->user_m->save(array(
+                'username'  => $username,
+                'password'  => $this->users->hash($password),
+                'full_name' => $userinfo->name ? $userinfo->name : $userinfo->screen_name,
+                'group_id'  => $this->usergroup_m->get_value('group_id',array('group_name' => 'Socmed')),
+                'type'      => USERTYPE_EXTERNAL,
+                'avatar'    => $userinfo->profile_image_url,
+                'last_ip'   => $this->input->ip_address(),
+                'created_on'=> time(),
+                'is_active' => 1
+            ));
+            if ($user_id){
+                $this->user_socmed_m->save(array(
+                    'user_id'       => $user_id,
+                    'client_app'    => CLIENTAPP_TWITTER,
+                    'client_id'     => $userinfo->id,
+                    'client_name'   => $userinfo->name ? $userinfo->name : $userinfo->screen_name,
+                    'client_email'  => ''
+                ));
+                
+                $this->_write_log('New socmed account created successfully');
+            }
+        }else{
+            $this->_write_log('Socmed account exists');
+        }
+        
+        //login using internal account
+        if (!$this->users->login($username, $password)){
+            $this->session->set_flashdata('message_type','error');
+            $this->session->set_flashdata('message', $this->users->get_message());
+            
+            $this->_write_log('Failed login using socmed account');
+        }else{
+            $this->_write_log('Login successfull using socmed account');
+        }
+        redirect('auth');
     }
     
     function twitter_failure(){
-        echo '<p>Twitter connect failed</p>';
+        $this->session->set_flashdata('message_type','error');
+        $this->session->set_flashdata('message', 'Login failure using twitter account');
+        redirect('auth');
     }
     
     
