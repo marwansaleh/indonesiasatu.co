@@ -24,14 +24,16 @@
                     <div class="col-sm-12 top-menu hidden-xs">
                         <div class="pull-right">
                             <ul>
+                                <?php if ($is_logged_in): ?>
                                 <li>
-                                    <?php if ($is_logged_in): ?>
                                     <a href="<?php echo site_url('auth/logout'); ?>">Logout</a>
-                                    <?php else: ?>
-                                    <a href="<?php echo site_url('auth'); ?>">Login</a>
-                                    <?php endif; ?>
                                 </li>
-                                <li><a href="#">Register</a></li>
+                                <?php else: ?>
+                                <li>
+                                    <a class="btn btn-link" data-toggle="modal" data-target="#login-dialog">Login</a>
+                                </li>
+                                <li><a class="btn btn-link">Register</a></li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </div>
@@ -82,3 +84,55 @@
         </div>
     </div>
 </header>
+<?php if (!$is_logged_in): ?>
+<div class="modal fade" id="login-dialog" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">User Login</h4>
+            </div>
+            <div class="modal-body">
+                <form id="form-login" action="<?php echo site_url('auth/login'); ?>" method="post">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <label for="username" class="control-label">Username</label>
+                                <input type="text" name="username" id="username" class="form-control" placeholder="Username" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="control-label">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="box bg-blue">
+                                <div class="content">
+                                    <p>Or you can select your login option</p>
+                                    <a class="btn btn-block btn-social btn-twitter">
+                                        <span class="fa fa-twitter"></span> Sign in with Twitter
+                                    </a>
+                                    <a class="btn btn-block btn-social btn-facebook">
+                                        <span class="fa fa-facebook"></span> Sign in with Facebook
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <hr>
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<?php endif; ?>
