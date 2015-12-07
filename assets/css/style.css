@@ -865,6 +865,25 @@ header .logo-line .logo a {
   font-style: italic;
   font-family: "Droid Serif", Arial;
 }
+#main .comment-container .column {
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+#main .comment-container .column .inner {
+    padding: 10px;
+}
+#main .comment-container #comment-list { list-style: none; margin: 0; padding: 0; width:100%; }
+#main .comment-container #comment-list li { 
+    float:left; margin: 5px 0 10px; padding: 10px; width:100%; 
+    
+    -webkit-box-shadow: 3px 3px 3px 0px rgba(204,204,204,1);
+    -moz-box-shadow: 3px 3px 3px 0px rgba(204,204,204,1);
+    box-shadow: 3px 3px 3px 0px rgba(204,204,204,1);
+}
+#main .comment-container #comment-list li .name { display: block; float: left; padding: 0; font-size: 14px; width:100%; }
+#main .comment-container #comment-list li .date { display: block; float: left; padding: 0; margin: 0; font-size:10px; font-style: italic; color: #ccc; width:100%;}
+#main .comment-container #comment-list li .text { display: block; float: left; padding: 0; margin: 5px 0 0 0; font-size: 12px; width:100%; }
 #main h2 {
   font-family: Abel, Arial;
   font-size: 22px;
