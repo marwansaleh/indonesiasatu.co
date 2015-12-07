@@ -54,6 +54,8 @@ define('IMAGE_THUMB_TINY', 'tiny');
 
 define('USERTYPE_INTERNAL', 0);
 define('USERTYPE_EXTERNAL', 1);
+define('CLIENTAPP_TWITTER', 'twitter');
+define('CLIENTAPP_FACEBOOK', 'facebook');
 
 define('ARTICLE_TYPE_SLIDER','slider-news');
 define('ARTICLE_TYPE_HIGHLIGHT','highlight');
