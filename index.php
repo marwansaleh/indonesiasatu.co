@@ -199,6 +199,8 @@ spl_autoload_register(function ($classname)
     }
 });
 
+define('FACEBOOK_SDK_V4_SRC_DIR', APPPATH . 'libraries/facebook-sdk-v5/');
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
