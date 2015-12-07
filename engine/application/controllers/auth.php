@@ -228,11 +228,11 @@ class Auth extends MY_Controller {
         require_once FACEBOOK_SDK_V4_SRC_DIR . 'autoload.php';
         
         $fb_params = $this->_get_facebook_params();
-        $fb = new Facebook\Facebook([
+        $fb = new Facebook\Facebook(array(
             'app_id' => $fb_params['app_id'],
             'app_secret' => $fb_params['app_secret'],
             'default_graph_version' => 'v2.2'
-        ]);
+        ));
         
         $helper = $fb->getRedirectLoginHelper();
         $permissions = explode(',', $fb_params['app_scope']); // optional
@@ -245,11 +245,11 @@ class Auth extends MY_Controller {
         require_once FACEBOOK_SDK_V4_SRC_DIR . 'autoload.php';
         
         $fb_params = $this->_get_facebook_params();
-        $fb = new Facebook\Facebook([
+        $fb = new Facebook\Facebook(array(
             'app_id' => $fb_params['app_id'],
             'app_secret' => $fb_params['app_secret'],
             'default_graph_version' => 'v2.2'
-        ]);
+        ));
 
         $helper = $fb->getRedirectLoginHelper();
         try {
@@ -287,11 +287,11 @@ class Auth extends MY_Controller {
         require_once FACEBOOK_SDK_V4_SRC_DIR . 'autoload.php';
         
         $fb_params = $this->_get_facebook_params();
-        $fb = new Facebook\Facebook([
+        $fb = new Facebook\Facebook(array(
             'app_id' => $fb_params['app_id'],
             'app_secret' => $fb_params['app_secret'],
             'default_graph_version' => 'v2.2'
-        ]);
+        ));
         
         try {
             // Returns a `Facebook\FacebookResponse` object
