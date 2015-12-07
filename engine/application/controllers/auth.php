@@ -97,8 +97,19 @@ class Auth extends MY_Controller {
         redirect('auth');
     }
     
+    private function _get_twitter_params(){
+        $params = $this->get_sys_parameters('TW_');
+        $result = array(
+            'consumer_key'      => isset($params['TW_API_KEY']) ? $params['TW_API_KEY'] : 'NXOtnYZ2qqSWPErSBWuVLnSaY',
+            'cosumer_secret'    => isset($params['TW_API_SECRET']) ? $params['TW_API_SECRET'] : 'QOcUJiQup7UciWXWWje4VpPS6JfKtzZ504C4FrQvELboYCcDEc',
+            'oauth_callback'    => isset($params['TW_OAUTH_CALLBACK']) ? $params['TW_OAUTH_CALLBACK'] : '/auth/twitter_callback',
+        );
+        
+        return $result;
+    }
+    
     function twitter_redirect(){
-        $this->load->library('twconnect');
+        $this->load->library('twconnect', $this->_get_twitter_params());
 
         /* twredirect() parameter - callback point in your application */
         /* by default the path from config file will be used */
@@ -110,7 +121,7 @@ class Auth extends MY_Controller {
     }
     
     function twitter_callback(){
-        $this->load->library('twconnect');
+        $this->load->library('twconnect', $this->_get_twitter_params());
 
         $ok = $this->twconnect->twprocess_callback();
 
@@ -121,7 +132,7 @@ class Auth extends MY_Controller {
     function twitter_success(){
         echo 'Twitter connect succeded<br/>';
 
-        $this->load->library('twconnect');
+        $this->load->library('twconnect', $this->_get_twitter_params());
 
         // saves Twitter user information to $this->twconnect->tw_user_info
         // twaccount_verify_credentials returns the same information
