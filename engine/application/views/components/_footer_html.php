@@ -1,3 +1,12 @@
+        <script type="text/javascript">
+            window.fbAsyncInit = function() {
+                FB.init({
+                  appId      : '<?php echo $FB_ID; ?>',
+                  xfbml      : true,
+                  version    : 'v2.5'
+                });
+            };
+        </script>
         <!-- bootstrap -->
         <script src="<?php echo site_url(config_item('path_lib').'bootstrap/js/bootstrap.min.js'); ?>"></script>
         <!-- nice scroll -->
