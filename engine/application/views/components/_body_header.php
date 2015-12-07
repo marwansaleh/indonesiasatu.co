@@ -109,7 +109,7 @@
                             <div class="box bg-blue">
                                 <div class="content">
                                     <p>Or you can select your login option</p>
-                                    <a class="btn btn-block btn-social btn-twitter" href="<?php echo site_url('auth/twitter_redirect'); ?>">
+                                    <a class="btn btn-block btn-social btn-twitter" href="<?php echo site_url('auth/twitter_redirect?redirect='. urlencode(current_url())); ?>">
                                         <span class="fa fa-twitter"></span> Sign in with Twitter
                                     </a>
                                     <a class="btn btn-block btn-social btn-facebook">
