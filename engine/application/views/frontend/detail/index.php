@@ -77,7 +77,141 @@
     </div>
 </div>
 <?php endif; ?>
+<?php if ($article->allow_comment==1): ?>
+<div class="row">
+    <div class="comment-container">
+        <div class="inner-box">
+            <h1 class="title">Komentar</h1>
+            <form id="form-comment">
+                <input type="hidden" id="article" name="article" value="<?php echo $article->id; ?>" />
+                <input type="hidden" id="is_logged_in" name="is_logged_in" value="<?php echo $is_logged_in; ?>" />
+                <input type="hidden" id="is_admin" name="is_admin" value="<?php echo $is_admin; ?>" />
+                <input type="hidden" id="sender" name="sender" value="<?php echo isset($me)?$me->id:NULL; ?>" />
+                <input type="hidden" id="allow_comment" name="allow_comment" value="<?php echo $article->allow_comment; ?>" />
+                
+                <div class="column">
+                    <div class="inner">
+                        <div class="form-group">
+                            <textarea class="form-control" id="input-comment" name="comment" maxlength="254" placeholder="Tulis komentar"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" id="btn-submit-comment" class="btn btn-default" loading-text="Saving...">Simpan</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="column">
+                <div class="inner">
+                    <ul id="comment-list"><!-- load by ajax --></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 <script type="text/javascript">
+    $(document).ready (function (){
+        ArticleDetailManager.setAllowComment($('#allow_comment').val()==1 ? true:false);
+        ArticleDetailManager.setArticleId($('#article').val());
+        ArticleDetailManager.setLoggedIn($('#is_logged_in').val() ? true:false);
+        ArticleDetailManager.setAdmin($('#is_admin').val() ? true:false);
+        ArticleDetailManager.init();
+        
+//        $('#input-comment').on('focus', function(){
+//            if (ArticleDetailManager.isLoggedIn == false){
+//                alert('Anda harus login untuk menulis komentar');
+//            }
+//        });
+        $('form#form-comment').on('submit', function (e){
+            e.preventDefault();
+            if ($('#input-comment').val()){
+                ArticleDetailManager.saveComment($(this).serialize());
+            }
+        });
+    });
+    var ArticleDetailManager = {
+        isLoggedIn: false,
+        isAdmin: false,
+        allowComment: false,
+        articleID: 0,
+        setAllowComment: function (bool){
+            this.allowComment = bool;
+        },
+        setArticleId: function (id){
+            this.articleID = parseInt(id);
+        },
+        setLoggedIn: function (bool){
+            this.isLoggedIn = bool;
+        },
+        setAdmin: function (bool){
+            this.isAdmin = bool;
+        },
+        init: function (){
+            if (this.allowComment){
+                this.loadComments();
+            }else{
+                console.log('Comment is not allowed');
+            }
+        },
+        loadComments: function (){
+            var _this = this;
+            $.getJSON("<?php echo site_url('service/comment/index'); ?>",{article:_this.articleID},function(data){
+                for (var i in data){
+                    var s = '<li id="'+data[i].id+'">';
+                        s+= '<h4 class="name">'+data[i].name+'</h4>';
+                        s+= '<p class="date">'+data[i].date+'</p>';
+                        s+= '<p class="text">'+data[i].comment+'</p>';
+                        if (_this.isAdmin){
+                            s+= '<p><a class="btn btn-warning pull-right" href="javascript:ArticleDetailManager.deleteComment('+data[i].id+');">Delete</a></p>';
+                        }
+                    s+= '</li>';
+                    
+                    $('#comment-list').prepend(s);
+                }
+            });
+        },
+        saveComment: function (serialized){
+            var _this = this;
+            if (_this.allowComment && this.isLoggedIn){
+                $('#btn-submit-comment').button('loading');
+                $.post("<?php echo site_url('service/comment/index'); ?>",serialized,function(data){
+                    $('#btn-submit-comment').button('reset');
+                    if (data.status==true){
+                        var s = '<li id="'+data.item.id+'">';
+                            s+= '<h4 class="name">'+data.item.name+'</h4>';
+                            s+= '<p class="date">'+data.item.date+'</p>';
+                            s+= '<p class="text">'+data.item.comment+'</p>';
+                            
+                            if (_this.isAdmin){
+                                s+= '<p><a class="btn btn-warning pull-right" href="javascript:ArticleDetailManager.deleteComment('+data[i].id+');">Delete</a></p>';
+                            }
+                        s+= '</li>';
+
+                        $('#comment-list').prepend(s);
+
+                        //clear form
+                        $('form#form-comment')[0].reset();
+                    }
+                });
+            }else{
+                alert('Maaf, komentar tidak diijinkan. Silahkan login terlebih dahulu.');
+            }
+        },
+        deleteComment: function(id){
+            if (this.isAdmin){
+                $.ajax({
+                    url: '<?php echo site_url('service/comment/index'); ?>/'+id,
+                    type: 'DELETE',
+                    success: function(result) {
+                        if (result.status==true){
+                            $('li#'+id).remove();
+                        }
+                    }
+                });
+            }
+        }
+    };
+    
     window.fbAsyncInit = function() {
         FB.init({
           appId      : '<?php echo $FB_ID; ?>',
