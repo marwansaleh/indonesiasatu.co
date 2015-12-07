@@ -18,11 +18,13 @@ class Comment extends REST_Api {
     
     function __construct($config='rest') {
         parent::__construct($config);
+        
+        $this->load->model(array('article/article_m','users/user_m','article/comment_m'));
     }
     
     function index_get($id=NULL){
         //load models
-        $this->load->model(array('article/article_m','article/comment_m','users/user_m'));
+        
         $this->load->helper('general');
         
         if ($id){
@@ -61,8 +63,15 @@ class Comment extends REST_Api {
             'date'          => time(),
             'article_id'    => $this->post('article'),
             'comment'       => $this->post('comment'),
-            'is_approved'   => 0 //not apporove init
         );
+        
+        //is comment auto approve ?
+        $parameters = $this->get_sys_vars('COMMENT_AUTO_APPROVE');
+        if ($parameters && $parameters['COMMENT_AUTO_APPROVE']){
+            $data['is_approved'] = 1;
+        }else{
+            $data['is_approved'] = 0;
+        }
         
         if (($inserted_id=$this->comment_m->save($data))){
             $this->result['status'] = TRUE;
