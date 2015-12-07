@@ -46,6 +46,7 @@ class REST_Api extends REST_Controller {
     }
     
     protected function get_sys_vars($pattern=NULL){
+        $this->load->helper('general');
         $this->load->model('system/sys_variables_m','sysvar_m');
         
         $sysvars = array();
