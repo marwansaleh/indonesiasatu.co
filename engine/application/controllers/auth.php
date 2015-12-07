@@ -204,6 +204,158 @@ class Auth extends MY_Controller {
         redirect('auth');
     }
     
+    private function _get_facebook_params(){
+        $params = $this->get_sys_parameters('FB_');
+        $result = array(
+            'app_id'      => isset($params['FB_APP_ID']) ? $params['FB_APP_ID'] : '1667512626834805',
+            'app_secret'   => isset($params['FB_APP_SECRET']) ? $params['FB_APP_SECRET'] : '543b16b8a1b919a77b83e3fc5043eda1',
+            'app_scope'   => isset($params['FB_APP_SCOPE']) ? $params['FB_APP_SCOPE'] : 'email,user_likes,public_profile,user_friends'
+        );
+        
+        return $result;
+    }
+    
+    function facebook_redirect(){
+        $success_redirect = $this->input->get('redirect') ? $this->input->get('redirect') : site_url('home');
+        $this->session->set_userdata('success_redirect', $success_redirect);
+        
+        require_once FACEBOOK_SDK_V4_SRC_DIR . 'autoload.php';
+        
+        $fb_params = $this->_get_facebook_params();
+        $fb = new Facebook\Facebook([
+            'app_id' => $fb_params['app_id'],
+            'app_secret' => $fb_params['app_secret'],
+            'default_graph_version' => 'v2.2'
+        ]);
+        
+        $helper = $fb->getRedirectLoginHelper();
+        $permissions = explode(',', $fb_params['app_scope']); // optional
+        $loginUrl = $helper->getLoginUrl(site_url('auth/facebook_callback'), $permissions);
+
+        redirect($loginUrl);
+    }
+    
+    function facebook_callback(){
+        require_once FACEBOOK_SDK_V4_SRC_DIR . 'autoload.php';
+        
+        $fb_params = $this->_get_facebook_params();
+        $fb = new Facebook\Facebook([
+            'app_id' => $fb_params['app_id'],
+            'app_secret' => $fb_params['app_secret'],
+            'default_graph_version' => 'v2.2'
+        ]);
+
+        $helper = $fb->getRedirectLoginHelper();
+        try {
+            $accessToken = $helper->getAccessToken();
+        } catch (Facebook\Exceptions\FacebookResponseException $e) {
+            // When Graph returns an error
+            $this->session->set_flashdata('message_type','error');
+            $this->session->set_flashdata('message', 'Graph returned an error: ' . $e->getMessage());
+            
+            $this->_write_log('Failed login using facebook account with message:'.$e->getMessage());
+                    
+            redirect('auth');
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+            // When validation fails or other local issues
+            $this->session->set_flashdata('message_type','error');
+            $this->session->set_flashdata('message', 'Facebook SDK returned an error: ' . $e->getMessage());
+            
+            $this->_write_log('Failed login using facebook account with message:'.'Facebook SDK returned an error: ' . $e->getMessage());
+            redirect('auth');
+        }
+
+        if (isset($accessToken)) {
+            // Logged in!
+            $this->session->set_userdata('facebook_access_token', (string) $accessToken);
+
+            // Now you can redirect to another page and use the
+            // access token from $_SESSION['facebook_access_token']
+            redirect('auth/facebook_success');
+        }else{
+            redirect('auth/facebook_failed');
+        }
+    }
+    
+    function facebook_success(){
+        require_once FACEBOOK_SDK_V4_SRC_DIR . 'autoload.php';
+        
+        $fb_params = $this->_get_facebook_params();
+        $fb = new Facebook\Facebook([
+            'app_id' => $fb_params['app_id'],
+            'app_secret' => $fb_params['app_secret'],
+            'default_graph_version' => 'v2.2'
+        ]);
+        
+        try {
+            // Returns a `Facebook\FacebookResponse` object
+            $response = $fb->get('/me?fields=id,name,email', $this->session->userdata('facebook_access_token'));
+        } catch (Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+
+        $userinfo = $response->getGraphUser();
+        var_dump($userinfo); exit;
+        
+        //try to check if user socmed exists
+        //Load data model
+        $this->load->model(array('users/user_socmed_m', 'users/usergroup_m'));
+        
+        $username = CLIENTAPP_FACEBOOK .'_'. $userinfo['id'];
+        $password = $userinfo['id'];
+        //check if account exists
+        if (!$this->user_socmed_m->get_count(array('client_app' => CLIENTAPP_FACEBOOK, 'client_id' => $userinfo['id']))){
+            
+            //create new user internall database
+            $user_id = $this->user_m->save(array(
+                'username'  => $username,
+                'password'  => $this->users->hash($password),
+                'full_name' => $userinfo['name'],
+                'group_id'  => $this->usergroup_m->get_value('group_id',array('group_name' => 'Socmed')),
+                'type'      => USERTYPE_EXTERNAL,
+                'avatar'    => $userinfo->profile_image_url,
+                'last_ip'   => $this->input->ip_address(),
+                'created_on'=> time(),
+                'is_active' => 1
+            ));
+            if ($user_id){
+                $this->user_socmed_m->save(array(
+                    'user_id'       => $user_id,
+                    'client_app'    => CLIENTAPP_TWITTER,
+                    'client_id'     => $userinfo->id,
+                    'client_name'   => $userinfo->name ? $userinfo->name : $userinfo->screen_name,
+                    'client_email'  => ''
+                ));
+                
+                $this->_write_log('New socmed account created successfully');
+            }
+        }else{
+            $this->_write_log('Socmed account exists');
+        }
+        
+        //login using internal account
+        if (!$this->users->login($username, $password)){
+            $this->session->set_flashdata('message_type','error');
+            $this->session->set_flashdata('message', $this->users->get_message());
+            
+            $this->_write_log('Failed login using socmed account');
+        }else{
+            $this->_write_log('Login successfull using socmed account');
+        }
+        redirect('auth');
+    }
+    
+    function facebook_failed(){
+        $this->session->set_flashdata('message_type','error');
+        $this->session->set_flashdata('message', 'Can not define access token');
+
+        $this->_write_log('Failed login using facebook account with message:Can not define access token');
+        redirect('auth');
+    }
     
     function hashit(){
         $subject = $this->input->get('subject');
