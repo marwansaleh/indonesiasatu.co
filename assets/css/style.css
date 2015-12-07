@@ -817,7 +817,7 @@ header .logo-line .logo a {
   float: left;
   width: 98%;
 }
-#main .related-news .inner-box {
+#main .related-news .inner-box, #main .comment-container .inner-box {
   border: solid 1px #d3d2d2;
 }
 #main .related-news h1 {
