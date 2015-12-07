@@ -826,7 +826,7 @@ header .logo-line .logo a {
   font-family: Abel, Arial;
   font-weight: normal;
 }
-#main .related-news h1.title {
+#main .related-news h1.title, #main .comment-container h1.title {
   font-size: 17px;
   line-height: 18px;
   margin: 0;
