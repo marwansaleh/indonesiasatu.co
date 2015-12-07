@@ -254,6 +254,9 @@ class MY_Controller extends MY_BaseController {
         
         //is user loggedin
         $this->data['is_logged_in'] = $this->users->isLoggedin();
+        if ($this->users->isLoggedin()){
+            $this->data['me'] = $this->users->me();
+        }
         
         $this->meta_set_default();
         $this->og_set_default();
@@ -431,8 +434,6 @@ class MY_AdminController extends MY_Controller {
         
         //set user loggedin info
         $this->data['avatar_url_me'] = $this->users->get_avatar_url();
-        $this->data['me'] = $this->users->me();
-        
         //set parameter for filemanager
         $this->_filemanager_setup();
     }
