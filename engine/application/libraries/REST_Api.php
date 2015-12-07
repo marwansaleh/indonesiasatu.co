@@ -44,4 +44,35 @@ class REST_Api extends REST_Controller {
         }
         return $new_class;
     }
+    
+    protected function get_sys_vars($pattern=NULL){
+        $this->load->model('system/sys_variables_m','sysvar_m');
+        
+        $sysvars = array();
+        $result = NULL;
+        
+        if (!$pattern){
+            $result = $this->sysvar_m->get();
+        }else{
+            if (is_array($pattern)){
+                foreach($pattern as $index => $p){
+                    if ($index==0):
+                        $this->db->like('var_name', $p);
+                    else:
+                        $this->db->or_like('var_name', $p);
+                    endif;
+                }
+            }else{
+                $this->db->like('var_name', $pattern);
+            }
+            $result = $this->sysvar_m->get();
+        }
+        if ($result){
+            foreach ($result as $var){
+                $sysvars[$var->var_name] = variable_type_cast($var->var_value,$var->var_type);
+            }
+        }
+        
+        return $sysvars;
+    }
 }
