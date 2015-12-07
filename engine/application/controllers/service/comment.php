@@ -7,7 +7,8 @@
 class Comment extends REST_Api {
     private $_remap_fields = array(
         'id'                => 'id',
-        'sender'            => 'user_id',
+        'sender'            => 'sender',
+        'name'              => 'name',
         'ip_address'        => 'ip_address',
         'date'              => 'date',
         'article_id'        => 'article',
@@ -50,6 +51,7 @@ class Comment extends REST_Api {
     }
     
     private function _proccess_item($item){
+        $item->name = $this->user_m->get_value('full_name', array('id'=>$item->sender));
         $item->date = date('d-M-Y H:i:s', $item->date);
         $item->article_title = $this->article_m->get_value('title',array('id'=>$item->article_id));
         $item->is_approved = (bool) $item->is_approved;
