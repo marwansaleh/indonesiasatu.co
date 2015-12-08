@@ -6,9 +6,9 @@
  */
 
 //required by facebook sdk
-if (!session_id()){
-    session_start();
-}
+//if (!session_id()){
+//    session_start();
+//}
 
 class Auth extends MY_Controller {
     function __construct() {
