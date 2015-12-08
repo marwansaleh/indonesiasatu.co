@@ -495,7 +495,7 @@ if (!function_exists('get_image_thumbpath')){
         $base_path = '';
 
         if ($full_path){
-            $base_path = get_image_basepath($type, $base_path, $full_path);
+            $base_path = get_image_basepath($type, $full_path);
         }
         
         $image_path = rtrim($base_path , '/') . '/' . $filename;
