@@ -38,6 +38,7 @@
                                 <th>Datetime</th>
                                 <th>Cookie ID</th>
                                 <th>IP Address</th>
+                                <th>UserAgent</th>
                                 <th>Event Description</th>
                             </tr>
                         </thead>
@@ -84,6 +85,7 @@
                                 s+= '<td class="datetime">'+data[i].datetime+'</td>'
                                 s+= '<td class="cookie-id">'+data[i].cookie_id+'</td>';
                                 s+= '<td class="ip-address">'+data[i].ip_address+'</td>';
+                                s+= '<td class="iagent-string">'+data[i].agent_string+'</td>';
                                 s+= '<td class="event-description"><div>'+data[i].event_description+'</div></td>';
                             s+='</tr>';
                             
