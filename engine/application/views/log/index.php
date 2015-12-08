@@ -30,28 +30,35 @@
         <div id="main" class="container-fluid">
             <h1 class="page-header">Log Environment: <?php echo strtoupper(ENVIRONMENT); ?></h1>
             
-            <table class="table table-striped log-container">
-                <thead>
-                    <tr>
-                        <th>Datetime</th>
-                        <th>Cookie ID</th>
-                        <th>IP Address</th>
-                        <th>Event Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-striped table-condensed table-log">
+                        <thead>
+                            <tr>
+                                <th>Datetime</th>
+                                <th>Cookie ID</th>
+                                <th>IP Address</th>
+                                <th>Event Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         
         <script type="text/javascript">
+            $(document).ready(function (){
+                LogManager.init();
+            });
             var LogManager = {
                 inProccess: false,
-                numLine: 15,
-                repeatSecs: 6000,
+                numLine: 10,
+                repeatSecs: 15000,
                 init: function (){
-                    
+                    this.loadLines();
                 },
                 setLines: function (num){
                     this.numLine = parseInt(num); 
@@ -62,17 +69,17 @@
                         return;
                     }
                     _this.inProccess = true;
-                    
+                    $('#main table tbody').empty();
                     $.getJSON("<?php echo site_url('service/log/index'); ?>",{lines:_this.numLine},function(data){
                         
                         _this.inProccess = false;
                         
                         for (var i in data){
                             var s = '<tr>';
-                                s+= '<td>'+data[i].datetime+'</td>'
-                                s+= '<td>'+data[i].cookie_id+'</td>';
-                                s+= '<td>'+data[i].ip_address+'</td>';
-                                s+= '<td>'+data[i].event_description+'</td>';
+                                s+= '<td class="datetime">'+data[i].datetime+'</td>'
+                                s+= '<td class="cookie-id">'+data[i].cookie_id+'</td>';
+                                s+= '<td class="ip-address">'+data[i].ip_address+'</td>';
+                                s+= '<td class="event-description"><div>'+data[i].event_description+'</div></td>';
                             s+='</tr>';
                             
                             $('#main table tbody').append(s);
