@@ -117,6 +117,24 @@ class Article extends REST_Api {
         return $item;
     }
     
+    function fbshare_post($id){
+        $this->load->model('articles/shared_m');
+        
+        $post_id = $this->post('post_id');
+        
+        if (($inserted_id=$this->shared_m->save(array(
+            'article_id'        => $id,
+            'client_app'        => CLIENTAPP_FACEBOOK,
+            'user_id'           => $this->session->userdata('userid')?$this->session->userdata('userid'):0,
+            'post_id'           => $post_id,
+            'post_time'         => time()
+        )))){
+            $inserted_item = $this->shared_m->get($inserted_id);
+            $this->response($inserted_item);
+        }else{
+            $this->response(array('status'=>FALSE));
+        }
+    }
 }
 
 /*
