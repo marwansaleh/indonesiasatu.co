@@ -29,7 +29,20 @@
     <body>
         <div id="main" class="container-fluid">
             <h1 class="page-header">Log Environment: <?php echo strtoupper(ENVIRONMENT); ?></h1>
-            <center><a class="btn btn-success btn-sm" id="btn-refresh"><span class="fa fa-refresh"></span> Refresh</a></center>
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-3">
+                    <div class="input-group input-group-sm">
+                        <input type="number" class="form-control" id="lines" name="lines" step="1" min="5" value="5">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-success" id="btn-setlines"><span class="fa fa-adjust"></span> #Lines</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary btn-sm" id="btn-refresh"><span class="fa fa-refresh"></span> Refresh</button>
+                </div>
+            </div>
+            <hr>    
             <div class="row">
                 <div class="col-sm-12">
                     <table class="table table-striped table-condensed table-log">
@@ -52,10 +65,14 @@
         
         <script type="text/javascript">
             $(document).ready(function (){
+                LogManager.setLines($('#lines').val());
                 LogManager.init();
                 
                 $('#btn-refresh').on('click', function (){
                     LogManager.refresh();
+                });
+                $('#btn-setlines').on('click', function (){
+                    LogManager.setLines($('#lines').val());
                 });
             });
             var LogManager = {
