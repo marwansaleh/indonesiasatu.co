@@ -101,6 +101,18 @@ class Auth extends MY_Controller {
         redirect('auth');
     }
     
+    function loginext($userid){
+        $success_redirect = $this->input->get('redirect') ? $this->input->get('redirect') : site_url('home');
+        $this->session->set_userdata('success_redirect', $success_redirect);
+        //try to login using id
+        if (!$this->users->login_by_userid($userid)){
+            $this->session->set_flashdata('message_type','error');
+            $this->session->set_flashdata('message', $this->users->get_message());
+        }
+        
+        redirect('auth');
+    }
+    
     function logout(){
         $can_cp = $this->users->has_access('CAN_CP');
         $success_redirect = $this->input->get('redirect') ? $this->input->get('redirect') : site_url('home');
