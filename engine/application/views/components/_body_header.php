@@ -112,7 +112,7 @@
                                     <a class="btn btn-block btn-social btn-twitter" href="<?php echo site_url('auth/twitter_redirect?redirect='. urlencode(current_url())); ?>">
                                         <span class="fa fa-twitter"></span> Sign in with Twitter
                                     </a>
-                                    <a class="btn btn-block btn-social btn-facebook" id="btn-login-facebook">
+                                    <a class="btn btn-block btn-social btn-facebook" id="btn-my-login-facebook">
                                         <span class="fa fa-facebook"></span> Sign in with Facebook
                                     </a>
                                 </div>
