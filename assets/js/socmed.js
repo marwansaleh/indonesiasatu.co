@@ -36,11 +36,12 @@ var SocialMedia = {
             if (response.status === 'connected') {
                 // Logged into your app and Facebook.
                 console.log('User is loggedin into facebook and app. Store user data');
-                _this.fbGetMe();
+                _this.fbGetMe(true);
             } else {
                 // The person is not logged into Facebook, so we're not sure if
                 // they are logged into this app or not.
                 console.log('Not logged into facebook or app. Should redirect to normal login page');
+                _this.fbLoginFailed();
             }
         }, {scope: _this.FB_Scope});
     },
@@ -60,22 +61,33 @@ var SocialMedia = {
         // for FB.getLoginStatus().
         if (response.status === 'connected') {
             // Logged into your app and Facebook.
-            _this.fbGetMe();
+            _this.closeLoginOptDialog();
+            _this.fbGetMe(true);
         } else {
             // The person is not logged into Facebook, so we're not sure if
             // they are logged into this app or not.
             //document.getElementById('status').innerHTML = 'Please log into Facebook.';
             console.log('Please log into Facebook. Opening FB login dialog');
-            $('#'+_this.webLoginDlgId).modal('hide');
+            _this.closeLoginOptDialog();
             console.log('Close internal login dialog options');
             _this.fbLogin(response);
         }
     },
-    fbGetMe: function (){
+    fbGetMe: function (save){
+        var _this = this;
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me', function(response) {
-          console.log('Successful login for: ' + response.name);
+            console.log('Successful login for: ' + response.name);
+            if (save === true){
+                _this.fbRedirectSaveUser(response);
+            }
         });
+    },
+    fbRedirectSaveUser: function (response){
+        console.log(JSON.stringify(response));
+    },
+    fbLoginFailed: function (){
+        console.log('Login failed');
     },
     fbShare: function (link){
         FB.ui({
@@ -86,6 +98,9 @@ var SocialMedia = {
     twShare: function(url,text){
         var tw_window = window.open('https://twitter.com/intent/tweet?url='+url+'&text='+text,'Twitter-Web-Intent');
         tw_window.focus();
+    },
+    closeLoginOptDialog: function(){
+        $('#'+_this.webLoginDlgId).modal('hide');
     }
 };
 
