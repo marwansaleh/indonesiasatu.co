@@ -93,9 +93,9 @@ function twitterShare(url,text){
 }
 
 $(document).ready(function(){
-    SocialMedia.init();
-    
     $('#btn-login-facebook').on('click', function(){
         SocialMedia.fbGetLoginStatus();
     });
 });
+
+SocialMedia.init();
