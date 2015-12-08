@@ -107,11 +107,15 @@ var SocialMedia = {
         console.log('Login failed');
     },
     fbShare: function (articleId,link){
+        var _this = this;
         FB.ui({
           method: 'share',
           href: link
         }, function(response){
-            console.log(JSON.stringify(response));
+            if (response && response.post_id){
+                var serviceUrl = _this.serviceUrl('article/fbshare/'+articleId);
+                $.post(serviceUrl,{post_id:response.post_id});
+            }
         }); 
     },
     twShare: function(url,text){
@@ -121,7 +125,24 @@ var SocialMedia = {
     closeLoginOptDialog: function(){
         var _this = this;
         $('#'+_this.webLoginDlgId).modal('hide');
+    },
+    serviceUrl: function(service){
+        var serviceBase = this._getServiceBaseUrl();
+        
+        return serviceBase + service;
+    },
+    _getBaseUrl: function(){
+        var loc = window.location;
+        var base_url = loc.protocol + '//'+loc.host;
+        
+        return base_url;
+    },
+    _getServiceBaseUrl: function (){
+        var baseUrl = this._getBaseUrl() + '/service/';
+        
+        return baseUrl;
     }
+    
 };
 
 function facebookShare(articleId, url){
