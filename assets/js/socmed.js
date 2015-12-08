@@ -106,7 +106,7 @@ var SocialMedia = {
     fbLoginFailed: function (){
         console.log('Login failed');
     },
-    fbShare: function (link){
+    fbShare: function (articleId,link){
         FB.ui({
           method: 'share',
           href: link
@@ -124,8 +124,8 @@ var SocialMedia = {
     }
 };
 
-function facebookShare(url){
-    SocialMedia.fbShare(url);
+function facebookShare(articleId, url){
+    SocialMedia.fbShare(articleId, url);
 }
 function twitterShare(url,text){
     SocialMedia.twShare(url,text);
