@@ -2,6 +2,7 @@ var SocialMedia = {
     FB_APP_ID: '1667512626834805',
     FB_Scope: 'email,public_profile',
     webLoginDlgId: 'login-dialog',
+    currentUrl: window.location.href,
     init: function (){
         this._fb_init();
     },
