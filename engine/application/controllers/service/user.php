@@ -15,7 +15,7 @@ class User extends REST_Api {
     function socmed_post(){
         $result = array('status' => FALSE);
         //Load data model
-        $this->load->model(array('users/user_socmed_m', 'users/usergroup_m'));
+        $this->load->model(array('users/user_m','users/user_socmed_m', 'users/usergroup_m'));
         
         $client_app = $this->post('app');
         $client_id = $this->post('id');
