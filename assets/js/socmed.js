@@ -113,8 +113,8 @@ var SocialMedia = {
           href: link
         }, function(response){
             if (response && response.post_id){
-                var serviceUrl = _this.serviceUrl('article/fbshare/'+articleId);
-                $.post(serviceUrl,{post_id:response.post_id});
+                var serviceUrl = _this.serviceUrl('article/shares/'+articleId);
+                $.post(serviceUrl,{post_id:response.post_id,post_app:'facebook'});
             }
         }); 
     },
