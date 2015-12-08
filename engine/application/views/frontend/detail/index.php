@@ -39,14 +39,14 @@
                        href="mailto:?Subject=<?php echo urlencode($article->title); ?>&body=<?php echo urlencode($article->synopsis . '. ' . current_url()); ?>" 
                        target="_blank"><span class="glyphicon glyphicon-envelope"></span> Email
                     </a>
-                    <a class="btn btn-social btn-twitter" href="javascript:SocialMedia.twShare('<?php echo urlencode($article->share_url); ?>','<?php echo urlencode($article->title); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
+                    <a class="btn btn-social btn-twitter" href="javascript:twitterShare('<?php echo urlencode($article->share_url); ?>','<?php echo urlencode($article->title); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
                     <a id="btn-google" class="btn btn-social btn-google-plus" 
                        href="https://plus.google.com/share?url=<?php echo current_url(); ?>&hl=id" 
                        onclick="javascript:window.open(this.href,
   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600'); return false;">
                         <span class="fa fa-google-plus"></span> Google
                     </a>
-                    <a class="btn btn-social btn-facebook" href="javascript:SocialMedia.fbShare('<?php echo urlencode(current_url()); ?>');"><span class="fa fa-facebook"></span> Facebook</a>
+                    <a class="btn btn-social btn-facebook" href="javascript:facebookShare('<?php echo urlencode(current_url()); ?>');"><span class="fa fa-facebook"></span> Facebook</a>
                     
                 </div>
             </div>
