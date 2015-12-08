@@ -9,11 +9,9 @@ class Log extends MY_BaseController {
         parent::__construct();
     }
     
-    function index($lines=5,$token=NULL){
+    function index($token=NULL){
         if ($token && $token == 'melog'){
-            $log = $this->read_log($lines);
-            echo "ENVIRONMENT:". ENVIRONMENT .'<hr>';
-            echo '<pre>'.$log.'</pre>';
+            $this->load->view('log/index');
         }else{
             show_404();
         }
