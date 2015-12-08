@@ -104,6 +104,7 @@ class Detail extends MY_News {
         ));
         
         //get image properties from image shared
+        $this->_write_log('BASE image:'. get_image_basepath(IMAGE_THUMB_ORI));
         $image_shared = get_image_thumbpath($article->image_url, IMAGE_THUMB_ORI, TRUE);
         $this->_write_log('Try to read image size '.$image_shared);
         //if (file_exists($image_shared)){
