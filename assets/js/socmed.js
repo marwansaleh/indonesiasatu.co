@@ -84,6 +84,14 @@ var SocialMedia = {
         tw_window.focus();
     }
 };
+
+function facebookShare(url){
+    SocialMedia.fbShare(url);
+}
+function twitterShare(url,text){
+    SocialMedia.twShare(url,text);
+}
+
 $(document).ready(function(){
     SocialMedia.init();
     
