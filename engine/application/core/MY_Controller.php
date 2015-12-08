@@ -2,7 +2,7 @@
 
 class MY_BaseController extends CI_Controller {
     private $_cookie_visitor = 'visitor';
-    private $_log_file = 'mylogfile.log';
+    private $_log_file;
     
     protected $REC_PER_PAGE = 8;
     protected $_log_path;
@@ -28,6 +28,7 @@ class MY_BaseController extends CI_Controller {
         //Create unique id for unique visitor
         $this->_create_unique_visitor();
         
+        $this->_log_file = config_item('log_filename') ? config_item('log_filename') : 'mylogfile.log';
         $this->_log_path = rtrim(sys_get_temp_dir(), '/') .'/';
     }
     
