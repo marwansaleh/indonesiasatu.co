@@ -36,6 +36,7 @@ var SocialMedia = {
             if (response.status === 'connected') {
                 // Logged into your app and Facebook.
                 console.log('User is loggedin into facebook and app. Store user data');
+                _this.fbGetMe();
             } else {
                 // The person is not logged into Facebook, so we're not sure if
                 // they are logged into this app or not.
