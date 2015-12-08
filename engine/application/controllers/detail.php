@@ -95,16 +95,29 @@ class Detail extends MY_News {
             'keywords'          => $article->title,
             'canonical'         => current_url()
         ));
-        
         //set og properties
         $this->og_set_props(array(
             'title'         => $article->title,
             'url'           => site_url('detail/'.$article->url_title), 
             'description'   => $article->synopsis,
-            'type'          => 'article',
-            //'article:author'=> $article->created_by_name,
-            'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_ORI)
+            'type'          => 'article'
         ));
+        
+        //get image properties from image shared
+        $image_shared = get_image_thumbpath($article->image_url, IMAGE_THUMB_ORI, TRUE);
+        if (file_exists($image_shared)){
+            $image_shared_dimensions = getimagesize($image_shared);
+            if ($image_shared_dimensions){
+                $this->og_set_props(array(
+                    'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_ORI),
+                    'image:url'     => get_image_thumb($article->image_url, IMAGE_THUMB_ORI),
+                    'image:type'    => $image_shared_dimensions['mime'],
+                    'image:width'   => $image_shared_dimensions['width'],
+                    'image:height'  => $image_shared_dimensions['height']
+                ));
+            }
+        }
+        
         
         //support for comments
         $this->data['is_admin'] = $this->users->isLoggedin() ? $this->users->is_admin() : FALSE;
