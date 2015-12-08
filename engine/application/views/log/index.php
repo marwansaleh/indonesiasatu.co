@@ -30,11 +30,19 @@
         <div id="main" class="container-fluid">
             <h1 class="page-header">Log Environment: <?php echo strtoupper(ENVIRONMENT); ?></h1>
             <div class="row">
-                <div class="col-sm-3 col-sm-offset-3">
+                <div class="col-sm-2 col-sm-offset-3">
                     <div class="input-group input-group-sm">
-                        <input type="number" class="form-control" id="lines" name="lines" step="1" min="5" value="5">
+                        <input type="number" class="form-control" id="lines" name="lines" step="1" min="5" value="10" title="Set number of rows">
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-success" id="btn-setlines"><span class="fa fa-adjust"></span> #Lines</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="input-group input-group-sm">
+                        <input type="number" class="form-control" id="interval" name="interval" step="1000" min="1000" value="60000" title="Set number of miliseconds to refresh">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-warning" id="btn-setinterval"><span class="fa fa-adjust"></span> #Interval</button>
                         </div>
                     </div>
                 </div>
@@ -66,6 +74,7 @@
         <script type="text/javascript">
             $(document).ready(function (){
                 LogManager.setLines($('#lines').val());
+                LogManager.setInterval($('#interval').val());
                 LogManager.init();
                 
                 $('#btn-refresh').on('click', function (){
@@ -73,6 +82,9 @@
                 });
                 $('#btn-setlines').on('click', function (){
                     LogManager.setLines($('#lines').val());
+                });
+                $('#btn-setinterval').on('click', function (){
+                    LogManager.setInterval($('#interval').val());
                 });
             });
             var LogManager = {
@@ -85,6 +97,9 @@
                 },
                 setLines: function (num){
                     this.numLine = parseInt(num); 
+                },
+                setInterval: function (num){
+                    this.repeatSecs = parseInt(num);
                 },
                 loadLines: function (){
                     var _this = this;
