@@ -112,10 +112,10 @@ class Detail extends MY_News {
                 $this->_write_log('Image size read done');
                 $this->og_set_props(array(
                     'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_ORI),
-                    'image:url'     => get_image_thumb($article->image_url, IMAGE_THUMB_ORI),
-                    'image:type'    => $image_shared_dimensions['mime'],
-                    'image:width'   => $image_shared_dimensions[0],
-                    'image:height'  => $image_shared_dimensions[1]
+                    'og:image:url'     => get_image_thumb($article->image_url, IMAGE_THUMB_ORI),
+                    'og:image:type'    => $image_shared_dimensions['mime'],
+                    'og:image:width'   => $image_shared_dimensions[0],
+                    'og:image:height'  => $image_shared_dimensions[1]
                 ));
             }else{
                 $this->_write_log('Can not read image size using getimagesize function');
