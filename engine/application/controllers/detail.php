@@ -133,6 +133,7 @@ class Detail extends MY_News {
         
         //direct to metadata only if user agent is facebook
         if ($this->_is_facebook()){
+            $this->_write_log('Facebook crawler is scrapping page '. current_url());
             $this->load->view('metadata/index', $this->data);
         }else{
             $this->load->view('_layout_main', $this->data);
