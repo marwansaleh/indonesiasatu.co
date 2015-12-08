@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * Description of Home
+ * Description of Auth
  *
  * @author marwansaleh
  */
