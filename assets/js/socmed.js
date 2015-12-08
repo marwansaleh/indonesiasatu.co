@@ -1,6 +1,7 @@
 var SocialMedia = {
     FB_APP_ID: '1667512626834805',
     FB_Scope: 'email,user_likes,public_profile,user_friends',
+    webLoginDlgId: 'login-dialog',
     init: function (){
         this._fb_init();
     },
@@ -64,6 +65,8 @@ var SocialMedia = {
             // they are logged into this app or not.
             //document.getElementById('status').innerHTML = 'Please log into Facebook.';
             console.log('Please log into Facebook. Opening FB login dialog');
+            $('#'+_this.webLoginDlgId).modal('hide');
+            console.log('Close internal login dialog options');
             _this.fbLogin(response);
         }
     },
