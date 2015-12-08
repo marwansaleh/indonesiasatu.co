@@ -92,10 +92,8 @@ function twitterShare(url,text){
     SocialMedia.twShare(url,text);
 }
 
-$(document).ready(function(){
-    $('#btn-login-facebook').on('click', function(){
-        SocialMedia.fbGetLoginStatus();
-    });
-});
+function facebookLogin(){
+    SocialMedia.fbGetLoginStatus();
+}
 
 SocialMedia.init();
