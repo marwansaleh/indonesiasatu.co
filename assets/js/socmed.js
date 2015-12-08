@@ -36,12 +36,12 @@ var SocialMedia = {
         FB.login( function (response){
             if (response.status === 'connected') {
                 // Logged into your app and Facebook.
-                console.log('User is loggedin into facebook and app. Store user data');
+                //console.log('User is loggedin into facebook and app. Store user data');
                 _this.fbGetMe(true);
             } else {
                 // The person is not logged into Facebook, so we're not sure if
                 // they are logged into this app or not.
-                console.log('Not logged into facebook or app. Should redirect to normal login page');
+                //console.log('Not logged into facebook or app. Should redirect to normal login page');
                 _this.fbLoginFailed();
             }
         }, {scope: _this.FB_Scope});
@@ -54,8 +54,8 @@ var SocialMedia = {
     },
     fbStatusChangeCallback: function(response){
         var _this = this;
-        console.log('statusChangeCallback');
-        console.log(response);
+        //console.log('statusChangeCallback');
+        //console.log(response);
         // The response object is returned with a status field that lets the
         // app know the current login status of the person.
         // Full docs on the response object can be found in the documentation
@@ -68,17 +68,17 @@ var SocialMedia = {
             // The person is not logged into Facebook, so we're not sure if
             // they are logged into this app or not.
             //document.getElementById('status').innerHTML = 'Please log into Facebook.';
-            console.log('Please log into Facebook. Opening FB login dialog');
+            //console.log('Please log into Facebook. Opening FB login dialog');
             _this.closeLoginOptDialog();
-            console.log('Close internal login dialog options');
+            //console.log('Close internal login dialog options');
             _this.fbLogin(response);
         }
     },
     fbGetMe: function (save){
         var _this = this;
-        console.log('Welcome!  Fetching your information.... ');
+        //console.log('Welcome!  Fetching your information.... ');
         FB.api('/me?fields=id,name,email,picture{url}', function(response) {
-            console.log('Successful login for: ' + response.name);
+            //console.log('Successful login for: ' + response.name);
             if (save === true){
                 _this.fbRedirectSaveUser(response);
             }
@@ -86,7 +86,7 @@ var SocialMedia = {
     },
     fbRedirectSaveUser: function (response){
         var _this = this;
-        console.log(JSON.stringify(response));
+        //console.log(JSON.stringify(response));
         var loc = window.location;
         var base_url = loc.protocol + '//'+loc.host;
         var service_url = base_url+'/service/user/socmed';
