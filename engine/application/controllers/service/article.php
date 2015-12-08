@@ -117,14 +117,20 @@ class Article extends REST_Api {
         return $item;
     }
     
-    function fbshare_post($id){
+    function shares_get($id){
+        $this->load->model('articles/shared_m');
+        
+        $this->response($this->shared_m->get_by(array('article_id'=>$id)));
+    }
+    function shares_post($id){
         $this->load->model('articles/shared_m');
         
         $post_id = $this->post('post_id');
+        $post_app = $this->post('post_app') ? $this->post('post_app') : CLIENTAPP_FACEBOOK;
         
         if (($inserted_id=$this->shared_m->save(array(
             'article_id'        => $id,
-            'client_app'        => CLIENTAPP_FACEBOOK,
+            'client_app'        => $post_app,
             'user_id'           => $this->session->userdata('userid')?$this->session->userdata('userid'):0,
             'post_id'           => $post_id,
             'post_time'         => time()
