@@ -1,5 +1,5 @@
 var SocialMedia = {
-    FB_APP_ID: '570841689714924',
+    FB_APP_ID: '1667512626834805',
     FB_Scope: 'email,user_likes,public_profile,user_friends',
     init: function (){
         this._fb_init();
