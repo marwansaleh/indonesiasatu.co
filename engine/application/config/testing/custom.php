@@ -20,3 +20,5 @@ $config['th_tiny'] = $config['thumbs'] . 'tiny/';
 
 $config['avatar'] = 'userfiles/avatar/';
 $config['advert'] = 'userfiles/advert/';
+
+$config['log_filename'] = 'mylogfile.log';
