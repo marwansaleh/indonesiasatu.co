@@ -101,6 +101,7 @@ var SocialMedia = {
         tw_window.focus();
     },
     closeLoginOptDialog: function(){
+        var _this = this;
         $('#'+_this.webLoginDlgId).modal('hide');
     }
 };
