@@ -29,7 +29,7 @@
     <body>
         <div id="main" class="container-fluid">
             <h1 class="page-header">Log Environment: <?php echo strtoupper(ENVIRONMENT); ?></h1>
-            <a class="btn btn-success" id="btn-refresh"><span class="fa fa-refresh"></span> Refresh</a>
+            <center><a class="btn btn-success btn-sm" id="btn-refresh"><span class="fa fa-refresh"></span> Refresh</a></center>
             <div class="row">
                 <div class="col-sm-12">
                     <table class="table table-striped table-condensed table-log">
