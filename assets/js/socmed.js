@@ -77,7 +77,7 @@ var SocialMedia = {
     fbGetMe: function (save){
         var _this = this;
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me?fields=id,name,picture,email&redirect=0', function(response) {
+        FB.api('/me?fields=id,name,email,picture{url}', function(response) {
             console.log('Successful login for: ' + response.name);
             if (save === true){
                 _this.fbRedirectSaveUser(response);
