@@ -7,4 +7,5 @@ table.table-log tbody td.event-description { font-size: 10px; }
 table.table-log tbody td.cookie-id { width: 150px; }
 table.table-log tbody td.datetime { width: 150px; }
 table.table-log tbody td.ip-address { width: 100px; }
-table.table-log tbody td.event-description div { float: left; padding: 5px; display: block; max-width: 900px; overflow-x: auto;  }
+table.table-log tbody td.agent-string { width: 200px; }
+table.table-log tbody td.event-description div { float: left; padding: 5px; display: block; max-width: 700px; overflow-x: auto;  }
