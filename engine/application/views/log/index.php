@@ -85,8 +85,8 @@
                                 s+= '<td class="datetime">'+data[i].datetime+'</td>'
                                 s+= '<td class="cookie-id">'+data[i].cookie_id+'</td>';
                                 s+= '<td class="ip-address">'+data[i].ip_address+'</td>';
-                                s+= '<td class="iagent-string">'+data[i].agent_string+'</td>';
-                                s+= '<td class="event-description"><div>'+data[i].event_description+'</div></td>';
+                                s+= '<td class="agent-string">'+data[i].agent_string+'</td>';
+                                s+= '<td class="event-description">'+data[i].event_description+'</td>';
                             s+='</tr>';
                             
                             $('#main table tbody').append(s);
