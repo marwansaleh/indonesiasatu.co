@@ -5,6 +5,16 @@
  * @author marwansaleh
  */
 class Article extends REST_Api {
+    private $_share_maps = array(
+        'id'            => 'id',
+        'article_id'    => 'article_id',
+        'article_title' => 'title',
+        'user_id'       => 'user_id',
+        'user'          => 'full_name',
+        'post_id'       => 'post_id',
+        'post_time'     => 'time',
+        'post_datetime' => 'datetime'
+    );
     function __construct($config='rest') {
         parent::__construct($config);
     }
@@ -120,7 +130,13 @@ class Article extends REST_Api {
     function shares_get($id){
         $this->load->model('articles/shared_m');
         
-        $this->response($this->shared_m->get_by(array('article_id'=>$id)));
+        $items = $this->shared_m->get_by(array('article_id'=>$id));
+        $result = array();
+        foreach ($items as $item){
+            $result [] = $this->_shares_proccess($item);
+        }
+        
+        $this->response($this->remap_fields($this->_share_maps, $result));
     }
     function shares_post($id){
         $this->load->model('articles/shared_m');
@@ -136,10 +152,18 @@ class Article extends REST_Api {
             'post_time'         => time()
         )))){
             $inserted_item = $this->shared_m->get($inserted_id);
-            $this->response($inserted_item);
+            $this->response($this->remap_fields($this->_share_maps, $this->_shares_proccess($inserted_item)));
         }else{
             $this->response(array('status'=>FALSE));
         }
+    }
+    
+    private function _shares_proccess($item){
+        $this->load->model(array('users/user_m', 'articles/article_m'));
+        
+        $item->article_title = $this->article_m->get_value('title',array('id'=>$item->article_id));
+        $item->post_datetime = date('d-M-Y H:i:s', $item->post_time);
+        $item->user = $item->user_id ? $this->user_m->get_value('full_name',array('id'=>$item->user_id)) : '';
     }
 }
 
