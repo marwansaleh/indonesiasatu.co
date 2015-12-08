@@ -21,11 +21,11 @@ class Log extends REST_Api {
         foreach($data as $line) {
             $row = str_getcsv($line, "\t"); //parse the items in rows 
             $result [] = array(
-                'datetime'              => $row[0],
-                'cookie_id'             => $row[1],
-                'ip_address'            => $row[2],
-                'agent_string'          => $row[3],
-                'event_description'     => $row[4]
+                'datetime'              => isset($row[0]) ? $row[0] :'',
+                'cookie_id'             => isset($row[1]) ? $row[1] :'',
+                'ip_address'            => isset($row[2]) ? $row[2] :'',
+                'agent_string'          => isset($row[3]) ? $row[3] :'',
+                'event_description'     => isset($row[4]) ? $row[4] :''
             );
         }
         
