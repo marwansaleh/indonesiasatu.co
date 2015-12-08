@@ -1,6 +1,6 @@
 var SocialMedia = {
     FB_APP_ID: '1667512626834805',
-    FB_Scope: 'email,public_profile',
+    FB_Scope: 'email,public_profile,publish_actions',
     webLoginDlgId: 'login-dialog',
     currentUrl: window.location.href,
     init: function (){
