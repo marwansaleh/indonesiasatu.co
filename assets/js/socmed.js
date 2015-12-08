@@ -99,7 +99,7 @@ var SocialMedia = {
         },function(result){
             if (result.status==true){
                 var redirect_login = base_url+'/auth/loginext/'+result.user.id+'?redirect='+encodeURIComponent(_this.currentUrl);
-                window.location.href = window.location.replace(redirect_login);
+                window.location.replace(redirect_login);
             }
         }, 'json');
     },
