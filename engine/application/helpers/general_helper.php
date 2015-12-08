@@ -453,6 +453,29 @@ if (!function_exists('get_image_base')){
     }
 }
 
+if (!function_exists('get_image_basepath')){
+    function get_image_basepath($type=IMAGE_THUMB_LARGE, $full_path=TRUE){
+        $base_path = '';
+        
+
+        switch ($type){
+            case IMAGE_THUMB_ORI: $base_path= config_item('images'); break;
+            case IMAGE_THUMB_LARGE: $base_path= config_item('th_large'); break;
+            case IMAGE_THUMB_PORTRAIT: $base_path= config_item('th_portrait'); break;
+            case IMAGE_THUMB_MEDIUM: $base_path= config_item('th_medium'); break;
+            case IMAGE_THUMB_SMALL: $base_path= config_item('th_small'); break;
+            case IMAGE_THUMB_SQUARE: $base_path= config_item('th_square'); break;
+            case IMAGE_THUMB_SMALLER: $base_path= config_item('th_smaller'); break;
+            case IMAGE_THUMB_TINY: $base_path= config_item('th_tiny'); break;
+        }
+        
+        if ($full_path){
+            $base_path = userfiles_basepath($base_path);
+        }
+        return rtrim($base_path,'/') .'/';
+    }
+}
+
 if (!function_exists('get_image_thumb')){
     function get_image_thumb($filename, $type=IMAGE_THUMB_LARGE, $full_url=TRUE){
         $base_url = '';
@@ -464,6 +487,20 @@ if (!function_exists('get_image_thumb')){
         $image_url = rtrim($base_url , '/') . '/' . $filename;
 
         return $image_url;
+    }
+}
+
+if (!function_exists('get_image_thumbpath')){
+    function get_image_thumbpath($filename, $type=IMAGE_THUMB_LARGE, $full_path=TRUE){
+        $base_path = '';
+
+        if ($full_path){
+            $base_path = get_image_basepath($type, $base_path);
+        }
+        
+        $image_path = rtrim($base_path , '/') . '/' . $filename;
+
+        return $image_path;
     }
 }
 
