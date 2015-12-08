@@ -149,7 +149,7 @@ class Userlib extends Library {
         //create user loggedin session
         $this->create_login_session($user);
         //create user privileges session
-        $this->_set_user_access_session($user->user_id, $user->group_id);
+        $this->_set_user_access_session($user->id, $user->group_id);
 
         return $user;
     }
