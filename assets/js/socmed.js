@@ -11,6 +11,12 @@ function share_tw(encoded_url,text){
     tw_window.focus();
 }
 
+function facebookLogin(){
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
+}
+
 // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -43,9 +49,7 @@ function share_tw(encoded_url,text){
     });
   }
   
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
+
   
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
