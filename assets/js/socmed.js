@@ -110,7 +110,9 @@ var SocialMedia = {
         FB.ui({
           method: 'share',
           href: link
-        }, function(response){}); 
+        }, function(response){
+            console.log(JSON.stringify(response));
+        }); 
     },
     twShare: function(url,text){
         var tw_window = window.open('https://twitter.com/intent/tweet?url='+url+'&text='+text,'Twitter-Web-Intent');
