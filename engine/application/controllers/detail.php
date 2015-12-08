@@ -130,7 +130,13 @@ class Detail extends MY_News {
         
         //$this->data['main_slider'] = TRUE;
         $this->data['subview'] = 'frontend/detail/index';
-        $this->load->view('_layout_main', $this->data);
+        
+        //direct to metadata only if user agent is facebook
+        if ($this->_is_facebook()){
+            $this->load->view('metadata/index', $this->data);
+        }else{
+            $this->load->view('_layout_main', $this->data);
+        }
     }
     
     function mobile($slug=NULL){
@@ -205,6 +211,17 @@ class Detail extends MY_News {
         }
         
         return NULL;
+    }
+    
+    private function _is_facebook(){
+        $useragent = $this->agent->agent_string();
+        $needle = 'facebookexternalhit/1.1';
+        
+        if (strpos($useragent, $needle)!== FALSE){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
     }
 }
 
