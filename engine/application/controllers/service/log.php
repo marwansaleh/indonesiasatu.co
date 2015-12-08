@@ -24,7 +24,8 @@ class Log extends REST_Api {
                 'datetime'              => $row[0],
                 'cookie_id'             => $row[1],
                 'ip_address'            => $row[2],
-                'event_description'     => $row[3]
+                'agent_string'          => $row[3],
+                'event_description'     => $row[4]
             );
         }
         
