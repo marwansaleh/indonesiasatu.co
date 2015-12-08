@@ -64,8 +64,6 @@ class User extends REST_Api {
         
         $this->response($result);
     }
-    
-    
 }
 
 /*
