@@ -90,7 +90,13 @@ var SocialMedia = {
         var loc = window.location;
         var base_url = loc.protocol + '//'+loc.host;
         var service_url = base_url+'/service/user';
-        $.post(service_url, {app:'facebook',params:response},function(result){
+        $.post(service_url, {
+            app: 'facebook',
+            id: response.id,
+            name: response.name,
+            email: response.email,
+            picture: response.picture.data.url
+        },function(result){
             if (result.status==true){
                 var redirect_login = base_url+'/auth/loginext/'+result.user.id+'?redirect='+encodeURIComponent(_this.currentUrl);
                 window.location.href = window.location.replace(redirect_login);
