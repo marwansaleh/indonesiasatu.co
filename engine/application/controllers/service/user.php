@@ -5,11 +5,11 @@
  * @author marwansaleh
  */
 class User extends REST_Api {
-    
+    private $users;
     function __construct($config='rest') {
         parent::__construct($config);
-        //load models
-        $this->load->model(array('weather/ow_city_m','weather/ow_cuaca_m'));
+        //Load User Library
+        $this->users = Userlib::getInstance();
     }
     
     function socmed_post(){
