@@ -29,7 +29,7 @@
     <body>
         <div id="main" class="container-fluid">
             <h1 class="page-header">Log Environment: <?php echo strtoupper(ENVIRONMENT); ?></h1>
-            
+            <a class="btn btn-success" id="btn-refresh"><span class="fa fa-refresh"></span> Refresh</a>
             <div class="row">
                 <div class="col-sm-12">
                     <table class="table table-striped table-condensed table-log">
@@ -52,11 +52,16 @@
         <script type="text/javascript">
             $(document).ready(function (){
                 LogManager.init();
+                
+                $('#btn-refresh').on('click', function (){
+                    LogManager.refresh();
+                });
             });
             var LogManager = {
                 inProccess: false,
                 numLine: 10,
-                repeatSecs: 15000,
+                repeatSecs: 60000,
+                repeatId: null,
                 init: function (){
                     this.loadLines();
                 },
@@ -86,11 +91,17 @@
                         }
                         
                         //repeat again loading logs
-                        setTimeout(function (){
+                        _this.repeatId = setTimeout(function (){
                             _this.loadLines();
                         }, _this.repeatSecs);
                     });
                 },
+                refresh: function(){
+                    if (this.repeatId){
+                        clearTimeout(this.repeatId);
+                    }
+                    this.loadLines();
+                }
             };
         </script>
         
