@@ -33,8 +33,10 @@ class REST_Api extends REST_Controller {
         
         if (is_array($data)){
             $result = array();
-            foreach ($data as $item){
-                $result [] = $this->_remap_object_properties($arr_map, $item);
+            if (count($data)){
+                foreach ($data as $item){
+                    $result [] = $this->_remap_object_properties($arr_map, $item);
+                }
             }
         }else{
             $result = $this->_remap_object_properties($arr_map, $data);
