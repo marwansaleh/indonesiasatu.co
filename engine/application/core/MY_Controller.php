@@ -10,6 +10,7 @@ class MY_BaseController extends CI_Controller {
     
     function __construct() {
         parent::__construct();
+        $this->load->library('user_agent');
         
         //Load User Library
         $this->users = Userlib::getInstance();
@@ -78,6 +79,7 @@ class MY_BaseController extends CI_Controller {
             date('Y-m-d H:i:s'), 
             $this->_get_unique_visitor(), 
             $this->input->ip_address(),
+            $this->agent->agent_string(),
             $event_name
         );
         
