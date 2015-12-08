@@ -268,7 +268,7 @@ class MY_Controller extends MY_BaseController {
             
             $sysvar = $this->get_sys_parameters($param);
             if (!$sysvar){
-                $sysvar[$param] = '966242223397117';
+                $sysvar[$param] = '1667512626834805';
             }
             $this->session->set_userdata($param, $sysvar[$param]);
             
@@ -397,11 +397,11 @@ class MY_Controller extends MY_BaseController {
     
     private function og_set_default(){
         $this->data['og_props'] = array(
+            'fb:app_id'         =>  $this->get_FB_ID(),
             'title'             =>  'Indonesia Satu',
             'site_name'         =>  'Indonesia Satu',
             'description'       =>  'Berita online yang mengulas secara lengkap tentang kejadian yang terjadi setiap hari nasional dan internasional',          
             'url'               =>  current_url(),
-            'fb:app_id'         =>  $this->get_FB_ID(),
             'type'              => 'article',
             //'local'             => 'id',
             //'article:author'    => 'IndonesiaSatu.co',
