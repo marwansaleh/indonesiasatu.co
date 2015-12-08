@@ -128,7 +128,7 @@ class Article extends REST_Api {
     }
     
     function shares_get($id){
-        $this->load->model('articles/shared_m');
+        $this->load->model('article/shared_m');
         
         $items = $this->shared_m->get_by(array('article_id'=>$id));
         $result = array();
@@ -139,7 +139,7 @@ class Article extends REST_Api {
         $this->response($this->remap_fields($this->_share_maps, $result));
     }
     function shares_post($id){
-        $this->load->model('articles/shared_m');
+        $this->load->model('article/shared_m');
         
         $post_id = $this->post('post_id');
         $post_app = $this->post('post_app') ? $this->post('post_app') : CLIENTAPP_FACEBOOK;
@@ -159,7 +159,7 @@ class Article extends REST_Api {
     }
     
     private function _shares_proccess($item){
-        $this->load->model(array('users/user_m', 'articles/article_m'));
+        $this->load->model(array('users/user_m', 'article/article_m'));
         
         $item->article_title = $this->article_m->get_value('title',array('id'=>$item->article_id));
         $item->post_datetime = date('d-M-Y H:i:s', $item->post_time);
