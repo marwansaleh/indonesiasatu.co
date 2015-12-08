@@ -164,6 +164,8 @@ class Article extends REST_Api {
         $item->article_title = $this->article_m->get_value('title',array('id'=>$item->article_id));
         $item->post_datetime = date('d-M-Y H:i:s', $item->post_time);
         $item->user = $item->user_id ? $this->user_m->get_value('full_name',array('id'=>$item->user_id)) : '';
+        
+        return $item;
     }
 }
 
