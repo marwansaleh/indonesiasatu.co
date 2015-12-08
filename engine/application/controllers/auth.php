@@ -33,9 +33,6 @@ class Auth extends MY_Controller {
         
         if ($this->session->flashdata('message')){
             $this->data['message_error'] = create_alert_box($this->session->flashdata('message'), $this->session->flashdata('message_type'));
-            $this->_write_log('Flashsession:'.$this->session->flashdata('message'));
-        }else{
-            $this->_write_log('Flashsession:--empty---');
         }
         
         $cookie_login = $this->input->cookie('cookie-login');
@@ -45,7 +42,7 @@ class Auth extends MY_Controller {
             $this->data['remember'] = NULL;
         }
         
-        $this->_write_log('Try to login');
+        $this->_write_log('User try to login');
         
         $this->data['submit'] = site_url('auth/login');
         $this->data['subview'] = 'login/index';
@@ -80,14 +77,14 @@ class Auth extends MY_Controller {
             
             $user = $this->users->login($username, $password);
             
-            $this->_write_log('Login using username:'.$username.' and password:'.md5($password));
+            $this->_write_log('Login using username:'.$username);
             
             if (!$user){
                 $this->session->set_flashdata('message_type','error');
                 $this->session->set_flashdata('message', $this->users->get_message());
                 $this->_write_log('Failed login');
             }else{
-                $this->_write_log('Success with return value:' . json_encode($user));
+                $this->_write_log('Success login using username:'.$username);
             }
         }
         
@@ -102,12 +99,18 @@ class Auth extends MY_Controller {
     }
     
     function loginext($userid){
+        $this->_write_log('User login by using ID:'.$userid);
+        
         $success_redirect = $this->input->get('redirect') ? $this->input->get('redirect') : site_url('home');
         $this->session->set_userdata('success_redirect', $success_redirect);
         //try to login using id
         if (!$this->users->login_by_userid($userid)){
             $this->session->set_flashdata('message_type','error');
             $this->session->set_flashdata('message', $this->users->get_message());
+            
+            $this->_write_log('Failed login using id with message:'.$this->users->get_message());
+        }else{
+            $this->_write_log('Success login using ID:'.$userid);
         }
         
         redirect('auth');
@@ -138,6 +141,9 @@ class Auth extends MY_Controller {
     
     function twitter_redirect(){
         $this->load->library('twconnect', $this->_get_twitter_params());
+        
+        $this->_write_log('User login using twitter');
+        
         $success_redirect = $this->input->get('redirect') ? $this->input->get('redirect') : site_url('home');
         $this->session->set_userdata('success_redirect', $success_redirect);
         /* twredirect() parameter - callback point in your application */
@@ -145,6 +151,7 @@ class Auth extends MY_Controller {
         $ok = $this->twconnect->twredirect('auth/twitter_callback');
 
         if (!$ok) {
+            $this->_write_log('Could not connect to Twitter');
             echo 'Could not connect to Twitter. Refresh the page or try again later.';
         }
     }
@@ -162,7 +169,8 @@ class Auth extends MY_Controller {
         $this->load->library('twconnect', $this->_get_twitter_params());
         //Load data model
         $this->load->model(array('users/user_socmed_m', 'users/usergroup_m'));
-
+        
+        $this->_write_log('Success login using twitter');
         // saves Twitter user information to $this->twconnect->tw_user_info
         // twaccount_verify_credentials returns the same information
         $this->twconnect->twaccount_verify_credentials();
@@ -217,6 +225,7 @@ class Auth extends MY_Controller {
     }
     
     function twitter_failure(){
+        $this->_write_log('Failed login using twitter');
         $this->session->set_flashdata('message_type','error');
         $this->session->set_flashdata('message', 'Login failure using twitter account');
         redirect('auth');
