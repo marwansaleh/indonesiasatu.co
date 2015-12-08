@@ -112,9 +112,12 @@ var SocialMedia = {
           method: 'share',
           href: link
         }, function(response){
+            console.log(JSON.stringify(response));
             if (response && response.post_id){
                 var serviceUrl = _this.serviceUrl('article/shares/'+articleId);
-                $.post(serviceUrl,{post_id:response.post_id,post_app:'facebook'});
+                $.post(serviceUrl,{post_id:response.post_id,post_app:'facebook'},function(result){
+                    console.log(JSON.stringify(result));
+                });
             }
         }); 
     },
