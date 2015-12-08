@@ -386,12 +386,10 @@ class MY_Controller extends MY_BaseController {
     }
     
     protected function og_set_props($arr_prop){
-        $_ogg_properties = array('title','site_name','description','url','fb:app_id','type','local','article:author','article:publisher','image');
+        //$_ogg_properties = array('title','site_name','description','url','fb:app_id','type','local','article:author','article:publisher','image');
         if (is_array($arr_prop)){
             foreach ($arr_prop as $prop => $value){
-                if (in_array($prop, $_ogg_properties)){
-                    $this->data['og_props'][$prop] = $value;
-                }
+                $this->data['og_props'][$prop] = $value;
             }
         }
     }
