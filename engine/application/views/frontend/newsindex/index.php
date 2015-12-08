@@ -44,7 +44,7 @@
             <h4>
                 <a href="<?php echo site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a>
             </h4>
-            <span class="text-muted small"><em><?php echo date('D, d M Y',$article->date); ?></em></span>
+            <span class="text-muted small"><em><?php echo date('D, d M Y H:i',$article->date); ?></em></span>
             <p>
                 <?php echo $article->synopsis; ?> 
                 ...<a href="<?php echo site_url('detail/'.$article->url_title); ?>"><span style="font-weight: bold; color: blue;">more</span></a>
