@@ -1,10 +1,10 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Dec 8, 2015, 9:24:32 PM
-    Author     : marwansaleh
-*/
-
+body { font-size: 11px; }
+#main table.table-log { width: 100%; float: left; display: block; }
+table.table-log thead { font-size: 12px; }
+table.table-log tbody { font-size: 11px; }
+table.table-log tbody td.cookie-id, 
+table.table-log tbody td.event-description { font-size: 10px; }
+table.table-log tbody td.cookie-id { width: 150px; }
+table.table-log tbody td.datetime { width: 150px; }
+table.table-log tbody td.ip-address { width: 100px; }
+table.table-log tbody td.event-description div { float: left; padding: 5px; display: block; max-width: 900px; overflow-x: auto;  }
