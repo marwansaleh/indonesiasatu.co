@@ -89,7 +89,7 @@ var SocialMedia = {
         console.log(JSON.stringify(response));
         var loc = window.location;
         var base_url = loc.protocol + '//'+loc.host;
-        var service_url = base_url+'/service/user';
+        var service_url = base_url+'/service/user/socmed';
         $.post(service_url, {
             app: 'facebook',
             id: response.id,
