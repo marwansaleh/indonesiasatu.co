@@ -127,6 +127,53 @@ class Article extends REST_Api {
         return $item;
     }
     
+    function search_post(){
+        //load models
+        $this->load->model(array('article/article_m','article/category_m','article/article_image_m','users/user_m'));
+        $this->load->helper('general');
+        $remap_fields = array(
+            'id'                => 'id',
+            'category_id'       => 'category_id',
+            'category_name'     => 'category',
+            'title'             => 'title',
+            'url_title'         => 'url_title',
+            'link_href'         => 'link_href',
+            'date'              => 'article_date',
+            'day'               => 'day',
+            'month'             => 'month',
+            'year'              => 'year',
+            'synopsis'          => 'synopsis',
+            'content'           => 'content',
+            'image_url'         => 'image_url',
+            'image_type'        => 'image_type',
+            'image_urls'        => 'image_urls',
+            'tags'              => 'tags',
+            'types'             => 'types',
+            'allow_comment'     => 'allow_comment',
+            'published'         => 'published',
+            'view_count'        => 'view',
+            'created'           => 'created',
+            'modified'          => 'modified',
+            'created_by'        => 'created_by',
+            'created_by_name'   => 'created_by_name',
+            'ext_attributes'    => 'ext_attributes'
+            
+        );
+        
+        $search_input = $this->post('search');
+        if ($search_input){
+            $limit = $this->post('limit') ? $this->post('limit') : 100;
+            $page = $this->post('page') ? $this->post('page') : 1;
+            $this->db->like('title',$search_input);
+            $items = $this->article_m->get_offset('*',array('published'=>1),($page-1)*$limit,$limit);
+            foreach ($items as $item){
+                $this->result [] = $this->remap_fields($remap_fields, $this->_article_proccess($item));
+            }
+        }
+        
+        $this->response($this->result);
+    }
+    
     function shares_get($id){
         $this->load->model('article/shared_m');
         
