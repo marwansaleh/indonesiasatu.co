@@ -1,5 +1,6 @@
 <div class="blog-page">
     <article>
+        <span style="color: #CCC; font-size: 12px;"><?php echo strtoupper($article->category_name); ?></span>
         <h3 class="title" style="margin-top:0;"><?php echo $article->title; ?></h3>
         <div class="info">
             <span class="date"><?php echo date('d/m/Y H:i',$article->date); ?></span>, by
