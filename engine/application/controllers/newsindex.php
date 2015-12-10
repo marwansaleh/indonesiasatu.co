@@ -20,7 +20,7 @@ class Newsindex extends MY_News {
         $parameters = $this->get_sys_parameters('LAYOUT');
         $this->data['parameters'] = $parameters;
         
-        $this->data['index_date'] = $this->input->post('index_date') ? $this->input->post('index_date') : $day;
+        $this->data['index_day'] = $this->input->post('index_day') ? $this->input->post('index_day') : $day;
         $this->data['index_month'] = $this->input->post('index_month') ? $this->input->post('index_month') : $month;
         $this->data['index_year'] = $this->input->post('index_year') ? $this->input->post('index_year') : $year;
         
@@ -29,7 +29,7 @@ class Newsindex extends MY_News {
         //prepare years
         $this->data['article_years'] = $this->_range_years();
         
-        $articles = $this->_get_index_list($this->data['index_date'], $this->data['index_month'], $this->data['index_year']);
+        $articles = $this->_get_index_list($this->data['index_day'], $this->data['index_month'], $this->data['index_year']);
         $this->data['articles'] = array();
         foreach ($articles as $article){
             $article->category_name = $this->category_m->get_value('name',array('id'=>$article->category_id));
