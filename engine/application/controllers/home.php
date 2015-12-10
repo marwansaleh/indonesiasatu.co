@@ -15,7 +15,7 @@ class Home extends MY_News {
     
     function _remap(){
         //$this->mobile();
-        if ($this->is_device('MOBILE')){
+        if ($this->is_mobile()){
             $this->mobile();
         }else{
             $this->index();
