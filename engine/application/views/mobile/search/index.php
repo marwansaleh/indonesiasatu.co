@@ -35,11 +35,11 @@
             $('div#lastPostsLoader').html('Loading news...');
             
             //load from service
-            $.getJSON("<?php echo site_url('service/article/search'); ?>",{limit:_this.dataLimit,page:_this.page,searchInput:_this.searchInput}, function(data){
+            $.post("<?php echo site_url('service/article/search'); ?>",{limit:_this.dataLimit,page:_this.page,search:_this.searchInput}, function(data){
                 _this.inProccess = false;
                 if (data.length > 0){
                     for (var i in data){
-                        var s = '<li data-id="'+data[i].id+'" class="media '+(_this.page==1&&i==0?'first-item':'')+'" data-href="'+data[i].link_href+'">';
+                        var s = '<li data-id="'+data[i].id+'" class="media" data-href="'+data[i].link_href+'">';
                         s+= '<div class="media-left">';
                             s+= '<a href="'+data[i].link_href+'">';
                                 s+= '<img class="media-object" src="'+data[i].image_url.square+'" alt="'+data[i].title+'">' ;
@@ -53,12 +53,19 @@
 
                         $('#news-list').append(s);
                     }
-                    _this.page = _this.page+1;
+                    if (data.length <= _this.dataLimit){
+                        _this.reachLimit = true;
+                        $('div#lastPostsLoader').html('<hr><center><small><em>End of page</em></small></center>');
+                    }else{
+                        _this.page = _this.page+1;
+                    }
                 }else{
                     _this.reachLimit = true;
                     $('div#lastPostsLoader').html('<hr><center><small><em>End of page</em></small></center>');
                 }
-            });
+                
+                console.log('Data length:'+data.length+', limit:'+_this.dataLimit);
+            },'json');
         },
         clearNewsList: function(){
             $('#news-list').empty();
@@ -76,10 +83,13 @@
             var wintop = $(window).scrollTop(), docheight = $(document).height(), winheight = $(window).height();
             var  scrolltrigger = 0.95;
 
+            //if (docheight < winheight){return;}
             if  ((wintop/(docheight-winheight)) > scrolltrigger) {
-             //console.log('scroll bottom');
-             News.loadNews();
+                //console.log('scroll bottom');
+                News.loadNews();
             }
+
+            //console.log('wintop:'+wintop+', docheight:'+docheight+', winheight:'+winheight);
         });
     });
     
