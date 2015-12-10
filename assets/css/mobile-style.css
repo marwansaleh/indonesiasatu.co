@@ -41,5 +41,6 @@ article .content {font-size: 14px;}
 .blog-page {padding: 10px; background-color: white;}
 
 footer {display: block; margin-top: 20px; padding: 10px; background-color: #373737; color: #fff;}
+footer a { color: #fff!important; }
 footer .copyright { text-align: center; font-size: 10px; margin: 0; }
 footer .redaksi { text-align: center; font-size: 10px; margin-bottom: 0; line-height:10px; }
