@@ -12,6 +12,15 @@ class Search extends MY_News {
         $this->data['active_menu'] = 'search';
     }
     
+    function _remap(){
+        //$this->mobile();
+        if ($this->is_mobile()){
+            $this->mobile();
+        }else{
+            $this->index();
+        }
+    }
+    
     function index(){
         $search_limit = 10;
         
@@ -91,6 +100,24 @@ class Search extends MY_News {
         
         $this->data['subview'] = 'frontend/search/index';
         $this->load->view('_layout_main', $this->data);
+    }
+    
+    function mobile(){
+        //Load layout parameters for home page
+        $parameters = $this->get_sys_parameters('MOBILE');
+        
+        $this->data['parameters'] = $parameters;
+        
+        //Load popular news
+        $limit = isset($parameters['MOBILE_NEWS_NUM'])?$parameters['MOBILE_NEWS_NUM']:15;
+        $this->data['limit'] = $limit;
+        
+        $this->data['search_input'] = $this->input->post('search_input');
+        //data load by ajax
+        //$this->data['mobile_news'] = $this->_mobile_news($limit);
+        
+        $this->data['subview'] = 'mobile/search/index';
+        $this->load->view('_layout_mobile', $this->data);
     }
     
     private function _search_news($search='', $start=0, $num=10){
