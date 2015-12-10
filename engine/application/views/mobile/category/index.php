@@ -58,10 +58,15 @@
 
                         $('#news-list').append(s);
                     }
-                    _this.page = _this.page+1;
+                    if (data.length <= _this.dataLimit){
+                        _this.reachLimit = true;
+                        $('div#lastPostsLoader').empty();
+                    }else{
+                        _this.page = _this.page+1;
+                    }
                 }else{
                     _this.reachLimit = true;
-                    $('div#lastPostsLoader').html('<hr><center><small><em>End of page</em></small></center>');
+                    $('div#lastPostsLoader').empty();
                 }
             });
         }
