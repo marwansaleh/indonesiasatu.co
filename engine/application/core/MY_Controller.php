@@ -22,7 +22,8 @@ class MY_BaseController extends CI_Controller {
         //Iniatiate process
         $this->__initialisation();        
         
-        $this->data['mobile'] = $this->is_device('MOBILE')||$this->is_device('TABLET');
+        //$this->data['mobile'] = $this->is_device('MOBILE')||$this->is_device('TABLET');
+        $this->data['mobile'] = $this->is_mobile();
     }
     
     private function __initialisation(){
@@ -184,6 +185,15 @@ class MY_BaseController extends CI_Controller {
         }
         
         return $sysvars;
+    }
+    
+    protected function is_mobile(){
+        //first check for blackberry 10 BB10
+        $user_agent_string = $this->agent->agent_string();
+        if (strpos($user_agent_string, 'BB10')!== FALSE){
+            return TRUE;
+        }
+        return $this->agent->is_mobile();
     }
     
     protected function is_device($deviceToCheck='DESKTOP'){
