@@ -56,7 +56,7 @@
 
                         $('#news-list').append(s);
                     }
-                    if (data.length <= _this.dataLimit){
+                    if (data.length < _this.dataLimit){
                         _this.reachLimit = true;
                         $('div#lastPostsLoader').empty();
                     }else{
