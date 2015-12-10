@@ -64,7 +64,6 @@
                     $('div#lastPostsLoader').html('<hr><center><small><em>End of page</em></small></center>');
                 }
                 
-                console.log('Data length:'+data.length+', limit:'+_this.dataLimit);
             },'json');
         },
         clearNewsList: function(){
