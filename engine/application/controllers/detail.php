@@ -152,6 +152,7 @@ class Detail extends MY_News {
         
         $this->_article_view_counter($article->id);
         
+        $article->category_name = $this->category_m->get_value('name', array('id'=>$article->category_id));
         //get author name
         $article->created_by_name = $this->user_m->get_value('full_name', array('id'=>$article->created_by));
         
