@@ -36,3 +36,13 @@
         </div>
     </div>
 </nav>
+<div id="main-search">
+    <form action="<?php echo site_url('search'); ?>" method="post">
+        <div class="input-group input-group-sm">
+            <input type="search" class="form-control" id="search-input" name="search-input" placeholder="Search" />
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
+            </div>
+        </div>
+    </form>
+</div>
