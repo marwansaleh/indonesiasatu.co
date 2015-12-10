@@ -2,7 +2,7 @@
         <p class="redaksi">
             Gedung ITC Roxy Mas Blok D3 No. 33
             Jl. Kh. Hasyim Ashari No. 125, Gambir, Jakarta Pusat,
-            Telp/Fax:021 - 4756205, Email: redaksi@indonesiasatu.co, 
+            Telp/Fax:021 - 4756205, Email: <a href="mailto:redaksi@indonesiasatu.co">redaksi@indonesiasatu.co</a>, 
         </p>
         <p class="copyright">Copyright@2015IndonesiaSatu.co</p>
     </footer>
