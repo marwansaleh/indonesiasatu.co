@@ -37,7 +37,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 hidden-xs">
                         <img src="<?php echo site_url('assets/img/logo-ap.png'); ?>" class="img-responsive pull-right" style="margin-top: -20px;; padding: 0;" />
                     </div>
                     <div class="col-sm-12">
