@@ -15,7 +15,7 @@ class Detail extends MY_News {
     
     function _remap($slug){
         //$this->mobile($slug);
-        if ($this->is_device('MOBILE')){
+        if ($this->is_mobile()){
             $this->mobile($slug);
         }else{
             $this->index($slug);
