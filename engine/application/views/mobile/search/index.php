@@ -32,7 +32,7 @@
                 return;
             }
             _this.inProccess = true;
-            $('div#lastPostsLoader').html('Loading news...');
+            $('div#lastPostsLoader').html('<center>Loading news...</center>');
             
             //load from service
             $.post("<?php echo site_url('service/article/search'); ?>",{limit:_this.dataLimit,page:_this.page,search:_this.searchInput}, function(data){
@@ -55,13 +55,13 @@
                     }
                     if (data.length <= _this.dataLimit){
                         _this.reachLimit = true;
-                        $('div#lastPostsLoader').html('<hr><center><small><em>End of page</em></small></center>');
+                        $('div#lastPostsLoader').empty();
                     }else{
                         _this.page = _this.page+1;
                     }
                 }else{
                     _this.reachLimit = true;
-                    $('div#lastPostsLoader').html('<hr><center><small><em>End of page</em></small></center>');
+                    $('div#lastPostsLoader').empty();
                 }
                 
             },'json');
