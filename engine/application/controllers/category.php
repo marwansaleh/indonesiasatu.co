@@ -96,7 +96,7 @@ class Category extends MY_News {
     public function _remap($method=NULL){
         //$this->mobile($method);
         
-        if ($this->is_device('MOBILE')){
+        if ($this->is_mobile()){
             $this->mobile($method);
         }else{
             if ($method){
