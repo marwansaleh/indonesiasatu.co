@@ -716,6 +716,7 @@ header .logo-line .logo a {
 .blog-content a {
   color: #ce2c2c;
 }
+.blog-content .written-by { margin-top: 50px; }
 #main .blog-page article .blog-content .info {
   border-bottom: solid 1px #d3d2d2;
   width: 100%;
