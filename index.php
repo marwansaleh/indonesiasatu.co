@@ -7,7 +7,10 @@ $production_1 = '/home/sloki/user/k2427808/sites/indonesiasatu.co/www';
 $production_2 = '/home/sloki/user/k2427808/sites/www.indonesiasatu.co/www';
 
 switch ($path){
-    case $production: define('ENVIRONMENT', 'production'); break;
+    case $production_1:
+        define('ENVIRONMENT', 'production'); break;
+    case $production_2:
+        define('ENVIRONMENT', 'production'); break;
     case $testing: define('ENVIRONMENT', 'testing'); break;
     default: define('ENVIRONMENT', 'development');
 }
