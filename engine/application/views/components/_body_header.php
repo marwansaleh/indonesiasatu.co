@@ -15,7 +15,7 @@
                 <p class="header-date" style="margin-top: 40px; font-size: 14px;"><span class="red-text"><?php echo $weather['indonesia_date']['hari'] ?></span>, <?php echo $weather['indonesia_date']['tanggal'] . ' '. $weather['indonesia_date']['bulan'] .' '. $weather['indonesia_date']['tahun']; ?></p>
             </div>
             <div class="col-sm-6">
-                <a href="http://ekakarya.com" target="_blank">
+                <a href="<?php echo site_url() ?>">
                     <img src="<?php echo site_url('assets/img/logo.png'); ?>" class="img-responsive center-block" />
                 </a>
             </div>
@@ -38,7 +38,9 @@
                         </div>
                     </div>
                     <div class="col-sm-12 hidden-xs">
-                        <img src="<?php echo site_url('assets/img/logo-ap.png'); ?>" class="img-responsive pull-right" style="margin-top: -20px;; padding: 0;" />
+                        <a href="http://ekakarya.com" target="_blank">
+                            <img src="<?php echo site_url('assets/img/logo-ap.png'); ?>" class="img-responsive pull-right" style="margin-top: -20px;; padding: 0;" />
+                        </a>
                     </div>
                     <div class="col-sm-12">
                         <div style="display: block; margin-top: 5px;">
