@@ -101,6 +101,9 @@
                         <li>
                             <img src="<?php echo userfiles_baseurl(config_item('advert').'ag07.jpg'); ?>" />
                         </li>
+<!--                        <li>
+                            <img src="<?php //echo userfiles_baseurl(config_item('advert').'ag08.jpg'); ?>" />
+                        </li>-->
                         <!-- items mirrored twice, total of 12 -->
                     </ul>
                 </div>
