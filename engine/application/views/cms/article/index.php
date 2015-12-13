@@ -107,7 +107,7 @@
             if (response && !response.error){
                 $('#MyModal .modal-body').html('<pre>'+JSON.stringify(response)+'</pre>');
             }else{
-                alert('Error while executing facebook crawler');
+                $('#MyModal .modal-body').html('<p>Error while executing Facebook crawler</p>');
             }
         });
     }
