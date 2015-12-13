@@ -61,7 +61,7 @@
                             <td class="text-center">
                                 <a class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit" href="<?php echo site_url('cms/article/edit?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-pencil-square"></i></a>
                                 <a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="<?php echo site_url('cms/article/delete?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-minus-square"></i></a>
-                                <a class="btn btn-xs btn-primary" data-toggle="tooltip" title="Facebook scrape crawler" href="javascript:facebookCrawler(<?php echo site_url('detail/'.$item->url_title); ?>);"><i class="fa fa-facebook"></i></a>
+                                <a class="btn btn-xs btn-primary" data-toggle="tooltip" title="Facebook scrape crawler" href="javascript:facebookCrawler('<?php echo site_url('detail/'.$item->url_title); ?>');"><i class="fa fa-facebook"></i></a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
