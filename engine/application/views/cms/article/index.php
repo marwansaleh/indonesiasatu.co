@@ -102,7 +102,7 @@
         SocialMedia.fbCrawler(url, function (response){
             if (response && !response.error){
                 $('#MyModal .modal-title').html('Facebook Crawler Result');
-                $('#MyModal .modal-body').html(JSON.stringify(response));
+                $('#MyModal .modal-body').html('<pre>'+JSON.stringify(response)+'</pre>');
                 $('#MyModal').modal('show');
             }else{
                 alert('Error while executing facebook crawler');
