@@ -61,6 +61,7 @@
                             <td class="text-center">
                                 <a class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit" href="<?php echo site_url('cms/article/edit?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-pencil-square"></i></a>
                                 <a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="<?php echo site_url('cms/article/delete?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-minus-square"></i></a>
+                                <a class="btn btn-xs btn-primary" data-toggle="tooltip" title="Facebook scrape crawler" href="javascript:facebookCrawler(<?php echo site_url('detail/'.$item->url_title); ?>);"><i class="fa fa-facebook"></i></a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -76,3 +77,36 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="MyModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- load script to handle facebook request to conduct crawling -->
+<script src="<?php echo site_url(config_item('path_assets').'js/socmed.js'); ?>"></script>
+<script type="text/javascript">
+    function facebookCrawler(url){
+        SocialMedia.fbCrawler(url, function (response){
+            if (response && !response.error){
+                $('#MyModal .modal-title').html('Facebook Crawler Result');
+                $('#MyModal .modal-body').html(JSON.stringify(response));
+                $('#MyModal').modal('show');
+            }else{
+                alert('Error while executing facebook crawler');
+            }
+        });
+    }
+</script>
