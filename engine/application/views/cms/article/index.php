@@ -98,17 +98,28 @@
 <!-- load script to handle facebook request to conduct crawling -->
 <script src="<?php echo site_url(config_item('path_assets').'js/socmed.js'); ?>"></script>
 <script type="text/javascript">
-    function facebookCrawler(url){
+    function facebookStats(url){
         $('#MyModal .modal-title').html('Facebook Crawler Result');
         $('#MyModal .modal-body').html('<div class="myloader"><div class="big"></div></div>');
         $('#MyModal').modal('show');
         
-        SocialMedia.fbCrawler(url, function (response){
-            console.log(JSON.stringify(response));
+        //get FB stats for this url
+        SocialMedia.fbShareCount(url, function (response){
             if (response && !response.error){
-                $('#MyModal .modal-body').html(SocialMedia.JSONFormatter(response));
+                $('#MyModal .modal-body').html('<div class="fb-stats">'+SocialMedia.JSONFormatter(response)+'</div>');
+                $('#MyModal .modal-body .fb-stats').append('<p><button type="button" class="btn btn-primary" oncick="facebookCrawler(\''+url+'\')">Force FB Crawler</button></p><div class="well fb-crawler"></div>');
+            }
+        });
+    }
+    
+    function facebookCrawler(url){
+        $('#MyModal .modal-body .fb-crawler').html('<div class="myloader"><div class="big"></div></div>');
+        
+        SocialMedia.fbCrawler(url, function (response){
+            if (response && !response.error){
+                $('#MyModal .modal-body .fb-crawler').html(SocialMedia.JSONFormatter(response));
             }else{
-                $('#MyModal .modal-body').html('<p>Error while executing Facebook crawler</p>');
+                $('#MyModal .modal-body .fb-crawler').html('<p>Error while executing Facebook crawler</p>');
             }
         });
     }
