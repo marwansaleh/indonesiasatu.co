@@ -34,7 +34,7 @@ class Detail extends MY_News {
             exit;
         }
         
-        $this->data['meta_title'] = $this->data['meta_title'] . ' - ' .$article->title;
+        $this->data['meta_title'] = $article->title;
         
         $this->_article_view_counter($article->id);
         
