@@ -107,7 +107,7 @@
         SocialMedia.fbShareCount(url, function (response){
             if (response && !response.error){
                 $('#MyModal .modal-body').html('<div class="fb-stats">'+SocialMedia.JSONFormatter(response)+'</div>');
-                $('#MyModal .modal-body .fb-stats').append('<p><button type="button" class="btn btn-primary" oncick="facebookCrawler(\''+url+'\')">Force FB Crawler</button></p><div class="well fb-crawler"></div>');
+                $('#MyModal .modal-body .fb-stats').append('<p><button type="button" class="btn btn-primary" onclick="facebookCrawler(\''+url+'\')">Force FB Crawler</button></p><div class="well fb-crawler"></div>');
             }
         });
     }
