@@ -4043,12 +4043,3 @@ span.customSelect.changed {
     background:url(../img/customSelect-arrow.gif) no-repeat center right;
 }
 
-.myloader {
-    display: block;
-    float: left;
-    width: 100%;
-}
-.myloader .big {
-    width: 100%; height: 120px;
-    background: url(../img/loader.gif) no-repeat center center;
-}
