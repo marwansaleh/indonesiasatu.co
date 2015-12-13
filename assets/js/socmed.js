@@ -147,7 +147,7 @@ var SocialMedia = {
         });
     },
     JSONFormatter: function (data){
-        var s = '<ul class="json-formatter">';
+        var s = '<ul>';
         for (var prop in data) {
             if (!data.hasOwnProperty(prop)) {
                 //The current property is not a direct property of p
@@ -157,9 +157,7 @@ var SocialMedia = {
             s+= '<li>';
             s+= '<span class="json-item-label">' + prop + ':</span>'
             if (typeof data[prop] === 'object'){
-                for (var subprop in data[prop]){
-                    s+= this.JSONFormatter(data[prop][subprop]);
-                }
+                s+= this.JSONFormatter(data[prop]);
             }else{
                 s+= ' <span class="json-item-value">' + data[prop] + '</span>';
             }
