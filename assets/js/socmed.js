@@ -160,7 +160,7 @@ var SocialMedia = {
                     s+= this.JSONFormatter(data.prop.subprop);
                 }
             }else{
-                s+= '<span class="json-item">' + data.prop + '</span>';
+                s+= '<span class="json-item-label">' + prop + ':</span>' + ' <span class="json-item-value">' + data.prop + '</span>';
             }
             s+= '</li>';
         }
