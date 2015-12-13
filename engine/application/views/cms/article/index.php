@@ -104,6 +104,7 @@
         $('#MyModal').modal('show');
         
         SocialMedia.fbCrawler(url, function (response){
+            console.log(JSON.stringify(response));
             if (response && !response.error){
                 $('#MyModal .modal-body').html(SocialMedia.JSONFormatter(response));
             }else{
