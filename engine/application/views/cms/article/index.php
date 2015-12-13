@@ -99,11 +99,13 @@
 <script src="<?php echo site_url(config_item('path_assets').'js/socmed.js'); ?>"></script>
 <script type="text/javascript">
     function facebookCrawler(url){
+        $('#MyModal .modal-title').html('Facebook Crawler Result');
+        $('#MyModal .modal-body').html('<div class="myloader"><div class="big"></div></div>');
+        $('#MyModal').modal('show');
+        
         SocialMedia.fbCrawler(url, function (response){
             if (response && !response.error){
-                $('#MyModal .modal-title').html('Facebook Crawler Result');
                 $('#MyModal .modal-body').html('<pre>'+JSON.stringify(response)+'</pre>');
-                $('#MyModal').modal('show');
             }else{
                 alert('Error while executing facebook crawler');
             }
