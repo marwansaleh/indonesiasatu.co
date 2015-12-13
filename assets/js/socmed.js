@@ -28,7 +28,7 @@ var SocialMedia = {
     setFB_ID: function (id){
         this.FB_APP_ID = id;
     },
-    setFB_Socpe: function (scope){
+    setFB_Scope: function (scope){
         this.FB_Scope = scope;
     },
     fbLogin: function (response){
@@ -133,6 +133,21 @@ var SocialMedia = {
         var serviceBase = this._getServiceBaseUrl();
         
         return serviceBase + service;
+    },
+    fbDebug: function (url,targetResult){
+        var _this = this;
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                $.post("https://developers.facebook.com/tools/debug/og/object/",{
+                    fb_dtsg: "AQHAXHZWAcRo",
+                    q: url,
+                    rescrape: true
+                },function(data){
+                    $('#'+targetResult).html(data);
+                });
+            }
+        });
     },
     _getBaseUrl: function(){
         var loc = window.location;
