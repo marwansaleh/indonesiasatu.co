@@ -121,6 +121,12 @@ var SocialMedia = {
             }
         }); 
     },
+    fbShareCount: function (url,callback){
+        var _this = this;
+        FB.api('/'+url+'?fields=share', function(response){
+            callback(response);
+        });
+    },
     twShare: function(url,text){
         var tw_window = window.open('https://twitter.com/intent/tweet?url='+url+'&text='+text,'Twitter-Web-Intent');
         tw_window.focus();
@@ -134,19 +140,10 @@ var SocialMedia = {
         
         return serviceBase + service;
     },
-    fbDebug: function (url,targetResult){
+    fbCrawler: function (url,callback){
         var _this = this;
-        FB.getLoginStatus(function(response) {
-            if (response.status === 'connected') {
-                // Logged into your app and Facebook.
-                $.post("https://developers.facebook.com/tools/debug/og/object/",{
-                    fb_dtsg: "AQHAXHZWAcRo",
-                    q: url,
-                    rescrape: true
-                },function(data){
-                    $('#'+targetResult).html(data);
-                });
-            }
+        FB.api('/'+url,'post', function(response){
+            callback(response);
         });
     },
     _getBaseUrl: function(){
