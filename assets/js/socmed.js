@@ -155,12 +155,13 @@ var SocialMedia = {
             }
             //Do your logic with the property here
             s+= '<li>';
-            if (typeof data.prop == 'object'){
-                for (var subprop in data.prop){
-                    s+= this.JSONFormatter(data.prop.subprop);
+            s+= '<span class="json-item-label">' + prop + ':</span>'
+            if (typeof data[prop] === 'object'){
+                for (var subprop in data[prop]){
+                    s+= this.JSONFormatter(data[prop][subprop]);
                 }
             }else{
-                s+= '<span class="json-item-label">' + prop + ':</span>' + ' <span class="json-item-value">' + data.prop + '</span>';
+                s+= ' <span class="json-item-value">' + data[prop] + '</span>';
             }
             s+= '</li>';
         }
