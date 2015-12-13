@@ -146,6 +146,24 @@ var SocialMedia = {
             callback(response);
         });
     },
+    JSONFormatter: function (data){
+        var s = '<ul class="json-formatter">';
+        for (var prop in data) {
+            if (!data.hasOwnProperty(prop)) {
+                //The current property is not a direct property of p
+                continue;
+            }
+            //Do your logic with the property here
+            s+= '<li>';
+            for (var subprop in data.prop){
+                s+= this.JSONFormatter(data.prop.subprop);
+            }
+            s+= '</li>';
+        }
+        s+= '</ul>';
+        
+        return s;
+    },
     _getBaseUrl: function(){
         var loc = window.location;
         var base_url = loc.protocol + '//'+loc.host;
