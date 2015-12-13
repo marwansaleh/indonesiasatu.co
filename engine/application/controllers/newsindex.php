@@ -20,9 +20,12 @@ class Newsindex extends MY_News {
         $parameters = $this->get_sys_parameters('LAYOUT');
         $this->data['parameters'] = $parameters;
         
-        $this->data['index_day'] = $this->input->post('index_day') ? $this->input->post('index_day') : $day;
-        $this->data['index_month'] = $this->input->post('index_month') ? $this->input->post('index_month') : $month;
-        $this->data['index_year'] = $this->input->post('index_year') ? $this->input->post('index_year') : $year;
+        //get current day, month, year
+        $date = getdate();
+        
+        $this->data['index_day'] = $this->input->post('index_day') ? $this->input->post('index_day') : ($day ? $day : $date['mday']);
+        $this->data['index_month'] = $this->input->post('index_month') ? $this->input->post('index_month') : ($month ? $month : $date['mon']);
+        $this->data['index_year'] = $this->input->post('index_year') ? $this->input->post('index_year') : ($year ? $year : $date['year']);
         
         //prepare month name
         $this->data['indonesian_months'] = array(1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','Nopember','Desember');
