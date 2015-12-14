@@ -108,8 +108,7 @@ class Detail extends MY_News {
             'description'   => $article->synopsis,
             'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_SMALL),
             'datePublished' => date('d-M-Y H:i', $article->date),
-            'articleSection'=> $article->synopsis,
-            'articleBody'   => $article->content
+            'articleSection'=> $article->synopsis
         );
         
         //get image properties from image shared
