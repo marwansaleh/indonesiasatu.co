@@ -123,4 +123,16 @@
             }
         });
     }
+    
+    function updateArticleFacebookObjectId(articleId,fbObjId){
+        $.ajax({
+            url: "<?php echo site_url('service/article/fb_object'); ?>/"+articleId,
+            type: 'put',
+            data: {fb_object_id:fbObjId},
+            dataType: 'json',
+            success: function (response){
+                //do something here
+            }
+        });
+    }
 </script>
