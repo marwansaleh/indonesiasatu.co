@@ -9,7 +9,7 @@
                     <div class="col-sm-12">
                         <div class="redaksi-container">
                             <p class="redaksi">
-                                Penasehat: Letjen TNI (Purn) Kiki Syahnakri<br>
+                                Penasihat: Letjen TNI (Purn) Kiki Syahnakri<br>
                                 <!-- Pendiri: Valens Daki-Soo<br>-->
                                 Pemimpin Redaksi: Valens Daki-Soo<br>
                                 Redaktur Pelaksana: Simon Leya<br>
