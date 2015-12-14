@@ -107,7 +107,7 @@
         SocialMedia.fbShareCount(url, function (response){
             if (response && !response.error){
                 $('#MyModal .modal-body').html('<div class="fb-stats">'+SocialMedia.JSONFormatter(response)+'</div>');
-                $('#MyModal .modal-body .fb-stats').append('<p><button type="button" class="btn btn-primary" onclick="facebookCrawler(\''+url+'\')">Force FB Crawler</button></p><div class="well fb-crawler"></div>');
+                $('#MyModal .modal-body .fb-stats').append('<p><button type="button" class="btn btn-primary" onclick="facebookCrawler(\''+url+'\')">Force FB Crawler</button></p><div class="fb-crawler"></div>');
             }
         });
     }
@@ -117,7 +117,7 @@
         
         SocialMedia.fbCrawler(url, function (response){
             if (response && !response.error){
-                $('#MyModal .modal-body .fb-crawler').html(SocialMedia.JSONFormatter(response));
+                $('#MyModal .modal-body .fb-crawler').html('<div class="well">'+SocialMedia.JSONFormatter(response)+'</div>');
             }else{
                 $('#MyModal .modal-body .fb-crawler').html('<p>Error while executing Facebook crawler</p>');
             }
