@@ -10,6 +10,12 @@
         <meta name="<?php echo $key; ?>" content="<?php echo $val; ?>">
         <?php endforeach; ?>
         <?php endif; ?>
+        <!-- Meta ItemProp -->
+        <?php if (isset($metaprop)&&  is_array($metaprop)): ?>
+        <?php foreach($metaprop as $key=>$val): ?>
+        <meta itemprop="<?php echo $key; ?>" content="<?php echo $val; ?>">
+        <?php endforeach; ?>
+        <?php endif; ?>
         <!-- Meta Og properties -->
         <?php if (isset($og_props)&&  is_array($og_props)): ?>
         <?php foreach($og_props as $prop=>$val): ?>
