@@ -111,7 +111,7 @@ class Detail extends MY_News {
             if ($image_shared_dimensions){
                 $this->_write_log('Image size read done');
                 $this->og_set_props(array(
-                    'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
+                    'og:image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
                     'og:image:url'     => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
                     'og:image:type'    => $image_shared_dimensions['mime'],
                     'og:image:width'   => $image_shared_dimensions[0],
