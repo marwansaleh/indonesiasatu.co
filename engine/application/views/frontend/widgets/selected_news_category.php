@@ -10,7 +10,7 @@
             <?php if ($i==1): ?>
             <div class="main-article">
                 <div class="title">
-                    <span><a href="<?php echo site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></span>
+                    <span><a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></span>
                 </div>
                 <figure>
                     <img class="medium" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_MEDIUM); ?>" alt="">
@@ -18,7 +18,7 @@
                 <div class="main-text">
                     <div class="inner">
                         <span class="article-info"><?php echo number_format($article->comment); ?> comments, <?php echo date('d/m/Y',$article->date); ?>, by <?php echo $article->created_by_name; ?></span>
-                        <p><?php echo $article->synopsis; ?> <a href="<?php echo site_url('detail/'.$article->url_title); ?>">Read more...</a></p>
+                        <p><?php echo $article->synopsis; ?> <a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>">Read more...</a></p>
                     </div>
                 </div>
             </div>
