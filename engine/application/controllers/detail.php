@@ -189,7 +189,7 @@ class Detail extends MY_News {
             $related = array();
             foreach ($tags_array as $tag){
                 $this->db->like('tags', $tag);
-                $result = $this->article_m->get_offset('id,title,url_title,synopsis,image_url,date',$condition,0,$limit_each_tag);
+                $result = $this->article_m->get_offset('id,title,url_title,url_short,synopsis,image_url,date',$condition,0,$limit_each_tag);
                 
                 if ($result){
                     foreach ($result as $r){
