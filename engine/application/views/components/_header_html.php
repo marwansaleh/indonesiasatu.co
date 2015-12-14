@@ -57,6 +57,6 @@
 
         </script>
     </head>
-    <body <?php echo isset($body_class) && $body_class?'class="'.$body_class.'"':''; ?>>
+    <body <?php echo isset($body_class) && $body_class?'class="'.$body_class.'"':''; ?> itemscope itemtype="http://schema.org/Product">
         <div id="fb-root"></div>
     
