@@ -16,12 +16,14 @@
             <div class="blog-content">
                 <div class="info">
                     <a href="#"><?php echo number_format($article->comment); ?> comments</a>,
-                    <span class="date"><?php echo date('d/m/Y',$article->date); ?></span>, by
-                    <a href="#"><?php echo $article->created_by_name; ?></a>
+                    <span class="date"><?php echo date('d/m/Y',$article->date); ?></span> 
+                    <!--<a href="#"><?php //echo $article->created_by_name; ?></a>-->
                 </div>
                 <?php echo $article->content; ?>
                 
-                <p class="text-muted small written-by"><em>--- Ditulis oleh <?php echo $article->created_by_name; ?></em></p>
+                <p class="text-muted small written-by">
+                    <em>--- <?php echo $article->created_by_name; ?></em>
+                </p>
                 
                 <?php if ($article->tags): ?>
                 <div class="tag-container">
