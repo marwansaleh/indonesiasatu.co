@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" itemscope itemtype="http://schema.org/Article">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,6 +57,6 @@
 
         </script>
     </head>
-    <body <?php echo isset($body_class) && $body_class?'class="'.$body_class.'"':''; ?> itemscope itemtype="http://schema.org/Product">
+    <body <?php echo isset($body_class) && $body_class?'class="'.$body_class.'"':''; ?>>
         <div id="fb-root"></div>
     
