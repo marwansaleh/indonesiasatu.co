@@ -18,7 +18,7 @@
                     <ul class="nicescroll" style="height:295px;overflow:hidden;">
                         <?php foreach ($popular_news as $popular): ?>
                         <li>
-                            <a title="" href="<?php echo site_url('detail/'.$popular->url_title); ?>">
+                            <a title="" href="<?php echo $popular->url_short ? $popular->url_short : site_url('detail/'.$popular->url_title); ?>">
                                 <figure>
                                     <img class="tiny" src="<?php echo get_image_thumb($popular->image_url, IMAGE_THUMB_TINY); ?>" alt="">
                                 </figure>
@@ -34,7 +34,7 @@
                     <ul class="nicescroll" style="height:295px;overflow:hidden;">
                         <?php foreach ($recent_news as $recent): ?>
                         <li>
-                            <a title="" href="<?php echo site_url('detail/'.$recent->url_title); ?>">
+                            <a title="" href="<?php echo $recent->url_short ? $recent->url_short : site_url('detail/'.$recent->url_title); ?>">
                                 <figure>
                                     <img class="tiny" src="<?php echo get_image_thumb($recent->image_url, IMAGE_THUMB_TINY); ?>" alt="">
                                 </figure>
@@ -50,7 +50,7 @@
                     <ul class="nicescroll" style="height:295px;overflow:hidden;">
                         <?php foreach ($commented_news as $commented): ?>
                         <li>
-                            <a title="" href="<?php echo site_url('detail/'.$commented->url_title); ?>">
+                            <a title="" href="<?php echo $commented->url_short ? $commented->url_short : site_url('detail/'.$commented->url_title); ?>">
                                 <figure>
                                     <img class="tiny" src="<?php echo get_image_thumb($commented->image_url, IMAGE_THUMB_TINY); ?>" alt="">
                                 </figure>
