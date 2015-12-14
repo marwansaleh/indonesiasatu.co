@@ -106,7 +106,7 @@ class Detail extends MY_News {
         $this->data['metaprop'] = array(
             'name'          => $article->title,
             'description'   => $article->synopsis,
-            'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE)
+            'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_SMALL)
         );
         
         //get image properties from image shared
