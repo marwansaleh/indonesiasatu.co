@@ -138,7 +138,7 @@ class Category extends MY_News {
     }
     
     private function _category_news($category_id, $num=10){
-        $fields = 'id,title, url_title, image_url, image_type, date, synopsis, comment, created_by';
+        $fields = 'id,title, url_title, url_short, image_url, image_type, date, synopsis, comment, created_by';
         
         $category_id_list = array($category_id);
         //get children category
@@ -154,7 +154,7 @@ class Category extends MY_News {
     }
     
     private function _tag_news($tag, $num=10){
-        $fields = 'id,title, url_title, image_url, image_type, date, synopsis, comment, created_by';
+        $fields = 'id,title, url_title, url_short, image_url, image_type, date, synopsis, comment, created_by';
         
         $this->db->like('tags', $tag);
         return $this->article_m->get_offset($fields, array('published'=>ARTICLE_PUBLISHED),0,$num);
