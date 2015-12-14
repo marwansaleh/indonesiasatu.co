@@ -121,7 +121,7 @@ class Search extends MY_News {
     }
     
     private function _search_news($search='', $start=0, $num=10){
-        $fields = 'id,title, url_title, image_url, image_type, date, synopsis, comment, created_by';
+        $fields = 'id,title, url_title, url_short, image_url, image_type, date, synopsis, comment, created_by';
         
         if ($search){
             $this->db->like('title', $search);
