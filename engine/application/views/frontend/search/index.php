@@ -30,11 +30,11 @@
                 </figure>
                 <div class="text">
                     <div class="inner-border">
-                        <div class="title"><a href="<?php echo site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></div>
+                        <div class="title"><a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></div>
                         <div class="description">
                             <div class="date"><?php echo number_format($article->comment); ?> comments, <?php echo date('d/m/Y',$article->date); ?>, <?php echo $article->created_by_name; ?></div>
                             <div class="excerpt">
-                                <p><?php echo $article->synopsis; ?> <a href="<?php echo site_url('detail/'.$article->url_title); ?>">Read more...</a></p>
+                                <p><?php echo $article->synopsis; ?> <a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>">Read more...</a></p>
                             </div>
                         </div>
                     </div>
