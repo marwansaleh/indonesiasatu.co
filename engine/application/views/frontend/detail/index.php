@@ -20,6 +20,7 @@
                     <span class="date"><?php echo date('d/m/Y',$article->date); ?></span> 
                     <!--<a href="#"><?php //echo $article->created_by_name; ?></a>-->
                 </div>
+                <blockquote><?php echo $article->synopsis; ?></blockquote>
                 <?php echo $article->content; ?>
                 
                 <p class="text-muted small written-by">
