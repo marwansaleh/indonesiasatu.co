@@ -24,5 +24,9 @@
         <title><?php echo $meta_title; ?></title>
         
     </head>
-    <body><!-- Metadata only no content --></body>
+    <body>
+        <?php if (isset($og_props['og:image'])): ?>
+        <img src="<?php echo $og_props['og:image']; ?>" />
+        <?php endif; ?>
+    </body>
 </html>
