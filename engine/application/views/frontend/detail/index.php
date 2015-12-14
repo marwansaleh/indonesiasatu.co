@@ -2,7 +2,7 @@
 <div class="row">
     <div class="blog-page">
         <article>
-            <h1 class="title">
+            <h1 itemprop="name" class="title">
                 <span style="font-size:15px; display:block;line-height:20px;padding:0;margin-bottom:10px;"><?php echo strtoupper($category->name); ?></span>
                 <?php echo $article->title; ?>
                 <span style="font-size:13px;display:block;line-height:15px;padding:0;margin-top:10px;"><?php echo date('d-M-Y H:i', $article->date); ?></span>
@@ -11,10 +11,11 @@
             <?php $this->load->view('frontend/slider/detail_slider', array('images'=>$article->images)); ?>
             <?php else: ?>
             <figure>
-                <img class="img-responsive large" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
+                <img itemprop="image" class="img-responsive large" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
             </figure>
             <?php endif; ?>
             <div class="blog-content">
+                <p style="display: none;" itemprop="description"><?php echo $article->synopsis; ?></p>
                 <div class="info">
                     <a href="#"><?php echo number_format($article->comment); ?> comments</a>,
                     <span class="date"><?php echo date('d/m/Y',$article->date); ?></span> 
