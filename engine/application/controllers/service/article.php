@@ -205,6 +205,17 @@ class Article extends REST_Api {
         }
     }
     
+    function fb_object_put($article_id){
+        $this->load->model(array('article/article_m'));
+        $object_id = $this->put('fb_object_id');
+        
+        if ($this->article_m->save(array('fb_object_id' => $object_id),$article_id)){
+            $this->response(array('status'=>true));
+        }else{
+            $this->response(array('status'=>false));
+        }
+    }
+    
     private function _shares_proccess($item){
         $this->load->model(array('users/user_m', 'article/article_m'));
         
