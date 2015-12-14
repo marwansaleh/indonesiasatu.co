@@ -1,3 +1,4 @@
+<input type="hidden" id="url_short" value="<?php echo $article->url_short; ?>" />
 <div class="row">
     <div class="blog-page">
         <article>
@@ -156,6 +157,12 @@
             }else{
                 console.log('Comment is not allowed');
             }
+            
+            this.loadGoogleShort();
+        },
+        loadGoogleShort: function (){
+            var google_url = $('#url_short').val();
+            $.get(google_url);
         },
         loadComments: function (){
             var _this = this;
