@@ -2,19 +2,16 @@
 <div class="row">
     <div class="blog-page">
         <article>
-            <div class="blog-header-info" style="display: block; float: left; padding-left:15px; width:100%; margin: 5px 0 5px 0">
+            <h1 class="title">
                 <span style="font-size:15px; display:block;line-height:20px;padding:0;margin-bottom:10px;"><?php echo strtoupper($category->name); ?></span>
-                <span style="font-size:13px;display:block;line-height:15px;padding:0;margin-top:10px;"><?php echo date('d-M-Y H:i', $article->date); ?></span>
-            </div>
-            
-            <h1 itemprop="name" class="title">
                 <?php echo $article->title; ?>
+                <span style="font-size:13px;display:block;line-height:15px;padding:0;margin-top:10px;"><?php echo date('d-M-Y H:i', $article->date); ?></span>
             </h1>
             <?php if ($article->image_type==IMAGE_TYPE_MULTI): ?>
             <?php $this->load->view('frontend/slider/detail_slider', array('images'=>$article->images)); ?>
             <?php else: ?>
             <figure>
-                <img itemprop="image" class="img-responsive large" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
+                <img class="img-responsive large" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
             </figure>
             <?php endif; ?>
             <div class="blog-content">
@@ -23,7 +20,6 @@
                     <span class="date"><?php echo date('d/m/Y',$article->date); ?></span> 
                     <!--<a href="#"><?php //echo $article->created_by_name; ?></a>-->
                 </div>
-                <blockquote itemprop="description"><?php echo $article->synopsis; ?></blockquote>
                 <?php echo $article->content; ?>
                 
                 <p class="text-muted small written-by">
