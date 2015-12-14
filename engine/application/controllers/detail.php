@@ -102,6 +102,7 @@ class Detail extends MY_News {
             'description'   => $article->synopsis,
             'type'          => 'article'
         ));
+        //for google share
         $this->data['metaprop'] = array(
             'name'          => $article->title,
             'description'   => $article->synopsis,
