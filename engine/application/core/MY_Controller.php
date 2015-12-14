@@ -594,7 +594,7 @@ class MY_News extends MY_Controller {
             $this->load->model('article/category_m');
         }
         $articles = array();
-        $fields = 'title,category_id,url_title,image_url,comment,date,created_by';
+        $fields = 'title,category_id,url_title,url_short,image_url,comment,date,created_by';
         
         $where = array('published'=>ARTICLE_PUBLISHED);
         if ($condition){
@@ -615,7 +615,7 @@ class MY_News extends MY_Controller {
     
     protected function _popular_news($num=10, $condition=NULL){
         $articles = array();
-        $fields = 'title,url_title,image_url,comment,date,created_by,view_count';
+        $fields = 'title,url_title,url_short,image_url,comment,date,created_by,view_count';
         
         $where = array('published'=>ARTICLE_PUBLISHED);
         if ($condition){
@@ -634,7 +634,7 @@ class MY_News extends MY_Controller {
     
     protected function _commented_news($num=10, $condition=NULL){
         $articles = array();
-        $fields = 'title,url_title,image_url,comment,date,created_by';
+        $fields = 'title,url_title,url_short,image_url,comment,date,created_by';
         
         $this->db->order_by('comment desc, date desc');
         $where = array('published'=>ARTICLE_PUBLISHED, 'comment >'=>0);
