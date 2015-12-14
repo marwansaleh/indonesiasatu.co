@@ -10,7 +10,7 @@
         <meta name="<?php echo $key; ?>" content="<?php echo $val; ?>">
         <?php endforeach; ?>
         <?php endif; ?>
-        <!-- Meta ItemProp -->
+        <!-- Meta ItemProp for google share-->
         <?php if (isset($metaprop)&&  is_array($metaprop)): ?>
         <?php foreach($metaprop as $key=>$val): ?>
         <meta itemprop="<?php echo $key; ?>" content="<?php echo $val; ?>">
