@@ -68,7 +68,7 @@
             <?php foreach ($related_news as $related): ?>
             <div class="column">
                 <div class="inner">
-                    <a href="<?php echo site_url('detail/'.$related->url_title); ?>">
+                    <a href="<?php echo $related->url_short ? $related->url_short : site_url('detail/'.$related->url_title); ?>">
                         <figure style="height: 105px; overflow: hidden;">
                             <img class="small" src="<?php echo get_image_thumb($related->image_url, IMAGE_THUMB_SMALL); ?>" alt="">
                         </figure>
@@ -158,7 +158,7 @@
                 console.log('Comment is not allowed');
             }
             
-            this.loadGoogleShort();
+            //this.loadGoogleShort();
         },
         loadGoogleShort: function (){
             var google_url = $('#url_short').val();
