@@ -2,8 +2,11 @@
 <div class="row">
     <div class="blog-page">
         <article>
-            <span style="font-size:15px; display:block;line-height:20px;padding:0;margin-bottom:10px;"><?php echo strtoupper($category->name); ?></span>
-            <span style="font-size:13px;display:block;line-height:15px;padding:0;margin-top:10px;"><?php echo date('d-M-Y H:i', $article->date); ?></span>
+            <div class="blog-header-info" style="display: block; float: left; padding-left:15px; width:100%; margin: 5px 0 5px 0">
+                <span style="font-size:15px; display:block;line-height:20px;padding:0;margin-bottom:10px;"><?php echo strtoupper($category->name); ?></span>
+                <span style="font-size:13px;display:block;line-height:15px;padding:0;margin-top:10px;"><?php echo date('d-M-Y H:i', $article->date); ?></span>
+            </div>
+            
             <h1 itemprop="name" class="title">
                 <?php echo $article->title; ?>
             </h1>
