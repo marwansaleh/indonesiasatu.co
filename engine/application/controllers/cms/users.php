@@ -25,7 +25,7 @@ class Users extends MY_AdminController {
         //set access
         $this->data['set_access_privilege'] = $this->users->has_access('USER_ACCESS_USER_MANAGEMENT');
         
-        $where = NULL;
+        $where = array('type' => USERTYPE_INTERNAL);
         
         //count totalRecords
         $this->data['totalRecords'] = $this->user_m->get_count($where);
