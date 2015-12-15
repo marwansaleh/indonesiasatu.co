@@ -78,7 +78,8 @@ class Home extends MY_News {
         //Load highlight news
         $this->data['highlight_news'] = $this->_highlight_news(4);
         
-        
+        $this->data['embun_pagi'] = $this->_get_article_by_category_slug('embun-pagi');
+        $this->data['teropong'] = $this->_get_article_by_category_slug('teropong');
         
         //Load popular news
         $this->data['latest_news'] = $this->_latest_news(isset($parameters['LAYOUT_HOME_LATEST_NUM'])?$parameters['LAYOUT_HOME_LATEST_NUM']:15);
@@ -116,7 +117,7 @@ class Home extends MY_News {
         $this->load->view('_layout_mobile', $this->data);
     }
     
-    function _inspiration(){
+    private function _inspiration(){
         //get category id for inspiration
         $category_id = $this->category_m->get_value('id', array('slug' => 'inspirasi'));
         if (!$category_id){
@@ -134,6 +135,35 @@ class Home extends MY_News {
         return $inspiration;
     }
     
+    private function _get_article_by_category_slug($slug){
+        $slected_article = new stdClass();
+        
+        //get category id for inspiration
+        $categories = $this->category_m->get_select_where('id',array('slug' => $slug));
+        if (!$categories){
+            return NULL;
+        }
+        //get all inherent categories
+        $categories_inherits = $this->category_m->get_select_where('id',array('parent'=>$categories[0]->id));
+        if ($categories_inherits){
+            $categories = array_merge($categories, $categories_inherits);
+        }
+        
+        $category_ids = array();
+        foreach ($categories as $cat){
+            $category_ids [] = $cat->id;
+        }
+        $this->db->where_in('category_id', $category_ids);
+        $article = $this->article_m->get_by(array('published'=>ARTICLE_PUBLISHED), TRUE);
+        
+        if (!$article){
+            return NULL;
+        }
+        $slected_article->category = $this->category_m->get($article->category_id);
+        $slected_article->article = $article;
+        
+        return $slected_article;
+    }
 }
 
 /*
