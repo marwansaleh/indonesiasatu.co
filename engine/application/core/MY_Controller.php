@@ -464,8 +464,8 @@ class MY_AdminController extends MY_Controller {
                 'FM_BASEURL'        => rtrim(userfiles_baseurl(), '/'),
                 'FM_UPLOAD_DIR'     => '/' . userfiles_basepath(config_item('images')),
                 'FM_CURRENT_PATH'   => '../../../../images.indonesiasatu.co/www/'. config_item('images'),
-                //'FM_THUMB_PATH'     => '../../../../images.indonesiasatu.co/www/'. config_item('rfthumbs'),
-                'FM_THUMB_PATH'     => config_item('rfthumbs'),
+                'FM_THUMB_PATH'     => '../../../../images.indonesiasatu.co/www/'. config_item('rfthumbs'),
+                //'FM_THUMB_PATH'     => config_item('rfthumbs'),
                 'FM_RESIZE_PATH'    => '../../../../images.indonesiasatu.co/www/'. config_item('thumbs')
             );
         }
