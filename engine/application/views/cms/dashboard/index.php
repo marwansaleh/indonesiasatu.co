@@ -25,8 +25,8 @@
         <div class="info-box">
             <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">Active Ads</span>
-                <span class="info-box-number">760</span>
+                <span class="info-box-text">Articles</span>
+                <span class="info-box-number"><?php echo number_format($article_count); ?></span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div>
