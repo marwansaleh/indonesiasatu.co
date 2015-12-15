@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="box-body">
-                <div class="large-box">
+                <div class="large-box nicescroll">
                     <ul class="media-list">
                         <?php foreach ($last_articles as $la): ?>
                         <li class="media">
@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="box-body">
-                <div class="large-box">
+                <div class="large-box nicescroll">
                     <table class="table table-striped">
                         <tbody>
                             <?php foreach ($user_onlines as $ol): ?>
@@ -107,6 +107,6 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('.medium-box').niceScroll({cursorcolor:"#cecece"});
+        
     });
 </script>
