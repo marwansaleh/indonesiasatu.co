@@ -58,6 +58,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Select Category Image</label>
+                            <input type="hidden" id="base_image" value="<?php echo get_image_base(IMAGE_THUMB_ORI); ?>" />
+                            <div class="input-group">
+                                <input type="text" readonly="true" class="form-control disabled" id="image_url" name="image_url" value="<?php echo $item->image_url; ?>" placeholder="Browse image..">
+                                <div class="input-group-btn">
+                                    <a href="<?php echo site_url(config_item('path_lib').'filemanager/dialog.php?type=1&fldr=category-images&field_id=image_url&relative_url=1&iframe=true&width=80%&height=80%'); ?>"  rel="prettyPhoto" class="btn btn-default"><i class="fa fa-upload"></i> Browse Image</a>
+                                    <button type="button" class="btn btn-danger" id="btn-delete-image">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <img id="img-selected" class="img-responsive" <?php echo $item->image_url ? 'src="'.  get_image_thumb($item->image_url, IMAGE_THUMB_ORI).'"' : ''; ?> />
+                    </div>
+                </div>
             </div>
             <div class="box-footer clearfix">
                 <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Submit</button>
@@ -70,20 +86,56 @@
 </div>
 
 <script type="text/javascript">
+    var CategoryManager = {
+        selectedImage: null,
+        baseImage: null,
+        init: function (){
+            this.loadImage();
+        },
+        setSelectedImage: function (imageUrl){
+            this.selectedImage = imageUrl;
+        },
+        setBaseImage: function (basepath){
+            this.baseImage = basepath;
+        },
+        loadImage: function (){
+            if (this.selectedImage){
+                var imageUrl = this.baseImage + this.selectedImage;
+                $('#img-selected').attr('src', imageUrl);
+            }
+        },
+        deleteSelectedImage: function (){
+            this.selectedImage = null;
+            $('#img-selected').attr('src', '');
+            $('#selected_image').val('');
+        },
+        createSlug: function(source,target){
+            var url = $.trim($('#'+source).val());
+            url = url.replace('%','-persen');
+            //replace everything not alpha numeric
+            url = url.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+            //url = url.replace(/[ \t\r]+/g,"-");
+            $('#'+target).val(url);
+        }
+    };
+    
+    CategoryManager.setBaseImage($('#base_image').val());
+    CategoryManager.setSelectedImage($('#image_url').val());
+    CategoryManager.init();
+    
     $(document).ready(function (){
         $('input#name').on('blur', function (){
             if (!$('input#slug').val()){
-                create_url_title('name', 'slug');
+                CategoryManager.createSlug('name', 'slug');
             }
+        });
+        $('#btn-delete-image').on('click', function (){
+            CategoryManager.deleteSelectedImage();
         });
     });
     
-    function create_url_title(sourceField,targetField){
-        var url = $.trim($('#'+sourceField).val());
-        url = url.replace('%','-persen');
-        //replace everything not alpha numeric
-        url = url.replace(/[^a-z0-9]/gi, '-').toLowerCase();
-        //url = url.replace(/[ \t\r]+/g,"-");
-        $('#'+targetField).val(url);
+    function responsive_filemanager_callback(field_id){
+        CategoryManager.setSelectedImage($('#'+field_id).val());
+        CategoryManager.loadImage();
     }
 </script>
