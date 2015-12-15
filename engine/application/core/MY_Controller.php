@@ -413,16 +413,13 @@ class MY_Controller extends MY_BaseController {
             'site_name'         =>  'Indonesia Satu',
             'description'       =>  'Berita online yang mengulas secara lengkap tentang kejadian yang terjadi setiap hari nasional dan internasional',          
             'url'               =>  current_url(),
-            'type'              => 'article',
-            //'local'             => 'id',
-            //'article:author'    => 'IndonesiaSatu.co',
-            //'article:publisher' => 'IndonesiaSatu.co'
+            'type'              => 'article'
         );
     }
 }
 
 class MY_AdminController extends MY_Controller {
-    protected $REC_PER_PAGE = 10;
+    protected $REC_PER_PAGE = 12;
     
     function __construct() {
         parent::__construct();
