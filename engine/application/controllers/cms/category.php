@@ -90,7 +90,7 @@ class Category extends MY_AdminController {
         $this->form_validation->set_rules($rules);
         //exit(print_r($rules));
         if ($this->form_validation->run() != FALSE) {
-            $postdata = $this->category_m->array_from_post(array('name','slug','parent','sort','is_menu','is_home'));
+            $postdata = $this->category_m->array_from_post(array('name','slug','parent','sort','is_menu','is_home','image_url'));
             
             if ($this->category_m->save($postdata, $id)){
                 $this->session->set_flashdata('message_type','success');
