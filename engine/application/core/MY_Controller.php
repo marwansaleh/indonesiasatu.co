@@ -599,6 +599,13 @@ class MY_News extends MY_Controller {
             $where = array_merge($where, $condition);
         }
         
+        /** set up category should not not be seen in news list **/
+        $forbiden_cat_ids = $this->_get_category_inherit_ids(array('embun-pagi', 'teropong'));
+        if ($forbiden_cat_ids && count($forbiden_cat_ids)){
+            $this->db->where_not_in('category_id', $forbiden_cat_ids);
+        }
+        /** end setup **/
+        
         $this->db->order_by('date desc');
         $result = $this->article_m->get_offset($fields,$where,0,$num);
         foreach ($result as $item){
@@ -609,6 +616,32 @@ class MY_News extends MY_Controller {
         }
         
         return $articles;
+    }
+    
+    private function _get_category_inherit_ids($slugs){
+        if (!is_array($slugs)){
+            $slugs = array($slugs);
+        }
+        
+        $ids = array();
+        
+        foreach ($slugs as $slug){
+            $categories = $this->category_m->get_select_where('id',array('slug' => $slug));
+            if (!$categories){
+                continue;
+            }
+            //get all inherent categories
+            $categories_inherits = $this->category_m->get_select_where('id',array('parent'=>$categories[0]->id));
+            if ($categories_inherits){
+                $categories = array_merge($categories, $categories_inherits);
+            }
+            
+            foreach ($categories as $cat){
+                $ids [] = $cat->id;
+            }
+        }
+        
+        return $ids;
     }
     
     protected function _popular_news($num=10, $condition=NULL){
