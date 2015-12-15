@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="box-body">
-                <div class="medium-box">
+                <div class="large-box">
                     <ul class="media-list">
                         <?php foreach ($last_articles as $la): ?>
                         <li class="media">
@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="box-body">
-                <div class="medium-box">
+                <div class="large-box">
                     <table class="table table-striped">
                         <tbody>
                             <?php foreach ($user_onlines as $ol): ?>
