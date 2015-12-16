@@ -5,16 +5,33 @@
         <?php endif; ?>
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">List of Comments</h3>
-                <div class="box-tools">
-                    <div class="input-group">
-                        <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 250px;" placeholder="Search">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                            <a class="btn btn-sm btn-primary" data-toggle="tooltip" title="Create" href="<?php echo site_url('cms/comment/edit'); ?>"><i class="fa fa-plus-square"></i></a>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h3 class="box-title">List of Comments</h3>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="pull-right">
+                            <div class="form-inline">
+                                <div class="form-group form-group-sm">
+                                    <input type="number" class="form-control" step="1" min="2" id="limit" value="15" title="Data limit" style="width:60px;" />
+                                </div>
+                                <div class="form-group form-group-sm">
+                                    <select id="article" class="form-control selectpicker" data-live-search="true" data-size="8">
+                                        <option value="0">-- All articles--</option>
+                                        <?php foreach ($articles as $article): ?>
+                                        <option value="<?php echo $article->id; ?>" <?php echo $article->id==$selected_article_id?'selected':''; ?>><?php echo $article->title; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="form-group form-group-sm">
+                                    <button type="button" class="btn btn-primary btn-sm" id="btn-filter"><i class="fa fa-filter"></i> Filter</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
+                
             </div><!-- /.box-header -->
             
             <div class="box-body table-responsive no-padding">
@@ -43,6 +60,8 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        CommentManager.setDataLimit($('#limit').val());
+        CommentManager.setArticle($('#article').val());
         CommentManager.init();
         
         $('#data-list').on('click', '.btn-set-approval', function(){
@@ -50,10 +69,16 @@
             var approval = $(this).attr('data-approval');
             CommentManager.setApproval(id, (approval=='true' ? 0 : 1));
         });
+        
+        $('#btn-filter').on('click', function (){
+            CommentManager.setDataLimit($('#limit').val());
+            CommentManager.setArticle($('#article').val());
+            CommentManager.loadComments();
+        });
     });
     var CommentManager = {
         page: 1,
-        dataLimit: 20,
+        dataLimit: 12,
         reachLimit: false,
         articleId: 0,
         init: function(){
@@ -69,14 +94,17 @@
             if (this.page > 1){
                 this.page = this.page - 1;
             }
+            //console.log('Current page:'+this.page);
         },
         next: function(){
-            if (!this.dataLimit){
+            if (!this.reachLimit){
                 this.page = this.page + 1;
             }
+            //console.log('Current page:'+this.page);
         },
         loadComments: function(){
             var _this= this;
+            //console.log('Current page:'+_this.page);
             
             $('#data-list tbody').empty();
             $.getJSON('<?php echo site_url('service/comment/index'); ?>',{limit:_this.dataLimit,page:_this.page,article:_this.articleId},function(result){
@@ -96,12 +124,14 @@
                     }
                     if (result.length < _this.dataLimit){
                         _this.reachLimit = true;
+                        console.log('Reach limit');
                     }else{
                         _this.reachLimit = false;
                     }
                     
                 }else{
                     _this.reachLimit = true;
+                    //console.log('Reach limit');
                 }
                 
                 _this._drawingPaging();
