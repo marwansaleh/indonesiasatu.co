@@ -1352,47 +1352,57 @@ header .logo-line .logo a {
 #main .category-image-container .category-info-container {
     position: absolute; 
     /*width:98%; */
-    margin: -120px 0 0 10px; 
+    margin: -135px 0 0 10px; 
     padding: 0;
 }
 #main .category-image-container .category-info-container.right {
-    position: absolute; 
+/*    position: absolute; 
+    padding: 0;*/
     /*width:98%; */
-    margin: -120px 25px 0 0; 
-    padding: 0;
+    margin: -135px 25px 0 0; 
 }
 #main .category-image-container .category-info-container .title {
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: bold;
     color: white;
     margin: 0; padding: 0;
 }
 #main .category-image-container .category-info-container.right .title {
-    text-align: right;
-    font-size: 20px;
+/*    font-size: 20px;
     color: white;
-    margin: 0; padding: 0;
+    margin: 0; padding: 0;*/
+    text-align: right;
 }
 #main .category-image-container .category-info-container .category-info {
     position: relative;
     display: block;
     padding: 5px 10px 0 10px;
-    width:70%; max-height: 80px; 
+    width:65%; max-height: 90px; 
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
     background-image: url('../img/transparent-white.png');
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(245,214,181,1);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(245,214,181,1);
+    box-shadow: 5px 5px 5px 0px rgba(245,214,181,1);
     margin-top: 10px; 
     overflow-y: hidden; 
 }
 #main .category-image-container .category-info-container.right .category-info {
-    position: relative;
-    float: right;
-    text-align: right;
+/*    position: relative;
     display: block;
     padding: 5px 10px 0 10px;
-    width:70%; max-height: 80px; 
+    width:65%; max-height: 80px; 
     background-image: url('../img/transparent-white.png');
     margin-top: 10px; 
-    overflow-y: hidden; 
+    overflow-y: hidden; */
+    -webkit-box-shadow: -5px 5px 5px 0px rgba(176,201,147,1);
+    -moz-box-shadow: -5px 5px 5px 0px rgba(176,201,147,1);
+    box-shadow: -5px 5px 5px 0px rgba(176,201,147,1);
+    float: right;
+    text-align: right;
 }
-
+#main .category-image-container .category-info-container .category-info p {font-size: 14px;}
 .page404 {
   text-align: center;
 }
