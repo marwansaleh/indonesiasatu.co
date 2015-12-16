@@ -30,14 +30,7 @@
                             <th style="width: 120px">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        
-                            <td class="text-center">
-                                <a class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit" href="<?php echo site_url('cms/advert/edit?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-pencil-square"></i></a>
-                                <a class="btn btn-xs btn-success" data-toggle="tooltip" title="Copy" href="<?php echo site_url('cms/advert/copy?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-copy"></i></a>
-                                <a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="<?php echo site_url('cms/advert/delete?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-minus-square"></i></a>
-                            </td>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div><!-- /.box-body -->
             <div class="box-footer clearfix">
@@ -51,6 +44,12 @@
 <script type="text/javascript">
     $(document).ready(function(){
         CommentManager.init();
+        
+        $('#data-list').on('click', '.btn-set-approval', function(){
+            var id = $(this).attr('data-id');
+            var approval = $(this).attr('data-approval');
+            CommentManager.setApproval(id, (approval ? 0 : 1));
+        });
     });
     var CommentManager = {
         page: 1,
@@ -89,7 +88,7 @@
                         s+= '<td>'+result[i].name+'</td>';
                         s+= '<td>'+result[i].date+'</td>';
                         s+= '<td>'+result[i].title+'</td>';
-                        s+= '<td class="text-center"><i class="fa '+(result[i].approved ? 'fa-check-circle text-primary':'fa-check-circle-o text-gray')+'" data-toggle="tooltip" title="" data-original-title="Approval status"></i></td>';
+                        s+= '<td class="text-center"><a data-id="'+result[i].id+'" data-approval="'+result[i].approved+'" class="btn btn-set-approval"><i class="fa '+(result[i].approved ? 'fa-check-circle text-primary':'fa-check-circle-o text-gray')+'" data-toggle="tooltip" title="" data-original-title="Approval status"></i></a></td>';
                         s+= '<td class="text-center"><a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="javascript:deleteComment('+result[i].id+')"><i class="fa fa-minus-square"></i></a></td>';
                         s+= '</tr>';
 
@@ -123,20 +122,31 @@
                 contentType: 'json'
             });
         },
-        setApproval: function (id,approval){
+        setApproval: function (id, approval){
             var _this = this;
             
             $.ajax({
-                url: '<?php echo site_url('service/comment/index'); ?>/'+id,
+                url: '<?php echo site_url('service/comment/approve'); ?>/'+id,
                 type: 'PUT',
+                contentType: 'json',
+                data: {"approval": approval},
                 success: function (result){
-                    if (result.status){
-                        _this.loadComments();
+                    var $btn = $('tr#'+id).find('a');
+                    $btn.attr('data-approval', result.item.approved);
+                    
+                    var $icon = $('tr#'+id).find('i');
+                    if (result.item.approved){
+                        $icon.removeClass('fa-check-circle-o');
+                        $icon.removeClass('text-gray');
+                        $icon.addClass('fa-check-circle');
+                        $icon.addClass('text-primary');
                     }else{
-                        alert(result.message);
+                        $icon.removeClass('fa-check-circle');
+                        $icon.removeClass('text-primary');
+                        $icon.addClass('fa-check-circle-o');
+                        $icon.addClass('text-gray');
                     }
-                },
-                contentType: 'json'
+                }
             });
         },
         _getRecNumber: function(offset){
