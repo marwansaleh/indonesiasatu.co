@@ -82,6 +82,9 @@ class Comment extends REST_Api {
             $this->result['status'] = TRUE;
             $new_item = $this->comment_m->get($inserted_id);
             $this->result['item'] = $this->remap_fields($this->_remap_fields, $this->_proccess_item($new_item));
+            
+            //update article comment count
+            $this->article_m->save(array('comment' => $this->_count_comment($this->post('article'))),$this->post('article'));
         }else{
             $this->result['status'] = FALSE;
             $this->result['message'] = $this->comment_m->get_last_message();
@@ -96,6 +99,9 @@ class Comment extends REST_Api {
             if ($this->comment_m->delete($id)){
                 $this->result['status'] = TRUE;
                 $this->result['message'] = 'Data item has been deleted successfully.';
+                
+                //update article comment count
+                $this->article_m->save(array('comment' => $this->_count_comment($id)),$id);
             }else{
                 $this->result['status'] = FALSE;
                 $this->result['message'] = 'Failed to delete data item with message:'. $this->comment_m->get_last_message;
@@ -116,6 +122,12 @@ class Comment extends REST_Api {
         $this->result = $this->remap_fields($this->_remap_fields, $this->_proccess_item($item));
         
         $this->response($this->result);
+    }
+    
+    private function _count_comment($article_id){
+        $comment_count = $this->comment_m->get_count(array('article_id'=>$article_id));
+        
+        return $comment_count;
     }
 }
 
