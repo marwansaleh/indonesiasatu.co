@@ -32,8 +32,7 @@ class Comment extends REST_Api {
             $limit = $this->get('limit') ? $this->get('limit') : 100;
             $page = $this->get('page') ? $this->get('page') : 1;
             $article_id = $this->get('article') ? $this->get('article') : 0;
-            $approved_only = $this->get('all') ? $this->get('all') : FALSE;
-            
+            $approved_only = $this->get('approve') ? $this->get('approve') : FALSE;
             $condition = array();
             if ($approved_only){
                 $condition['is_approved'] = 1;
