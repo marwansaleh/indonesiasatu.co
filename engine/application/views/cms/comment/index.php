@@ -10,21 +10,25 @@
                         <h3 class="box-title">List of Comments</h3>
                     </div>
                     <div class="col-sm-9">
-                        <div class="pull-right">
-                            <div class="form-inline">
+                        <div class="row">
+                            <div class="col-sm-4 col-sm-offset-5">
                                 <div class="form-group form-group-sm">
-                                    <input type="number" class="form-control" step="1" min="2" id="limit" value="15" title="Data limit" style="width:60px;" />
-                                </div>
-                                <div class="form-group form-group-sm">
-                                    <select id="article" class="form-control selectpicker" data-live-search="true" data-size="8">
+                                    <select id="article" class="form-control selectpicker" data-live-search="true" data-size="8" style="min-width: 150px;">
                                         <option value="0">-- All articles--</option>
                                         <?php foreach ($articles as $article): ?>
                                         <option value="<?php echo $article->id; ?>" <?php echo $article->id==$selected_article_id?'selected':''; ?>><?php echo $article->title; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-sm-3">
                                 <div class="form-group form-group-sm">
-                                    <button type="button" class="btn btn-primary btn-sm" id="btn-filter"><i class="fa fa-filter"></i> Filter</button>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" step="1" min="2" id="limit" value="15" title="Data limit" />
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-primary btn-sm" id="btn-filter"><i class="fa fa-filter"></i> Filter</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
