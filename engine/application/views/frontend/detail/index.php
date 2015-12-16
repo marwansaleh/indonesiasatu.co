@@ -195,7 +195,7 @@
                             s+= '<p class="text">'+data.item.comment+'</p>';
                             
                             if (_this.isAdmin){
-                                s+= '<p><a class="btn btn-warning pull-right" href="javascript:ArticleDetailManager.deleteComment('+data[i].id+');">Delete</a></p>';
+                                s+= '<p><a class="btn btn-warning pull-right" href="javascript:ArticleDetailManager.deleteComment('+data.item.id+');">Delete</a></p>';
                             }
                         s+= '</li>';
 
