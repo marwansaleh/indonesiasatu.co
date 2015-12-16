@@ -24,9 +24,6 @@ class Comment extends REST_Api {
     }
     
     function index_get($id=NULL){
-        //load models
-        
-        $this->load->helper('general');
         
         if ($id){
             $item = $this->comment_m->get($id);
@@ -35,13 +32,20 @@ class Comment extends REST_Api {
             $limit = $this->get('limit') ? $this->get('limit') : 100;
             $page = $this->get('page') ? $this->get('page') : 1;
             $article_id = $this->get('article') ? $this->get('article') : 0;
+            $approved_only = $this->get('all') ? $this->get('all') : FALSE;
             
-            $condition = array ('is_approved' => 1);
+            $condition = array();
+            if ($approved_only){
+                $condition['is_approved'] = 1;
+            }
             if ($article_id){
                 $condition['article_id'] = $article_id;
             }
+            if (!count($condition)){
+                $condition = NULL;
+            }
             
-            $items = $this->comment_m->get_offset('*',$condition,($page-1)*$limit,$limit);
+            $items = $this->comment_m->get_offset('*',NULL,($page-1)*$limit,$limit);
             foreach ($items as $item){
                 $this->result [] = $this->remap_fields($this->_remap_fields, $this->_proccess_item($item));
             }
@@ -101,6 +105,16 @@ class Comment extends REST_Api {
             $this->result['status'] = FALSE;
             $this->result['message'] = 'Can not find data item with ID:'.$id;
         }
+        
+        $this->response($this->result);
+    }
+    
+    function approve_put($id){
+        $approval = $this->put('approval');
+        $this->comment_m->save(array('is_approved' => $approval), $id);
+        
+        $item = $this->comment_m->get($id);
+        $this->result = $this->remap_fields($this->_remap_fields, $this->_proccess_item($item));
         
         $this->response($this->result);
     }
