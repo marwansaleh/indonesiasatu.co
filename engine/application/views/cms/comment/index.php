@@ -120,7 +120,7 @@
                         s+= '<td>'+result[i].name+'</td>';
                         s+= '<td>'+result[i].date+'</td>';
                         s+= '<td>'+result[i].title+'</td>';
-                        s+= '<td class="text-center"><a data-id="'+result[i].id+'" data-approval="'+result[i].approved+'" class="btn btn-set-approval"><i class="fa icon-approval '+(result[i].approved ? 'fa-check-circle text-primary':'fa-check-circle-o text-gray')+'" data-toggle="tooltip" title="" data-original-title="Approval status"></i></a></td>';
+                        s+= '<td class="text-center"><a data-id="'+result[i].id+'" data-approval="'+result[i].approved+'" class="btn btn-set-approval"><i class="fa icon-approval '+(result[i].approved ? 'fa-check-circle text-primary':'fa-check-circle-o text-gray')+'" data-toggle="tooltip" title="" data-original-title="Display in web view"></i></a></td>';
                         s+= '<td class="text-center"><a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="javascript:deleteComment('+result[i].id+')"><i class="fa fa-minus-square"></i></a></td>';
                         s+= '</tr>';
 
