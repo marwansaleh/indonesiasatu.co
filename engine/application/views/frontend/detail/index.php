@@ -167,7 +167,7 @@
         },
         loadComments: function (){
             var _this = this;
-            $.getJSON("<?php echo site_url('service/comment/index'); ?>",{article:_this.articleID},function(data){
+            $.getJSON("<?php echo site_url('service/comment/index'); ?>",{article:_this.articleID,approve:true},function(data){
                 for (var i in data){
                     var s = '<li id="'+data[i].id+'">';
                         s+= '<h4 class="name">'+data[i].name+'</h4>';
