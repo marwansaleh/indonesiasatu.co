@@ -460,7 +460,7 @@ $config['rest_ignore_http_accept'] = FALSE;
 |	FALSE
 |
 */
-$config['rest_ajax_only'] = TRUE;
+$config['rest_ajax_only'] = FALSE;
 
 /* End of file config.php */
 /* Location: ./system/application/config/rest.php */
