@@ -44,7 +44,7 @@ class Comment extends REST_Api {
                 $condition = NULL;
             }
             
-            $items = $this->comment_m->get_offset('*',NULL,($page-1)*$limit,$limit);
+            $items = $this->comment_m->get_offset('*',$condition,($page-1)*$limit,$limit);
             foreach ($items as $item){
                 $this->result [] = $this->remap_fields($this->_remap_fields, $this->_proccess_item($item));
             }
