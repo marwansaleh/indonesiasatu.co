@@ -47,7 +47,7 @@
                             <th>Sender</th>
                             <th>Date</th>
                             <th>Article</th>
-                            <th>Approval</th>
+                            <th>Display</th>
                             <th style="width: 120px">Action</th>
                         </tr>
                     </thead>
