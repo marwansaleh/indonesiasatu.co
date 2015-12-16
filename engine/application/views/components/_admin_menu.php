@@ -5,7 +5,7 @@
     <li <?php echo $active_menu=='article'?'class="active"':''; ?>><a href="<?php echo site_url('cms/article'); ?>"><i class="fa fa-file-text"></i> <span>Article</span></a></li>
     <li <?php echo $active_menu=='photo'?'class="active"':''; ?>><a href="<?php echo site_url('cms/photo'); ?>"><i class="fa fa-photo"></i> <span>Photo News</span></a></li>
     <li <?php echo $active_menu=='category'?'class="active"':''; ?>><a href="<?php echo site_url('cms/category'); ?>"><i class="fa fa-briefcase"></i> <span>Category</span></a></li>
-    <li <?php echo $active_menu=='comment'?'class="active"':''; ?>><a href="#"><i class="fa fa-comments"></i> <span>Comments</span></a></li>
+    <li <?php echo $active_menu=='comment'?'class="active"':''; ?>><a href="<?php echo site_url('cms/comment'); ?>"><i class="fa fa-comments"></i> <span>Comments</span></a></li>
     
     <li class="treeview  <?php echo $active_menu=='static'?'active':''; ?>">
         <a href="#"><i class="fa fa-expand"></i> <span>Static Elements</span>  <i class="fa fa-angle-left pull-right"></i></a>
