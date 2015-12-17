@@ -69,5 +69,8 @@ define('WIDGET_VIDEO','feature_video');
 define('WIDGET_NEWSLATEST','latest_news');
 define('WIDGET_INSPIRATION','inspirasi');
 define('WIDGET_SELECTED_CATEGORY','selected_news_category');
+
+define('CATEGORY_TEROPONG', 'teropong');
+define('CATEGORY_EMBUNPAGI', 'embun-pagi');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
