@@ -52,9 +52,11 @@ class Article extends REST_Api {
             
         );
         
+        $forbidden_categories = $this->get_forbidden_categories();
+        
         if ($id){
             $item = $this->article_m->get($id);
-            $this->result = $this->remap_fields($remap_fields, $this->_article_proccess($item));
+            $this->result = $this->remap_fields($remap_fields, $this->_article_proccess($item, $forbidden_categories));
         }else{
             $limit = $this->get('limit') ? $this->get('limit') : 100;
             $page = $this->get('page') ? $this->get('page') : 1;
@@ -74,14 +76,14 @@ class Article extends REST_Api {
             
             $items = $this->article_m->get_offset('*',array('published'=>1),($page-1)*$limit,$limit);
             foreach ($items as $item){
-                $this->result [] = $this->remap_fields($remap_fields, $this->_article_proccess($item));
+                $this->result [] = $this->remap_fields($remap_fields, $this->_article_proccess($item, $forbidden_categories));
             }
         }
         
         $this->response($this->result);
     }
     
-    private function _article_proccess($item){
+    private function _article_proccess($item, $forbidden_categories = NULL){
         $thumb_sizes =  array(
             'original' => IMAGE_THUMB_ORI,'large' => IMAGE_THUMB_LARGE,
             'portrait' => IMAGE_THUMB_PORTRAIT,'medium' => IMAGE_THUMB_MEDIUM,
@@ -122,7 +124,11 @@ class Article extends REST_Api {
         $item->published = (bool) $item->published;
         $item->created = date('Y-m-d H:i:s', $item->created);
         $item->modified = date('Y-m-d H:i:s', $item->modified);
-        $item->created_by_name = $this->user_m->get_value('full_name',array('id'=>$item->created_by));
+        if ($forbidden_categories && in_array($item->category_id, $forbidden_categories)){
+            $item->created_by_name = $item->category_name;
+        }else{
+            $item->created_by_name = $this->user_m->get_value('full_name',array('id'=>$item->created_by));
+        }
         $item->ext_attributes = $item->ext_attributes ? json_decode($item->ext_attributes):NULL;
         return $item;
     }
