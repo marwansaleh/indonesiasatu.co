@@ -55,11 +55,11 @@ class Detail extends MY_News {
         $this->data['related_news'] = $this->_related_news(explode(',',$article->tags), 3, array('id !='=>$article->id));
         
         //need to filter category to determine which name should be shown as writer
-        $teropong = $this->get_category_inherit_ids(CATEGORY_TEROPONG);
+        $teropong = $this->_get_category_inherit_ids(CATEGORY_TEROPONG);
         if (in_array($article->category_id, $teropong)){
             $this->data['article_author'] = $selected_category->name;
         }else{
-            $embun_pagi = $this->get_category_inherit_ids(CATEGORY_EMBUNPAGI);
+            $embun_pagi = $this->_get_category_inherit_ids(CATEGORY_EMBUNPAGI);
             if (in_array($article->category_id, $embun_pagi)){
                 $this->data['article_author'] = $selected_category->name;
             }
@@ -206,14 +206,14 @@ class Detail extends MY_News {
         $limit_each_tag = 10;
         
         /** set up category should not not be seen in news list **/
-        $forbiden_cat_ids = $this->get_category_inherit_ids(array(CATEGORY_EMBUNPAGI, CATEGORY_TEROPONG));
+        $forbiden_cat_ids = $this->get_forbidden_categories();
         /** end setup **/
         
         if ($tags_array && is_array($tags_array)){
             $current = time();
             $related = array();
             foreach ($tags_array as $tag){
-                if ($forbiden_cat_ids && count($forbiden_cat_ids)){
+                if ($forbiden_cat_ids){
                     $this->db->where_not_in('category_id', $forbiden_cat_ids);
                 }
                 $this->db->like('tags', $tag);
