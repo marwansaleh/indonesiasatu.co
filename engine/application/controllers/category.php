@@ -156,6 +156,12 @@ class Category extends MY_News {
     private function _tag_news($tag, $num=10){
         $fields = 'id,title, url_title, url_short, image_url, image_type, date, synopsis, comment, created_by';
         
+        /** set up category should not not be seen in news list **/
+        $forbiden_cat_ids = $this->get_forbidden_categories();
+        if ($forbiden_cat_ids){
+            $this->db->where_not_in('category_id', $forbiden_cat_ids);
+        }
+        
         $this->db->like('tags', $tag);
         return $this->article_m->get_offset($fields, array('published'=>ARTICLE_PUBLISHED),0,$num);
     }
