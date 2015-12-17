@@ -9,7 +9,7 @@
             </h1>
             <?php if ($article->image_type==IMAGE_TYPE_MULTI): ?>
             <?php $this->load->view('frontend/slider/detail_slider', array('images'=>$article->images)); ?>
-            <?php else: ?>
+            <?php elseif ($article->image_url): ?>
             <figure>
                 <img class="img-responsive large" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
             </figure>
