@@ -205,10 +205,17 @@ class Detail extends MY_News {
     private function _related_news($tags_array, $num=3, $condition=NULL){
         $limit_each_tag = 10;
         
+        /** set up category should not not be seen in news list **/
+        $forbiden_cat_ids = $this->get_category_inherit_ids(array(CATEGORY_EMBUNPAGI, CATEGORY_TEROPONG));
+        /** end setup **/
+        
         if ($tags_array && is_array($tags_array)){
             $current = time();
             $related = array();
             foreach ($tags_array as $tag){
+                if ($forbiden_cat_ids && count($forbiden_cat_ids)){
+                    $this->db->where_not_in('category_id', $forbiden_cat_ids);
+                }
                 $this->db->like('tags', $tag);
                 $result = $this->article_m->get_offset('id,title,url_title,url_short,synopsis,image_url,date',$condition,0,$limit_each_tag);
                 
