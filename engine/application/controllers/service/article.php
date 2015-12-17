@@ -74,8 +74,8 @@ class Article extends REST_Api {
                 $this->db->where_in('category_id', $category_id_list);
             }
             
-            if ($forbiden_cat_ids){
-                $this->db->where_not_in('category_id', $forbiden_cat_ids);
+            if ($forbidden_categories){
+                $this->db->where_not_in('category_id', $forbidden_categories);
             }
             
             $items = $this->article_m->get_offset('*',array('published'=>1),($page-1)*$limit,$limit);
