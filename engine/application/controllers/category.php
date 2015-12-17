@@ -32,6 +32,16 @@ class Category extends MY_News {
             $articles = $this->_category_news($category_id, 20);
             
             $this->data['meta_title'] = $this->data['meta_title'] . ' - ' .$category->name;
+            
+            $teropong = $this->_get_category_inherit_ids(CATEGORY_TEROPONG);
+            if (in_array($category->id, $teropong)){
+                $this->data['article_author'] = $category->name;
+            }else{
+                $embun_pagi = $this->_get_category_inherit_ids(CATEGORY_EMBUNPAGI);
+                if (in_array($category->id, $embun_pagi)){
+                    $this->data['article_author'] = $category->name;
+                }
+            }
         }
         $this->data['articles'] = array();
         foreach ($articles as $index => $item){
@@ -43,7 +53,6 @@ class Category extends MY_News {
             $item->created_by_name = $this->user_m->get_value('full_name', array('id'=>$item->created_by));
             $this->data['articles'][] = $item;
         }
-        
         
         $widgets = explode(',',$parameters['LAYOUT_CATEGORY_WIDGETS']);
         foreach ($widgets as $widget){
