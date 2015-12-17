@@ -139,4 +139,43 @@ class REST_Api extends REST_Controller {
         fclose($f);
         return trim($output);
     }
+    
+    protected function get_forbidden_categories(){
+        $forbidden_slug = array(CATEGORY_EMBUNPAGI, CATEGORY_TEROPONG);
+        $forbidden_ids = $this->_get_category_inherit_ids($forbidden_slug);
+        
+        if ($forbidden_ids && count($forbidden_ids)){
+            return $forbidden_ids;
+        }
+        return NULL;
+    }
+    
+    protected function _get_category_inherit_ids($slugs){
+        if (!$this->category_m){
+            $this->load->model('article/category_m');
+        }
+        if (!is_array($slugs)){
+            $slugs = array($slugs);
+        }
+        
+        $ids = array();
+        
+        foreach ($slugs as $slug){
+            $categories = $this->category_m->get_select_where('id',array('slug' => $slug));
+            if (!$categories){
+                continue;
+            }
+            //get all inherent categories
+            $categories_inherits = $this->category_m->get_select_where('id',array('parent'=>$categories[0]->id));
+            if ($categories_inherits){
+                $categories = array_merge($categories, $categories_inherits);
+            }
+            
+            foreach ($categories as $cat){
+                $ids [] = $cat->id;
+            }
+        }
+        
+        return $ids;
+    }
 }
