@@ -600,7 +600,7 @@ class MY_News extends MY_Controller {
         }
         
         /** set up category should not not be seen in news list **/
-        $forbiden_cat_ids = $this->get_category_inherit_ids(array('embun-pagi', 'teropong'));
+        $forbiden_cat_ids = $this->get_category_inherit_ids(array(CATEGORY_EMBUNPAGI, CATEGORY_TEROPONG));
         if ($forbiden_cat_ids && count($forbiden_cat_ids)){
             $this->db->where_not_in('category_id', $forbiden_cat_ids);
         }
