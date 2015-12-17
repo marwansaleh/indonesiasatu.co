@@ -525,7 +525,13 @@ class MY_News extends MY_Controller {
     }
     
     protected function get_forbidden_categories(){
-        return array(CATEGORY_EMBUNPAGI, CATEGORY_TEROPONG);
+        $forbidden_slug = array(CATEGORY_EMBUNPAGI, CATEGORY_TEROPONG);
+        $forbidden_ids = $this->_get_category_inherit_ids($forbidden_slug);
+        
+        if ($forbidden_ids && count($forbidden_ids)){
+            return $forbidden_ids;
+        }
+        return NULL;
     }
     
     protected function _article_categories($category_id, $num=3){
@@ -604,8 +610,8 @@ class MY_News extends MY_Controller {
         }
         
         /** set up category should not not be seen in news list **/
-        $forbiden_cat_ids = $this->get_category_inherit_ids($this->get_forbidden_categories());
-        if ($forbiden_cat_ids && count($forbiden_cat_ids)){
+        $forbiden_cat_ids = $this->get_forbidden_categories();
+        if ($forbiden_cat_ids){
             $this->db->where_not_in('category_id', $forbiden_cat_ids);
         }
         /** end setup **/
@@ -622,7 +628,7 @@ class MY_News extends MY_Controller {
         return $articles;
     }
     
-    protected function get_category_inherit_ids($slugs){
+    protected function _get_category_inherit_ids($slugs){
         if (!is_array($slugs)){
             $slugs = array($slugs);
         }
