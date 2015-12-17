@@ -54,6 +54,17 @@ class Detail extends MY_News {
         $this->data['category'] = $selected_category;
         $this->data['related_news'] = $this->_related_news(explode(',',$article->tags), 3, array('id !='=>$article->id));
         
+        //need to filter category to determine which name should be shown as writer
+        $teropong = $this->get_category_inherit_ids(CATEGORY_TEROPONG);
+        if (in_array($article->category_id, $teropong)){
+            $this->data['article_author'] = $selected_category->name;
+        }else{
+            $embun_pagi = $this->get_category_inherit_ids(CATEGORY_EMBUNPAGI);
+            if (in_array($article->category_id, $embun_pagi)){
+                $this->data['article_author'] = $selected_category->name;
+            }
+        }
+        
         $widgets = explode(',',$parameters['LAYOUT_DETAIL_WIDGETS']);
         foreach ($widgets as $widget){
             $this->data['widgets'] [] = trim($widget);
