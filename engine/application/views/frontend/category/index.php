@@ -19,7 +19,7 @@
                 <div class="info">
                     <a href="#"><?php echo number_format($article->comment); ?> comments</a>,
                     <span class="date"><?php echo date('d/m/Y',$article->date); ?></span>, by
-                    <a href="#"><?php echo isset($article_author)?$article_author : $article->created_by_name; ?></a>
+                    <a href="#"><?php echo $article->created_by_name; ?></a>
                 </div>
                 <?php echo $article->synopsis; ?>
             </div>
@@ -38,7 +38,7 @@
                     <div class="inner-border">
                         <div class="title"><a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></div>
                         <div class="description">
-                            <div class="date"><?php echo number_format($article->comment); ?> comments, <?php echo date('d/m/Y',$article->date); ?>, by <?php echo isset($article_author)?$article_author : $article->created_by_name; ?></div>
+                            <div class="date"><?php echo number_format($article->comment); ?> comments, <?php echo date('d/m/Y',$article->date); ?>, by <?php echo $article->created_by_name; ?></div>
                             <div class="excerpt">
                                 <p><?php echo $article->synopsis; ?> <a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>">Read more...</a></p>
                             </div>
