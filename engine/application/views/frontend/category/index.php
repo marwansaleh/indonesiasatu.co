@@ -34,7 +34,7 @@
                     <img class="small" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SMALL); ?>" alt="">
                 </figure>
                 <?php endif; ?>
-                <div class="text">
+                <div class="text" <?php echo $article->image_url? '':'style="width:100%;"'; ?>>
                     <div class="inner-border">
                         <div class="title"><a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></div>
                         <div class="description">
