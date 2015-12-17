@@ -24,7 +24,7 @@
                 <?php echo $article->content; ?>
                 
                 <p class="text-muted small written-by">
-                    <em>--- <?php echo $article->created_by_name; ?></em>
+                    <em>--- <?php echo isset($article_author)?$article_author : $article->created_by_name; ?></em>
                 </p>
                 
                 <?php if ($article->tags): ?>
