@@ -524,6 +524,10 @@ class MY_News extends MY_Controller {
         $this->data['GA_Code'] = $this->get_GA_Code();
     }
     
+    protected function get_forbidden_categories(){
+        return array(CATEGORY_EMBUNPAGI, CATEGORY_TEROPONG);
+    }
+    
     protected function _article_categories($category_id, $num=3){
         if (!isset($this->article_m)){
             $this->load->model('article/article_m');
@@ -600,7 +604,7 @@ class MY_News extends MY_Controller {
         }
         
         /** set up category should not not be seen in news list **/
-        $forbiden_cat_ids = $this->get_category_inherit_ids(array(CATEGORY_EMBUNPAGI, CATEGORY_TEROPONG));
+        $forbiden_cat_ids = $this->get_category_inherit_ids($this->get_forbidden_categories());
         if ($forbiden_cat_ids && count($forbiden_cat_ids)){
             $this->db->where_not_in('category_id', $forbiden_cat_ids);
         }
