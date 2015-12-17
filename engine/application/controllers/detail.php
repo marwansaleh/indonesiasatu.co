@@ -122,25 +122,27 @@ class Detail extends MY_News {
             'articleSection'=> $article->synopsis
         );
         
-        //get image properties from image shared
-        $image_shared = get_image_thumbpath($article->image_url, IMAGE_THUMB_LARGE, TRUE);
-        $this->_write_log('Try to read image size '.$image_shared);
-        if (file_exists($image_shared)){
-            $image_shared_dimensions = getimagesize($image_shared);
-            if ($image_shared_dimensions){
-                $this->_write_log('Image size read done');
-                $this->og_set_props(array(
-                    'og:image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
-                    'og:image:url'     => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
-                    'og:image:type'    => $image_shared_dimensions['mime'],
-                    'og:image:width'   => $image_shared_dimensions[0],
-                    'og:image:height'  => $image_shared_dimensions[1]
-                ));
+        if ($article->image_url){
+            //get image properties from image shared
+            $image_shared = get_image_thumbpath($article->image_url, IMAGE_THUMB_LARGE, TRUE);
+            $this->_write_log('Try to read image size '.$image_shared);
+            if (file_exists($image_shared)){
+                $image_shared_dimensions = @getimagesize($image_shared);
+                if ($image_shared_dimensions){
+                    $this->_write_log('Image size read done');
+                    $this->og_set_props(array(
+                        'og:image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
+                        'og:image:url'     => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
+                        'og:image:type'    => $image_shared_dimensions['mime'],
+                        'og:image:width'   => $image_shared_dimensions[0],
+                        'og:image:height'  => $image_shared_dimensions[1]
+                    ));
+                }else{
+                    $this->_write_log('Can not read image size using getimagesize function');
+                }
             }else{
-                $this->_write_log('Can not read image size using getimagesize function');
+                $this->_write_log('Image file '.$image_shared.' can not be found');
             }
-        }else{
-            $this->_write_log('Image file '.$image_shared.' can not be found');
         }
         
         
