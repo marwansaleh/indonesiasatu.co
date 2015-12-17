@@ -74,6 +74,10 @@ class Article extends REST_Api {
                 $this->db->where_in('category_id', $category_id_list);
             }
             
+            if ($forbiden_cat_ids){
+                $this->db->where_not_in('category_id', $forbiden_cat_ids);
+            }
+            
             $items = $this->article_m->get_offset('*',array('published'=>1),($page-1)*$limit,$limit);
             foreach ($items as $item){
                 $this->result [] = $this->remap_fields($remap_fields, $this->_article_proccess($item, $forbidden_categories));
