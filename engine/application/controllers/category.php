@@ -32,17 +32,10 @@ class Category extends MY_News {
             $articles = $this->_category_news($category_id, 20);
             
             $this->data['meta_title'] = $this->data['meta_title'] . ' - ' .$category->name;
-            
-            $teropong = $this->_get_category_inherit_ids(CATEGORY_TEROPONG);
-            if (in_array($category->id, $teropong)){
-                $this->data['article_author'] = $category->name;
-            }else{
-                $embun_pagi = $this->_get_category_inherit_ids(CATEGORY_EMBUNPAGI);
-                if (in_array($category->id, $embun_pagi)){
-                    $this->data['article_author'] = $category->name;
-                }
-            }
         }
+        $teropong = $this->_get_category_inherit_ids(CATEGORY_TEROPONG);
+        $embun_pagi = $this->_get_category_inherit_ids(CATEGORY_EMBUNPAGI);
+            
         $this->data['articles'] = array();
         foreach ($articles as $index => $item){
             if ($index==0){
@@ -50,7 +43,11 @@ class Category extends MY_News {
                     $item->images = $this->image_m->get_by(array('article_id'=>$item->id));
                 }
             }
-            $item->created_by_name = $this->user_m->get_value('full_name', array('id'=>$item->created_by));
+            if (in_array($item->category_id, $teropong) || in_array($item->category_id, $embun_pagi)){
+                $item->created_by_name = $this->category_m->get_value('name', array('id'=>$item->category_id));
+            }else{
+                $item->created_by_name = $this->user_m->get_value('full_name', array('id'=>$item->created_by));
+            }
             $this->data['articles'][] = $item;
         }
         
@@ -147,7 +144,7 @@ class Category extends MY_News {
     }
     
     private function _category_news($category_id, $num=10){
-        $fields = 'id,title, url_title, url_short, image_url, image_type, date, synopsis, comment, created_by';
+        $fields = 'id,title, url_title, url_short, image_url, category_id, image_type, date, synopsis, comment, created_by';
         
         $category_id_list = array($category_id);
         //get children category
