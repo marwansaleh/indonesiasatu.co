@@ -41,12 +41,19 @@ class Search extends MY_News {
         //count totalPages
         $this->data['totalPages'] = ceil ($this->data['totalRecords']/$search_limit);
         
+        $teropong = $this->_get_category_inherit_ids(CATEGORY_TEROPONG);
+        $embun_pagi = $this->_get_category_inherit_ids(CATEGORY_EMBUNPAGI);
+        
         $this->data['articles'] = array();
         if ($this->data['totalRecords']>0){
             $articles = $this->_search_news($search, $offset, $search_limit);
             
             foreach ($articles as $item){
-                $item->created_by_name = $this->user_m->get_value('full_name', array('id'=>$item->created_by));
+                if (in_array($item->category_id, $teropong) || in_array($item->category_id, $embun_pagi)){
+                    $item->created_by_name = $this->category_m->get_value('name', array('id'=>$item->category_id));
+                }else{
+                    $item->created_by_name = $this->user_m->get_value('full_name', array('id'=>$item->created_by));
+                }
                 $this->data['articles'][] = $item;
             }
             
@@ -121,7 +128,7 @@ class Search extends MY_News {
     }
     
     private function _search_news($search='', $start=0, $num=10){
-        $fields = 'id,title, url_title, url_short, image_url, image_type, date, synopsis, comment, created_by';
+        $fields = 'id,title, url_title, url_short, category_id, image_url, image_type, date, synopsis, comment, created_by';
         
         if ($search){
             $this->db->like('title', $search);
