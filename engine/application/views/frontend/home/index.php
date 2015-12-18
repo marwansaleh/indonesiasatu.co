@@ -33,7 +33,7 @@
             <div class="flex-viewport">
                 <?php $i=1; foreach ($category->articles as $article): ?>
                 
-                <?php if ($i==1): ?>
+                <?php if ($index<2 && $i==1): ?>
                 <div class="main-article">
                     <div class="title">
                         <span><a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></span>
