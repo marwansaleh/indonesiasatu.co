@@ -63,7 +63,7 @@
                                 </figure>
                                 <div class="article-inspiration-info">
                                     <?php if ($inspirasi->ext_attributes):?>
-                                    <h4 class="name"><?php $inspirasi->ext_attributes->name;  ?></h4>
+                                    <h4 class="name"><?php echo $inspirasi->ext_attributes->name;  ?></h4>
                                     <?php endif; ?>
                                     <h2 class="article-title"><?php echo $inspirasi->title; ?></h2>
                                     <p class="synopsis"><?php echo $inspirasi->synopsis; ?></p>
