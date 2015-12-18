@@ -62,7 +62,9 @@
                                     <img src="<?php echo get_image_thumb($inspirasi->image_url, IMAGE_THUMB_PORTRAIT); ?>" class="img-responsive">
                                 </figure>
                                 <div class="article-inspiration-info">
-                                    <h4 class="name">Panglima TNI Jend. Gatot Nurmantyo</h4>
+                                    <?php if ($inspirasi->ext_attributes):?>
+                                    <h4 class="name"><?php $inspirasi->ext_attributes->name;  ?></h4>
+                                    <?php endif; ?>
                                     <h2 class="article-title"><?php echo $inspirasi->title; ?></h2>
                                     <p class="synopsis"><?php echo $inspirasi->synopsis; ?></p>
                                 </div>
