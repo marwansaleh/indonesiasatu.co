@@ -23,7 +23,7 @@
     <!-- start category -->
     <?php foreach ($categories as $index => $category): ?>
     <div class="col-sm-6 article-box">
-        <div class="box-title">
+        <div class="box-title" <?php echo $index>=1?'style="margin-top:20px;"':''; ?>>
             <h2><?php echo $category->name; ?></h2>
             <div class="title-line"></div>
         </div>
