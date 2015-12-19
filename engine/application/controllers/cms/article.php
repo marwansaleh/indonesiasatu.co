@@ -114,7 +114,7 @@ class Article extends MY_AdminController {
         $this->form_validation->set_rules($rules);
         //exit(print_r($rules));
         if ($this->form_validation->run() != FALSE) {
-            $postdata = $this->article_m->array_from_post(array('title','url_title','url_short','category_id','date','synopsis','content','image_url','image_type','tags','types','allow_comment','published'));
+            $postdata = $this->article_m->array_from_post(array('title','url_title','url_short','category_id','date','synopsis','content','image_url','image_type','tags','types','allow_comment','published','hide_author'));
             
             //convert date string to int
             $postdata['date'] = strtotime($postdata['date']);
