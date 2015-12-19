@@ -22,7 +22,7 @@
                                 </figure>
                                 <div class="main-text">
                                     <div class="inner">
-                                        <span class="article-info"><?php echo number_format($highlight->comment); ?> comments, <?php echo date('d/m/Y',$highlight->date); ?>, by <?php echo $highlight->created_by_name; ?></span>
+                                        <span class="article-info"><?php echo number_format($highlight->comment); ?> comments, <?php echo date('d/m/Y',$highlight->date); ?></span>
                                         <p><?php echo $highlight->synopsis; ?><a href="<?php echo site_url('detail/'.$highlight->url_title); ?>">Read more...</a></p>
                                     </div>
                                 </div>
