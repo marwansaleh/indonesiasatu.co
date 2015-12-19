@@ -114,10 +114,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="tag" class="control-label">Page Tag</label>
-                                <div class="input-group">
-                                    <input type="text" autocomplete="off" id="tags" name="tags" class="form-control tagsinput" placeholder="Tags" value="<?php echo $item->tags; ?>">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Hide Author Name</label>
+                                        <select name="hide_author" class="form-control">
+                                            <option value="0" <?php echo $item->hide_author==0?'selected':''; ?>>Show author</option>
+                                            <option value="1" <?php echo $item->hide_author==1?'selected':''; ?>>Hide author</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label for="tag" class="control-label">Page Tag</label>
+                                        <div class="input-group">
+                                            <input type="text" autocomplete="off" id="tags" name="tags" class="form-control tagsinput" placeholder="Tags" value="<?php echo $item->tags; ?>">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
