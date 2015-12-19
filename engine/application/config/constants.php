@@ -72,5 +72,8 @@ define('WIDGET_SELECTED_CATEGORY','selected_news_category');
 
 define('CATEGORY_TEROPONG', 'teropong');
 define('CATEGORY_EMBUNPAGI', 'embun-pagi');
+
+define('AUTHOR_SHOWN', 0);
+define('AUTHOR_HIDDEN', 1);
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
