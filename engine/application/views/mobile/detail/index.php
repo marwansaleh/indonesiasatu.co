@@ -3,8 +3,10 @@
         <span style="color: #CCC; font-size: 12px;"><?php echo strtoupper($article->category_name); ?></span>
         <h3 class="title" style="margin-top:0;"><?php echo $article->title; ?></h3>
         <div class="info">
-            <span class="date"><?php echo date('d/m/Y H:i',$article->date); ?></span>, by
-            <span class="author"><?php echo $article->created_by_name; ?></span>
+            <span class="date"><?php echo date('d/m/Y H:i',$article->date); ?></span> 
+            <?php if ($article->hide_author!=AUTHOR_HIDDEN): ?>
+            --- <span class="author"><?php echo $article->created_by_name; ?></span>
+            <?php endif; ?>
         </div>
         <?php if ($article->image_url): ?>
         <figure>
