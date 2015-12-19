@@ -1,5 +1,5 @@
 <style type="text/css">
-    .image-container {min-height: 200px;}
+    .image-container {min-height: 150px;}
     .thumbnail .remove-image {position: absolute; top: 28%; right: 47%; transition: opacity 0.5s ease; opacity: 0.3}
     .thumbnail:hover .remove-image {opacity: 1; }
 </style>
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="box box-info">
+                    <div class="box box-info" style="margin-bottom:5px;">
                         <div class="box-header">
                             <h3 class="box-title">Article Image</h3>
                             <div class="box-tools pull-right">
@@ -197,6 +197,10 @@
                                 </div>
                                 <?php } ?>
                                 <?php } ?>
+                            </div>
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label>Image caption</label>
+                                <input type="text" class="form-control" name="image_caption" placeholder="Image caption..">
                             </div>
                         </div>
                         
