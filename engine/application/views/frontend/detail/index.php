@@ -23,9 +23,11 @@
                 <blockquote><?php echo $article->synopsis; ?></blockquote>
                 <?php echo $article->content; ?>
                 
+                <?php if ($article->hide_author!=AUTHOR_HIDDEN): ?>
                 <p class="text-muted small written-by">
                     <em>--- <?php echo isset($article_author)?$article_author : $article->created_by_name; ?></em>
                 </p>
+                <?php endif; ?>
                 
                 <?php if ($article->tags): ?>
                 <div class="tag-container">
