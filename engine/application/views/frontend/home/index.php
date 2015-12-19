@@ -43,7 +43,7 @@
                     </figure>
                     <div class="main-text">
                         <div class="inner">
-                            <span class="article-info"><?php echo number_format($article->comment); ?> comments, <?php echo date('d/m/Y',$article->date); ?>, by <?php echo $article->created_by_name; ?></span>
+                            <span class="article-info"><?php echo number_format($article->comment); ?> comments, <?php echo date('d/m/Y',$article->date); ?></span>
                             <p><?php echo $article->synopsis; ?> <a href="<?php echo site_url('detail/'.$article->url_title); ?>">Read more...</a></p>
                         </div>
                     </div>
