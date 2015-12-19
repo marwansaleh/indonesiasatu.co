@@ -13,6 +13,7 @@
             <figure>
                 <img class="img-responsive large" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
             </figure>
+            <?php if ($article->image_caption): ?><figcaption><?php echo $article->image_caption; ?></figcaption><?php endif; ?>
             <?php endif; ?>
             <div class="blog-content">
                 <div class="info">
