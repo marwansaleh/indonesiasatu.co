@@ -656,7 +656,7 @@ class MY_News extends MY_Controller {
     
     protected function _popular_news($num=10, $condition=NULL){
         $articles = array();
-        $fields = 'title,url_title,url_short,image_url,comment,date,created_by,view_count';
+        $fields = 'title,url_title,url_short,image_url,comment,date,created_by,view_count,hide_author';
         
         $where = array('published'=>ARTICLE_PUBLISHED);
         if ($condition){
