@@ -6,10 +6,12 @@
             <span class="date"><?php echo date('d/m/Y H:i',$article->date); ?></span>, by
             <span class="author"><?php echo $article->created_by_name; ?></span>
         </div>
-
+        <?php if ($article->image_url): ?>
         <figure>
             <img class="img-responsive" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
+            <?php if ($article->image_caption): ?><figcaption><?php echo $article->image_caption; ?></figcaption><?php endif; ?>
         </figure>
+        <?php endif; ?>
         <div class="content">
             <?php echo $article->content; ?>
         </div>
