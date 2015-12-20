@@ -235,6 +235,17 @@ class Article extends REST_Api {
         
         return $item;
     }
+    
+    function urltitle_unique_get($id=NULL){
+        $this->load->model(array('article/article_m'));
+        
+        $url_title = $this->get('url_title');
+        if ($this->article_m->is_url_title_unique($url_title,$id)){
+            $this->response(array('unique' => TRUE));
+        }else{
+            $this->response(array('unique' => FALSE));
+        }
+    }
 }
 
 /*
