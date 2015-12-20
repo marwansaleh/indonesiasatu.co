@@ -84,6 +84,13 @@ class Article_m extends MY_Model {
         }else{
             $data['modified_by'] = $this->session->userdata('userid');
         }
+        
+        //chek if url title is unique
+        if (!$this->is_url_title_unique($data['url_title'], $id)){
+            $this->_last_message = 'URL title is not unique, try to change the url title value';
+            return FALSE;
+        }
+        
         return parent::save($data, $id);
     }
     
@@ -91,6 +98,14 @@ class Article_m extends MY_Model {
         $this->db->where('id', $id);
         $this->db->set('view_count', '`view_count`+ 1', FALSE);
         $this->db->update($this->_table_name);
+    }
+    
+    function is_url_title_unique($url_title,$id=NULL){
+        if (!$id){
+            return $this->get_count(array('url_title' => $url_title))==0;
+        }else{
+            return $this->get_count(array('url_title' => $url_title, 'id !='=>$id))==0;
+        }
     }
 }
 
