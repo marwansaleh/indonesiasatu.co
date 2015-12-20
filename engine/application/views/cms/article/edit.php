@@ -10,6 +10,7 @@
         <?php endif; ?>
         
         <form role="form" method="post" action="<?php echo $submit_url; ?>">
+            <input type="hidden" id="id" name="id" value="<?php echo $item->id; ?>" />
             <input type="hidden" id="has_ext_attributes" name="has_ext_attributes" value="<?php echo $ext_attributes?count($ext_attributes):0;  ?>" />
             <div class="row">
                 <div class="col-sm-8">
@@ -286,14 +287,23 @@
         $('#btn-gen-slug').on('click',function(){
             create_url_title('title', 'url_title');
             var slug = $('#url_title').val();
-            var base_controller = 'detail/';
-            var longUrl = '<?php echo site_url(); ?>' + base_controller + slug;
-            $.getJSON('<?php echo site_url('ajax/google_service/shortener'); ?>',{url:longUrl},function(result){
-                if (result.success){
-                    $('#url_short').val(result.short);
-                }else{
-                    alert(result.message);
+            
+            //test if url title is unique
+            $.getJSON('<?php echo site_url('service/article/urltitle_test'); ?>/'+$('#id').val(),{url_title:slug},function(result){
+                if (!result.unique){
+                    slug = result.modified;
+                    $('#url_title').val(slug);
                 }
+                
+                var base_controller = 'detail/';
+                var longUrl = '<?php echo site_url(); ?>' + base_controller + slug;
+                $.getJSON('<?php echo site_url('ajax/google_service/shortener'); ?>',{url:longUrl},function(result){
+                    if (result.success){
+                        $('#url_short').val(result.short);
+                    }else{
+                        alert(result.message);
+                    }
+                });
             });
         });
         
