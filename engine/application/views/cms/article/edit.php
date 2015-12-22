@@ -201,7 +201,7 @@
                             </div>
                             <div class="form-group" style="margin-bottom:0;">
                                 <label>Image caption</label>
-                                <input type="text" class="form-control" name="image_caption" placeholder="Image caption..">
+                                <input type="text" class="form-control" name="image_caption" placeholder="Image caption.." value="<?php echo $item->image_caption; ?>">
                             </div>
                         </div>
                         
