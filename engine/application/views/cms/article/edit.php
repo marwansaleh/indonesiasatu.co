@@ -271,6 +271,8 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
+        ArticleManagers.init();
+        
         $('input[name="title"]').focus();
         $('input#title').on('blur', function(){
             if ($('input#url_title').val()==''){
@@ -362,15 +364,10 @@
         _baseMedium: '',
         _baseSmall: '',
         init: function (){
-            this.tinyMCEInit();
-            
             //set base image
             this.setBaseImage('ori', $('#base_ori_url').val());
             this.setBaseImage('medium', $('#base_medium_url').val());
-            this.setBaseImage('ori', $('#base_small_url').val());
-        },
-        tinyMCEInit: function (){
-            
+            this.setBaseImage('small', $('#base_small_url').val());
         },
         loadExtendedAttributes: function (categoryID){
             var _this = this;
@@ -434,7 +431,7 @@
 
                 $('input#image_url').val(images.join('|'));
             }
-
+            
             $('.image-container').empty();
 
             var size;
@@ -445,10 +442,12 @@
             }
             if (images.length>0){
                 for (var i=0; i<images.length; i++){
+                    var image_full_url = image_type=='single' ? _this.getImageFullUrl('medium', images[i]) : _this.getImageFullUrl('small', images[i]);
+                    
                     var s = '<div class="'+size+'">';
                         s+= '<div class="thumbnail">';
-                            s+= '<a rel="prettyPhoto" href="'+ _this.getBaseImage('ori') + images[i]+'">';
-                                s+= '<img class="img-responsive" src="'+base_image + images[i]+'">';
+                            s+= '<a rel="prettyPhoto" href="'+ (_this.getImageFullUrl('ori', images[i]))+'">';
+                                s+= '<img class="img-responsive" src="'+image_full_url+'">';
                             s+= '</a>';
                             s+= '<a class="remove-image btn btn-danger btn-xs" title="Remove this image">';
                                 s+= '<i class="fa fa-minus-circle"></i>';
@@ -483,6 +482,20 @@
                 case 'small': return this._baseSmall; break;
                 default: return this._baseOri;
             }
+        },
+        getImageFullUrl: function (imageType, imageName){
+            var fullUrl = this._baseOri;
+            switch (imageType){
+                case 'ori': fullUrl = this._baseOri; break;
+                case 'medium': fullUrl = this._baseMedium; break;
+                case 'small': fullUrl = this._baseSmall; break;
+            }
+            
+            if (imageName){
+                fullUrl += imageName;
+            }
+            
+            return fullUrl;
         }
     };
 </script>
