@@ -172,10 +172,12 @@
             }
             _this.inProccess = true;
             
-            $('#data-list tbody').empty();
+            _this._setList('loading');
             //load from service
             $.getJSON("<?php echo site_url('service/article/index'); ?>",{admin:true,limit:_this.dataLimit,page:_this.page,search:_this.searchText,category:_this.categoryId}, function(data){
                 _this.inProccess = false;
+                _this._clearList();
+                
                 if (data.length > 0){
                     for (var i in data){
                         var s = '<tr id="'+data[i].id+'" data-id="'+data[i].id+'">';
@@ -212,6 +214,18 @@
                 
                 _this._drawingPaging();
             });
+        },
+        _setList: function (status){
+            if (status == 'loading'){
+                this._clearList();
+                
+                $('#data-list tbody').append('<tr><td colspan="9">Loading data....</td></tr>');
+            }else{
+                this._clearList();
+            }
+        },
+        _clearList: function (){
+            $('#data-list tbody').empty();
         },
         _getRecNumber: function(offset){
             var recNumber = ((this.page-1)*this.dataLimit) + parseInt(offset) + 1;
