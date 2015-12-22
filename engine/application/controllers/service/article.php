@@ -58,8 +58,10 @@ class Article extends REST_Api {
             $item = $this->article_m->get($id);
             $this->result = $this->remap_fields($remap_fields, $this->_article_proccess($item, $forbidden_categories));
         }else{
+            $admin = $this->get('admin') ? TRUE : FALSE;
             $limit = $this->get('limit') ? $this->get('limit') : 100;
             $page = $this->get('page') ? $this->get('page') : 1;
+            $search_text = $this->get('search') ? $this->get('search') : NULL;
             $category_id = $this->get('category') ? $this->get('category') : 0;
             
             if ($category_id){
@@ -74,8 +76,12 @@ class Article extends REST_Api {
                 $this->db->where_in('category_id', $category_id_list);
             }
             
-            if ($forbidden_categories){
+            if ($forbidden_categories && !$admin){
                 $this->db->where_not_in('category_id', $forbidden_categories);
+            }
+            
+            if ($search_text){
+                $this->db->like('title', $search_text);
             }
             
             $items = $this->article_m->get_offset('*',array('published'=>1),($page-1)*$limit,$limit);
@@ -123,7 +129,7 @@ class Article extends REST_Api {
             $item->image_urls = NULL;
         }
         $item->tags = $item->tags ? explode(',', $item->tags) : NULL;
-        $item->types = $item->types ? explode(',', $item->types) : NULL;
+        $item->types = $item->types ? explode('|', $item->types) : NULL;
         $item->allow_comment = (bool) $item->allow_comment;
         $item->published = (bool) $item->published;
         $item->created = date('Y-m-d H:i:s', $item->created);
