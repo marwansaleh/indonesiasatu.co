@@ -335,6 +335,26 @@
         ArticleManagers.RFM_Callback(field_id);
     }
     
+    tinymce.init({
+        selector: "textarea.texteditor",
+        theme: 'modern',
+        //width: '100%',
+        height: '220',
+        plugins : [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste responsivefilemanager"
+        ],
+        toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+        //toolbar2: "",
+        image_advtab: true,
+        external_filemanager_path:"/<?php echo config_item('path_lib').'filemanager'; ?>/",
+        filemanager_title:"Filemanager" ,
+        external_plugins: { "filemanager" : "<?php echo site_url(config_item('path_lib').'filemanager/plugin.min.js'); ?>"},
+        filemanager_access_key:"",
+        relative_urls: false
+    });
+    
     var ArticleManagers = {
         hasExtAttrElementId: 'has_ext_attributes',
         extAttrContainerId: 'attribute_ext_container',
@@ -350,25 +370,7 @@
             this.setBaseImage('ori', $('#base_small_url').val());
         },
         tinyMCEInit: function (){
-            tinymce.init({
-                selector: "textarea.texteditor",
-                theme: 'modern',
-                //width: '100%',
-                height: '220',
-                plugins : [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste responsivefilemanager"
-                ],
-                toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
-                //toolbar2: "",
-                image_advtab: true,
-                external_filemanager_path:"/<?php echo config_item('path_lib').'filemanager'; ?>/",
-                filemanager_title:"Filemanager" ,
-                external_plugins: { "filemanager" : "<?php echo site_url(config_item('path_lib').'filemanager/plugin.min.js'); ?>"},
-                filemanager_access_key:"",
-                relative_urls: false
-            });
+            
         },
         loadExtendedAttributes: function (categoryID){
             var _this = this;
