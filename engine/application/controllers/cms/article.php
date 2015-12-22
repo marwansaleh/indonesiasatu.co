@@ -16,35 +16,39 @@ class Article extends MY_AdminController {
     }
     
     function index(){
-        $page = $this->input->get('page', TRUE) ? $this->input->get('page', TRUE):1;
+//        $page = $this->input->get('page', TRUE) ? $this->input->get('page', TRUE):1;
+//        
+//        $this->data['page'] = $page;
+//        $offset = ($page-1) * $this->REC_PER_PAGE;
+//        $this->data['offset'] = $offset;
+//        
+//        $where = NULL;
+//        
+//        //count totalRecords
+//        $this->data['totalRecords'] = $this->article_m->get_count($where);
+//        //count totalPages
+//        $this->data['totalPages'] = ceil ($this->data['totalRecords']/$this->REC_PER_PAGE);
+//        
+//        $this->data['items'] = array();
+//        if ($this->data['totalRecords']>0){
+//            $items = $this->article_m->get_offset('*',$where,$offset,  $this->REC_PER_PAGE);
+//            if ($items){
+//                foreach($items as $item){
+//                    $item->category = $this->category_m->get_value('name',array('id'=>$item->category_id));
+//                    $item->highlight = strpos($item->types, 'highlight')!==FALSE;
+//                    $item->slider = strpos($item->types, 'slider')!==FALSE;
+//                    $this->data['items'][] = $item;
+//                }
+//                $url_format = site_url('cms/article/index?page=%i');
+//                $this->data['pagination'] = smart_paging($this->data['totalPages'], $page, $this->_pagination_adjacent, $url_format, $this->_pagination_pages, array('records'=>count($items),'total'=>$this->data['totalRecords']));
+//            }
+//        }
+//        
+//        $this->data['pagination_description'] = smart_paging_description($this->data['totalRecords'], count($this->data['items']));
         
-        $this->data['page'] = $page;
-        $offset = ($page-1) * $this->REC_PER_PAGE;
-        $this->data['offset'] = $offset;
-        
-        $where = NULL;
-        
-        //count totalRecords
-        $this->data['totalRecords'] = $this->article_m->get_count($where);
-        //count totalPages
-        $this->data['totalPages'] = ceil ($this->data['totalRecords']/$this->REC_PER_PAGE);
-        
-        $this->data['items'] = array();
-        if ($this->data['totalRecords']>0){
-            $items = $this->article_m->get_offset('*',$where,$offset,  $this->REC_PER_PAGE);
-            if ($items){
-                foreach($items as $item){
-                    $item->category = $this->category_m->get_value('name',array('id'=>$item->category_id));
-                    $item->highlight = strpos($item->types, 'highlight')!==FALSE;
-                    $item->slider = strpos($item->types, 'slider')!==FALSE;
-                    $this->data['items'][] = $item;
-                }
-                $url_format = site_url('cms/article/index?page=%i');
-                $this->data['pagination'] = smart_paging($this->data['totalPages'], $page, $this->_pagination_adjacent, $url_format, $this->_pagination_pages, array('records'=>count($items),'total'=>$this->data['totalRecords']));
-            }
-        }
-        
-        $this->data['pagination_description'] = smart_paging_description($this->data['totalRecords'], count($this->data['items']));
+        $this->data['page'] = $this->input->get('page', TRUE) ? $this->input->get('page', TRUE):1;
+        $this->data['selected_category_id'] = $this->input->get('category', TRUE) ? $this->input->get('category', TRUE):0;
+        $this->data['categories'] = $this->category_m->get();
         
         //set breadcumb
         breadcumb_add($this->data['breadcumb'], 'Articles', site_url('cms/article'), TRUE);
