@@ -264,11 +264,11 @@
         </form>
     </div>
 </div>
+<input type="hidden" id="base_ori_url" value="<?php echo get_image_base(IMAGE_THUMB_ORI); ?>" />
+<input type="hidden" id="base_small_url" value="<?php echo get_image_base(IMAGE_THUMB_SMALL); ?>" />
+<input type="hidden" id="base_medium_url" value="<?php echo get_image_base(IMAGE_THUMB_MEDIUM); ?>" />
 <script src="<?php echo site_url(config_item('path_lib').'tinymce/tinymce.min.js'); ?>"></script>
 <script type="text/javascript">
-    var base_normal = "<?php echo get_image_base(IMAGE_THUMB_ORI); ?>";
-    var base_small = "<?php echo get_image_base(IMAGE_THUMB_SMALLER); ?>";
-    var base_medium = "<?php echo get_image_base(IMAGE_THUMB_MEDIUM); ?>";
     
     $(document).ready(function(){
         $('input[name="title"]').focus();
@@ -326,95 +326,50 @@
             }
         });
     });
-    
-    tinymce.init({
-        selector: "textarea.texteditor",
-        theme: 'modern',
-        //width: '100%',
-        height: '220',
-        plugins : [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste responsivefilemanager"
-        ],
-        toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
-        //toolbar2: "",
-        image_advtab: true,
-        external_filemanager_path:"/<?php echo config_item('path_lib').'filemanager'; ?>/",
-        filemanager_title:"Filemanager" ,
-        external_plugins: { "filemanager" : "<?php echo site_url(config_item('path_lib').'filemanager/plugin.min.js'); ?>"},
-        filemanager_access_key:"",
-        relative_urls: false,
-        //document_base_url: "<?php echo site_url(); ?>"
-    });
 
     function create_url_title(sourceField,targetField){
-        var url = $.trim($('#'+sourceField).val());
-        url = url.replace('%','-persen');
-        //replace everything not alpha numeric
-        url = url.replace(/[^a-z0-9]/gi, '-').toLowerCase();
-        //url = url.replace(/[ \t\r]+/g,"-");
-        $('#'+targetField).val(url);
+        ArticleManagers.createUrlTitle(sourceField, targetField);
     }
     
     function responsive_filemanager_callback(field_id){
-        var images = [];
-        var base_image = '';
-        
-        //$.prettyPhoto.close();
-        var image_name = document.getElementById(field_id).value;
-        
-        var image_type = $('.image_type:checked').val();
-        if (image_type=='single'){
-            base_image = base_medium;
-            
-            $('input#image_url').val(image_name);
-            images.push(image_name);
-        }else{
-            base_image = base_small;
-            
-            var image_list = $('input#image_url').val();
-            if (image_list){
-                images = image_list.split('|');
-            }
-            if (images.length<6){
-                images.push(image_name);
-            }else{
-                alert('Maximum image item reached. Could not add more images');
-            }
-            
-            $('input#image_url').val(images.join('|'));
-        }
-        
-        $('.image-container').empty();
-        
-        var size;
-        if (image_type=='single'){
-            size = 'col-xs-12 col-sm-12 image-item';
-        }else{
-            size = 'col-xs-4 col-sm-4 image-item';
-        }
-        if (images.length>0){
-            for (var i=0; i<images.length; i++){
-                var s = '<div class="'+size+'">';
-                    s+= '<div class="thumbnail">';
-                        s+= '<a rel="prettyPhoto" href="'+ base_normal + images[i]+'">';
-                            s+= '<img class="img-responsive" src="'+base_image + images[i]+'">';
-                        s+= '</a>';
-                        s+= '<a class="remove-image btn btn-danger btn-xs" title="Remove this image">';
-                            s+= '<i class="fa fa-minus-circle"></i>';
-                        s+= '</a>';
-                    s+= '</div>';
-                s+= '</div>';
-                
-                $('.image-container').append(s);
-            }
-        }
+        ArticleManagers.RFM_Callback(field_id);
     }
     
     var ArticleManagers = {
         hasExtAttrElementId: 'has_ext_attributes',
         extAttrContainerId: 'attribute_ext_container',
+        _baseOri: '',
+        _baseMedium: '',
+        _baseSmall: '',
+        init: function (){
+            this.tinyMCEInit();
+            
+            //set base image
+            this.setBaseImage('ori', $('#base_ori_url').val());
+            this.setBaseImage('medium', $('#base_medium_url').val());
+            this.setBaseImage('ori', $('#base_small_url').val());
+        },
+        tinyMCEInit: function (){
+            tinymce.init({
+                selector: "textarea.texteditor",
+                theme: 'modern',
+                //width: '100%',
+                height: '220',
+                plugins : [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste responsivefilemanager"
+                ],
+                toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+                //toolbar2: "",
+                image_advtab: true,
+                external_filemanager_path:"/<?php echo config_item('path_lib').'filemanager'; ?>/",
+                filemanager_title:"Filemanager" ,
+                external_plugins: { "filemanager" : "<?php echo site_url(config_item('path_lib').'filemanager/plugin.min.js'); ?>"},
+                filemanager_access_key:"",
+                relative_urls: false
+            });
+        },
         loadExtendedAttributes: function (categoryID){
             var _this = this;
             $.getJSON('<?php echo site_url('cms/article/get_category_ext_attributes'); ?>/'+categoryID, function (data){
@@ -439,6 +394,93 @@
                     $('#'+_this.extAttrContainerId).addClass('hidden');
                 }
             });
+        },
+        createUrlTitle: function(source,target){
+            var url = $.trim($('#'+source).val());
+            url = url.replace('%','-persen');
+            //replace everything not alpha numeric
+            url = url.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+            //url = url.replace(/[ \t\r]+/g,"-");
+            $('#'+target).val(url);
+        },
+        RFM_Callback: function (field_id){
+            var _this = this;
+            var images = [];
+            var base_image = '';
+
+            //$.prettyPhoto.close();
+            var image_name = document.getElementById(field_id).value;
+
+            var image_type = $('.image_type:checked').val();
+            if (image_type=='single'){
+                base_image = _this.getBaseImage('medium');
+
+                $('input#image_url').val(image_name);
+                images.push(image_name);
+            }else{
+                base_image = _this.getBaseImage('small');
+
+                var image_list = $('input#image_url').val();
+                if (image_list){
+                    images = image_list.split('|');
+                }
+                if (images.length<6){
+                    images.push(image_name);
+                }else{
+                    alert('Maximum image item reached. Could not add more images');
+                }
+
+                $('input#image_url').val(images.join('|'));
+            }
+
+            $('.image-container').empty();
+
+            var size;
+            if (image_type=='single'){
+                size = 'col-xs-12 col-sm-12 image-item';
+            }else{
+                size = 'col-xs-4 col-sm-4 image-item';
+            }
+            if (images.length>0){
+                for (var i=0; i<images.length; i++){
+                    var s = '<div class="'+size+'">';
+                        s+= '<div class="thumbnail">';
+                            s+= '<a rel="prettyPhoto" href="'+ _this.getBaseImage('ori') + images[i]+'">';
+                                s+= '<img class="img-responsive" src="'+base_image + images[i]+'">';
+                            s+= '</a>';
+                            s+= '<a class="remove-image btn btn-danger btn-xs" title="Remove this image">';
+                                s+= '<i class="fa fa-minus-circle"></i>';
+                            s+= '</a>';
+                        s+= '</div>';
+                    s+= '</div>';
+
+                    $('.image-container').append(s);
+                }
+            }
+        },
+        setBaseImage: function(imageType, baseUrl){
+            switch (imageType){
+                case 'all':
+                    this._baseOri = baseUrl;
+                    this._baseMedium = baseUrl;
+                    this._baseSmall = baseUrl;
+                    break;
+                case 'small': this._baseSmall = baseUrl; break;
+                case 'medium': this._baseMedium = baseUrl; break;
+                case 'ori': 
+                default:
+                        this._baseOri = baseUrl;
+                
+                
+            }
+        },
+        getBaseImage: function(imageType){
+            switch (imageType){
+                case 'ori': return this._baseOri; break;
+                case 'medium': return this._baseMedium; break;
+                case 'small': return this._baseSmall; break;
+                default: return this._baseOri;
+            }
         }
     };
 </script>
