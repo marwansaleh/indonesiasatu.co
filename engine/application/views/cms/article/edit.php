@@ -175,7 +175,7 @@
                                 <?php if ($item->image_type==IMAGE_TYPE_SINGLE && $item->image_url){ ?>
                                 <div class="col-xs-12 col-sm-12 image-item">
                                     <div class="thumbnail">
-                                        <a rel="prettyPhoto" href="<?php echo site_url(config_item('images') . $item->image_url); ?>">
+                                        <a rel="prettyPhoto" href="<?php echo get_image_thumb($img->image_url, IMAGE_THUMB_ORI); ?>">
                                             <img class="img-responsive" src="<?php echo get_image_thumb($item->image_url, IMAGE_THUMB_MEDIUM); ?>">
                                         </a>
                                         <a class="remove-image btn btn-danger btn-xs" title="Remove this image">
