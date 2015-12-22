@@ -187,7 +187,7 @@
                                 <?php foreach ($item->multi_images as $img){ ?>
                                 <div class="col-xs-4 col-sm-4 image-item">
                                     <div class="thumbnail">
-                                        <a rel="prettyPhoto" href="<?php echo site_url(config_item('images'). $img->image_url) ; ?>">
+                                        <a rel="prettyPhoto" href="<?php echo get_image_thumb($img->image_url, IMAGE_THUMB_ORI) ; ?>">
                                             <img class="img-responsive" src="<?php echo get_image_thumb($img->image_url, IMAGE_THUMB_SMALLER); ?>">
                                         </a>
                                         
