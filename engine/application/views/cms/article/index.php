@@ -5,20 +5,51 @@
         <?php endif; ?>
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">List of Articles</h3>
-                <div class="box-tools">
-                    <div class="input-group">
-                        <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 250px;" placeholder="Search">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                            <a class="btn btn-sm btn-primary" data-toggle="tooltip" title="Create" href="<?php echo site_url('cms/article/edit'); ?>"><i class="fa fa-plus-square"></i></a>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h3 class="box-title">List of Articles</h3>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group form-group-sm">
+                                    <select id="category" class="form-control selectpicker" data-live-search="true" data-size="8" style="min-width: 150px;">
+                                        <option value="0">-- All Categories--</option>
+                                        <?php foreach ($categories as $category): ?>
+                                        <option value="<?php echo $category->id; ?>" <?php echo $category->id==$selected_category_id?'selected':''; ?>><?php echo $category->name; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group form-group-sm">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" step="1" min="2" id="limit" value="10" title="Data limit" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-group form-group-sm">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="search" placeholder="Search title..." />
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-success btn-sm" id="btn-filter"><i class="fa fa-filter"></i> Search</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <a class="btn btn-sm btn-primary" data-toggle="tooltip" title="Create" href="<?php echo site_url('cms/article/edit'); ?>"><i class="fa fa-plus-square"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
             </div><!-- /.box-header -->
             
             <div class="box-body table-responsive no-padding">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="data-list">
                     <thead>
                         <tr>
                             <th style="width: 10px">#</th>
@@ -32,47 +63,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i=1; foreach($items as $item): ?>
-                        <tr>
-                            <td><?php echo ($offset+$i++); ?>.</td>
-                            <td><?php echo $item->title; ?></td>
-                            <td><?php echo $item->category; ?></td>
-                            <td class="text-center">
-                                <?php if ($item->highlight): ?>
-                                <i class="fa fa-check-circle text-primary" data-toggle="tooltip" title="Highlight"></i>
-                                <?php else: ?>
-                                <i class="fa fa-check-circle-o text-gray" data-toggle="tooltip" title="Highlight"></i>
-                                <?php endif; ?>
-                                <?php if ($item->slider): ?>
-                                <i class="fa fa-check-circle text-primary" data-toggle="tooltip" title="Slider news"></i>
-                                <?php else: ?>
-                                <i class="fa fa-check-circle-o text-gray" data-toggle="tooltip" title="Slider news"></i>
-                                <?php endif; ?>
-                            </td>
-                            <td class="text-center"><?php echo date('d-m-Y H:i', $item->date); ?></td>
-                            <td class="text-right"><?php echo number_format($item->view_count); ?></td>
-                            <td class="text-center">
-                                <?php if ($item->published==1): ?>
-                                <i class="fa fa-check-circle text-primary"></i>
-                                <?php else:?>
-                                <i class="fa fa-check-circle-o text-gray"></i>
-                                <?php endif; ?>
-                            </td>
-                            <td class="text-center">
-                                <a class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit" href="<?php echo site_url('cms/article/edit?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-pencil-square"></i></a>
-                                <a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="<?php echo site_url('cms/article/delete?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-minus-square"></i></a>
-                                <a class="btn btn-xs btn-primary" data-toggle="tooltip" title="Facebook statistik" href="javascript:facebookStats('<?php echo site_url('detail/'.$item->url_title); ?>');"><i class="fa fa-facebook"></i></a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
+                        
                     </tbody>
                 </table>
             </div><!-- /.box-body -->
             <div class="box-footer clearfix">
-                <!-- paging description -->
-                <?php echo isset($pagination_description)? $pagination_description:''; ?>
-                <!-- paging list bullets -->
-                <?php echo isset($pagination)? $pagination:''; ?>
+                <div id="pagination"></div>
             </div>
         </div>
     </div>
@@ -95,9 +91,162 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<input type="hidden" id="site_url" value="<?php echo site_url(); ?>" />
+<input type="hidden" id="page" value="<?php echo $page; ?>" />
+
 <!-- load script to handle facebook request to conduct crawling -->
 <script src="<?php echo site_url(config_item('path_assets').'js/socmed.js'); ?>"></script>
 <script type="text/javascript">
+    $(document).ready (function (){
+        ArticleManagers.init();
+        
+        $('#category').on('change', function(){
+            ArticleManagers.setCategory($(this).val());
+            ArticleManagers.loadArticles();
+        });
+        
+        $('#btn-filter').on('click', function(){
+            ArticleManagers.setDataLimit($('#limit').val());
+            ArticleManagers.setCategory($('#category').val());
+            ArticleManagers.setSearchValue($('#search').val());
+            ArticleManagers.setPage(1);
+            ArticleManagers.loadArticles();
+        });
+    });
+    var ArticleManagers = {
+        _articles: [],
+        categoryId: 0,
+        dataLimit: 10,
+        searchText: null,
+        page: 1,
+        inProccess: false,
+        reachLimit: false,
+        init: function (){
+            var _this = this;
+            _this.setDataLimit($('#limit').val());
+            _this.setCategory($('#category').val());
+            _this.setSearchValue($('#search').val());
+            _this.setPage($('#page').val());
+            _this.loadArticles();
+        },
+        setCategory: function(category){
+            this.categoryId = parseInt(category);
+            this.reachLimit = false;
+        },
+        setDataLimit: function (limit){
+            this.dataLimit = parseInt(limit);
+            this.reachLimit = false;
+        },
+        setSearchValue: function (text){
+            this.searchText = text;
+            this.reachLimit = false;
+        },
+        setPage: function (page){
+            if (parseInt(page) > 0){
+                this.page = parseInt(page);
+                this.reachLimit = false;
+            }
+        },
+        prev: function(){
+            if (this.page > 1){
+                this.setPage(this.page-1);
+            }
+            //console.log('Current page:'+this.page);
+        },
+        next: function(){
+            if (!this.reachLimit){
+                this.setPage(this.page + 1);
+            }
+            //console.log('Current page:'+this.page);
+        },
+        loadArticles: function (){
+            var _this = this;
+            if (_this.reachLimit || _this.inProccess){
+                return;
+            }
+            _this.inProccess = true;
+            
+            $('#data-list tbody').empty();
+            //load from service
+            $.getJSON("<?php echo site_url('service/article/index'); ?>",{admin:true,limit:_this.dataLimit,page:_this.page,search:_this.searchText,category:_this.categoryId}, function(data){
+                _this.inProccess = false;
+                if (data.length > 0){
+                    for (var i in data){
+                        var s = '<tr id="'+data[i].id+'" data-id="'+data[i].id+'">';
+                            s+= '<td>'+_this._getRecNumber(i)+'.</td>';
+                            s+= '<td>'+data[i].title+'</td>';
+                            s+= '<td>'+data[i].category+'</td>';
+                            s+= '<td class="text-center">';
+                                //check for highlight / slider-news
+                                s+= '<i class="fa icon-approval '+(data[i].types && data[i].types.indexOf('highlight')>=0 ? 'fa-check-circle text-primary':'fa-check-circle-o text-gray')+'" data-toggle="tooltip" title="" data-original-title="Display in web view"></i>';
+                                s+= '<i class="fa icon-approval '+(data[i].types && data[i].types.indexOf('slider-news')>=0 ? 'fa-check-circle text-primary':'fa-check-circle-o text-gray')+'" data-toggle="tooltip" title="" data-original-title="Display in web view"></i>';
+                            s+= '</td>';
+                            s+= '<td class="text-center">'+data[i].article_date+'</td>';
+                            s+= '<td class="text-right">'+data[i].view+'</td>';
+                            s+= '<td class="text-center"><i class="fa icon-approval '+(data[i].published ? 'fa-check-circle text-primary':'fa-check-circle-o text-gray')+'" data-toggle="tooltip" title="" data-original-title="Display in web view"></i></td>';
+                            s+= '<td class="text-center">';
+                                s+= '<a class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit" href="'+(_this._getUrl('cms/article/edit?id='+data[i].id+'&page='+_this.page))+'"><i class="fa fa-pencil-square"></i></a>';
+                                s+= '<a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="'+(_this._getUrl('cms/article/delete?id='+data[i].id+'&page='+_this.page))+'"><i class="fa fa-minus-square"></i></a>';
+                                s+= '<a class="btn btn-xs btn-primary" data-toggle="tooltip" title="Facebook statistik" href="javascript:facebookStats(\''+_this._getUrl('detail/'+data[i].url_title)+'\');"><i class="fa fa-facebook"></i></a>';
+                            s+= '</td>';
+                        s+= '</tr>';
+
+                        $('#data-list').append(s);
+                    }
+                    if (data.length < _this.dataLimit){
+                        _this.reachLimit = true;
+                        console.log('Reach limit');
+                    }else{
+                        _this.reachLimit = false;
+                    }
+                }else{
+                    _this.reachLimit = true;
+                    console.log('Reach limit');
+                }
+                
+                _this._drawingPaging();
+            });
+        },
+        _getRecNumber: function(offset){
+            var recNumber = ((this.page-1)*this.dataLimit) + parseInt(offset) + 1;
+            
+            return recNumber;
+        },
+        _drawingPaging: function (){
+            var s = '<nav><ul class="pager">';
+            if (this.page > 1){
+                s+= '<li><a href="javascript:previousPage();">Previous</a></li>';
+            }else{
+                s+= '<li class="disabled"><a href="#">Previous</a></li>';
+            }
+            if (!this.reachLimit){
+                s+= '<li><a href="javascript:nextPage();">Next</a></li>';
+            }else{
+                s+= '<li class="disabled"><a href="#">Next</a></li>';
+            }
+            s+= '</ul></nav>';
+            
+            $('#pagination').html(s);
+        },
+        _getUrl: function (path){
+            var siteUrl = $('#site_url').val();
+            if (path){
+                siteUrl += path;
+            }
+            return siteUrl;
+        }
+    };
+    
+    function previousPage(){
+        ArticleManagers.prev();
+        ArticleManagers.loadArticles();
+    }
+    
+    function nextPage(){
+        ArticleManagers.next();
+        ArticleManagers.loadArticles();
+    }
+    
     function facebookStats(url){
         $('#MyModal .modal-title').html('Facebook Crawler Result');
         $('#MyModal .modal-body').html('<div class="myloader"><div class="big"></div></div>');
