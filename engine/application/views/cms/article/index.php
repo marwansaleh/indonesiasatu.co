@@ -112,6 +112,12 @@
             ArticleManagers.setPage(1);
             ArticleManagers.loadArticles();
         });
+        
+        $('#search').on('keypress', function (event){
+            if ( event.which == 13 ) {
+                $('#btn-filter').click();
+            }
+        });
     });
     var ArticleManagers = {
         _articles: [],
