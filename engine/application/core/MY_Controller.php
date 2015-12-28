@@ -49,7 +49,9 @@ class MY_BaseController extends CI_Controller {
             $this->input->set_cookie($cookie);
             
             //register new user
-            $this->_visitor_register();
+            if (!$this->agent->is_robot()){
+                $this->_visitor_register();
+            }
         }
     }
     
