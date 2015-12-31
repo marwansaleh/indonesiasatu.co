@@ -194,7 +194,7 @@
                             s+= '<td class="text-center"><i class="fa icon-approval '+(data[i].published ? 'fa-check-circle text-primary':'fa-check-circle-o text-gray')+'" data-toggle="tooltip" title="" data-original-title="Display in web view"></i></td>';
                             s+= '<td class="text-center">';
                                 s+= '<a class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit" href="'+(_this._getUrl('cms/article/edit?id='+data[i].id+'&page='+_this.page))+'"><i class="fa fa-pencil-square"></i></a>';
-                                s+= '<a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="'+(_this._getUrl('cms/article/delete?id='+data[i].id+'&page='+_this.page))+'"><i class="fa fa-minus-square"></i></a>';
+                                s+= '<a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" onclick="deleteArticle(\''+_this._getUrl('cms/article/delete?id='+data[i].id+'&page='+_this.page)+'\');"><i class="fa fa-minus-square"></i></a>';
                                 s+= '<a class="btn btn-xs btn-primary" data-toggle="tooltip" title="Facebook statistik" href="javascript:facebookStats(\''+_this._getUrl('detail/'+data[i].url_title)+'\');"><i class="fa fa-facebook"></i></a>';
                             s+= '</td>';
                         s+= '</tr>';
@@ -303,5 +303,11 @@
                 //do something here
             }
         });
+    }
+    
+    function deleteArticle(url){
+        if (confirm('Are you sure to delete this article ?')){
+            window.location.href = url;
+        }
     }
 </script>
