@@ -48,6 +48,57 @@ class Detail extends MY_News {
         //get author name
         $article->created_by_name = $this->user_m->get_value('full_name', array('id'=>$article->created_by));
         
+        $this->meta_set_props(array(
+            'author'            => 'IndonesiaSatu.co',
+            'description'       => $article->synopsis,
+            'keywords'          => $article->title,
+            'canonical'         => current_url()
+        ));
+        //set og properties
+        $this->og_set_props(array(
+            'title'         => $article->title,
+            'url'           => site_url('detail/'.$article->url_title), 
+            'description'   => $article->synopsis,
+            'type'          => 'article'
+        ));
+        //for google share
+        $this->data['metaprop'] = array(
+            'name'          => $article->title,
+            'description'   => $article->synopsis,
+            'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_SMALL),
+            'datePublished' => date('d-M-Y H:i', $article->date),
+            'articleSection'=> $article->synopsis
+        );
+        
+        if ($article->image_url){
+            //get image properties from image shared
+            $image_shared = get_image_thumbpath($article->image_url, IMAGE_THUMB_LARGE, TRUE);
+            $this->_write_log('Try to read image size '.$image_shared);
+            if (file_exists($image_shared)){
+                $image_shared_dimensions = @getimagesize($image_shared);
+                if ($image_shared_dimensions){
+                    $this->_write_log('Image size read done');
+                    $this->og_set_props(array(
+                        'og:image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
+                        'og:image:url'     => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
+                        'og:image:type'    => $image_shared_dimensions['mime'],
+                        'og:image:width'   => $image_shared_dimensions[0],
+                        'og:image:height'  => $image_shared_dimensions[1]
+                    ));
+                }else{
+                    $this->_write_log('Can not read image size using getimagesize function');
+                }
+            }else{
+                $this->_write_log('Image file '.$image_shared.' can not be found');
+            }
+        }
+        
+        if ($this->_is_facebook_robot()){
+            $this->_write_log('Facebook crawler is scrapping page '. $article->url_title);
+            $this->load->view('metadata/index', $this->data);
+            exit;
+        }
+        
         $this->data['article'] = $article;
         //get category
         $selected_category = $this->category_m->get($article->category_id);
@@ -100,65 +151,12 @@ class Detail extends MY_News {
         $category_slug = $this->category_m->get_value('slug', array('id'=>$article->category_id));
         $this->data['active_menu'] = $category_slug;
         
-        $this->meta_set_props(array(
-            'author'            => 'IndonesiaSatu.co',
-            'description'       => $article->synopsis,
-            'keywords'          => $article->title,
-            'canonical'         => current_url()
-        ));
-        //set og properties
-        $this->og_set_props(array(
-            'title'         => $article->title,
-            'url'           => site_url('detail/'.$article->url_title), 
-            'description'   => $article->synopsis,
-            'type'          => 'article'
-        ));
-        //for google share
-        $this->data['metaprop'] = array(
-            'name'          => $article->title,
-            'description'   => $article->synopsis,
-            'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_SMALL),
-            'datePublished' => date('d-M-Y H:i', $article->date),
-            'articleSection'=> $article->synopsis
-        );
-        
-        if ($article->image_url){
-            //get image properties from image shared
-            $image_shared = get_image_thumbpath($article->image_url, IMAGE_THUMB_LARGE, TRUE);
-            $this->_write_log('Try to read image size '.$image_shared);
-            if (file_exists($image_shared)){
-                $image_shared_dimensions = @getimagesize($image_shared);
-                if ($image_shared_dimensions){
-                    $this->_write_log('Image size read done');
-                    $this->og_set_props(array(
-                        'og:image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
-                        'og:image:url'     => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE),
-                        'og:image:type'    => $image_shared_dimensions['mime'],
-                        'og:image:width'   => $image_shared_dimensions[0],
-                        'og:image:height'  => $image_shared_dimensions[1]
-                    ));
-                }else{
-                    $this->_write_log('Can not read image size using getimagesize function');
-                }
-            }else{
-                $this->_write_log('Image file '.$image_shared.' can not be found');
-            }
-        }
-        
-        
         //support for comments
         $this->data['is_admin'] = $this->users->isLoggedin() ? $this->users->is_admin() : FALSE;
         
         //$this->data['main_slider'] = TRUE;
         $this->data['subview'] = 'frontend/detail/index';
-        
-        //direct to metadata only if user agent is facebook
-        if ($this->_is_facebook()){
-            $this->_write_log('Facebook crawler is scrapping page '. current_url());
-            $this->load->view('metadata/index', $this->data);
-        }else{
-            $this->load->view('_layout_main', $this->data);
-        }
+        $this->load->view('_layout_main', $this->data);
     }
     
     function mobile($slug=NULL){
@@ -173,6 +171,7 @@ class Detail extends MY_News {
         
         $this->_article_view_counter($article->id);
         
+        $article->share_url = site_url('detail/'.$article->url_title);
         $article->category_name = $this->category_m->get_value('name', array('id'=>$article->category_id));
         //get author name
         $article->created_by_name = $this->user_m->get_value('full_name', array('id'=>$article->created_by));
@@ -243,7 +242,7 @@ class Detail extends MY_News {
         return NULL;
     }
     
-    private function _is_facebook(){
+    private function _is_facebook_robot(){
         $useragent = $this->agent->agent_string();
         $needle = 'facebookexternalhit/1.1';
         
