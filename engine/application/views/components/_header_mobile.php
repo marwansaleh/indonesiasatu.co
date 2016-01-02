@@ -53,5 +53,6 @@
         </script>
     </head>
     <body>
+        <div id="fb-root"></div>
         <?php $this->load->view('components/_mobile_menu');
     
