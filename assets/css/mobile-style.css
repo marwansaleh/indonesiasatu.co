@@ -39,6 +39,7 @@ article .info .date {color: #001f3f;}
 article .info .author {color: #080808;}
 article .content {font-size: 14px;}
 .blog-page {padding: 10px; background-color: white;}
+.share-blog { display: block; float: left; margin: 15px 0 20px 0; width:100%; }
 
 footer {display: block; margin-top: 20px; padding: 10px; background-color: #373737; color: #fff;}
 footer a { color: #fff!important; }
