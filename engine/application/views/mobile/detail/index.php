@@ -17,8 +17,26 @@
         <div class="content">
             <?php echo $article->content; ?>
         </div>
+        
+        <div class="share-blog">
+            <div class="btn-group btn-group-justified" role="group">
+                <a class="btn btn-default" 
+                   href="mailto:?Subject=<?php echo urlencode($article->title); ?>&body=<?php echo urlencode($article->synopsis . '. ' . $article->url_title); ?>" 
+                   target="_blank"><span class="glyphicon glyphicon-envelope"></span> Email
+                </a>
+                <a class="btn btn-social btn-twitter" href="javascript:twitterShare('<?php echo urlencode($article->url_title); ?>','<?php echo urlencode($article->title); ?>');"><span class="fa fa-twitter"></span> Twitter</a>
+                <a id="btn-google" class="btn btn-social btn-google-plus" 
+                   href="https://plus.google.com/share?url=<?php echo $article->url_title; ?>&hl=id" 
+                   onclick="javascript:window.open(this.href,
+        '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600'); return false;">
+                    <span class="fa fa-google-plus"></span> Google
+                </a>
+                <a class="btn btn-social btn-facebook" href="javascript:facebookShare(<?php echo $article->id; ?>,'<?php echo urlencode($article->url_title); ?>');"><span class="fa fa-facebook"></span> Facebook</a>
+            </div>
+        </div>
     </article>
 </div>
+
 <!-- related news -->
 <?php if ($related_news): ?>
 <div class="blog-page"><h4 style="border-bottom: solid 1px #CACACA; margin-bottom:0;">Berita Terkait</h4></div>
@@ -40,3 +58,5 @@
 </ul>
 <?php endif; ?>
 <div class="blog-page"><a class="btn btn-primary btn-block btn-sm" href="<?php echo site_url('home'); ?>">Back</a></div>
+
+<script src="<?php echo site_url(config_item('path_assets').'js/socmed.js'); ?>"></script>
