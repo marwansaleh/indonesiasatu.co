@@ -29,7 +29,7 @@
         <link href="<?php echo site_url(config_item('path_lib').'bootstrap/css/bootstrap-theme.min.css'); ?>" rel="stylesheet">
         <!--external css-->
         <link href="<?php echo site_url(config_item('path_lib').'font-awesome-4.1.0/css/font-awesome.min.css'); ?>" rel="stylesheet" />    
-        
+        <link href="<?php echo site_url(config_item('path_lib').'bootstrap-social/bootstrap-social.css'); ?>" rel="stylesheet" /> 
         <!-- Custom styles -->
         <link href="<?php echo site_url(config_item('path_assets').'css/mobile-style.css'); ?>" rel="stylesheet">
         
