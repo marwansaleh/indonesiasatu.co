@@ -96,67 +96,68 @@ class Detail extends MY_News {
         if ($this->_is_facebook_robot()){
             $this->_write_log('Facebook crawler is scrapping page '. $article->url_title);
             $this->load->view('metadata/index', $this->data);
-            exit;
-        }
-        
-        $this->data['article'] = $article;
-        //get category
-        $selected_category = $this->category_m->get($article->category_id);
-        $this->data['category'] = $selected_category;
-        $this->data['related_news'] = $this->_related_news(explode(',',$article->tags), 3, array('id !='=>$article->id));
-        
-        //need to filter category to determine which name should be shown as writer
-        $teropong = $this->_get_category_inherit_ids(CATEGORY_TEROPONG);
-        if (in_array($article->category_id, $teropong)){
-            $this->data['article_author'] = $selected_category->name;
+            //exit;
         }else{
-            $embun_pagi = $this->_get_category_inherit_ids(CATEGORY_EMBUNPAGI);
-            if (in_array($article->category_id, $embun_pagi)){
+        
+            $this->data['article'] = $article;
+            //get category
+            $selected_category = $this->category_m->get($article->category_id);
+            $this->data['category'] = $selected_category;
+            $this->data['related_news'] = $this->_related_news(explode(',',$article->tags), 3, array('id !='=>$article->id));
+
+            //need to filter category to determine which name should be shown as writer
+            $teropong = $this->_get_category_inherit_ids(CATEGORY_TEROPONG);
+            if (in_array($article->category_id, $teropong)){
                 $this->data['article_author'] = $selected_category->name;
+            }else{
+                $embun_pagi = $this->_get_category_inherit_ids(CATEGORY_EMBUNPAGI);
+                if (in_array($article->category_id, $embun_pagi)){
+                    $this->data['article_author'] = $selected_category->name;
+                }
             }
+
+            $widgets = explode(',',$parameters['LAYOUT_DETAIL_WIDGETS']);
+            foreach ($widgets as $widget){
+                $this->data['widgets'] [] = trim($widget);
+            }
+            $widgets = $this->data['widgets'];
+            if (in_array(WIDGET_NEWSGROUP, $widgets)){
+                //Load popular news
+                $this->data['popular_news'] = $this->_popular_news(isset($parameters['LAYOUT_NEWSGROUP_NUM'])?$parameters['LAYOUT_NEWSGROUP_NUM']:4);
+                //Load popular news
+                $this->data['recent_news'] = $this->_latest_news(isset($parameters['LAYOUT_NEWSGROUP_NUM'])?$parameters['LAYOUT_NEWSGROUP_NUM']:4);
+                //Load popular news
+                $this->data['commented_news'] = $this->_commented_news(isset($parameters['LAYOUT_NEWSGROUP_NUM'])?$parameters['LAYOUT_NEWSGROUP_NUM']:4);
+            }
+            if (in_array(WIDGET_NEWSLATEST, $widgets)){
+                //Load latest post
+                $this->data['latest_post'] = $this->_latest_news(isset($parameters['LAYOUT_NEWSLATEST_NUM'])?$parameters['LAYOUT_NEWSLATEST_NUM']:5);
+            }
+            if (in_array(WIDGET_STOCKS, $widgets)){
+                //Load rates
+                $this->data['rates'] = $this->_get_rates();
+            }
+            if (in_array(WIDGET_NEWSPHOTO, $widgets)){
+                //store photo news
+                $this->data['photo_news'] = $this->_photo_news(isset($parameters['LAYOUT_NEWSPHOTO_NUM'])?$parameters['LAYOUT_NEWSPHOTO_NUM']:10);
+            }
+            if (in_array(WIDGET_SELECTED_CATEGORY, $widgets)){
+                $this->data['selected_news_category'] = array(
+                    'category'  => $selected_category,
+                    'articles' => $this->_article_categories($selected_category->id, 5)
+                );
+            }
+
+            $category_slug = $this->category_m->get_value('slug', array('id'=>$article->category_id));
+            $this->data['active_menu'] = $category_slug;
+
+            //support for comments
+            $this->data['is_admin'] = $this->users->isLoggedin() ? $this->users->is_admin() : FALSE;
+
+            //$this->data['main_slider'] = TRUE;
+            $this->data['subview'] = 'frontend/detail/index';
+            $this->load->view('_layout_main', $this->data);
         }
-        
-        $widgets = explode(',',$parameters['LAYOUT_DETAIL_WIDGETS']);
-        foreach ($widgets as $widget){
-            $this->data['widgets'] [] = trim($widget);
-        }
-        $widgets = $this->data['widgets'];
-        if (in_array(WIDGET_NEWSGROUP, $widgets)){
-            //Load popular news
-            $this->data['popular_news'] = $this->_popular_news(isset($parameters['LAYOUT_NEWSGROUP_NUM'])?$parameters['LAYOUT_NEWSGROUP_NUM']:4);
-            //Load popular news
-            $this->data['recent_news'] = $this->_latest_news(isset($parameters['LAYOUT_NEWSGROUP_NUM'])?$parameters['LAYOUT_NEWSGROUP_NUM']:4);
-            //Load popular news
-            $this->data['commented_news'] = $this->_commented_news(isset($parameters['LAYOUT_NEWSGROUP_NUM'])?$parameters['LAYOUT_NEWSGROUP_NUM']:4);
-        }
-        if (in_array(WIDGET_NEWSLATEST, $widgets)){
-            //Load latest post
-            $this->data['latest_post'] = $this->_latest_news(isset($parameters['LAYOUT_NEWSLATEST_NUM'])?$parameters['LAYOUT_NEWSLATEST_NUM']:5);
-        }
-        if (in_array(WIDGET_STOCKS, $widgets)){
-            //Load rates
-            $this->data['rates'] = $this->_get_rates();
-        }
-        if (in_array(WIDGET_NEWSPHOTO, $widgets)){
-            //store photo news
-            $this->data['photo_news'] = $this->_photo_news(isset($parameters['LAYOUT_NEWSPHOTO_NUM'])?$parameters['LAYOUT_NEWSPHOTO_NUM']:10);
-        }
-        if (in_array(WIDGET_SELECTED_CATEGORY, $widgets)){
-            $this->data['selected_news_category'] = array(
-                'category'  => $selected_category,
-                'articles' => $this->_article_categories($selected_category->id, 5)
-            );
-        }
-        
-        $category_slug = $this->category_m->get_value('slug', array('id'=>$article->category_id));
-        $this->data['active_menu'] = $category_slug;
-        
-        //support for comments
-        $this->data['is_admin'] = $this->users->isLoggedin() ? $this->users->is_admin() : FALSE;
-        
-        //$this->data['main_slider'] = TRUE;
-        $this->data['subview'] = 'frontend/detail/index';
-        $this->load->view('_layout_main', $this->data);
     }
     
     function mobile($slug=NULL){
