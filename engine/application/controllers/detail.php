@@ -50,21 +50,21 @@ class Detail extends MY_News {
         
         $this->meta_set_props(array(
             'author'            => 'IndonesiaSatu.co',
-            'description'       => $article->synopsis,
-            'keywords'          => $article->title,
+            'description'       => str_replace('"', '', $article->synopsis),
+            'keywords'          => str_replace('"', '', $article->title),
             'canonical'         => current_url()
         ));
         //set og properties
         $this->og_set_props(array(
-            'title'         => $article->title,
+            'title'         => str_replace('"', '', $article->title),
             'url'           => site_url('detail/'.$article->url_title), 
-            'description'   => $article->synopsis,
+            'description'   => str_replace('"', '', $article->synopsis),
             'type'          => 'article'
         ));
         //for google share
         $this->data['metaprop'] = array(
-            'name'          => $article->title,
-            'description'   => $article->synopsis,
+            'name'          => str_replace('"', '', $article->title),
+            'description'   => str_replace('"', '', $article->synopsis),
             'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_SMALL),
             'datePublished' => date('d-M-Y H:i', $article->date),
             'articleSection'=> $article->synopsis
