@@ -89,7 +89,7 @@ class Article extends REST_Api {
                 $condition = array('published' => 1);
             }
             
-            $items = $this->article_m->get_offset('*',array('published'=>1),($page-1)*$limit,$limit);
+            $items = $this->article_m->get_offset('*',$condition,($page-1)*$limit,$limit);
             foreach ($items as $item){
                 $this->result [] = $this->remap_fields($remap_fields, $this->_article_proccess($item, $forbidden_categories));
             }
