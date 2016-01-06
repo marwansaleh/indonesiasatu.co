@@ -26,7 +26,7 @@
     </head>
     <body>
         <?php if (isset($og_props['og:image'])): ?>
-        <img src="<?php echo $og_props['og:image']; ?>" />
+        <img src="<?php echo $og_props['og:image']; ?>" <?php echo isset($image_dimension)?'width="'.$image_dimension[0].'" height="'.$image_dimension[1].'"':''; ?> />
         <?php endif; ?>
     </body>
 </html>
