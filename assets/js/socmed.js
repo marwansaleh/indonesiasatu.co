@@ -143,12 +143,12 @@ var SocialMedia = {
         
         return serviceBase + service;
     },
-    fbCrawler: function (url,callback){
+    fbCrawler: function (url,callback,token){
         //var _this = this;
         FB.api(
             '/',
             'POST',
-            {"id":url,"scrape":"true"},
+            {"id":url,"scrape":"true",access_token:token},
             function(response) {
                 callback(response);
             }
