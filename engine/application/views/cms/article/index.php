@@ -278,6 +278,8 @@
             if (response && !response.error){
                 $('#MyModal .modal-body').html('<div class="fb-stats">'+SocialMedia.JSONFormatter(response)+'</div>');
                 $('#MyModal .modal-body .fb-stats').append('<p><button type="button" class="btn btn-primary" onclick="facebookCrawler(\''+url+'\')">Force FB Crawler</button></p><div class="fb-crawler"></div>');
+            }else{
+                $('#MyModal .modal-body').html('<div class="fb-stats">'+SocialMedia.JSONFormatter(response.error)+'</div>');
             }
         });
     }
@@ -290,7 +292,7 @@
             if (response && !response.error){
                 $('#MyModal .modal-body .fb-crawler').html('<div class="well">'+SocialMedia.JSONFormatter(response)+'</div>');
             }else{
-                $('#MyModal .modal-body .fb-crawler').html('<p>Error while executing Facebook crawler: '+response.error+'</p>');
+                $('#MyModal .modal-body .fb-crawler').html('<div class="well">'+SocialMedia.JSONFormatter(response.error)+'</div>');
             }
         });
     }
