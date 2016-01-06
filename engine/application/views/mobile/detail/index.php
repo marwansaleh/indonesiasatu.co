@@ -11,7 +11,7 @@
         <?php if ($article->image_url): ?>
         <figure>
             <img class="img-responsive" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_LARGE); ?>" alt="Article image">
-            <?php if ($article->image_caption): ?><figcaption><?php echo $article->image_caption; ?></figcaption><?php endif; ?>
+            <?php if ($article->image_caption): ?><figcaption class="info"><?php echo $article->image_caption; ?></figcaption><?php endif; ?>
         </figure>
         <?php endif; ?>
         <div class="content">
