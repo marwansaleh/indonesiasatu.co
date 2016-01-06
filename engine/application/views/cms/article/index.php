@@ -268,6 +268,7 @@
     }
     
     function facebookStats(url){
+        console.log('Get Facebook stat for this url: '+url);
         $('#MyModal .modal-title').html('Facebook Crawler Result');
         $('#MyModal .modal-body').html('<div class="myloader"><div class="big"></div></div>');
         $('#MyModal').modal('show');
@@ -282,13 +283,14 @@
     }
     
     function facebookCrawler(url){
+        console.log('Force facebook to crawl this url: '+url);
         $('#MyModal .modal-body .fb-crawler').html('<div class="myloader"><div class="big"></div></div>');
         
         SocialMedia.fbCrawler(url, function (response){
             if (response && !response.error){
                 $('#MyModal .modal-body .fb-crawler').html('<div class="well">'+SocialMedia.JSONFormatter(response)+'</div>');
             }else{
-                $('#MyModal .modal-body .fb-crawler').html('<p>Error while executing Facebook crawler</p>');
+                $('#MyModal .modal-body .fb-crawler').html('<p>Error while executing Facebook crawler: '+response.error+'</p>');
             }
         });
     }
