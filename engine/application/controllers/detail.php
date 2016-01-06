@@ -95,6 +95,9 @@ class Detail extends MY_News {
         
         if ($this->_is_facebook_robot()){
             $this->_write_log('Facebook crawler is scrapping page '. $article->url_title);
+            if (isset($image_shared_dimensions)){
+                $this->data['image_dimension'] = $image_shared_dimensions;
+            } 
             $this->load->view('metadata/index', $this->data);
             //exit;
         }else{
