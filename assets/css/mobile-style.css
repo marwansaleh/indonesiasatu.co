@@ -34,7 +34,7 @@ a:hover {
 .media-list .first-item .media-body .media-heading, .media-list .first-item .media-body a, .media-list .first-item .media-body p { color: white!important; }
 .media-list .media-body p.date, .media-list .first-item .media-body p.date { font-style: italic; font-size: 11px;  }
 article figure {margin-bottom: 20px;}
-article .info {font-style: italic; display: inline-block;}
+article .info {font-style: italic; display: inline-block; font-size: 10px;}
 article .info .date {color: #001f3f;}
 article .info .author {color: #080808;}
 article .content {font-size: 14px;}
