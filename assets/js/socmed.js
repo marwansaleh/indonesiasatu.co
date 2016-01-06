@@ -144,10 +144,16 @@ var SocialMedia = {
         return serviceBase + service;
     },
     fbCrawler: function (url,callback){
-        var _this = this;
-        FB.api('/'+url,'post', function(response){
-            callback(response);
-        });
+        //var _this = this;
+        FB.api(
+            '/',
+            'POST',
+            {"id":url,"scrape":"true"},
+            function(response) {
+                callback(response);
+            }
+        );
+        //FB.api('/'+url,'post', function(response){});
     },
     JSONFormatter: function (data){
         var s = '<ul>';
