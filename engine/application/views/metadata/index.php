@@ -8,13 +8,13 @@
         <?php endforeach; ?>
         <?php endif; ?>
         <?php if (isset($og_props)&&  is_array($og_props)): ?>
-        <?php foreach($og_props as $prop=>$val): ?>
-        <?php if (strpos($prop,':')!==FALSE): ?>
-        <meta property="<?php echo $prop; ?>" content="<?php echo $val; ?>" />
-        <?php else: ?>
-        <meta property="og:<?php echo $prop; ?>" content="<?php echo $val; ?>" />
-        <?php endif; ?>
-        <?php endforeach; ?>
+            <?php foreach($og_props as $prop=>$val): ?>
+                <?php if (strpos($prop,':')!==FALSE): ?>
+                <meta property="<?php echo $prop; ?>" content="<?php echo $val; ?>" />
+                <?php else: ?>
+                <meta property="og:<?php echo $prop; ?>" content="<?php echo $val; ?>" />
+                <?php endif; ?>
+            <?php endforeach; ?>
         <?php endif; ?>
         <title><?php echo $meta_title; ?></title>
         
