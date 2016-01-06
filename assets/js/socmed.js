@@ -1,9 +1,12 @@
 var SocialMedia = {
     FB_APP_ID: '1667512626834805',
-    FB_Scope: 'email,public_profile,publish_actions',
+    FB_Scope: 'email,public_profile,publish_actions,user_posts',
     webLoginDlgId: 'login-dialog',
     currentUrl: window.location.href,
     init: function (){
+        if (document.getElementById('fbscope')){
+            this.setFB_Scope(document.getElementById('fbscope').value);
+        }
         this._fb_init();
     },
     _fb_init: function (){
