@@ -24,7 +24,7 @@
                                 <div class="form-group form-group-sm">
                                     <select id="year" class="form-control">
                                         <?php foreach ($years as $year): ?>
-                                        <option value="<?php echo $year; ?>" <?php echo $year==date('y')?'selected':''; ?>><?php echo $year; ?></option>
+                                        <option value="<?php echo $year; ?>" <?php echo $year==date('Y')?'selected':''; ?>><?php echo $year; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
