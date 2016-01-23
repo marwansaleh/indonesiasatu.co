@@ -71,7 +71,7 @@ class User extends REST_Api {
         
         if ($month && $year){
             //get all users
-            $users = $this->user_m->get();
+            $users = $this->users->get_user_internal();
             $articles = $this->_get_stat_articles($month, $year);
             $published = $this->_get_stat_published($month, $year);
 
