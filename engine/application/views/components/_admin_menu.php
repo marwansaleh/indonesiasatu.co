@@ -6,6 +6,7 @@
     <li <?php echo $active_menu=='photo'?'class="active"':''; ?>><a href="<?php echo site_url('cms/photo'); ?>"><i class="fa fa-photo"></i> <span>Photo News</span></a></li>
     <li <?php echo $active_menu=='category'?'class="active"':''; ?>><a href="<?php echo site_url('cms/category'); ?>"><i class="fa fa-briefcase"></i> <span>Category</span></a></li>
     <li <?php echo $active_menu=='comment'?'class="active"':''; ?>><a href="<?php echo site_url('cms/comment'); ?>"><i class="fa fa-comments"></i> <span>Comments</span></a></li>
+    <li <?php echo $active_menu=='poststat'?'class="active"':''; ?>><a href="<?php echo site_url('cms/poststat'); ?>"><i class="fa fa-file-text"></i> <span>Posting Statistic</span></a></li>
     
     <li class="treeview  <?php echo $active_menu=='static'?'active':''; ?>">
         <a href="#"><i class="fa fa-expand"></i> <span>Static Elements</span>  <i class="fa fa-angle-left pull-right"></i></a>
@@ -14,20 +15,7 @@
             <li><a href="<?php echo site_url('cms/staticpage'); ?>">Static Pages</a></li>
         </ul>
     </li>
-    <li class="treeview  <?php echo $active_menu=='advert'?'active':''; ?>">
-        <a href="#"><i class="fa fa-adn"></i> <span>Adverts</span>  <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('cms/advert'); ?>">Ads list</a></li>
-            <li><a href="<?php echo site_url('cms/advert_type'); ?>">Ads configuration</a></li>
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="#"><i class="fa fa-envelope"></i> <span>Email</span>  <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-            <li><a href="#">Email list</a></li>
-            <li><a href="#">Email configuration</a></li>
-        </ul>
-    </li>
+    
     <li class="treeview">
         <a href="#"><i class="fa fa-users"></i> <span>User Managements</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
