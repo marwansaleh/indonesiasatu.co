@@ -38,6 +38,10 @@ class Userlib extends Library {
         return self::$objInstance; 
     }
     
+    public function get_user_internal(){
+        return $this->ci->user_m->get_by(array('type'=>  self::USER_TYPE_INT));
+    }
+    
     public function get_name(){
         return $this->ci->session->userdata('full_name');
     }
