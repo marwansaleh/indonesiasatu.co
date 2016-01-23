@@ -148,7 +148,7 @@ class User extends REST_Api {
             foreach ($articles->result() as $article){
                 $article->date = date('Y-m-d H:i', $article->created);
                 $article->category = $this->category_m->get_value('name', array('id'=>$article->category_id));
-                $article->published = $article->published==1?'yes':'no';
+                $article->published = $article->published==1?'Yes':'No';
                 $result['articles'] [] = $article;
             }
             $userinfo->articles = count($result['articles']);
