@@ -40,7 +40,7 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">#</th>
-                            <th>Author's Name</th>
+                            <th>User Name</th>
                             <th>#Articles</th>
                             <th>#Published</th>
                             <th>Detail</th>
