@@ -129,6 +129,7 @@
             });
         },
         showDetail: function (id,month,year){
+            var _this = this;
             $('#MyModal tbody').empty();
             $('#MyModal').modal('show');
             $('#MyModal h4').html('Loading....');
@@ -139,7 +140,7 @@
                 for (var i in data.articles){
                     var s = '<tr>';
                         s+= '<td>'+data.articles[i].date+'</td>';
-                        s+= '<td>'+data.articles[i].title+'</td>';
+                        s+= '<td>'+(_this._detailLink(data.articles[i].title, data.articles[i].url))+'</td>';
                         s+= '<td>'+data.articles[i].category+'</td>';
                         s+= '<td>'+data.articles[i].published+'</td>';
                     s+= '</tr>';
@@ -147,6 +148,11 @@
                     $('#data-detail tbody').append(s);
                 }
             });
+        },
+        _detailLink: function(title,url){
+            var url = '<a href="'+url+'" target="blank">'+title+'</a>';
+            
+            return url;
         }
     };
     
