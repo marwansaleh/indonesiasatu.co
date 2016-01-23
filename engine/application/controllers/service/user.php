@@ -143,7 +143,7 @@ class User extends REST_Api {
             $result['user'] = $userinfo;
 
             //get article for this user
-            $sql = 'SELECT created,title,published,category_id FROM nsc_articles WHERE created_by=? AND MONTH(FROM_UNIXTIME(created))=? AND YEAR(FROM_UNIXTIME(created))=?';
+            $sql = 'SELECT created,title,published,category_id,url_short as url FROM nsc_articles WHERE created_by=? AND MONTH(FROM_UNIXTIME(created))=? AND YEAR(FROM_UNIXTIME(created))=?';
             $articles = $this->db->query($sql, array($userid,$month,$year));
             foreach ($articles->result() as $article){
                 $article->date = date('Y-m-d H:i', $article->created);
