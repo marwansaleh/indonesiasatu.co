@@ -140,7 +140,7 @@ class User extends REST_Api {
             $userinfo->userid = $userid;
             $userinfo->username = $user->username;
             $userinfo->name = $user->full_name;
-            $result['user'] = $userinfo;
+            
 
             //get article for this user
             $sql = 'SELECT created,title,published,category_id,url_short as url FROM nsc_articles WHERE created_by=? AND MONTH(FROM_UNIXTIME(created))=? AND YEAR(FROM_UNIXTIME(created))=?';
@@ -151,6 +151,9 @@ class User extends REST_Api {
                 $article->published = $article->published==1?'yes':'no';
                 $result['articles'] [] = $article;
             }
+            $userinfo->articles = count($result['articles']);
+            
+            $result['user'] = $userinfo;
 
 
             $this->response($result);
