@@ -135,7 +135,7 @@
             $('#MyModal h4').html('Loading....');
             
             $.getJSON("<?php echo site_url('service/user/postdetail'); ?>",{user:id,month:month,year:year}, function(data){
-                $('#MyModal h4').html('Statistic of '+data.user.name);
+                $('#MyModal h4').html('Statistic of '+data.user.name+' ('+data.user.articles+' articles)');
                 
                 for (var i in data.articles){
                     var s = '<tr>';
