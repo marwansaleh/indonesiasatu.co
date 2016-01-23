@@ -146,7 +146,7 @@ class User extends REST_Api {
             $sql = 'SELECT created,title,published,category_id FROM nsc_articles WHERE created_by=? AND MONTH(FROM_UNIXTIME(created))=? AND YEAR(FROM_UNIXTIME(created))=?';
             $articles = $this->db->query($sql, array($userid,$month,$year));
             foreach ($articles->result() as $article){
-                $article->date = date('Y-m-d H:i', $article->date);
+                $article->date = date('Y-m-d H:i', $article->created);
                 $article->category = $this->category_m->get_value('name', array('id'=>$article->category_id));
                 $article->published = $article->published==1?'yes':'no';
                 $result['articles'] [] = $article;
