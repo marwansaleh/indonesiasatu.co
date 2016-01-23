@@ -69,23 +69,26 @@ class User extends REST_Api {
         $month = $this->get('month');
         $year = $this->get('year');
         
-        //get all users
-        $users = $this->user_m->get();
-        $articles = $this->_get_stat_articles($month, $year);
-        $published = $this->_get_stat_published($month, $year);
-        
-        $result = array();
-        foreach ($users as $user){
-            $statistic = new stdClass();
-            $statistic->userid = $user->id;
-            $statistic->username = $user->username;
-            $statistic->name = $user->full_name;
-            $statistic->articles = isset($articles[$user->id]) ? $articles[$user->id] : 0;
-            $statistic->published = isset($published[$user->id]) ? $published[$user->id] : 0;
-            $result[] = $statistic;
+        if ($month && $year){
+            //get all users
+            $users = $this->user_m->get();
+            $articles = $this->_get_stat_articles($month, $year);
+            $published = $this->_get_stat_published($month, $year);
+
+            $result = array();
+            foreach ($users as $user){
+                $statistic = new stdClass();
+                $statistic->userid = $user->id;
+                $statistic->username = $user->username;
+                $statistic->name = $user->full_name;
+                $statistic->articles = isset($articles[$user->id]) ? $articles[$user->id] : 0;
+                $statistic->published = isset($published[$user->id]) ? $published[$user->id] : 0;
+                $result[] = $statistic;
+            }
+            $this->response($result);
+        }else{
+            show_404();
         }
-        
-        $this->response($result);
     }
     
     private function _get_stat_articles($month, $year){
@@ -127,29 +130,33 @@ class User extends REST_Api {
         $month = $this->get('month');
         $year = $this->get('year');
         
-        $result = array();
-        
-        //get userinfo
-        $user = $this->user_m->get($userid);
-        
-        $userinfo = new stdClass();
-        $userinfo->userid = $userid;
-        $userinfo->username = $user->username;
-        $userinfo->name = $user->full_name;
-        $result['user'] = $userinfo;
-        
-        //get article for this user
-        $sql = 'SELECT created,title,published,category_id FROM nsc_articles WHERE created_by=? AND MONTH(FROM_UNIXTIME(created))=? AND YEAR(FROM_UNIXTIME(created))=?';
-        $articles = $this->db->query($sql, array($userid,$month,$year));
-        foreach ($articles->result() as $article){
-            $article->date = date('Y-m-d H:i');
-            $article->category = $this->category_m->get_value('name', array('id'=>$article->category_id));
-            $article->published = $article->published==1?'yes':'no';
-            $result['articles'] [] = $article;
+        if ($userid && $month && $year){
+            $result = array();
+
+            //get userinfo
+            $user = $this->user_m->get($userid);
+
+            $userinfo = new stdClass();
+            $userinfo->userid = $userid;
+            $userinfo->username = $user->username;
+            $userinfo->name = $user->full_name;
+            $result['user'] = $userinfo;
+
+            //get article for this user
+            $sql = 'SELECT created,title,published,category_id FROM nsc_articles WHERE created_by=? AND MONTH(FROM_UNIXTIME(created))=? AND YEAR(FROM_UNIXTIME(created))=?';
+            $articles = $this->db->query($sql, array($userid,$month,$year));
+            foreach ($articles->result() as $article){
+                $article->date = date('Y-m-d H:i');
+                $article->category = $this->category_m->get_value('name', array('id'=>$article->category_id));
+                $article->published = $article->published==1?'yes':'no';
+                $result['articles'] [] = $article;
+            }
+
+
+            $this->response($result);
+        }else{
+            show_404();
         }
-        
-        
-        $this->response($result);
     }
 }
 
