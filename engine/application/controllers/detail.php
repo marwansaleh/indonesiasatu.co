@@ -35,7 +35,7 @@ class Detail extends MY_News {
         }
         
         //replace Indonesiasatu.co with link
-        $article->content = str_replace('indonesiasatu.co', '<a href="'.site_url().'">IndonesiaSatu.co</a>', $article->content);
+        $article->content = str_ireplace('indonesiasatu.co', '<a href="'.site_url().'">IndonesiaSatu.co</a>', $article->content);
         
         $this->data['meta_title'] = $article->title;
         
