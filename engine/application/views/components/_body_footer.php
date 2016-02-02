@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <img src="<?php echo site_url('assets/img/logo-putih.png'); ?>" class="img-responsive center-block" />
+                <img src="<?php echo site_url('assets/img/logo.png'); ?>" class="img-responsive center-block" />
                 
                 <div class="row">
                     <div class="col-sm-12">
