@@ -1352,14 +1352,14 @@ header .logo-line .logo a {
 #main .category-image-container .category-info-container {
     position: absolute; 
     /*width:98%; */
-    margin: -145px 0 0 10px; 
+    margin: -155px 0 0 3px; 
     padding: 0;
 }
 #main .category-image-container .category-info-container.right {
 /*    position: absolute; 
     padding: 0;*/
     /*width:98%; */
-    margin: -145px 25px 0 0; 
+    margin: -155px 20px 0 0; 
 }
 #main .category-image-container .category-info-container .title {
     font-size: 25px;
@@ -1376,7 +1376,7 @@ header .logo-line .logo a {
 #main .category-image-container .category-info-container .category-info {
     position: relative;
     display: block;
-    padding: 5px 10px 0 10px;
+    padding: 3px 3px 0 3px;
     width:65%; max-height: 105px; 
     border-radius: 7px;
     -webkit-border-radius: 7px;
