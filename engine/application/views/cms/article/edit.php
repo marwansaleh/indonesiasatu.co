@@ -287,6 +287,10 @@
         })
         
         $('#btn-gen-slug').on('click',function(){
+            if (!$('#url_title').val()){
+                alert('URL title can not be empty. Please fill the title before execute link generation');
+                return false;
+            }
             create_url_title('title', 'url_title');
             var slug = $('#url_title').val();
             
