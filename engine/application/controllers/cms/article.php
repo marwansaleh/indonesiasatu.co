@@ -69,6 +69,7 @@ class Article extends MY_AdminController {
             }
         }else{
             $item = $this->article_m->get_new();
+            $item->allow_comment = 1;
             $item->created = time();
             $item->modified = time();
             $item->created_by = $this->users->get_userid();
