@@ -82,7 +82,7 @@ class Home extends MY_News {
         $this->data['teropong'] = $this->_get_article_by_category_slug('teropong');
         
         //Load popular news
-        $this->data['latest_news'] = $this->_latest_news(isset($parameters['LAYOUT_HOME_LATEST_NUM'])?$parameters['LAYOUT_HOME_LATEST_NUM']:15);
+        $this->data['latest_news'] = $this->_latest_news(isset($parameters['LAYOUT_HOME_LATEST_NUM'])?$parameters['LAYOUT_HOME_LATEST_NUM']:8);
         
         //Load categories in home
         $home_categories = $this->_home_category(isset($parameters['LAYOUT_HOME_CAT_NUM'])?$parameters['LAYOUT_HOME_CAT_NUM']:3);
@@ -94,6 +94,13 @@ class Home extends MY_News {
             //Get articles for this category
             $category->articles = $this->_article_categories($category->id, $category_articles_num);
             $this->data['categories'][] = $category;
+        }
+        
+        //get article "politik"
+        $category_politic = $this->category_m->get_by(array('slug'=>'politik'),TRUE);
+        if ($category_politic){
+            $category_politic->articles = $this->_article_categories($category_politic->id, 5);
+            $this->data['politics'] = $category_politic;
         }
         
         $this->data['subview'] = 'frontend/home/index';
