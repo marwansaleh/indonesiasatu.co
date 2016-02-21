@@ -88,7 +88,7 @@
             <div class="row">
                 <div class="widget">
                     <div class="box-title">
-                        <h2 style="margin-top: -10px;">Teropong</h2>
+                        <h2 style="margin-top: -5px;">Teropong</h2>
                         <div class="title-line"></div>
                     </div>
                     <div class="category-image-container">
