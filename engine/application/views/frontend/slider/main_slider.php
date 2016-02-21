@@ -12,7 +12,7 @@
                                     <div class="description"><?php echo $slider->synopsis; ?></div>
                                 </div>
                             </div>
-                            <img src="<?php echo get_image_thumb($slider->image_url, IMAGE_THUMB_LARGE); ?>" alt="" style="max-height: 452; overflow-y: hidden;">
+                            <img src="<?php echo get_image_thumb($slider->image_url, IMAGE_THUMB_LARGE); ?>" alt="" style="max-height: 452px; overflow-y: hidden;">
                         </div>
                     </li>
                     <?php endforeach; ?>
