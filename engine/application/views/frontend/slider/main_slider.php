@@ -1,5 +1,5 @@
-<div class="slider hidden-xs">
-    <div class="container">
+<div class="slider hidden-xs" style="width: 98%">
+    <!--<div class="row">-->
         <div class="inner">
             <div id="slider">
                 <ul class="slides">
@@ -26,5 +26,5 @@
                 <?php endforeach; ?>
             </div>
         </div>
-    </div>
+    <!--</div>-->
 </div>
