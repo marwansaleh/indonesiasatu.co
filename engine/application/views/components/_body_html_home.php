@@ -166,23 +166,48 @@
     
 </div>
 
+
+<div id="advert-bottom-bar">
+    <div class="container">
+        <div class="flexslider flexslider-mid-advert">
+            <ul class="slides">
+                <li>
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag01.jpg'); ?>" />
+                </li>
+                <li>
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag02.jpg'); ?>" />
+                </li>
+                <li>
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag03.jpg'); ?>" />
+                </li>
+                <li>
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag04.jpg'); ?>" />
+                </li>
+                <li>
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag05.jpg'); ?>" />
+                </li>
+                <li>
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag06.jpg'); ?>" />
+                </li>
+                <li>
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'ag07.jpg'); ?>" />
+                </li>
+            </ul>
+        </div>
+<!--            <img src="<?php echo userfiles_baseurl(config_item('advert').'1449799747.jpg'); ?>" class="img-responsive" />-->
+        
+    </div>
+</div>
 <script type="text/javascript">
     $(document).ready(function (){
         $('.flexslider-mid-advert').flexslider({
             animation: "slide",
-            slideshow: true,
+            //slideshow: true,
             controlNav: false,
             animationLoop: true,
-            //itemWidth: 300,
+            itemWidth: 300,
             itemMargin: 5
         });
     });
 </script>
-<div id="advert-bottom-bar">
-    <div class="container">
-        <div class="row">
-            <img src="<?php echo userfiles_baseurl(config_item('advert').'1449799747.jpg'); ?>" class="img-responsive" />
-        </div>
-    </div>
-</div>
 <?php $this->load->view('components/_body_footer');
