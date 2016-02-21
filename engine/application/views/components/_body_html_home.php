@@ -3,10 +3,15 @@
 </style>
 
 <?php $this->load->view('components/_body_header'); ?>
-<?php if (isset($main_slider)&& $main_slider) { $this->load->view('frontend/slider/main_slider'); }?>
 <div id="main">
     <div class="container">
         <div class="col-sm-8">
+            <!-- if any slider -->
+            <?php if (isset($main_slider)&& $main_slider):?>
+            <div class="row">
+                <?php $this->load->view('frontend/slider/main_slider'); ?>
+            </div>
+            <?php endif; ?>
             <!-- highlight news -->
             <div class="row">
                 <div class="article-showcase hidden-xs">
@@ -47,6 +52,7 @@
                     </div>
                 </div>
             </div><!-- end highlight news -->
+            <?php $this->load->view($subview);?>
         </div>
         <aside class="col-sm-4">
             <div class="row">
@@ -73,17 +79,16 @@
                     </div>
                 </div>
             </div>
-
-        </aside>
-    </div>
-    <!-- insert advert -->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <?php if (isset($embun_pagi)): ?>
+            <div class="row">
+                <div class="widget">
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'iklan-vds.jpg'); ?>" class="img-responsive" />
+                </div>
+            </div>
+            <?php if (isset($embun_pagi)): ?>
+            <div class="row">
                 <div class="widget">
                     <div class="box-title">
-                        <h2 style="margin-top: -18px;">Embun Pagi</h2>
+                        <h2>Embun Pagi</h2>
                         <div class="title-line"></div>
                     </div>
                 </div>
@@ -98,8 +103,37 @@
                         </div>
                     </div>
                 </div>
-                <?php endif; ?>
             </div>
+            <?php endif; ?>
+            <?php if (isset($teropong)): ?>
+            <div class="row">
+                <div class="widget">
+                    <div class="box-title">
+                        <h2>Teropong</h2>
+                        <div class="title-line"></div>
+                    </div>
+                    <div class="category-image-container">
+                        <figure>
+                            <img class="img-responsive" src="<?php echo get_image_thumb($teropong->category->image_url, IMAGE_THUMB_ORI); ?>" />
+                        </figure>
+                        <div class="category-info-container">
+                            <h4 class="title"><?php echo $teropong->category->name; ?></h4>
+                            <div class="category-info">
+                                <p><?php echo $teropong->article->synopsis; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+            
+            <?php $this->load->view('components/_side_right'); ?>
+        </aside>
+    </div>
+    <!-- insert advert -->
+<!--    <div class="container">
+        <div class="row">
+            
             <div class="col-sm-4">
                 <div class="flexslider flexslider-mid-advert">
                     <ul class="slides">
@@ -124,45 +158,11 @@
                         <li>
                             <img src="<?php echo userfiles_baseurl(config_item('advert').'ag07.jpg'); ?>" />
                         </li>
-    <!--                        <li>
-                            <img src="<?php //echo userfiles_baseurl(config_item('advert').'ag08.jpg'); ?>" />
-                        </li>-->
-                        <!-- items mirrored twice, total of 12 -->
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <?php if (isset($teropong)): ?>
-                <div class="widget">
-                    <div class="box-title">
-                        <h2 style="margin-top: -18px;">Teropong</h2>
-                        <div class="title-line"></div>
-                    </div>
-                    <div class="category-image-container">
-                        <figure>
-                            <img class="img-responsive" src="<?php echo get_image_thumb($teropong->category->image_url, IMAGE_THUMB_ORI); ?>" />
-                        </figure>
-                        <div class="category-info-container">
-                            <h4 class="title"><?php echo $teropong->category->name; ?></h4>
-                            <div class="category-info">
-                                <p><?php echo $teropong->article->synopsis; ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php endif; ?>
-            </div>
         </div>
-    </div>
-    <!-- end advert -->
-    <div class="container">
-        <div class="content col-sm-8">
-            <?php $this->load->view($subview);?>
-        </div>
-        <aside class="col-sm-4">
-            <?php $this->load->view('components/_side_right'); ?>
-        </aside>
-    </div>
+    </div>-->
     
 </div>
 
