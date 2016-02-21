@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="widget">
+                <div class="widget" style="margin-top: -10px;">
                     <img src="<?php echo userfiles_baseurl(config_item('advert').'iklan-vds.jpg'); ?>" class="img-responsive" />
                 </div>
             </div>
@@ -88,7 +88,7 @@
             <div class="row">
                 <div class="widget">
                     <div class="box-title">
-                        <h2>Teropong</h2>
+                        <h2 style="margin-top: -15px;">Teropong</h2>
                         <div class="title-line"></div>
                     </div>
                     <div class="category-image-container">
