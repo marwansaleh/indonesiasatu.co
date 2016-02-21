@@ -97,9 +97,10 @@ class Home extends MY_News {
         }
         
         //get article "politik"
-        $category_politic = $this->category_m->get_by(array('slug'=>'politik'),TRUE);
+        $selected_left_under = isset($parameters['LAYOUT_HOME_LEFT_UNDER_CAT'])?$parameters['LAYOUT_HOME_LEFT_UNDER_CAT'] : 'politik';
+        $category_politic = $this->category_m->get_by(array('slug'=>$selected_left_under),TRUE);
         if ($category_politic){
-            $category_politic->articles = $this->_article_categories($category_politic->id, 5);
+            $category_politic->articles = $this->_article_categories($category_politic->id, isset($parameters['LAYOUT_HOME_LEFT_UNDER_NUM'])?$parameters['LAYOUT_HOME_LEFT_UNDER_NUM'] : 5);
             $this->data['politics'] = $category_politic;
         }
         
