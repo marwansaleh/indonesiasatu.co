@@ -6,7 +6,7 @@
                     <?php foreach ($slider_news as $slider): ?>
                     <li>
                         <div class="single-slide no-margin">
-                            <div class="slider-caption">
+                            <div class="slider-caption" style="height: 118px; max-height: 118px; overflow-y: hidden;">
                                 <div class="no-margin">
                                     <div class="title"><a href="<?php echo site_url('detail/'.$slider->url_title); ?>"><?php echo $slider->title; ?></a></div>
                                     <div class="description"><?php echo $slider->synopsis; ?></div>
