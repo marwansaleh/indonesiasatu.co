@@ -239,7 +239,7 @@ $fixed_image_creation_height            = array(452,582,'',147,70,57,42); //heig
 #                          3 / auto = auto;
 #                          4 / crop= resize and crop;
  */
-$fixed_image_creation_option            = array('auto','crop','auto','auto','crop','crop','crop'); //set the type of the crop
+$fixed_image_creation_option            = array('crop','crop','auto','auto','crop','crop','crop'); //set the type of the crop
 
 
 // New image resized creation with relative path inside to upload folder after uploading (thumbnails in relative mode)
