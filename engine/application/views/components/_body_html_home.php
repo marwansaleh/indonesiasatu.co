@@ -194,10 +194,10 @@
                 </li>
 <!--                <li>
                     <img src="<?php echo userfiles_baseurl(config_item('advert').'ag09.jpg'); ?>" height="156" />
-                </li>
-                <li>
-                    <img src="<?php echo userfiles_baseurl(config_item('advert').'galuhmas-01.jpg'); ?>" height="156" />
                 </li>-->
+                <li>
+                    <img src="<?php echo userfiles_baseurl(config_item('advert').'galuhmas-01.jpg'); ?>" />
+                </li>
             </ul>
         </div>
 <!--            <img src="<?php echo userfiles_baseurl(config_item('advert').'1449799747.jpg'); ?>" class="img-responsive" />-->
