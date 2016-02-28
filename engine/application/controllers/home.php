@@ -113,6 +113,16 @@ class Home extends MY_News {
             $this->data['politics'] = $category_politic;
         }
         
+        //get refleksi
+        $cat_refleksi = $this->category_m->get_by(array('slug'=>'releksi'),TRUE);
+        $cat_refleksi->articles = $this->_article_categories($cat_refleksi->id, 3);
+        $this->data['category_refleksi'] = $cat_refleksi;
+        
+        //get gaya hidup
+        $cat_gayahidup = $this->category_m->get_by(array('slug'=>'gaya-hidup'),TRUE);
+        $cat_gayahidup->articles = $this->_article_categories($cat_gayahidup->id, 3);
+        $this->data['category_gayahidup'] = $cat_gayahidup;
+        
         $this->data['subview'] = 'frontend/home/index';
         $this->load->view('_layout_main', $this->data);
     }
