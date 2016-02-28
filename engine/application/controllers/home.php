@@ -57,18 +57,27 @@ class Home extends MY_News {
             $selected_category_name = $parameters['LAYOUT_WIDGET_SELECTED_CATEGORY'];
             $selected_category = NULL;
             if ($selected_category_name){
-                //get category id
-                $selected_category = $this->category_m->get_by(array('slug'=>$selected_category_name),TRUE);
-                if (!$selected_category){
-                    $selected_category = $this->category_m->get_select_where('id,name',NULL,TRUE);
+                $selected_category_name_arr = explode(',', $selected_category_name);
+                
+                $selected_category = array();
+                $index_selected_cat = 1;
+                foreach ($selected_category_name_arr as $catname){
+                    //get the category
+                    $category = $this->category_m->get_by(array('slug'=>$catname),TRUE);
+                    if ($category){
+                        $category->articles = $this->_article_categories($category->id, $index_selected_cat==1 ? 3 : 1);
+                        $selected_category [] = $category;
+                    }
+                    $index_selected_cat++;
+                }
+                if (count($selected_category)==0){
+                    $category_item = $this->category_m->get_select_where('id,name',NULL,TRUE);
+                    $category_item->articles = $this->_article_categories($category_item->id, 3);
+                    $selected_category [] = $category_item;
                 }
             }
             
-            $this->data['selected_news_category'] = array(
-                'category'  => $selected_category,
-                'articles' => $this->_article_categories($selected_category->id, 
-                    isset($parameters['LAYOUT_HOME_CAT_ARTICLE_NUM'])?$parameters['LAYOUT_HOME_CAT_ARTICLE_NUM']:3)
-            );
+            $this->data['selected_news_category'] = $selected_category;
         }
         
         $this->data['inspirasi'] = $this->_inspiration();
