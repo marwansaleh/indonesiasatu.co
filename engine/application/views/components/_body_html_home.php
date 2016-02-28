@@ -27,7 +27,7 @@
                                 </figure>
                                 <div class="main-text">
                                     <div class="inner">
-                                        <span class="article-info"><?php echo number_format($highlight->comment); ?> comments, <?php echo date('d/m/Y',$highlight->date); ?></span>
+                                        <span class="article-info"><?php echo date('d/m/Y',$highlight->date); ?></span>
                                         <p><?php echo $highlight->synopsis; ?><a href="<?php echo site_url('detail/'.$highlight->url_title); ?>">Read more...</a></p>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                                     </figure>
                                     <div class="text">
                                         <h3><?php echo $highlight->title ?></h3>
-                                        <span class="info"><?php echo date('d/m/Y',$highlight->date); ?>, <?php echo number_format($highlight->comment); ?> comments</span>
+                                        <span class="info"><?php echo date('d/m/Y',$highlight->date); ?></span>
                                     </div>
                                 </article>
                                 <?php endforeach; ?>
