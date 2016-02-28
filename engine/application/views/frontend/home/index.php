@@ -86,6 +86,9 @@
             <?php endif; ?>
         </div>
         <?php endif; ?>
+        <?php if (isset($iklan_kiri)): ?>
+        <div class="row"><img src="<?php echo $iklan_kiri; ?>" class="img-responsive" /></div>
+        <?php endif; ?>
     </div>
     <!-- start category -->
     <?php foreach ($categories as $index => $category): ?>
@@ -128,9 +131,7 @@
             </div>
         </div>
         <?php endif; ?>
-        <?php if (isset($iklan_kiri)): ?>
-        <img src="<?php echo $iklan_kiri; ?>" class="img-responsive" />
-        <?php endif; ?>
+        
     </div>
     <?php endforeach; ?>
     <!-- category gaya hidup -->
