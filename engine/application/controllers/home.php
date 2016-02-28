@@ -114,7 +114,7 @@ class Home extends MY_News {
         }
         
         //get refleksi
-        $cat_refleksi = $this->category_m->get_by(array('slug'=>'releksi'),TRUE);
+        $cat_refleksi = $this->category_m->get_by(array('slug'=>'refleksi'),TRUE);
         $cat_refleksi->articles = $this->_article_categories($cat_refleksi->id, 3);
         $this->data['category_refleksi'] = $cat_refleksi;
         
