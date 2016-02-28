@@ -126,6 +126,9 @@ class Home extends MY_News {
         //set iklan on the left
         $this->data['iklan_kiri'] = userfiles_baseurl(config_item('advert').'iklan-galuh-mas.jpg');
         
+        //set iklan gabung
+        $this->data['iklan_gabung'] = userfiles_baseurl(config_item('advert').'iklan-gabung.jpg');
+        
         $this->data['subview'] = 'frontend/home/index';
         $this->load->view('_layout_main', $this->data);
     }
