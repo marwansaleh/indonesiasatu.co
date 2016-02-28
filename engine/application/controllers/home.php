@@ -123,6 +123,9 @@ class Home extends MY_News {
         $cat_gayahidup->articles = $this->_article_categories($cat_gayahidup->id, 3);
         $this->data['category_gayahidup'] = $cat_gayahidup;
         
+        //set iklan on the left
+        $this->data['iklan_kiri'] = userfiles_baseurl(config_item('advert').'iklan-galuh-mas.jpg');
+        
         $this->data['subview'] = 'frontend/home/index';
         $this->load->view('_layout_main', $this->data);
     }
