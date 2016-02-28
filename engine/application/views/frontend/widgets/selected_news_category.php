@@ -18,7 +18,7 @@
                 </figure>
                 <div class="main-text">
                     <div class="inner">
-                        <span class="article-info"><?php echo number_format($article->comment); ?> comments, <?php echo date('d/m/Y',$article->date); ?></span>
+                        <span class="article-info"><?php echo date('d/m/Y',$article->date); ?></span>
                         <p><?php echo $article->synopsis; ?> <a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>">Read more...</a></p>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                 <figure style="overflow:hidden;"><img class="img-responsive small" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SMALL); ?>" alt=""></figure>
                 <div class="text">
                     <h3><a href="<?php echo site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></h3>
-                    <span class="info"><?php echo date('d/m/Y',$article->date); ?>, <?php echo number_format($article->comment); ?> comments</span>
+                    <span class="info"><?php echo date('d/m/Y',$article->date); ?></span>
                 </div>
             </article>
             <?php endif; ?>
