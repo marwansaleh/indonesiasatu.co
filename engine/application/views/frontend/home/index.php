@@ -87,7 +87,7 @@
         </div>
         <?php endif; ?>
         <?php if (isset($iklan_kiri)): ?>
-        <div class="row"><img src="<?php echo $iklan_kiri; ?>" class="img-responsive" /></div>
+        <div class="row"><img src="<?php echo $iklan_kiri; ?>" class="img-responsive" style="margin-top: 30px;" /></div>
         <?php endif; ?>
     </div>
     <!-- start category -->
