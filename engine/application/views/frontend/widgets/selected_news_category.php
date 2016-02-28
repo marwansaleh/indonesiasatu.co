@@ -1,11 +1,12 @@
+<?php foreach ($selected_news_category as $selcat): ?>
 <div class="article-box">
     <div class="box-title">
-        <h2><?php echo $selected_news_category['category']->name; ?></h2>
+        <h2><?php echo $selcat->name; ?></h2>
         <div class="title-line"></div>
     </div>
     <div class="articles-slider">
         <div class="flex-viewport">
-            <?php $i=1; foreach ($selected_news_category['articles'] as $article): ?>
+            <?php $i=1; foreach ($selcat->articles as $article): ?>
 
             <?php if ($i==1): ?>
             <div class="main-article">
@@ -35,3 +36,4 @@
         </div>
     </div>
 </div>
+<?php endforeach;
