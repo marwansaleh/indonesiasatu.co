@@ -128,6 +128,9 @@
             </div>
         </div>
         <?php endif; ?>
+        <?php if (isset($iklan_kiri)): ?>
+        <img src="<?php echo $iklan_kiri; ?>" class="img-responsive" />
+        <?php endif; ?>
     </div>
     <?php endforeach; ?>
     <!-- category gaya hidup -->
