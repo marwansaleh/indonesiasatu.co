@@ -1,6 +1,6 @@
 <div class="widget">
     <div class="inner">
-        <h3>Latest Posts</h3>
+        <h3>Terbaru</h3>
         <div class="list">
             <?php if ($latest_post): ?>
             <ul class="nicescroll" style="height:290px;overflow:hidden;">
