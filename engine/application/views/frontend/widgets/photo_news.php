@@ -1,6 +1,6 @@
 <div class="widget">
     <div class="inner">
-        <h3>News in Pictures</h3>
+        <h3>Berita Foto</h3>
         <div class="photo-list">
             <?php if ($photo_news): ?>
             <div  class="nicescroll" style="max-height:120px;overflow:hidden;">
