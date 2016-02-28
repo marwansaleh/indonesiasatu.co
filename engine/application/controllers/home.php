@@ -115,12 +115,12 @@ class Home extends MY_News {
         
         //get refleksi
         $cat_refleksi = $this->category_m->get_by(array('slug'=>'refleksi'),TRUE);
-        $cat_refleksi->articles = $this->_article_categories($cat_refleksi->id, 3);
+        $cat_refleksi->articles = $this->_article_categories($cat_refleksi->id, 4);
         $this->data['category_refleksi'] = $cat_refleksi;
         
         //get gaya hidup
         $cat_gayahidup = $this->category_m->get_by(array('slug'=>'gaya-hidup'),TRUE);
-        $cat_gayahidup->articles = $this->_article_categories($cat_gayahidup->id, 4);
+        $cat_gayahidup->articles = $this->_article_categories($cat_gayahidup->id, 5);
         $this->data['category_gayahidup'] = $cat_gayahidup;
         
         //set iklan on the left
