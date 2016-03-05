@@ -124,7 +124,13 @@ class Home extends MY_News {
         $this->data['category_gayahidup'] = $cat_gayahidup;
         
         //set iklan on the left
-        $this->data['iklan_kiri'] = userfiles_baseurl(config_item('advert').'iklan-galuh-mas.jpg');
+        $this->data['iklan_kiri'] = array(
+            userfiles_baseurl(config_item('advert').'iklan-galuh-mas.jpg'),
+            userfiles_baseurl(config_item('advert').'galuhmas-02.jpg'),
+            userfiles_baseurl(config_item('advert').'galuhmas-03.jpg'),
+            userfiles_baseurl(config_item('advert').'galuhmas-04.jpg'),
+            userfiles_baseurl(config_item('advert').'galuhmas-05.jpg')
+        );
         
         //set iklan gabung
         $this->data['iklan_gabung'] = userfiles_baseurl(config_item('advert').'iklan-gabung.jpg');
