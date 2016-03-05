@@ -89,7 +89,7 @@
         <?php if (isset($iklan_kiri)): ?>
         <div class="row">
             <?php if (is_array($iklan_kiri)): ?>
-            <div class="flexslider flexslider-mid-advert">
+            <div class="flexslider" id="iklan-banyak-galuh">
                 <ul class="slides">
                     <?php foreach ($iklan_kiri as $ik): ?>
                     <li><img src="<?php echo $ik; ?>"> </li>
@@ -189,3 +189,16 @@
     </div>
     <?php endif; ?>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#iklan-banyak-galuh').flexslider({
+            animation: "slide",
+            //slideshow: true,
+            controlNav: false,
+            animationLoop: true,
+            itemWidth: 400,
+            itemMargin: 5
+        });
+    });
+</script>
