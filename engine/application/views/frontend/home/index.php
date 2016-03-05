@@ -87,7 +87,19 @@
         </div>
         <?php endif; ?>
         <?php if (isset($iklan_kiri)): ?>
-        <div class="row"><img src="<?php echo $iklan_kiri; ?>" class="img-responsive" style="margin-top: 5px;" /></div>
+        <div class="row">
+            <?php if (is_array($iklan_kiri)): ?>
+            <div class="flexslider flexslider-mid-advert">
+                <ul class="slides">
+                    <?php foreach ($iklan_kiri as $ik): ?>
+                    <li><img src="<?php echo $ik; ?>"> </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <?php else: ?>
+            <img src="<?php echo $iklan_kiri; ?>" class="img-responsive" style="margin-top: 5px;" />
+            <?php endif; ?>
+        </div>
         <?php endif; ?>
     </div>
     <!-- start category -->
