@@ -125,6 +125,32 @@ class Home extends MY_News {
             $this->data['category_gayahidup'] = $cat_gayahidup;
         }
         
+        //get internasional
+        $cat_internasional = $this->category_m->get_by(array('slug'=>'internasional'),TRUE);
+        if ($cat_internasional){
+            $cat_internasional->articles = $this->_article_categories($cat_internasional->id, 6);
+            $this->data['category_internasional'] = $cat_internasional;
+        }
+        //get daerah
+        $cat_daerah = $this->category_m->get_by(array('slug'=>'daerah'),TRUE);
+        if ($cat_daerah){
+            $cat_daerah->articles = $this->_article_categories($cat_daerah->id, 2);
+            $this->data['category_daerah'] = $cat_daerah;
+        }
+        //get hiburan
+        $cat_hiburan = $this->category_m->get_by(array('slug'=>'hiburan'),TRUE);
+        if ($cat_hiburan){
+            $cat_hiburan->articles = $this->_article_categories($cat_hiburan->id, 4);
+            $this->data['category_hiburan'] = $cat_hiburan;
+        }
+        //get olahraga
+        $cat_olahraga = $this->category_m->get_by(array('slug'=>'olahraga'),TRUE);
+        if ($cat_olahraga){
+            $cat_olahraga->articles = $this->_article_categories($cat_olahraga->id, 4);
+            $this->data['category_olahraga'] = $cat_olahraga;
+        }
+        
+        
         //set iklan on the left
         $this->data['iklan_kiri'] = array(
             userfiles_baseurl(config_item('advert').'iklan-galuh-mas.jpg'),
