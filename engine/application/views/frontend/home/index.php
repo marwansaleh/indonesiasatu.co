@@ -101,6 +101,56 @@
             <?php endif; ?>
         </div>
         <?php endif; ?>
+        <!-- internasional -->
+        <?php if (isset($category_internasional)):?>
+        <div class="row">
+            <div class="box-title">
+                <h2><?php echo $category_internasional->name; ?></h2>
+                <div class="title-line"></div>
+            </div>
+            <?php if ($category_internasional->articles): ?>
+            <div class="articles-slider">
+                <div class="flex-viewport">
+                    <?php foreach ($category_internasional->articles as $article): ?>
+
+                    <article>
+                        <figure style="overflow:hidden;"><img class="img-responsive" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SMALL); ?>" alt=""></figure>
+                        <div class="text">
+                            <h3><a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></h3>
+                            <span class="info"><?php echo date('d/m/Y',$article->date); ?></span>
+                        </div>
+                    </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+        <!-- daerah -->
+        <?php if (isset($category_daerah)):?>
+        <div class="row">
+            <div class="box-title">
+                <h2><?php echo $category_daerah->name; ?></h2>
+                <div class="title-line"></div>
+            </div>
+            <?php if ($category_daerah->articles): ?>
+            <div class="articles-slider">
+                <div class="flex-viewport">
+                    <?php foreach ($category_daerah->articles as $article): ?>
+
+                    <article>
+                        <figure style="overflow:hidden;"><img class="img-responsive" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SMALL); ?>" alt=""></figure>
+                        <div class="text">
+                            <h3><a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></h3>
+                            <span class="info"><?php echo date('d/m/Y',$article->date); ?></span>
+                        </div>
+                    </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
     </div>
     <!-- start category -->
     <?php foreach ($categories as $index => $category): ?>
