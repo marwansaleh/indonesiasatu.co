@@ -120,8 +120,10 @@ class Home extends MY_News {
         
         //get gaya hidup
         $cat_gayahidup = $this->category_m->get_by(array('slug'=>'gaya-hidup'),TRUE);
-        $cat_gayahidup->articles = $this->_article_categories($cat_gayahidup->id, 6);
-        $this->data['category_gayahidup'] = $cat_gayahidup;
+        if ($cat_gayahidup){
+            $cat_gayahidup->articles = $this->_article_categories($cat_gayahidup->id, 6);
+            $this->data['category_gayahidup'] = $cat_gayahidup;
+        }
         
         //set iklan on the left
         $this->data['iklan_kiri'] = array(
