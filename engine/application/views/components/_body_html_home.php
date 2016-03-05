@@ -168,16 +168,5 @@
 
 
 
-<script type="text/javascript">
-    $(document).ready(function (){
-        $('.flexslider-mid-advert').flexslider({
-            animation: "slide",
-            //slideshow: true,
-            controlNav: false,
-            animationLoop: true,
-            itemWidth: 300,
-            itemMargin: 5
-        });
-    });
-</script>
+
 <?php $this->load->view('components/_body_footer');
