@@ -198,7 +198,7 @@
             controlNav: false,
             animationLoop: true,
             itemWidth: 400,
-            itemMargin: 5
+            itemMargin: 0
         });
     });
 </script>
