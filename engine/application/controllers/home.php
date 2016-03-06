@@ -140,13 +140,13 @@ class Home extends MY_News {
         //get hiburan
         $cat_hiburan = $this->category_m->get_by(array('slug'=>'hiburan'),TRUE);
         if ($cat_hiburan){
-            $cat_hiburan->articles = $this->_article_categories($cat_hiburan->id, 4);
+            $cat_hiburan->articles = $this->_article_categories($cat_hiburan->id, 5);
             $this->data['category_hiburan'] = $cat_hiburan;
         }
         //get olahraga
         $cat_olahraga = $this->category_m->get_by(array('slug'=>'olahraga'),TRUE);
         if ($cat_olahraga){
-            $cat_olahraga->articles = $this->_article_categories($cat_olahraga->id, 4);
+            $cat_olahraga->articles = $this->_article_categories($cat_olahraga->id, 5);
             $this->data['category_olahraga'] = $cat_olahraga;
         }
         
