@@ -128,7 +128,7 @@ class Home extends MY_News {
         //get internasional
         $cat_internasional = $this->category_m->get_by(array('slug'=>'internasional'),TRUE);
         if ($cat_internasional){
-            $cat_internasional->articles = $this->_article_categories($cat_internasional->id, 4);
+            $cat_internasional->articles = $this->_article_categories($cat_internasional->id, 5);
             $this->data['category_internasional'] = $cat_internasional;
         }
         //get daerah
