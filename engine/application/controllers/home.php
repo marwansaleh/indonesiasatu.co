@@ -128,13 +128,13 @@ class Home extends MY_News {
         //get internasional
         $cat_internasional = $this->category_m->get_by(array('slug'=>'internasional'),TRUE);
         if ($cat_internasional){
-            $cat_internasional->articles = $this->_article_categories($cat_internasional->id, 6);
+            $cat_internasional->articles = $this->_article_categories($cat_internasional->id, 4);
             $this->data['category_internasional'] = $cat_internasional;
         }
         //get daerah
         $cat_daerah = $this->category_m->get_by(array('slug'=>'daerah'),TRUE);
         if ($cat_daerah){
-            $cat_daerah->articles = $this->_article_categories($cat_daerah->id, 2);
+            $cat_daerah->articles = $this->_article_categories($cat_daerah->id, 4);
             $this->data['category_daerah'] = $cat_daerah;
         }
         //get hiburan
