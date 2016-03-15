@@ -14,6 +14,7 @@
                                 Pemimpin Redaksi: Valens Daki-Soo<br>
                                 Redaktur Pelaksana: Simon Leya<br>
                                 Penerbit: Divisi Publishing PT VERITAS DHARMA SATYA<br>
+                                Website: <a href="http://www.veritasdharmasatya.com">www.veritasdharmasatya.com</a><br>
                                 <!-- SIUP: 01290/24.1.0/31.71-01.1002/1.824.271/2015 -->
                             </p>
                             <p class="alamat">
