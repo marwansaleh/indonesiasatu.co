@@ -150,6 +150,18 @@ class Home extends MY_News {
             $this->data['category_olahraga'] = $cat_olahraga;
         }
         
+        //get sastra
+        $cat_sastra = $this->category_m->get_by(array('slug'=>'sastra'),TRUE);
+        if ($cat_sastra){
+            $cat_sastra->articles = $this->_article_categories($cat_sastra->id, 5);
+            $this->data['category_sastra'] = $cat_sastra;
+        }
+        //get property
+        $cat_property = $this->category_m->get_by(array('slug'=>'properti'),TRUE);
+        if ($cat_property){
+            $cat_property->articles = $this->_article_categories($cat_property->id, 5);
+            $this->data['category_property'] = $cat_property;
+        }
         
         //set iklan on the left
         $this->data['iklan_kiri'] = array(
