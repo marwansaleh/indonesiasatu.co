@@ -140,7 +140,7 @@ class Home extends MY_News {
         //get hiburan
         $cat_hiburan = $this->category_m->get_by(array('slug'=>'hiburan'),TRUE);
         if ($cat_hiburan){
-            $cat_hiburan->articles = $this->_article_categories($cat_hiburan->id, 5);
+            $cat_hiburan->articles = $this->_article_categories($cat_hiburan->id, 4);
             $this->data['category_hiburan'] = $cat_hiburan;
         }
         //get olahraga
