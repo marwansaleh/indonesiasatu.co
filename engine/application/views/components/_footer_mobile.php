@@ -6,6 +6,7 @@
             Redaktur Pelaksana: Simon Leya<br>
             Penerbit: Divisi Publishing PT VERITAS DHARMA SATYA<br>
             Website: <a href="http://www.veritasdharmasatya.com" target="_blank" style="color: blue;">www.veritasdharmasatya.com</a>
+            <hr>
         </p>
         <p class="redaksi">
             Gedung ITC Roxy Mas Blok D3 No. 33
