@@ -65,7 +65,7 @@ class Home extends MY_News {
                     //get the category
                     $category = $this->category_m->get_by(array('slug'=>$catname),TRUE);
                     if ($category){
-                        $category->articles = $this->_article_categories($category->id, $index_selected_cat==1 ? 5 : 1);
+                        $category->articles = $this->_article_categories($category->id, $index_selected_cat==1 ? 3 : 1);
                         $selected_category [] = $category;
                     }
                     $index_selected_cat++;
