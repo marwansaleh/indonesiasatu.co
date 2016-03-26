@@ -1,5 +1,13 @@
     <footer>
         <p class="redaksi">
+            Penasihat: Letjen TNI (Purn) Kiki Syahnakri<br>
+            <!-- Pendiri: Valens Daki-Soo<br>-->
+            Pemimpin Redaksi: Valens Daki-Soo<br>
+            Redaktur Pelaksana: Simon Leya<br>
+            Penerbit: Divisi Publishing PT VERITAS DHARMA SATYA<br>
+            Website: <a href="http://www.veritasdharmasatya.com" target="_blank" style="color: blue;">www.veritasdharmasatya.com</a>
+        </p>
+        <p class="redaksi">
             Gedung ITC Roxy Mas Blok D3 No. 33
             Jl. Kh. Hasyim Ashari No. 125, Gambir, Jakarta Pusat,
             Telp/Fax:021-4756205, Email: <a href="mailto:redaksi@indonesiasatu.co">redaksi@indonesiasatu.co</a>, 
