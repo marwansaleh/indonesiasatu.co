@@ -472,6 +472,8 @@ class MY_AdminController extends MY_Controller {
             );
         }
         $_SESSION['FILEMANAGER'] = $filemanager;
+        
+        //echo json_encode($_SESSION['FILEMANAGER']);exit;
     }
 }
 
@@ -911,9 +913,16 @@ class MY_News extends MY_Controller {
     }
     
     private function _rate_get_data($bank, $last_update){
-        
+        $matauang = array('USD', 'AUD', 'SGD', 'CNY', 'JPY', 'EUR', 'HKD');
         $items = $this->rates_m->get_by(array('bank'=>$bank,'last_update'=>$last_update));
-        return $items;
+        $result = array();
+        
+        foreach ($items as $item){
+            if (in_array($item->name, $matauang)){
+                $result [] = $item;
+            }
+        }
+        return $result;
     }
     
     protected function get_weather(){
