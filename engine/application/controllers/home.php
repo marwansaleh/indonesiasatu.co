@@ -159,7 +159,7 @@ class Home extends MY_News {
         //get property
         $cat_property = $this->category_m->get_by(array('slug'=>'properti'),TRUE);
         if ($cat_property){
-            $cat_property->articles = $this->_article_categories($cat_property->id, 5);
+            $cat_property->articles = $this->_article_categories($cat_property->id, 3);
             $this->data['category_property'] = $cat_property;
         }
         
