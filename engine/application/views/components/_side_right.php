@@ -44,7 +44,34 @@
     </div>
 </div>
 <?php endif; ?>
-
+<?php if (isset($iklan_kiri)): ?>
+<div class="row">
+    <?php if (is_array($iklan_kiri)): ?>
+    <div class="flexslider" id="iklan-banyak-galuh">
+        <ul class="slides">
+            <?php foreach ($iklan_kiri as $ik): ?>
+            <li><img src="<?php echo $ik; ?>"> </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <?php else: ?>
+    <img src="<?php echo $iklan_kiri; ?>" class="img-responsive" style="margin-top: 5px;" />
+    <?php endif; ?>
+</div>
+<?php endif; ?>
 <?php if (isset($iklan_gabung)): ?>
 <div class="row"><img src="<?php echo $iklan_gabung; ?>" class="img-responsive" style="margin-top: 5px;" /></div>
 <?php endif; ?>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#iklan-banyak-galuh').flexslider({
+            animation: "slide",
+            //slideshow: true,
+            controlNav: false,
+            animationLoop: true,
+            itemWidth: 400,
+            itemMargin: 0
+        });
+    });
+</script>
