@@ -137,6 +137,31 @@
             <?php endif; ?>
         </div>
         <?php endif; ?>
+        <!-- sastra -->
+        <?php if (isset($category_sastra)):?>
+        <div class="row">
+            <div class="box-title">
+                <h2><?php echo $category_sastra->name; ?></h2>
+                <div class="title-line"></div>
+            </div>
+            <?php if ($category_sastra->articles): ?>
+            <div class="articles-slider">
+                <div class="flex-viewport">
+                    <?php foreach ($category_sastra->articles as $article): ?>
+
+                    <article>
+                        <figure style="overflow:hidden;"><img class="img-responsive" src="<?php echo get_image_thumb($article->image_url, IMAGE_THUMB_SMALL); ?>" alt=""></figure>
+                        <div class="text">
+                            <h3><a href="<?php echo $article->url_short ? $article->url_short : site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a></h3>
+                            <span class="info"><?php echo date('d/m/Y',$article->date); ?></span>
+                        </div>
+                    </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
     </div>
     <!-- start category -->
     <?php foreach ($categories as $index => $category): ?>
