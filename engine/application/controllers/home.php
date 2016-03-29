@@ -173,7 +173,7 @@ class Home extends MY_News {
         );
         
         //set iklan gabung
-        $this->data['iklan_gabung'] = userfiles_baseurl(config_item('advert').'iklan-gabung.jpg');
+        $this->data['iklan_gabung'] = userfiles_baseurl(config_item('advert').'iklan-gabung-20160330.jpg');
         
         $this->data['subview'] = 'frontend/home/index';
         $this->load->view('_layout_main', $this->data);
