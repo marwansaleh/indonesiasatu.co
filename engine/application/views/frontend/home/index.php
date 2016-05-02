@@ -162,6 +162,13 @@
             <?php endif; ?>
         </div>
         <?php endif; ?>
+        <?php if (isset($iklan_kiri2)): ?>
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="img-responsive" src="<?php echo $iklan_kiri2; ?>" />
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
     <!-- start category -->
     <?php foreach ($categories as $index => $category): ?>
