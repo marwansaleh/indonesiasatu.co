@@ -46,6 +46,7 @@
             </div>
             <div class="media-body">
                 <h4 class="media-heading">
+                    <small><?php echo $article->category_name; ?></small><br>
                     <a href="<?php echo site_url('detail/'.$article->url_title); ?>"><?php echo $article->title; ?></a>
                 </h4>
                 <p class="date"><?php echo date('d/m/Y',$article->date); ?></p>
