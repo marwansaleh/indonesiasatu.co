@@ -1,9 +1,10 @@
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700,300,300italic,400italic");
 
 body{
-    padding-top: 40px;
+    padding-top: 60px;
     background-color: #8aa4af;
 }
+#panel-menu-pilihan { margin-top: 10px; }
 a, a:hover {
   color: #000;
 }
