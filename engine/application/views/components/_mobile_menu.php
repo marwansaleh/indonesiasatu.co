@@ -40,6 +40,16 @@
     </div>
 </nav>
 
+<div class="row" id="panel-menu-pilihan">
+    <div class="col-sm-12">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-link" href="<?php echo site_url('utama'); ?>">Berita Utama</a>
+            <a class="btn btn-link" href="<?php echo site_url('populer'); ?>">Terpopuler</a>
+            <a class="btn btn-link" href="<?php echo site_url('newsindex'); ?>">Indeks</a>
+        </div>
+    </div>
+</div>
+
 <div class="well well-sm">
     <div id="main-search">
         <form action="<?php echo site_url('search'); ?>" method="post">
