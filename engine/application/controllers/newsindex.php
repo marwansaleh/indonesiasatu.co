@@ -12,6 +12,15 @@ class Newsindex extends MY_News {
         $this->data['active_menu'] = 'newsindex';
     }
     
+    function _remap($method, $params=array()){
+        //$this->mobile();
+        if ($this->is_mobile()){
+            return call_user_func_array(array($this, 'mobile'), $params);
+        }else{
+            return call_user_func_array(array($this, $method), $params);
+        }
+    }
+    
     function index($day=0,$month=0, $year=0){
         
         $this->data['meta_title'] = $this->data['meta_title'] .' - '. 'Indeks Berita';
@@ -84,6 +93,30 @@ class Newsindex extends MY_News {
         
         $this->data['subview'] = 'frontend/newsindex/index';
         $this->load->view('_layout_main', $this->data);
+    }
+    
+    function mobile($day=0,$month=0, $year=0){
+        //get current day, month, year
+        $date = getdate();
+        
+        $this->data['index_day'] = $this->input->post('index_day') ? $this->input->post('index_day') : ($day ? $day : $date['mday']);
+        $this->data['index_month'] = $this->input->post('index_month') ? $this->input->post('index_month') : ($month ? $month : $date['mon']);
+        $this->data['index_year'] = $this->input->post('index_year') ? $this->input->post('index_year') : ($year ? $year : $date['year']);
+        
+        //prepare month name
+        $this->data['indonesian_months'] = array(1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','Nopember','Desember');
+        //prepare years
+        $this->data['article_years'] = $this->_range_years();
+        
+        $articles = $this->_get_index_list($this->data['index_day'], $this->data['index_month'], $this->data['index_year']);
+        $this->data['articles'] = array();
+        foreach ($articles as $article){
+            $article->category_name = $this->category_m->get_value('name',array('id'=>$article->category_id));
+            $this->data['articles'][] = $article;
+        }
+        
+        $this->data['subview'] = 'mobile/newsindex/index';
+        $this->load->view('_layout_mobile', $this->data);
     }
     
     private function _get_index_list($day=NULL, $month=NULL, $year=NULL){
