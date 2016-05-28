@@ -5,7 +5,14 @@
  * @author marwansaleh
  */
 class Utama extends MY_News {
-    
+    function _remap(){
+        //$this->mobile();
+        if ($this->is_mobile()){
+            $this->mobile();
+        }else{
+            redirect('home');
+        }
+    }
     function mobile(){
         //Load layout parameters for home page
         $parameters = $this->get_sys_parameters('MOBILE');
