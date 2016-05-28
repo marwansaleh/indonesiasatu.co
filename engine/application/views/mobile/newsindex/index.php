@@ -36,6 +36,7 @@
     </div>
 </div>
 <div class="main">
+    <?php if (count($articles)): ?>
     <ul id="news-list" class="media-list">
         <?php foreach ($articles as $article): ?>
         <li class="media">
@@ -54,4 +55,7 @@
         </li>
         <?php endforeach; ?>
     </ul>
+    <?php else: ?>
+    <p>Belum ada berita hari ini</p>
+    <?php endif; ?>
 </div>
