@@ -1,38 +1,38 @@
-<div class="row">
-    <div class="col-sm-12">
-        <form method="post" action="<?php echo site_url('newsindex'); ?>">
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-sm-2">
-                        <select class="form-control" name="index_day">
-                            <option value="0" <?php echo isset($index_day)&&$index_day==0?'selected':''; ?>>Tanggal</option>
-                            <?php for($day=1;$day<=31;$day++): ?>
-                            <option value="<?php echo $day; ?>" <?php echo isset($index_day)&&$index_day==$day?'selected':''; ?>><?php echo str_pad($day, 2, "0", STR_PAD_LEFT); ?></option>
-                            <?php endfor; ?>
-                        </select>
-                    </div>
-                    <div class="col-sm-6">
-                        <select class="form-control" name="index_month">
-                            <option value="0" <?php echo isset($index_month)&&$index_month==0?'selected':''; ?>>Pilih Bulan</option>
-                            <?php foreach ($indonesian_months as $m_index => $m_name): ?>
-                            <option value="<?php echo $m_index; ?>" <?php echo isset($index_month)&&$index_month==$m_index?'selected':''; ?>><?php echo $m_name; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="col-sm-2">
-                        <select class="form-control" name="index_year">
-                            <option value="0" <?php echo isset($index_year)&&$index_year==0?'selected':''; ?>>Tahun</option>
-                            <?php for($year=$article_years['min'];$year<=$article_years['max'];$year++): ?>
-                            <option value="<?php echo $year; ?>" <?php echo isset($index_year)&&$index_year==$year?'selected':''; ?>><?php echo $year; ?></option>
-                            <?php endfor; ?>
-                        </select>
-                    </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-default btn-primary btn-block" type="submit">Filter</button>
+<div class="well well-sm">
+    <div class="row">
+        <div class="col-sm-12">
+            <form method="post" action="<?php echo site_url('newsindex'); ?>">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-xs-3">
+                            <select class="form-control" name="index_day">
+                                <option value="0" <?php echo isset($index_day)&&$index_day==0?'selected':''; ?>>Tanggal</option>
+                                <?php for($day=1;$day<=31;$day++): ?>
+                                <option value="<?php echo $day; ?>" <?php echo isset($index_day)&&$index_day==$day?'selected':''; ?>><?php echo str_pad($day, 2, "0", STR_PAD_LEFT); ?></option>
+                                <?php endfor; ?>
+                            </select>
+                        </div>
+                        <div class="col-xs-6">
+                            <select class="form-control" name="index_month">
+                                <option value="0" <?php echo isset($index_month)&&$index_month==0?'selected':''; ?>>Pilih Bulan</option>
+                                <?php foreach ($indonesian_months as $m_index => $m_name): ?>
+                                <option value="<?php echo $m_index; ?>" <?php echo isset($index_month)&&$index_month==$m_index?'selected':''; ?>><?php echo $m_name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="form-control" name="index_year">
+                                <option value="0" <?php echo isset($index_year)&&$index_year==0?'selected':''; ?>>Tahun</option>
+                                <?php for($year=$article_years['min'];$year<=$article_years['max'];$year++): ?>
+                                <option value="<?php echo $year; ?>" <?php echo isset($index_year)&&$index_year==$year?'selected':''; ?>><?php echo $year; ?></option>
+                                <?php endfor; ?>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+                <button class="btn btn-default btn-primary btn-block" type="submit">Filter</button>
+            </form>
+        </div>
     </div>
 </div>
 <div class="main">
