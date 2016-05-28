@@ -98,6 +98,62 @@ class Article extends REST_Api {
         $this->response($this->result);
     }
     
+    function utama_get($id=NULL){
+        //load models
+        $this->load->model(array('article/article_m','article/category_m','article/article_image_m','users/user_m'));
+        $this->load->helper('general');
+        $remap_fields = array(
+            'id'                => 'id',
+            'category_id'       => 'category_id',
+            'category_name'     => 'category',
+            'title'             => 'title',
+            'url_title'         => 'url_title',
+            'link_href'         => 'link_href',
+            'date'              => 'article_date',
+            'day'               => 'day',
+            'month'             => 'month',
+            'year'              => 'year',
+            'synopsis'          => 'synopsis',
+            'content'           => 'content',
+            'image_url'         => 'image_url',
+            'image_type'        => 'image_type',
+            'image_urls'        => 'image_urls',
+            'tags'              => 'tags',
+            'types'             => 'types',
+            'allow_comment'     => 'allow_comment',
+            'published'         => 'published',
+            'view_count'        => 'view',
+            'created'           => 'created',
+            'modified'          => 'modified',
+            'created_by'        => 'created_by',
+            'created_by_name'   => 'created_by_name',
+            'ext_attributes'    => 'ext_attributes'
+            
+        );
+        
+        $forbidden_categories = $this->get_forbidden_categories();
+        
+        
+        $admin = $this->get('admin') ? TRUE : FALSE;
+        $limit = $this->get('limit') ? $this->get('limit') : 100;
+        $page = $this->get('page') ? $this->get('page') : 1;
+        $search_text = $this->get('search') ? $this->get('search') : NULL;
+
+
+        if ($search_text){
+            $this->db->like('title', $search_text);
+        }
+
+        $condition = array('published' => 1);
+        $this->db->like('types', ARTICLE_TYPE_SLIDER);
+        $items = $this->article_m->get_offset('*',$condition,($page-1)*$limit,$limit);
+        foreach ($items as $item){
+            $this->result [] = $this->remap_fields($remap_fields, $this->_article_proccess($item));
+        }
+        
+        $this->response($this->result);
+    }
+    
     private function _article_proccess($item, $forbidden_categories = NULL){
         $thumb_sizes =  array(
             'original' => IMAGE_THUMB_ORI,'large' => IMAGE_THUMB_LARGE,
