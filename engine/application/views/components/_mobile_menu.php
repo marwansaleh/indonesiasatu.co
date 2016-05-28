@@ -35,14 +35,20 @@
             </ul>
         </div>
     </div>
+    <div class="col-sm-12 text-center">
+        <span class="small"><?php echo indonesia_date_format("%D, %d %M %Y"); ?></span>
+    </div>
 </nav>
-<div id="main-search">
-    <form action="<?php echo site_url('search'); ?>" method="post">
-        <div class="input-group input-group-sm">
-            <input type="search" class="form-control" id="search_input" name="search_input" placeholder="Search" value="<?php echo isset($search_input)?$search_input:''; ?>" />
-            <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
+
+<div class="well well-sm">
+    <div id="main-search">
+        <form action="<?php echo site_url('search'); ?>" method="post">
+            <div class="input-group input-group-sm">
+                <input type="search" class="form-control" id="search_input" name="search_input" placeholder="Search" value="<?php echo isset($search_input)?$search_input:''; ?>" />
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
