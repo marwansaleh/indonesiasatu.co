@@ -3,7 +3,7 @@
         <div class="col-sm-12">
             <form method="post" action="<?php echo site_url('newsindex'); ?>">
                 <div class="row">
-                    <div class="form-group">
+                    <div class="form-group form-group-sm">
                         <div class="col-xs-3">
                             <select class="form-control" name="index_day">
                                 <option value="0" <?php echo isset($index_day)&&$index_day==0?'selected':''; ?>>Tanggal</option>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-default btn-primary btn-block" type="submit">Filter</button>
+                <button class="btn btn-default btn-primary btn-block btn-xs" type="submit">Filter</button>
             </form>
         </div>
     </div>
