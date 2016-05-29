@@ -41,8 +41,14 @@ article .info .author {color: #080808;}
 article .content {font-size: 14px;}
 .blog-page {padding: 10px; background-color: white; display: block; float: left; }
 .share-blog { display: block; float: left; margin: 15px 0 20px 0; width:100%; }
+footer a { color: #fff!important; }
+footer #back-top { background-color: #333333; }
+footer #back-top a { color: #CFA554!important;}
+footer #main-bottom-menus {list-style: none; margin: 0; padding: 0;}
+footer #main-bottom-menus li { float: left; padding: 0; margin: 5px 0 5px 0;  border-right: solid 1px #CFA554!important; }
+footer #main-bottom-menus li:last-child { border: none!important; }
+footer #main-bottom-menus li a { float: left; padding: 0 5px 0 5px ; font-size: 10px; }
 
 footer {display: block; margin-top: 20px; padding: 10px; background-color: #373737; color: #fff;}
-footer a { color: #fff!important; }
 footer .copyright { text-align: center; font-size: 10px; margin: 0; }
 footer .redaksi { text-align: center; font-size: 10px; margin-bottom: 0; line-height:10px; }
