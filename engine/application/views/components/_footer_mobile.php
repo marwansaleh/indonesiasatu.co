@@ -18,7 +18,7 @@
             Jl. Kh. Hasyim Ashari No. 125, Gambir, Jakarta Pusat,
             Telp/Fax:021-4756205, Email: <a href="mailto:redaksi@indonesiasatu.co">redaksi@indonesiasatu.co</a>, 
         </p>
-        <p class="copyright">Copyright@2015IndonesiaSatu.co</p>
+        <p class="copyright">Copyright@2015<br>IndonesiaSatu.co</p>
     </footer>
     <script type="text/javascript">
             $(document).ready(function(){
