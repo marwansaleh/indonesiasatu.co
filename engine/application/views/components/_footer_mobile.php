@@ -28,7 +28,7 @@
                 </ul>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="font-size: 9px;">
             <div class="col-xs-6 text-right">
                 <span style="color: #CFA554;">Terbit sejak 1 Desember 2015. Visitor: <?php echo number_format($visitor_count); ?></span><br>
                 <a href="http://indonesiasatu.co"><span></span></a>
