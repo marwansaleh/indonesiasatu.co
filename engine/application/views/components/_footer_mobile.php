@@ -5,7 +5,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12 text-center">
                 <ul id="main-bottom-menus">
                     <?php $i=0; foreach ($mainmenus as $mainmenu): ?>
                     <li><a href="<?php echo site_url('category/'.$mainmenu->slug); ?>"><?php echo $mainmenu->name; ?></a></li>
