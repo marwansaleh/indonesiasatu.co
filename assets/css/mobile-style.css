@@ -49,7 +49,7 @@ footer #main-bottom-menus li { float: left; padding: 0; margin: 5px 0 5px 0;  bo
 footer #main-bottom-menus li:last-child { border: none!important; }
 footer #main-bottom-menus li a { float: left; padding: 0 5px 0 5px ; font-size: 10px; }
 
-footer #helper-bottom-menus {list-style-type: circle!important; margin: 0; padding: 0;}
+footer #helper-bottom-menus {list-style-type: circle!important; margin: 0; padding: 0; list-style-position: outside;}
 footer #helper-bottom-menus li { float: left; padding: 0; margin: 5px 0 5px 0; }
 footer #helper-bottom-menus li:last-child { border: none!important; }
 footer #helper-bottom-menus li a { float: left; padding: 0 5px 0 5px ; font-size: 10px; }
