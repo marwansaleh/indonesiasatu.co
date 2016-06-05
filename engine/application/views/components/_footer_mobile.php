@@ -28,11 +28,21 @@
                 </ul>
             </div>
         </div>
-        <p class="redaksi">
+        <div class="row">
+            <div class="col-xs-6 text-right">
+                <span style="color: #CFA554;">Terbit sejak 1 Desember 2015. Visitor: <?php echo number_format($visitor_count); ?></span><br>
+                <a href="http://indonesiasatu.co"><span></span></a>
+            </div>
+            <div class="col-xs-6 text-left" style="border-left: solid 1px #CCC;">
+                <span style="color: #CFA554;">Diterbitkan oleh PT. Veritas Dharma Satya</span><br>
+                <a href="http://www.veritasdharmasatya.com" target="_blank"><span>www.veritasdharmasatya.com</span></a>
+            </div>
+        </div>
+<!--        <p class="redaksi">
             Gedung ITC Roxy Mas Blok D3 No. 33
             Jl. Kh. Hasyim Ashari No. 125, Gambir, Jakarta Pusat,
             Telp/Fax:021-4756205, Email: <a href="mailto:redaksi@indonesiasatu.co">redaksi@indonesiasatu.co</a>, 
-        </p>
+        </p>-->
         <p class="copyright">IndonesiaSatu.co<br>Copyright@2015</p>
     </footer>
     <script type="text/javascript">
