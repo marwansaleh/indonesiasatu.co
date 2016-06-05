@@ -37,7 +37,7 @@
                                 <ul class="kanal-list">
                                     <li><a href="<?php echo site_url('staticpage/index/about'); ?>">Tentang kami</a></li>
                                     <li><a href="<?php echo site_url('staticpage/index/redaksi'); ?>">Redaksi</a></li>
-                                    <li><a href="<?php echo site_url('staticpage/iklan'); ?>">Info iklan</a></li>
+                                    <li><a href="<?php echo site_url('staticpage/index/iklan'); ?>">Info iklan</a></li>
                                     <li><a href="<?php echo site_url('contact'); ?>">Hubungi kami</a></li>
                                     <li><a href="<?php echo site_url('staticpage/karir'); ?>">Karir</a></li>
                                 </ul>
