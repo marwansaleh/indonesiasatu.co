@@ -39,7 +39,7 @@
                                     <li><a href="<?php echo site_url('staticpage/index/redaksi'); ?>">Redaksi</a></li>
                                     <li><a href="<?php echo site_url('staticpage/index/iklan'); ?>">Info iklan</a></li>
                                     <li><a href="<?php echo site_url('contact'); ?>">Hubungi kami</a></li>
-                                    <li><a href="<?php echo site_url('staticpage/karir'); ?>">Karir</a></li>
+                                    <li><a href="<?php echo site_url('staticpage/index/karir'); ?>">Karir</a></li>
                                 </ul>
                             </div>
                         </div>
