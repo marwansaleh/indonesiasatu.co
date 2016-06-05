@@ -13,6 +13,15 @@ class Staticpage extends MY_News {
         $this->load->model('article/static_m');
     }
     
+    function _remap($method, $params=array()){
+        //$this->mobile();
+        if ($this->is_mobile()){
+            return call_user_func_array(array($this, 'mobile'), $params);
+        }else{
+            return call_user_func_array(array($this, $method), $params);
+        }
+    }
+    
     function index($name=NULL){
         $condition = NULL;
         if ($name){
@@ -75,6 +84,21 @@ class Staticpage extends MY_News {
         
         $this->data['subview'] = 'frontend/staticpage/index';
         $this->load->view('_layout_main', $this->data);
+    }
+    
+    function mobile($name=NULL){
+        $condition = NULL;
+        if ($name){
+            $condition = array('name' => $name);
+        }
+        $staticpage = $this->static_m->get_by($condition, TRUE);
+        if (!$staticpage){
+            $staticpage = $this->static_m->get_by(NULL, TRUE);
+        }
+        $this->data['staticpage'] = $staticpage;
+        
+        $this->data['subview'] = 'mobile/staticpage/index';
+        $this->load->view('_layout_mobile', $this->data);
     }
 }
 
