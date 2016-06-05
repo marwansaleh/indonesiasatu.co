@@ -52,7 +52,7 @@ footer #main-bottom-menus li a { float: left; padding: 0 5px 0 5px ; font-size: 
 footer #helper-bottom-menus {list-style: none; margin: 0; padding: 0;}
 footer #helper-bottom-menus li { float: left; padding: 0; margin: 5px 0 5px 0; }
 footer #helper-bottom-menus li:last-child { border: none!important; }
-footer #helper-bottom-menus li a { float: left; padding: 0 5px 0 5px ; font-size: 10px; }
+footer #helper-bottom-menus li a { float: left; padding: 0 5px 0 5px ; font-size: 10px; color: #CFA554!important; }
 
 footer {display: block; margin-top: 20px; padding: 10px; background-color: #373737; color: #fff;}
 footer .copyright { text-align: center; font-size: 10px; margin: 0; color: #CFA554!important; margin-top: 10px; }
