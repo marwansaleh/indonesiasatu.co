@@ -524,8 +524,19 @@ class MY_News extends MY_Controller {
         $all_channel_and_childrens = $this->get_channels();
         $this->data['channels'] = $all_channel_and_childrens;
         $this->data['mainmenus'] = $this->_mainmenu() ;//$all_channel_and_childrens;
+        $this->data['mobile_bottom_menus'] = $this->_mobile_bottom_menus();
         $this->data['FB_ID'] = $this->get_FB_ID();
         $this->data['GA_Code'] = $this->get_GA_Code();
+    }
+    
+    private function _mobile_bottom_menus(){
+        if (!isset($this->category_m)){
+            $this->load->model('article/category_m');
+        }
+        
+        $category_id = array(2,4,3,9,10,75,77,33);
+        $this->db->where_in('id', $category_id);
+        return $this->category_m->get();
     }
     
     protected function get_forbidden_categories(){
