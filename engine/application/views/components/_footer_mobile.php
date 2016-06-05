@@ -13,6 +13,21 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <ul id="helper-bottom-menus">
+                    <li>
+                        <a href="<?php echo site_url('staticpage/index/redaksi'); ?>">Redaksi</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('staticpage/index/iklan'); ?>">Info Iklan</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('staticpage/index/privacypolicy'); ?>">Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <p class="redaksi">
             Gedung ITC Roxy Mas Blok D3 No. 33
             Jl. Kh. Hasyim Ashari No. 125, Gambir, Jakarta Pusat,
