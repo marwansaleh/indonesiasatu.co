@@ -22,9 +22,7 @@ class Home extends MY_News {
         }
     }
     
-    function sorry(){
-        $this->load->view('sorry');
-    }
+    
     
     function index(){
         //Load layout parameters for home page
