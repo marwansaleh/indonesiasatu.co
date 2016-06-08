@@ -117,10 +117,14 @@ class MY_Model extends CI_Model {
     public function get_count($where=NULL){
         $this->db->select('count(*) as found');
         
-        if ($where)
+        if ($where){
             $this->db->where($where);
-        
-        $row = $this->db->get($this->_table_name)->row();
+        }
+        try {
+            $row = $this->db->get($this->_table_name)->row();
+        }  catch (Exception $e){
+            return NULL;
+        }
         
         return $row->found;
     }
