@@ -62,9 +62,9 @@
                             <?php $i++; endforeach; ?>
                         </div>
                         <div class="row small">
-                            <div class="col-sm-6 pull-right">
-                                <div class="row" style="font-size: 10px; margin-top: 10px;">
-                                    <div class="col-sm-8 text-right">
+                            <div class="col-sm-8 pull-right">
+                                <div class="row" style="font-size: 10px; margin-top: 9px;">
+                                    <div class="col-sm-6 text-right">
                                         <span style="color: #CFA554;">Terbit sejak 1 Desember 2015. Visitor: <?php echo number_format($visitor_count); ?></span><br>
                                         <a href="http://indonesiasatu.co"><span style="color: #FFF;">www.indonesiasatu.co</span></a>
                                     </div>
