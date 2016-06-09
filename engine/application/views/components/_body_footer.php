@@ -62,7 +62,7 @@
                             <?php $i++; endforeach; ?>
                         </div>
                         <div class="row small">
-                            <div class="col-sm-8 pull-right">
+                            <div class="col-sm-10 pull-right">
                                 <div class="row" style="font-size: 10px; margin-top: 9px;">
                                     <div class="col-xs-6 text-right">
                                         <span style="color: #CFA554;">Terbit sejak 1 Desember 2015. Visitor: <?php echo number_format($visitor_count); ?></span><br>
