@@ -38,11 +38,11 @@
                 <a href="http://www.veritasdharmasatya.com" target="_blank"><span>www.veritasdharmasatya.com</span></a>
             </div>
         </div>
-<!--        <p class="redaksi">
+        <p class="redaksi">
             Gedung ITC Roxy Mas Blok D3 No. 33
             Jl. Kh. Hasyim Ashari No. 125, Gambir, Jakarta Pusat,
             Telp/Fax:021-4756205, Email: <a href="mailto:redaksi@indonesiasatu.co">redaksi@indonesiasatu.co</a>, 
-        </p>-->
+        </p>
         <p class="copyright">IndonesiaSatu.co<br>Copyright@2015</p>
     </footer>
     <script type="text/javascript">
