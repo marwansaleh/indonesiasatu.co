@@ -47,7 +47,7 @@ footer #back-top a { color: #CFA554!important;}
 footer #main-bottom-menus {list-style: none; margin: 0; padding: 0;}
 footer #main-bottom-menus li { float: left; padding: 0; margin: 5px 0 5px 0;  border-right: solid 1px #CFA554!important; }
 footer #main-bottom-menus li:last-child { border: none!important; }
-footer #main-bottom-menus li a { float: left; padding: 0 2px 0 2px ; font-size: 8px; }
+footer #main-bottom-menus li a { float: left; padding: 0 2px 0 2px ; font-size: 9px; }
 
 footer #helper-bottom-menus {list-style: none; margin: 0; padding: 0;}
 footer #helper-bottom-menus li { float: left; padding: 0; margin: 5px 0 5px 0; }
