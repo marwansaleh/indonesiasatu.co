@@ -20,6 +20,9 @@
                         <a href="<?php echo site_url('staticpage/index/redaksi'); ?>">Redaksi</a>
                     </li>
                     <li>
+                        <a href="<?php echo site_url('staticpage/index/about'); ?>">Tentang Kami</a>
+                    </li>
+                    <li>
                         <a href="<?php echo site_url('staticpage/index/iklan'); ?>">Info Iklan</a>
                     </li>
                     <li>
