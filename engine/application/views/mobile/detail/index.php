@@ -63,7 +63,7 @@
         <li class="media" data-href="<?php echo site_url('detail/'.$news->url_title); ?>">
             <div class="media-left">
                 <a href="<?php echo site_url('detail/'.$news->url_title); ?>">
-                    <img class="media-object" src="<?php echo get_image_thumb($news->image_url, IMAGE_THUMB_SQUARE); ?>" alt="<?php echo $news->url_title ?>">
+                    <img class="media-object square" src="<?php echo get_image_thumb($news->image_url, IMAGE_THUMB_SQUARE); ?>" alt="<?php echo $news->url_title ?>">
                 </a>
             </div>
             <div class="media-body">
