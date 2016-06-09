@@ -542,7 +542,7 @@ class MY_News extends MY_Controller {
             $this->load->model('article/category_m');
         }
         
-        $category_id = array(2,4,3,9,10,75,77,33);
+        $category_id = array(2,90,4,3,9,10,75,77,33,66);
         $this->db->where_in('id', $category_id);
         return $this->category_m->get();
     }
