@@ -557,7 +557,7 @@ class MY_News extends MY_Controller {
         return NULL;
     }
     
-    protected function _article_categories($category_id, $num=3){
+    protected function _article_categories($category_id, $num=3, $exclude_id=NULL){
         if (!isset($this->article_m)){
             $this->load->model('article/article_m');
         }
@@ -572,6 +572,9 @@ class MY_News extends MY_Controller {
         
         $articles = array();
         $this->db->where_in('category_id', $category_id_list);
+        if ($exclude_id){
+            $this->db->where_not_in('id', $exclude_id);
+        }
         $result = $this->article_m->get_offset('*',array('published' => ARTICLE_PUBLISHED),0,$num);
         foreach ($result as $item){
             $item->created_by_name = $this->user_m->get_value('full_name', array('id'=>$item->created_by));
