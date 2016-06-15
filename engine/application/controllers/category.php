@@ -81,15 +81,18 @@ class Category extends MY_News {
             $selected_category_name = $parameters['LAYOUT_WIDGET_SELECTED_CATEGORY'];
             $selected_category = NULL;
             if ($selected_category_name){
-                //get category id
-                $selected_category = $this->category_m->get_by(array('slug'=>$selected_category_name),TRUE);
-                if (!$selected_category){
-                    $selected_category = $this->category_m->get_select_where('id,name',NULL,TRUE);
+                $this->data['selected_news_category'] = array();
+                foreach(explode(',', $selected_category_name) as $slug){
+                    //get category id
+                    $selected_category = $this->category_m->get_by(array('slug'=>$slug),TRUE);
+                    if ($selected_category){
+                        $selected_category->articles = $this->_article_categories($selected_category->id, 
+                            isset($parameters['LAYOUT_HOME_CAT_ARTICLE_NUM'])?$parameters['LAYOUT_HOME_CAT_ARTICLE_NUM']:3);
+                        
+                        $this->data['selected_news_category'] [] = $selected_category;
+                    }
                 }
             }
-            $selected_category->articles = $this->_article_categories($selected_category->id, 
-                    isset($parameters['LAYOUT_HOME_CAT_ARTICLE_NUM'])?$parameters['LAYOUT_HOME_CAT_ARTICLE_NUM']:3);
-            $this->data['selected_news_category'] = array($selected_category);
         }
         
         $this->data['subview'] = 'frontend/category/index';
