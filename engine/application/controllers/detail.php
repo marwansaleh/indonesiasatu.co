@@ -148,7 +148,7 @@ class Detail extends MY_News {
                 $this->data['photo_news'] = $this->_photo_news(isset($parameters['LAYOUT_NEWSPHOTO_NUM'])?$parameters['LAYOUT_NEWSPHOTO_NUM']:10);
             }
             if (in_array(WIDGET_SELECTED_CATEGORY, $widgets)){
-                $selected_category->articles = $this->_article_categories($selected_category->id, 5);
+                $selected_category->articles = $this->_article_categories($selected_category->id, 10);
                 
                 $this->data['selected_news_category'] = array($selected_category);
             }
