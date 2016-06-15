@@ -87,12 +87,9 @@ class Category extends MY_News {
                     $selected_category = $this->category_m->get_select_where('id,name',NULL,TRUE);
                 }
             }
-            
-            $this->data['selected_news_category'] = array(
-                'category'  => $selected_category,
-                'articles' => $this->_article_categories($selected_category->id, 
-                    isset($parameters['LAYOUT_HOME_CAT_ARTICLE_NUM'])?$parameters['LAYOUT_HOME_CAT_ARTICLE_NUM']:3)
-            );
+            $selected_category->articles = $this->_article_categories($selected_category->id, 
+                    isset($parameters['LAYOUT_HOME_CAT_ARTICLE_NUM'])?$parameters['LAYOUT_HOME_CAT_ARTICLE_NUM']:3);
+            $this->data['selected_news_category'] = array($selected_category);
         }
         
         $this->data['subview'] = 'frontend/category/index';
