@@ -33,10 +33,15 @@
                 <a href="http://www.veritasdharmasatya.com" target="_blank"><span>www.veritasdharmasatya.com</span></a>
             </div>
         </div>
+        <p class="redaksi" style="font-size: 8px; padding-top: 3px; padding-bottom: 3px; background-color: #424242;">
+            Penasihat: Letjen TNI (Purn) Kiki Syahnakri<br>
+            Pemimpin Redaksi: Valens Daki-Soo<br>
+            Redaktur Pelaksana: Simon Leya
+        </p>
         <p class="redaksi" style="font-size: 8px;">
             Gedung ITC Roxy Mas Blok D3 No. 33
             Jl. Kh. Hasyim Ashari No. 125, Gambir, Jakarta Pusat,
-            Telp/Fax:021-4756205, Email: <a href="mailto:redaksi@indonesiasatu.co">redaksi@indonesiasatu.co</a>, 
+            Telp/Fax:021-4756205, Email: <a href="mailto:redaksi@indonesiasatu.co">redaksi@indonesiasatu.co</a> 
         </p>
         <p class="copyright">IndonesiaSatu.co<br>Copyright@2015</p>
     </footer>
