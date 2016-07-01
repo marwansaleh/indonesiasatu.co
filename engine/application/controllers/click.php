@@ -17,7 +17,7 @@ class Click extends MY_News {
         if ($item){
             $this->advert_m->save(array('counter'=>$item->counter + 1), $id);
         }
-        $url = urldecode(base64_decode($url_togo));
+        $url = base64_decode(urldecode($url_togo));
         
         redirect($url);
     }
