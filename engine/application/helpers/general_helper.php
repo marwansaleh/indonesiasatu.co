@@ -537,6 +537,20 @@ if (!function_exists('kelvin_2_celcius')){
     }
 }
 
+if (!function_exists('advert_type')){
+    function advert_type($type=NULL){
+        $types = array(ADV_TYPE_TOP => 'Top Advert');
+        
+        if (!$type){
+            return $types;
+        }else if (isset($types[$type])){
+            return $types[$type];
+        }else{
+            return NULL;
+        }
+    }
+}
+
 /*
  * file location: /application/helpers/general_helper.php
  */
