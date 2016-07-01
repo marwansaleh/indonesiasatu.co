@@ -24,10 +24,12 @@
                             <th style="width: 10px">#</th>
                             <th>Name</th>
                             <th>Type</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
+                            <th>Link</th>
+                            <th>Open Window</th>
+                            <th>All Pages</th>
+                            <th>Active</th>
                             <th>#Counter</th>
-                            <th>File</th>
+                            <th>Mime</th>
                             <th style="width: 120px">Action</th>
                         </tr>
                     </thead>
@@ -37,13 +39,14 @@
                             <td><?php echo ($offset+$i++); ?>.</td>
                             <td><?php echo $item->name; ?></td>
                             <td><?php echo $item->advert_type; ?></td>
-                            <td><?php echo date('d-M-Y', $item->start_date); ?></td>
-                            <td><?php echo date('d-M-Y', $item->end_date); ?></td>
+                            <td><?php echo $item->link_url; ?></td>
+                            <td><?php echo $item->new_window==1?'<i class="fa fa-check"></i>':'<i class="fa fa-remove"></i>'; ?></td>
+                            <td><?php echo $item->all_pages==1?'<i class="fa fa-check"></i>':'<i class="fa fa-times"></i>'; ?></td>
+                            <td><?php echo $item->active==1?'<i class="fa fa-check"></i>':'<i class="fa fa-times"></i>'; ?></td>
                             <td><?php echo $item->counter; ?></td>
                             <td><?php echo $item->file_type; ?></td>
                             <td class="text-center">
                                 <a class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit" href="<?php echo site_url('cms/advert/edit?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-pencil-square"></i></a>
-                                <a class="btn btn-xs btn-success" data-toggle="tooltip" title="Copy" href="<?php echo site_url('cms/advert/copy?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-copy"></i></a>
                                 <a class="btn btn-xs btn-danger confirmation" data-toggle="tooltip" title="Delete" data-confirmation="Are your sure to delete this record ?" href="<?php echo site_url('cms/advert/delete?id='.$item->id.'&page='.$page); ?>"><i class="fa fa-minus-square"></i></a>
                             </td>
                         </tr>
