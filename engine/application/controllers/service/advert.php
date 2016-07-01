@@ -49,6 +49,10 @@ class Advert extends REST_Api {
                 'active'        => $active
             );
             
+            if (!$id){
+                $inserted_data['inserted'] = time();
+            }
+            
             if ($upload){
                 $upload_data = $this->upload->data();
                 $inserted_data['file_name'] = $upload_path . $upload_data['file_name'];
