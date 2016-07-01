@@ -514,7 +514,7 @@ class MY_News extends MY_Controller {
     function __construct() {
         parent::__construct();
         
-        $this->load->model(array('article/article_m','article/category_m','article/tags_m'));
+        $this->load->model(array('article/article_m','article/category_m','article/tags_m', 'advert/advert_m'));
         
         $this->data['newstickers'] = $this->_newsticker(5);
         //$this->data['categories_articles'] = $this->_all_categories_articles_count(0,4);
@@ -528,6 +528,7 @@ class MY_News extends MY_Controller {
         $this->data['visitor_count'] = $this->_visitor_count();
         $this->data['FB_ID'] = $this->get_FB_ID();
         $this->data['GA_Code'] = $this->get_GA_Code();
+        
     }
     
     private function _visitor_count(){
@@ -545,6 +546,25 @@ class MY_News extends MY_Controller {
         $category_id = array(2,90,4,3,9,10,75,77,33,66);
         $this->db->where_in('id', $category_id);
         return $this->category_m->get();
+    }
+    
+    protected function get_advert_active($homepage=FALSE){
+        $where = array('active'=>1);
+        if (!$homepage){
+            $where['all_pages'] = 1;
+        }
+        
+        $items = $this->advert_m->get();
+        if ($items){
+            $adverts = array();
+            foreach ($items as $item){
+                $item->file_name = site_url($item->file_name);
+                $adverts[$item->type][] = $item;
+            }
+            
+            return $adverts;
+        }
+        return $this->advert_m->get();
     }
     
     protected function get_forbidden_categories(){
