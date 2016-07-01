@@ -19,7 +19,7 @@
         <a href="#"><i class="fa fa-expand"></i> <span>Advertisement</span>  <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
             <li><a href="<?php echo site_url('cms/advert'); ?>">Tampilan Iklan</a></li>
-            <li><a href="<?php echo site_url('cms/advert_type'); ?>">Tipe Iklan</a></li>
+            <!--<li><a href="<?php echo site_url('cms/advert_type'); ?>">Tipe Iklan</a></li>-->
         </ul>
     </li>
     <li class="treeview">
