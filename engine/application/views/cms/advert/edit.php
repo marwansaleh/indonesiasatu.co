@@ -4,7 +4,8 @@
         <?php echo create_alert_box($this->session->flashdata('message'),$this->session->flashdata('message_type')); ?>
         <?php endif; ?>
         
-        <form role="form" method="post" action="<?php echo $submit_url; ?>">
+        <form id="MyForm" role="form" method="post" action="<?php echo $submit_url; ?>" enctype="multipart/form-data">
+            <input type="hidden" id="id" name="id" value="<?php echo $item->id; ?>">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title"><?php echo $item->id?'Update Data':'Create New'; ?></h3>
@@ -23,65 +24,56 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Start date (dd-mm-yyyy)</label>
-                                <div class="input-group">
-                                    <input type="text" name="start_date" class="form-control datepicker"value="<?php echo date('d-m-Y', $item->start_date?$item->start_date:time()); ?>">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default btn-calender"><span class="glyphicon glyphicon-calendar"></span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>End date (dd-mm-yyyy)</label>
-                                <div class="input-group">
-                                    <input type="text" name="end_date" class="form-control datepicker"value="<?php echo date('d-m-Y', $item->end_date?$item->end_date:time()); ?>">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default btn-calender"><span class="glyphicon glyphicon-calendar"></span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label class="control-label">Upload file</label>
-                        <input type="file" id="file" name="file" class="form-control file">
+                        <input type="file" id="file-upload" name="userfile" class="form-control">
                     </div>
                 </div>
                 <div class="box-footer clearfix">
-                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Submit</button>
-                    <button class="btn btn-warning" type="reset"><i class="fa fa-refresh"></i> Reset</button>
+                    <button id="btn-submit" class="btn btn-primary" type="submit" data-loading-text="Wait..."><i class="fa fa-save"></i> Submit</button>
                     <a class="btn btn-default" href="<?php echo $back_url; ?>"><i class="fa fa-backward"></i> Cancel</a>
                 </div>
             </div>
         </form>
     </div>
 </div>
-<script type="text/javascript" src="<?php echo site_url(config_item('path_lib').'bootstrap-fileinput/js/fileinput.min.js'); ?>"
+<script type="text/javascript" src="<?php echo site_url(config_item('path_lib').'ajax-form/jquery.form.min.js'); ?>"
 <script type="text/javascript">
-    $(document).ready( function () {
-        $('.btn-calender').on('click', function(){
-            $(this).parents('.input-group').find('input.datepicker').focus();
-        });
+    var Advert = {
+        _Id: 0,
+        init: function(){
+            var _this = this;
+            _this._Id = parseInt($('#id').val());
+            
+            $('.btn-calender').on('click', function(){
+                $(this).parents('.input-group').find('input.datepicker').focus();
+            });
         
-        $('input#file').fileinput({
-            showCaption: false,
-            allowedFileExtensions: ["jpg", "png", "gif", "mp4"]
-        })
-        .on('fileuploaded', function(event, data, previewId, index) {
-            var form = data.form, files = data.files, extra = data.extra, 
-            response = data.response, reader = data.reader;
-            console.log('File uploaded triggered');
-        })
-        .on('filebrowse', function (){
-            alert('Huh..it browsed');
-        })
-    });
-    var AdvertManager = {
-        
+            $('#MyForm').submit(function() { 
+                var $btn = $('#btn-submit');
+                $btn.button('loading');
+
+                var submitType = _this._Id ? 'PUT' : 'POST';
+                $('#MyForm').ajaxSubmit({
+                    type: submitType,
+                    url: '<?php echo get_action_url('ajax/advert/index'); ?>/'+_this._Id,
+                    dataType: 'json',
+                    success: function(data){
+                        $btn.button('reset');
+                        if (data.status){
+                            $('#id').val(data.item.id);
+                            _this._Id = parseInt(data.item.id);
+
+                            alert('Iklan berhasil disimpan');
+                        }else{
+                            alert(data.message);
+                        }
+                    }
+                });
+            });
+        }
     };
+    $(document).ready( function () {
+        Advert.init();
+    });
 </script>
