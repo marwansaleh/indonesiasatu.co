@@ -554,7 +554,7 @@ class MY_News extends MY_Controller {
             $where['all_pages'] = 1;
         }
         
-        $items = $this->advert_m->get();
+        $items = $this->advert_m->get_by($where);
         if ($items){
             $adverts = array();
             foreach ($items as $item){
