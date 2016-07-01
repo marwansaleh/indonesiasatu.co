@@ -528,7 +528,7 @@ class MY_News extends MY_Controller {
         $this->data['visitor_count'] = $this->_visitor_count();
         $this->data['FB_ID'] = $this->get_FB_ID();
         $this->data['GA_Code'] = $this->get_GA_Code();
-        
+        $this->data['adverts'] = NULL;
     }
     
     private function _visitor_count(){
