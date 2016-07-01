@@ -4,7 +4,7 @@
         <?php echo create_alert_box($this->session->flashdata('message'),$this->session->flashdata('message_type')); ?>
         <?php endif; ?>
         
-        <form id="MyForm" role="form" method="post" action="<?php echo $submit_url; ?>" enctype="multipart/form-data">
+        <form id="MyForm" class="form-validation">
             <input type="hidden" id="id" name="id" value="<?php echo $item->id; ?>">
             <div class="box">
                 <div class="box-header">
@@ -18,11 +18,28 @@
                     </div>
                     <div class="form-group">
                         <label>Advert type</label>
-                        <select name="type" class="form-control selectpicker" data-live-search="true" data-size="5">
+                        <select name="type" class="form-control">
                             <?php foreach ($advert_types as $type): ?>
                             <option value="<?php echo $type->id; ?>" <?php echo $type->id==$item->type?'selected':''; ?>><?php echo $type->name; ?></option>
                             <?php endforeach; ?>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Link Url</label>
+                        <div class="input-group">
+                            <input type="text" name="link_url" class="form-control" placeholder="http://" value="<?php echo $item->link_url; ?>">
+                            <div class="input-group-addon">
+                                <input type="checkbox" name="new_window" value="1" <?php echo $item->new_window==1?'checked':''; ?>> New Window
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <input type="checkbox" name="all_pages" <?php echo $item->all_pages==1?'checked':''; ?>> All Pages
+                        </label>
+                        <label class="control-label">
+                            <input type="checkbox" name="active" <?php echo $item->active==1?'checked':''; ?>> Active
+                        </label>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Upload file</label>
@@ -37,7 +54,8 @@
         </form>
     </div>
 </div>
-<script type="text/javascript" src="<?php echo site_url(config_item('path_lib').'ajax-form/jquery.form.min.js'); ?>"
+<script type="text/javascript" src="<?php echo site_url(config_item('path_lib').'jquery-validation/jquery.validate.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo site_url(config_item('path_lib').'ajax-form/jquery.form.min.js'); ?>"></script>
 <script type="text/javascript">
     var Advert = {
         _Id: 0,
@@ -49,27 +67,42 @@
                 $(this).parents('.input-group').find('input.datepicker').focus();
             });
         
-            $('#MyForm').submit(function() { 
-                var $btn = $('#btn-submit');
-                $btn.button('loading');
-
-                var submitType = _this._Id ? 'PUT' : 'POST';
-                $('#MyForm').ajaxSubmit({
-                    type: submitType,
-                    url: '<?php echo get_action_url('ajax/advert/index'); ?>/'+_this._Id,
-                    dataType: 'json',
-                    success: function(data){
-                        $btn.button('reset');
-                        if (data.status){
-                            $('#id').val(data.item.id);
-                            _this._Id = parseInt(data.item.id);
-
-                            alert('Iklan berhasil disimpan');
-                        }else{
-                            alert(data.message);
-                        }
+            $('form.form-validation').validate({
+                rules: {
+                    "name": {
+                        minlength: 2,
+                        required: true
                     }
-                });
+                },
+                highlight: function(element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                unhighlight: function(element) {
+                    $(element).closest('.form-group').removeClass('has-error');
+                },
+                submitHandler: function(form){
+                    var $btn = $('#btn-submit');
+                    $btn.button('loading');
+                    
+                    $(form).ajaxSubmit({
+                        type: 'POST',
+                        url: '<?php echo site_url('service/advert/index'); ?>',
+                        dataType: 'json',
+                        success: function(data){
+                            $btn.button('reset');
+                            if (data.status){
+                                $('#id').val(data.item.id);
+                                _this._Id = parseInt(data.item.id);
+
+                                alert('Iklan berhasil disimpan');
+                            }else{
+                                alert(data.message);
+                            }
+                        }
+                    });
+                    
+                    return false;
+                }
             });
         }
     };
