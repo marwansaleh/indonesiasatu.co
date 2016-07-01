@@ -50,16 +50,17 @@ class Advert extends MY_AdminController {
     }
     
     function edit(){
+        
         $id = $this->input->get('id', TRUE);
         $page = $this->input->get('page', TRUE);
         
-        $item = $id ? $this->advert_m->get($id):$this->advert_m->get_new();
+        if (!$this->users->has_access('ADDS_MANAGEMENT')){
+            $this->session->set_flashdata('message_type','error');
+            $this->session->set_flashdata('message', 'Sorry. You dont have access for this feature');
+            redirect('cms/advert/index?page='.$page);
+        }
         
-//        if ((!$id && !$this->users->has_access('CATEGORY_CREATE'))||($id && !$this->users->has_access('CATEGORY_EDIT'))){
-//            $this->session->set_flashdata('message_type','error');
-//            $this->session->set_flashdata('message', 'Sorry. You dont have access for this feature');
-//            redirect('cms/category/index?page='.$page);
-//        }
+        $item = $id ? $this->advert_m->get($id):$this->advert_m->get_new();
         
         $this->data['item'] = $item;
         
