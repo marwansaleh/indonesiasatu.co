@@ -19,8 +19,8 @@
                     <div class="form-group">
                         <label>Advert type</label>
                         <select name="type" class="form-control">
-                            <?php foreach ($advert_types as $type): ?>
-                            <option value="<?php echo $type->id; ?>" <?php echo $type->id==$item->type?'selected':''; ?>><?php echo $type->name; ?></option>
+                            <?php foreach ($advert_types as $type => $type_label): ?>
+                            <option value="<?php echo $type; ?>" <?php echo $type==$item->type?'selected':''; ?>><?php echo $type_label; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -35,11 +35,14 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">
-                            <input type="checkbox" name="all_pages" <?php echo $item->all_pages==1?'checked':''; ?>> All Pages
+                            <input type="checkbox" name="all_pages" value="1" <?php echo $item->all_pages==1?'checked':''; ?>> All Pages
                         </label>
                         <label class="control-label">
-                            <input type="checkbox" name="active" <?php echo $item->active==1?'checked':''; ?>> Active
+                            <input type="checkbox" name="active" value="1" <?php echo $item->active==1?'checked':''; ?>> Active
                         </label>
+                    </div>
+                    <div class="form-group">
+                        <img id="image-container" src="<?php echo $item->file_name ? site_url($item->file_name) : '';?>" class="img-responsive">
                     </div>
                     <div class="form-group">
                         <label class="control-label">Upload file</label>
@@ -93,6 +96,8 @@
                             if (data.status){
                                 $('#id').val(data.item.id);
                                 _this._Id = parseInt(data.item.id);
+                                
+                                $('#image-container').attr('src', data.item.file_name);
 
                                 alert('Iklan berhasil disimpan');
                             }else{
