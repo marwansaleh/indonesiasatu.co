@@ -10,7 +10,7 @@ class Advert_m extends MY_Model {
     protected $_table_name = 'adverts';
     protected $_primary_key = 'id';
     protected $_primary_filter = 'intval';
-    protected $_order_by = 'start_date desc, end_date desc';
+    protected $_order_by = 'inserted desc';
     
     public $rules = array(
         'name' => array(
