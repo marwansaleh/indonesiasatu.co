@@ -15,7 +15,6 @@
             <li><a href="<?php echo site_url('cms/staticpage'); ?>">Static Pages</a></li>
         </ul>
     </li>
-    <?php if ($this->users->has_access('ADDS_MANAGEMENT')): ?>
     <li class="treeview  <?php echo $active_menu=='advert'?'active':''; ?>">
         <a href="#"><i class="fa fa-expand"></i> <span>Advertisement</span>  <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
@@ -23,7 +22,6 @@
             <li><a href="<?php echo site_url('cms/advert_type'); ?>">Tipe Iklan</a></li>
         </ul>
     </li>
-    <?php endif; ?>
     <li class="treeview">
         <a href="#"><i class="fa fa-users"></i> <span>User Managements</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
