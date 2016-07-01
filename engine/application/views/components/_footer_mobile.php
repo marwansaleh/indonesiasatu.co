@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="row" style="border-top: solid 1px #CCC; border-bottom: solid 1px #CCC;">
-            <div class="col-xs-12">
+            <div class="col-xs-12 text-center">
                 <ul id="helper-bottom-menus">
                     <li>
                         <a href="<?php echo site_url('staticpage/index/redaksi'); ?>">Redaksi</a>
