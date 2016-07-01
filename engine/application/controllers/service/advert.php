@@ -51,15 +51,27 @@ class Advert extends REST_Api {
             
             if ($upload){
                 $upload_data = $this->upload->data();
-                $inserted_data['file_name'] = $upload_data['full_path'];
+                $inserted_data['file_name'] = $upload_path . $upload_data['file_name'];
                 $inserted_data['file_type'] = $upload_data['file_type'];
+                
+                //remove old file first
+                if ($id){
+                    $old_item = $this->advert_m->get($id);
+                    if ($old_item && file_exists($old_item->file_name)){
+                        unlink($old_item->file_name);
+                    }
+                }
             }
             
             
             $id = $this->advert_m->save($inserted_data, $id);
             if ($id){
                 $result['status'] = TRUE;
-                $result['item'] = $this->advert_m->get($id);
+                $item = $this->advert_m->get($id);
+                if ($item->file_name){
+                    $item->file_name = site_url($item->file_name);
+                }
+                $result['item'] = $item;
             }else{
                 $result['message'] = $this->advert_m->get_last_message();
             }
