@@ -83,6 +83,9 @@ class Contact extends MY_News {
         
         $this->data['contactus'] = $this->session->userdata('contactpost');
         
+        //get managable advert
+        $this->data['adverts'] = $this->get_advert_active(FALSE);
+        
         $this->data['subview'] = 'frontend/contact/index';
         $this->load->view('_layout_main', $this->data);
     }

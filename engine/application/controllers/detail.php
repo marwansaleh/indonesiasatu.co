@@ -159,6 +159,9 @@ class Detail extends MY_News {
             //support for comments
             $this->data['is_admin'] = $this->users->isLoggedin() ? $this->users->is_admin() : FALSE;
 
+            //get managable advert
+            $this->data['adverts'] = $this->get_advert_active(FALSE);
+        
             //$this->data['main_slider'] = TRUE;
             $this->data['subview'] = 'frontend/detail/index';
             $this->load->view('_layout_main', $this->data);
