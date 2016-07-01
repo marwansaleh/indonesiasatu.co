@@ -84,6 +84,10 @@
         <div class="row main-nav">
             <div class="col-sm-12"><?php $this->load->view('components/_mainmenu'); ?></div>
         </div>
+        
+        <?php if ($adverts && isset($adverts[ADV_TYPE_TOP])): ?>
+        <?php $this->load->view('frontend/advert/top'); ?>
+        <?php endif; ?>
     </div>
 </header>
 <?php if (!$is_logged_in): ?>
