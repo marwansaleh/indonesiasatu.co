@@ -33,7 +33,7 @@
                 <a href="http://www.veritasdharmasatya.com" target="_blank"><span>www.veritasdharmasatya.com</span></a>
             </div>
         </div>
-        <p class="redaksi" style="font-size: 10px; padding-top: 3px; padding-bottom: 3px; background-color: #424242;">
+        <p class="redaksi" style="font-size: 10px; padding-top: 5px; padding-bottom: 5px; background-color: #424242;">
             Penasihat: Letjen TNI (Purn) Kiki Syahnakri<br>
             Pemimpin Redaksi: Valens Daki-Soo<br>
             Redaktur Pelaksana: Simon Leya
