@@ -15,20 +15,12 @@
         </div>
         <div class="row" style="border-top: solid 1px #CCC; border-bottom: solid 1px #CCC;">
             <div class="col-xs-12 text-center">
-                <ul id="helper-bottom-menus">
-                    <li>
-                        <a href="<?php echo site_url('staticpage/index/redaksi'); ?>">Redaksi</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo site_url('staticpage/index/about'); ?>">Tentang Kami</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo site_url('staticpage/index/iklan'); ?>">Info Iklan</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo site_url('staticpage/index/privacypolicy'); ?>">Privacy Policy</a>
-                    </li>
-                </ul>
+                <div class="btn-group btn-group-justified" role="group">
+                    <a class="btn btn-link btn-sm" href="<?php echo site_url('staticpage/index/redaksi'); ?>">Redaksi</a>
+                    <a class="btn btn-link btn-sm" href="<?php echo site_url('staticpage/index/about'); ?>">Tentang Kami</a>
+                    <a class="btn btn-link btn-sm" href="<?php echo site_url('staticpage/index/iklan'); ?>">Info Iklan</a>
+                    <a class="btn btn-link btn-sm" href="<?php echo site_url('staticpage/index/privacypolicy'); ?>">Privacy Policy</a>
+                </div>
             </div>
         </div>
         <div class="row" style="font-size: 9px; border-bottom: solid 1px #CCC;">
