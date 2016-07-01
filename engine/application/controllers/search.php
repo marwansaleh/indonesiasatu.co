@@ -123,6 +123,9 @@ class Search extends MY_News {
         //data load by ajax
         //$this->data['mobile_news'] = $this->_mobile_news($limit);
         
+        //get managable advert
+        $this->data['adverts'] = $this->get_advert_active(FALSE);
+        
         $this->data['subview'] = 'mobile/search/index';
         $this->load->view('_layout_mobile', $this->data);
     }

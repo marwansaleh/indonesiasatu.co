@@ -91,6 +91,9 @@ class Newsindex extends MY_News {
             );
         }
         
+        //get managable advert
+        $this->data['adverts'] = $this->get_advert_active(FALSE);
+        
         $this->data['subview'] = 'frontend/newsindex/index';
         $this->load->view('_layout_main', $this->data);
     }
