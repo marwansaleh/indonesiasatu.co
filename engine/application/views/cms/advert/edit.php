@@ -51,7 +51,7 @@
                 </div>
                 <div class="box-footer clearfix">
                     <button id="btn-submit" class="btn btn-primary" type="submit" data-loading-text="Wait..."><i class="fa fa-save"></i> Submit</button>
-                    <a class="btn btn-default" href="<?php echo $back_url; ?>"><i class="fa fa-backward"></i> Cancel</a>
+                    <a class="btn btn-default" href="<?php echo $back_url; ?>"><i class="fa fa-backward"></i> Back</a>
                 </div>
             </div>
         </form>
@@ -95,10 +95,9 @@
                             $btn.button('reset');
                             if (data.status){
                                 $('#id').val(data.item.id);
+                                $('#image-container').attr('src', data.item.file_name);
                                 _this._Id = parseInt(data.item.id);
                                 
-                                $('#image-container').attr('src', data.item.file_name);
-
                                 alert('Iklan berhasil disimpan');
                             }else{
                                 alert(data.message);
