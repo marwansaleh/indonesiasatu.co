@@ -1,4 +1,5 @@
     <style type="text/css">
+        .bottom-menu { display: block; margin: auto; }
         .bottom-menu a { border-right: solid 1px #FFF; display: inline-block; float: left; padding: 3px; line-height: 10px; font-size: 10px;}
         .bottom-menu a:last-child { border-right: none; }
     </style>
