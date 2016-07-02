@@ -15,10 +15,14 @@
         </div>
         <!-- continue bottom news if elements more than 8 elements -->
         <?php if (count($mobile_bottom_menus)>8): ?>
-        <div class="btn-group btn-group-justified" role="group">
-            <?php for ($i=7; $i<count($mobile_bottom_menus); $i++): ?>
-            <a class="btn btn-link btn-sm" href="<?php echo site_url('category/'.$mobile_bottom_menus[$i]->slug); ?>"><?php echo $mobile_bottom_menus[$i]->name; ?></a>
-            <?php endfor; ?>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="btn-group btn-group-justified" role="group">
+                    <?php for ($i=7; $i<count($mobile_bottom_menus); $i++): ?>
+                    <a class="btn btn-link btn-sm" href="<?php echo site_url('category/'.$mobile_bottom_menus[$i]->slug); ?>"><?php echo $mobile_bottom_menus[$i]->name; ?></a>
+                    <?php endfor; ?>
+                </div>
+            </div>
         </div>
         <?php endif; ?>
         <div class="row" style="border-top: solid 1px #CCC; border-bottom: solid 1px #CCC;">
