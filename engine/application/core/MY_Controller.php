@@ -543,9 +543,9 @@ class MY_News extends MY_Controller {
             $this->load->model('article/category_m');
         }
         
-        $category_id = array(2,90,4,77,33,3,9,10,75,66,72,45,63);
+        $category_id = array(2,90,4,77,10,75,33,3,9,66,72,45,63);
         $this->db->where_in('id', $category_id);
-        return $this->category_m->get();
+        return $this->db->get($this->category_m->get_tablename())->result();
     }
     
     protected function get_advert_active($homepage=FALSE){
