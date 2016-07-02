@@ -1,7 +1,7 @@
     <style type="text/css">
         .bottom-menu { display: block; margin: auto; padding: 5px 0 5px 0; }
         .bottom-menu a { border-left: solid 1px #cccccc; display: inline-block; float: left; padding: 0 3px 0 3px; line-height: 10px; font-size: 10px; color: #CFA554!important; margin-top: 5px;}
-        .bottom-menu a:first-child { border-right: none; }
+        .bottom-menu a:first-child { border: none; }
     </style>
     <footer>
         <div id="back-top" class="row">
@@ -10,26 +10,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-center">
-                <div class="bottom-menu" role="group">
+            <div class="col-xs-12">
+                <div class="bottom-menu text-center" role="group">
                     <?php $i=0; foreach ($mobile_bottom_menus as $mainmenu): ?>
                     <a href="<?php echo site_url('category/'.$mainmenu->slug); ?>"><?php echo $mainmenu->name; ?></a>
                     <?php $i++; endforeach; ?>
                 </div>
             </div>
         </div>
-        <!-- continue bottom news if elements more than 8 elements -->
-        <?php if (count($mobile_bottom_menus)>9): ?>
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <div class="bottom-menu" role="group">
-                    <?php for ($i=8; $i<count($mobile_bottom_menus); $i++): ?>
-                    <a href="<?php echo site_url('category/'.$mobile_bottom_menus[$i]->slug); ?>"><?php echo $mobile_bottom_menus[$i]->name; ?></a>
-                    <?php endfor; ?>
-                </div>
-            </div>
-        </div>
-        <?php endif; ?>
         <div class="row" style="border-top: solid 1px #CCC; border-bottom: solid 1px #CCC; margin-top: 5px;">
             <div class="col-xs-12 text-center">
                 <div class="btn-group btn-group-justified" role="group">
