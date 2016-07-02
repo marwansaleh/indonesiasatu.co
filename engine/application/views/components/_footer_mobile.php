@@ -30,7 +30,7 @@
             </div>
         </div>
         <?php endif; ?>
-        <div class="row" style="border-top: solid 1px #CCC; border-bottom: solid 1px #CCC;">
+        <div class="row" style="border-top: solid 1px #CCC; border-bottom: solid 1px #CCC; margin-top: 5px;">
             <div class="col-xs-12 text-center">
                 <div class="btn-group btn-group-justified" role="group">
                     <a class="btn btn-link btn-sm" href="<?php echo site_url('staticpage/index/redaksi'); ?>">Redaksi</a>
