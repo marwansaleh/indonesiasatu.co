@@ -1,7 +1,7 @@
     <style type="text/css">
         .bottom-menu { display: block; margin: auto; padding: 5px 0 5px 0; }
-        .bottom-menu a { border-right: solid 1px #cccccc; display: inline-block; float: left; padding: 0 3px 0 3px; line-height: 10px; font-size: 10px; color: #CFA554!important;}
-        .bottom-menu a:last-child { border-right: none; }
+        .bottom-menu a { border-left: solid 1px #cccccc; display: inline-block; float: left; padding: 0 3px 0 3px; line-height: 10px; font-size: 10px; color: #CFA554!important; margin-top: 5px;}
+        .bottom-menu a:first-child { border-right: none; }
     </style>
     <footer>
         <div id="back-top" class="row">
@@ -14,7 +14,7 @@
                 <div class="bottom-menu" role="group">
                     <?php $i=0; foreach ($mobile_bottom_menus as $mainmenu): ?>
                     <a href="<?php echo site_url('category/'.$mainmenu->slug); ?>"><?php echo $mainmenu->name; ?></a>
-                    <?php $i++; if ($i==8): break; endif; endforeach; ?>
+                    <?php $i++; endforeach; ?>
                 </div>
             </div>
         </div>
