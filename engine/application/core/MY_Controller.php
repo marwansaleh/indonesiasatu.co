@@ -524,7 +524,7 @@ class MY_News extends MY_Controller {
         $all_channel_and_childrens = $this->get_channels();
         $this->data['channels'] = $all_channel_and_childrens;
         $this->data['mainmenus'] = $this->_mainmenu() ;//$all_channel_and_childrens;
-        $this->data['mobile_bottom_menus'] = $this->_mobile_bottom_menus();
+        //$this->data['mobile_bottom_menus'] = $this->_mobile_bottom_menus();
         $this->data['visitor_count'] = $this->_visitor_count();
         $this->data['FB_ID'] = $this->get_FB_ID();
         $this->data['GA_Code'] = $this->get_GA_Code();
