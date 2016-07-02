@@ -12,24 +12,27 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <div class="bottom-menu" role="group">
-                    <?php $i=0; foreach ($mobile_bottom_menus as $mainmenu): ?>
-                    <a href="<?php echo site_url('category/'.$mainmenu->slug); ?>"><?php echo $mainmenu->name; ?></a>
-                    <?php $i++; if ($i==8): break; endif; endforeach; ?>
+                    <a href="<?php echo site_url('category/berita'); ?>">Berita</a>
+                    <a href="<?php echo site_url('category/ekonomi'); ?>">Ekonomi</a>
+                    <a href="<?php echo site_url('category/hankam'); ?>">Hankam</a>
+                    <a href="<?php echo site_url('category/politik'); ?>">Politik</a>
+                    <a href="<?php echo site_url('category/industri'); ?>">Industri</a>
+                    <a href="<?php echo site_url('category/internasional'); ?>">Internasional</a>
+                    <a href="<?php echo site_url('category/daerah'); ?>">Daerah</a>
                 </div>
             </div>
         </div>
         <!-- continue bottom news if elements more than 8 elements -->
-        <?php if (count($mobile_bottom_menus)>9): ?>
         <div class="row">
             <div class="col-xs-12">
                 <div class="bottom-menu text-center" role="group">
-                    <?php for ($i=8; $i<count($mobile_bottom_menus); $i++): ?>
-                    <a href="<?php echo site_url('category/'.$mobile_bottom_menus[$i]->slug); ?>"><?php echo $mobile_bottom_menus[$i]->name; ?></a>
-                    <?php endfor; ?>
+                    <a href="<?php echo site_url('category/inspirasi'); ?>">Inspirasi</a>
+                    <a href="<?php echo site_url('category/opini'); ?>">Opini</a>
+                    <a href="<?php echo site_url('category/refleksi'); ?>">Refleksi</a>
+                    <a href="<?php echo site_url('category/gaya-hidup'); ?>">Gaya Hidup</a>
                 </div>
             </div>
         </div>
-        <?php endif; ?>
         <div class="row" style="border-top: solid 1px #CCC; border-bottom: solid 1px #CCC; margin-top: 5px;">
             <div class="col-xs-12 text-center">
                 <div class="btn-group btn-group-justified" role="group">
