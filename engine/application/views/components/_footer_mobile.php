@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <div class="bottom-menu" role="group">
-                    <?php for ($i=7; $i<count($mobile_bottom_menus); $i++): ?>
+                    <?php for ($i=8; $i<count($mobile_bottom_menus); $i++): ?>
                     <a href="<?php echo site_url('category/'.$mobile_bottom_menus[$i]->slug); ?>"><?php echo $mobile_bottom_menus[$i]->name; ?></a>
                     <?php endfor; ?>
                 </div>
