@@ -1,5 +1,5 @@
     <style type="text/css">
-        .bottom-menu a { border-right: solid 1px #FFF;}
+        .bottom-menu a { border-right: solid 1px #FFF; display: block; padding: 3px; line-height: 10px; font-size: 10px;}
         .bottom-menu a:last-child { border-right: none; }
     </style>
     <footer>
@@ -10,9 +10,9 @@
         </div>
         <div class="row">
             <div class="col-xs-12 text-center">
-                <div class="btn-group btn-group-justified bottom-menu" role="group">
+                <div class="bottom-menu" role="group">
                     <?php $i=0; foreach ($mobile_bottom_menus as $mainmenu): ?>
-                    <a class="btn btn-link btn-sm" href="<?php echo site_url('category/'.$mainmenu->slug); ?>" style="font-size: 10px;"><?php echo $mainmenu->name; ?></a>
+                    <a href="<?php echo site_url('category/'.$mainmenu->slug); ?>"><?php echo $mainmenu->name; ?></a>
                     <?php $i++; if ($i==7): break; endif; endforeach; ?>
                 </div>
             </div>
