@@ -21,8 +21,8 @@
         <!-- continue bottom news if elements more than 8 elements -->
         <?php if (count($mobile_bottom_menus)>9): ?>
         <div class="row">
-            <div class="col-xs-12 text-center">
-                <div class="bottom-menu" role="group">
+            <div class="col-xs-12">
+                <div class="bottom-menu text-center" role="group">
                     <?php for ($i=8; $i<count($mobile_bottom_menus); $i++): ?>
                     <a href="<?php echo site_url('category/'.$mobile_bottom_menus[$i]->slug); ?>"><?php echo $mobile_bottom_menus[$i]->name; ?></a>
                     <?php endfor; ?>
