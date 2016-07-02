@@ -6,13 +6,21 @@
         </div>
         <div class="row">
             <div class="col-xs-12 text-center">
-                <ul id="main-bottom-menus">
+                <div class="btn-group btn-group-justified" role="group">
                     <?php $i=0; foreach ($mobile_bottom_menus as $mainmenu): ?>
-                    <li><a href="<?php echo site_url('category/'.$mainmenu->slug); ?>"><?php echo $mainmenu->name; ?></a></li>
-                    <?php $i++; endforeach; ?>
-                </ul>
+                    <a class="btn btn-link btn-sm" href="<?php echo site_url('category/'.$mainmenu->slug); ?>"><?php echo $mainmenu->name; ?></a>
+                    <?php $i++; if ($i==7): break; endif; endforeach; ?>
+                </div>
             </div>
         </div>
+        <!-- continue bottom news if elements more than 8 elements -->
+        <?php if (count($mobile_bottom_menus)>8): ?>
+        <div class="btn-group btn-group-justified" role="group">
+            <?php for ($i=7; $i<count($mobile_bottom_menus); $i++): ?>
+            <a class="btn btn-link btn-sm" href="<?php echo site_url('category/'.$mobile_bottom_menus[$i]->slug); ?>"><?php echo $mobile_bottom_menus[$i]->name; ?></a>
+            <?php endfor; ?>
+        </div>
+        <?php endif; ?>
         <div class="row" style="border-top: solid 1px #CCC; border-bottom: solid 1px #CCC;">
             <div class="col-xs-12 text-center">
                 <div class="btn-group btn-group-justified" role="group">
