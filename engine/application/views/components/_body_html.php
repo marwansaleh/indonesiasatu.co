@@ -7,6 +7,7 @@
         </div>
         <aside class="col-sm-4">
             <?php $this->load->view('components/_side_right'); ?>
+            <?php $this->load->view('frontend/socmed/facebook');?>
         </aside>
     </div>
 </div>
