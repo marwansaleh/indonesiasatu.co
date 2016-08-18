@@ -55,7 +55,7 @@
         </div>
         <p class="redaksi" style="font-size: 10px; padding-top: 5px; padding-bottom: 5px; background-color: #424242;">
             Penasihat: Letjen TNI (Purn) Kiki Syahnakri<br>
-            Pemimpin Redaksi: Valens Daki-Soo<br>
+            Pendiri/Pemimpin Redaksi: Valens Daki-Soo<br>
             Redaktur Pelaksana: Simon Leya
         </p>
         <p class="redaksi" style="font-size: 8px;">
