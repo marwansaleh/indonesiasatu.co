@@ -10,15 +10,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-center">
-                <div class="bottom-menu" role="group">
-                    <a href="<?php echo site_url('category/berita'); ?>">Berita</a>
-                    <a href="<?php echo site_url('category/ekonomi'); ?>">Ekonomi</a>
-                    <a href="<?php echo site_url('category/hankam'); ?>">Hankam</a>
-                    <a href="<?php echo site_url('category/politik'); ?>">Politik</a>
-                    <a href="<?php echo site_url('category/industri'); ?>">Industri</a>
-                    <a href="<?php echo site_url('category/internasional'); ?>">Internasional</a>
-                    <a href="<?php echo site_url('category/daerah'); ?>">Daerah</a>
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="bottom-menu btn-group btn-group-justified" role="group">
+                    <a href="<?php echo site_url('category/berita'); ?>" class="btn btn-link" role="button">Berita</a>
+                    <a href="<?php echo site_url('category/ekonomi'); ?>" class="btn btn-link" role="button">Ekonomi</a>
+                    <a href="<?php echo site_url('category/hankam'); ?>" class="btn btn-link" role="button">Hankam</a>
+                    <a href="<?php echo site_url('category/politik'); ?>" class="btn btn-link" role="button">Politik</a>
+                    <a href="<?php echo site_url('category/industri'); ?>" class="btn btn-link" role="button">Industri</a>
+                    <a href="<?php echo site_url('category/internasional'); ?>" class="btn btn-link" role="button">Internasional</a>
+                    <a href="<?php echo site_url('category/daerah'); ?>" class="btn btn-link" role="button">Daerah</a>
                 </div>
             </div>
         </div>
