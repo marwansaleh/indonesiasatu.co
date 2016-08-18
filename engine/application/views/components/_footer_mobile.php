@@ -24,12 +24,12 @@
         </div>
         <!-- continue bottom news if elements more than 8 elements -->
         <div class="row">
-            <div class="col-xs-12">
-                <div class="bottom-menu text-center" role="group">
-                    <a href="<?php echo site_url('category/inspirasi'); ?>">Inspirasi</a>
-                    <a href="<?php echo site_url('category/opini'); ?>">Opini</a>
-                    <a href="<?php echo site_url('category/refleksi'); ?>">Refleksi</a>
-                    <a href="<?php echo site_url('category/gaya-hidup'); ?>">Gaya Hidup</a>
+            <div class="col-xs-8  col-xs-offset-2">
+                <div class="bottom-menu btn-group btn-group-justified" role="group">
+                    <a href="<?php echo site_url('category/inspirasi'); ?>" class="btn btn-link" role="button">Inspirasi</a>
+                    <a href="<?php echo site_url('category/opini'); ?>" class="btn btn-link" role="button">Opini</a>
+                    <a href="<?php echo site_url('category/refleksi'); ?>" class="btn btn-link" role="button">Refleksi</a>
+                    <a href="<?php echo site_url('category/gaya-hidup'); ?>" class="btn btn-link" role="button">Gaya Hidup</a>
                 </div>
             </div>
         </div>
