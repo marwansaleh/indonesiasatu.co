@@ -11,7 +11,7 @@
                             <p class="redaksi">
                                 Penasihat: Letjen TNI (Purn) Kiki Syahnakri<br>
                                 <!-- Pendiri: Valens Daki-Soo<br>-->
-                                Pemimpin Redaksi: Valens Daki-Soo<br>
+                                Pendiri/Pemimpin Redaksi: Valens Daki-Soo<br>
                                 Redaktur Pelaksana: Simon Leya<br>
                                 Redaksi Jakarta: Andi Tandang<br>
                                 Penerbit: Divisi Publishing PT VERITAS DHARMA SATYA<br>
