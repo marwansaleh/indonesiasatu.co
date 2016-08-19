@@ -564,7 +564,7 @@ class MY_News extends MY_Controller {
             
             return $adverts;
         }
-        return $this->advert_m->get();
+        return FALSE;
     }
     
     protected function get_forbidden_categories(){
