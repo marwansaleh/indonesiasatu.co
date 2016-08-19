@@ -174,7 +174,7 @@ class Home extends MY_News {
         
         //set iklan gabung
         $this->data['iklan_gabung'] = userfiles_baseurl(config_item('advert').'iklan-gabung-20160330.jpg');
-        $this->data['iklan_kiri2'] = userfiles_baseurl(config_item('advert').'iklan-travel.jpg');
+        //$this->data['iklan_kiri2'] = userfiles_baseurl(config_item('advert').'iklan-travel.jpg');
         
         //get managable advert
         $this->data['adverts'] = $this->get_advert_active(TRUE);
