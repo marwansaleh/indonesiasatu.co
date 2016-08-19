@@ -539,7 +539,7 @@ if (!function_exists('kelvin_2_celcius')){
 
 if (!function_exists('advert_type')){
     function advert_type($type=NULL){
-        $types = array(ADV_TYPE_TOP => 'Top Advert');
+        $types = array(ADV_TYPE_TOP => 'Top Advert', ADV_TYPE_BOTTOM_LEFT => 'Bottom Left');
         
         if (!$type){
             return $types;
