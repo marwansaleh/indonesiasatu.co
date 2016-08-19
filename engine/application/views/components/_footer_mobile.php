@@ -45,11 +45,17 @@
         </div>
         <div class="row" style="font-size: 9px; border-bottom: solid 1px #CCC;">
             <div class="col-xs-6 text-right">
-                <span style="color: #CFA554; font-size: 7px;">Terbit sejak 1 Desember 2015. Visitor: <?php echo number_format($visitor_count); ?></span><br>
+                <span style="color: #CFA554;">
+                    Terbit sejak 1 Desember 2015<br>
+                    Visitor: <?php echo number_format($visitor_count); ?>
+                </span><br>
                 <a href="http://indonesiasatu.co"><span>www.indonesiasatu.co</span></a>
             </div>
             <div class="col-xs-6 text-left" style="border-left: solid 1px #CCC;">
-                <span style="color: #CFA554;">Diterbitkan oleh PT. Veritas Dharma Satya</span><br>
+                <span style="color: #CFA554;">
+                    Diterbitkan oleh<br>
+                    PT. Veritas Dharma Satya
+                </span><br>
                 <a href="http://www.veritasdharmasatya.com" target="_blank"><span>www.veritasdharmasatya.com</span></a>
             </div>
         </div>
