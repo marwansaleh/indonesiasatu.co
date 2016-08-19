@@ -130,40 +130,6 @@
             <?php $this->load->view('components/_side_right'); ?>
         </aside>
     </div>
-    <!-- insert advert -->
-<!--    <div class="container">
-        <div class="row">
-            
-            <div class="col-sm-4">
-                <div class="flexslider flexslider-mid-advert">
-                    <ul class="slides">
-                        <li>
-                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag01.jpg'); ?>" />
-                        </li>
-                        <li>
-                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag02.jpg'); ?>" />
-                        </li>
-                        <li>
-                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag03.jpg'); ?>" />
-                        </li>
-                        <li>
-                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag04.jpg'); ?>" />
-                        </li>
-                        <li>
-                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag05.jpg'); ?>" />
-                        </li>
-                        <li>
-                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag06.jpg'); ?>" />
-                        </li>
-                        <li>
-                            <img src="<?php echo userfiles_baseurl(config_item('advert').'ag07.jpg'); ?>" />
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    
 </div>
 
 
