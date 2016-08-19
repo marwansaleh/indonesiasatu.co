@@ -162,12 +162,8 @@
             <?php endif; ?>
         </div>
         <?php endif; ?>
-        <?php if (isset($iklan_kiri2)): ?>
-        <div class="row" style="margin-top:5px;">
-            <div class="col-lg-12">
-                <img class="img-responsive" src="<?php echo $iklan_kiri2; ?>" />
-            </div>
-        </div>
+        <?php if ($adverts && isset($adverts[ADV_TYPE_BOTTOM_LEFT])): ?>
+        <?php $this->load->view('frontend/advert/bottom_left'); ?>
         <?php endif; ?>
     </div>
     <!-- start category -->
