@@ -78,5 +78,7 @@ define('AUTHOR_HIDDEN', 1);
 
 define('ADV_TYPE_TOP', 1);
 define('ADV_TYPE_BOTTOM_LEFT', 2);
+define('ADV_TYPE_MOBILE_TOP',6);
+define('ADV_TYPE_MOBILE_BODY',7);
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
