@@ -141,7 +141,7 @@ class Category extends MY_News {
         $this->data['limit'] = $limit;
         
         //get managable advert
-        $this->data['adverts'] = $this->get_advert_active(TRUE);
+        $this->data['adverts'] = $this->get_advert_active(FALSE);
         
         $this->data['subview'] = 'mobile/category/index';
         $this->load->view('_layout_mobile', $this->data);
