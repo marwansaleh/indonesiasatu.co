@@ -1,7 +1,7 @@
 <input type="hidden" id="limit" value="<?php echo $limit; ?>">
 <div class="main">
-    <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_TOP])): ?>
-    <div id="adv-mobile-top" class="hidden">
+    <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_BODY])): ?>
+    <div id="adv-mobile-body" class="hidden">
         <?php $this->load->view('frontend/advert/mobile_body'); ?>
     </div>
     <?php endif; ?>
@@ -53,7 +53,7 @@
                             s+= '</a>';
                         }else{
                             if (_this.isAdvert){
-                                var $advert = $('#adv-mobile-top .mobile-adv-content').clone();
+                                var $advert = $('#adv-mobile-body .mobile-adv-content').clone();
                                 $('#news-list').append('<li class="media">'+$advert+'</li>');
                             }
                             s+= '<div class="media-left">';
