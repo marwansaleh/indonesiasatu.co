@@ -37,6 +37,8 @@
         },
         loadNews: function (){
             var _this = this;
+            var adv_showed = false;
+            
             if (_this.reachLimit || _this.inProccess){
                 return;
             }
@@ -54,8 +56,9 @@
                                 s+= '<img class="media-object img-responsive" src="'+data[i].image_url.large+'" alt="'+data[i].title+'">' ;
                             s+= '</a>';
                         }else{
-                            if (_this.isAdvert){
-                                var $advert = $('#adv-mobile-body .mobile-adv-content').clone();
+                            if (_this.isAdvert && !adv_showed){
+                                adv_showed = true;
+                                var $advert = $('#adv-mobile-body .mobile-adv-content').html();
                                 $('#news-list').append('<li class="media">'+$advert+'</li>');
                             }
                             
