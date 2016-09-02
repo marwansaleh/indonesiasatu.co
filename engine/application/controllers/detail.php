@@ -205,6 +205,8 @@ class Detail extends MY_News {
             'image'         => get_image_thumb($article->image_url, IMAGE_THUMB_LARGE)
         ));
         
+        $this->data['adverts'] = $this->get_advert_active(FALSE);
+        
         //$this->data['main_slider'] = TRUE;
         $this->data['subview'] = 'mobile/detail/index';
         $this->load->view('_layout_mobile', $this->data);
