@@ -56,7 +56,7 @@
                             if (_this.isAdvert && !adv_showed){
                                 adv_showed = true; 
                                 
-                                var $advert = $('#adv-mobile-body .mobile-adv-content').clone();
+                                var $advert = $('#adv-mobile-body .mobile-adv-content').html();
                                 $('#news-list').append('<li class="media">'+$advert+'</li>');
                             }
                             s+= '<div class="media-left">';
