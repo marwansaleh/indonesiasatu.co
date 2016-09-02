@@ -26,7 +26,7 @@
         },
         init: function(){
             var _this = this;
-            if ($('#adv-mobile-top').length){
+            if ($('#adv-mobile-body').length){
                 _this.isAdvert = true;
             }
             //if exists
