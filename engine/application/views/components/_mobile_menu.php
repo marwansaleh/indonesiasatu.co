@@ -50,11 +50,11 @@
     </div>
 </div>
 
+<?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_TOP])): ?>
+<?php $this->load->view('frontend/advert/mobile_top'); ?>
+<?php endif; ?>
+
 <div class="well well-sm">
-    <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_TOP])): ?>
-    <?php $this->load->view('frontend/advert/mobile_top'); ?>
-    <?php endif; ?>
-    
     <div id="main-search">
         <form action="<?php echo site_url('search'); ?>" method="post">
             <div class="input-group input-group-sm">
