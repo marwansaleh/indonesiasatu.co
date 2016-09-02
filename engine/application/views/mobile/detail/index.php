@@ -53,6 +53,9 @@
         </div>
     </article>
 </div>
+<?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_BODY])): ?>
+<?php $this->load->view('frontend/advert/mobile_body'); ?>
+<?php endif; ?>
 <!-- related news -->
 <?php if ($related_news): ?>
 <div class="blog-page">
