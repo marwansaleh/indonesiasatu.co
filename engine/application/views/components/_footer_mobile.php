@@ -4,6 +4,10 @@
         .bottom-menu a:first-child { border: none; }
     </style>
     <footer>
+        <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_BOTTOM])): ?>
+        <?php $this->load->view('frontend/advert/mobile_bottom'); ?>
+        <?php endif; ?>
+        
         <div id="back-top" class="row">
             <div class="col-xs-12 text-center">
                 <a href="#top">Kembali ke atas</a>
