@@ -117,6 +117,7 @@ class Newsindex extends MY_News {
             $article->category_name = $this->category_m->get_value('name',array('id'=>$article->category_id));
             $this->data['articles'][] = $article;
         }
+        $this->data['adverts'] = $this->get_advert_active(FALSE);
         
         $this->data['subview'] = 'mobile/newsindex/index';
         $this->load->view('_layout_mobile', $this->data);
