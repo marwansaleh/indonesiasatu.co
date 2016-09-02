@@ -1,13 +1,6 @@
 <div class="well well-sm">
     <div class="row">
         <div class="col-sm-12">
-            <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_BODY])): ?>
-            <div id="adv-mobile-body">
-                <?php $this->load->view('frontend/advert/mobile_body'); ?>
-            </div>
-            <?php endif; ?>
-        </div>
-        <div class="col-sm-12">
             <form method="post" action="<?php echo site_url('newsindex'); ?>">
                 <div class="row">
                     <div class="form-group form-group-sm">
@@ -43,6 +36,12 @@
     </div>
 </div>
 <div class="main">
+    <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_BODY])): ?>
+    <div id="adv-mobile-body">
+        <?php $this->load->view('frontend/advert/mobile_body'); ?>
+    </div>
+    <?php endif; ?>
+    
     <?php if (count($articles)): ?>
     <ul id="news-list" class="media-list">
         <?php foreach ($articles as $article): ?>
