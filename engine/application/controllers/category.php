@@ -139,8 +139,9 @@ class Category extends MY_News {
         //Load popular news
         $limit = isset($parameters['MOBILE_NEWS_NUM'])?$parameters['MOBILE_NEWS_NUM']:15;
         $this->data['limit'] = $limit;
-        //data load by ajax
-        //$this->data['mobile_news'] = $this->_mobile_news($limit, array('category_id'=>$category->id));
+        
+        //get managable advert
+        $this->data['adverts'] = $this->get_advert_active(TRUE);
         
         $this->data['subview'] = 'mobile/category/index';
         $this->load->view('_layout_mobile', $this->data);
