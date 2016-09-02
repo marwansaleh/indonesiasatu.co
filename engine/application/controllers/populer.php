@@ -22,8 +22,8 @@ class Populer extends MY_News {
         //Load popular news
         $limit = isset($parameters['MOBILE_NEWS_NUM'])?$parameters['MOBILE_NEWS_NUM']:15;
         $this->data['limit'] = $limit;
-        //data load by ajax
-        //$this->data['mobile_news'] = $this->_mobile_news($limit);
+        
+        $this->data['adverts'] = $this->get_advert_active(FALSE);
         
         $this->data['subview'] = 'mobile/populer/index';
         $this->load->view('_layout_mobile', $this->data);
