@@ -3,11 +3,12 @@
         .bottom-menu a { border-left: solid 1px #cccccc; display: inline-block; float: left; padding: 0 3px 0 3px; line-height: 10px; font-size: 10px; color: #CFA554!important; margin-top: 5px;}
         .bottom-menu a:first-child { border: none; }
     </style>
+    
+    <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_BOTTOM])): ?>
+    <?php $this->load->view('frontend/advert/mobile_bottom'); ?>
+    <?php endif; ?>
+    
     <footer>
-        <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_BOTTOM])): ?>
-        <?php $this->load->view('frontend/advert/mobile_bottom'); ?>
-        <?php endif; ?>
-        
         <div id="back-top" class="row">
             <div class="col-xs-12 text-center">
                 <a href="#top">Kembali ke atas</a>
