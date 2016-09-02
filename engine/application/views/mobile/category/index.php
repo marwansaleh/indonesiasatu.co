@@ -1,6 +1,11 @@
 <input type="hidden" id="category" value="<?php echo $category->id; ?>">
 <input type="hidden" id="limit" value="<?php echo $limit; ?>">
 <div class="main">
+    <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_BODY])): ?>
+    <div id="adv-mobile-body" class="hidden">
+        <?php $this->load->view('frontend/advert/mobile_body'); ?>
+    </div>
+    <?php endif; ?>
     <h3 style="margin: 5px 0 0 10px;"><?php echo $category->name; ?></h3>
     <ul id="news-list" class="media-list">
     </ul>
@@ -9,6 +14,7 @@
 
 <script type="text/javascript">
     var News = {
+        isAdvert: false,
         categoryId: 0,
         dataLimit: 15,
         page: 1,
@@ -22,6 +28,10 @@
         },
         init: function(){
             var _this = this;
+            
+            if ($('#adv-mobile-body').length){
+                _this.isAdvert = true;
+            }
             //if exists
             _this.loadNews();
         },
@@ -44,6 +54,11 @@
                                 s+= '<img class="media-object img-responsive" src="'+data[i].image_url.large+'" alt="'+data[i].title+'">' ;
                             s+= '</a>';
                         }else{
+                            if (_this.isAdvert){
+                                var $advert = $('#adv-mobile-body .mobile-adv-content').clone();
+                                $('#news-list').append('<li class="media">'+$advert+'</li>');
+                            }
+                            
                             s+= '<div class="media-left">';
                                 s+= '<a href="'+data[i].link_href+'">';
                                     s+= '<img class="media-object" src="'+data[i].image_url.square+'" alt="'+data[i].title+'">' ;
