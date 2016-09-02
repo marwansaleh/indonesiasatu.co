@@ -193,8 +193,8 @@ class Home extends MY_News {
         //Load popular news
         $limit = isset($parameters['MOBILE_NEWS_NUM'])?$parameters['MOBILE_NEWS_NUM']:15;
         $this->data['limit'] = $limit;
-        //data load by ajax
-        //$this->data['mobile_news'] = $this->_mobile_news($limit);
+        //get managable advert
+        $this->data['adverts'] = $this->get_advert_active(TRUE);
         
         $this->data['subview'] = 'mobile/home/index';
         $this->load->view('_layout_mobile', $this->data);
