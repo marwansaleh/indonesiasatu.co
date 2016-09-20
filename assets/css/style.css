@@ -1912,6 +1912,7 @@ footer .flickr-gallery img {
   #main .blog-style article .text .inner-border {
     width: 99.7%;
   }
+  .nav-justified>li { width: 0;}
 }
 @media (min-width: 200px) and (max-width: 767px) {
     .col-sm-15 {
