@@ -22,8 +22,8 @@ a:hover {
     transition: all .4s ease-in-out;
     background-color: white;
 }
-.media-list .media-heading { font-size: 13px; font-weight: normal; }
-.media-list .first-item .media-heading { font-size: 14px; font-weight: bold; }
+.media-list .media-heading { font-size: 14px; font-weight: normal; }
+.media-list .first-item .media-heading { font-size: 15px; font-weight: bold; }
 
 .media-list .media-body { padding:5px 5px 0 0; }
 .media-list .first-item .media-body { padding:5px; }
@@ -38,7 +38,7 @@ article figure {margin-bottom: 20px;}
 article .info {font-style: italic; display: inline-block; font-size: 10px;}
 article .info .date {color: #001f3f;}
 article .info .author {color: #080808;}
-article .content {font-size: 14px;}
+article .content {font-size: 16px;}
 .blog-page {padding: 10px; background-color: white; display: block; float: left; }
 .share-blog { display: block; float: left; margin: 15px 0 20px 0; width:100%; }
 footer a { color: #fff!important; }
