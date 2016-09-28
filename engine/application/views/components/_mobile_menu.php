@@ -7,8 +7,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url('home'); ?>" style="padding:0 0 0 20%; height: 70px;">
-                <img src="<?php echo site_url('assets/img/logo-mobile.png'); ?>" class="img-responsive" style="height: 70px;">
+            <a class="navbar-brand" href="<?php echo site_url('home'); ?>" style="padding:0 0 0 20%;">
+                <img src="<?php echo site_url('assets/img/logo-mobile.png'); ?>" class="img-responsive" style="height: 50px;">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="nasabah-navbar">
@@ -35,7 +35,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-sm-12 text-center" style="margin-top:15px;">
+    <div class="col-sm-12 text-center">
         <span class="small"><?php echo date('D, d-M-Y'); ?></span>
     </div>
 </nav>
