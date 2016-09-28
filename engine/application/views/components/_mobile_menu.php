@@ -1,6 +1,3 @@
-<style type="text/css">
-    a.navbar-brand {padding: 0 0 0 2px;}
-</style>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -10,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url('home'); ?>" style="padding:0 0 0 25%;">
+            <a class="navbar-brand" href="<?php echo site_url('home'); ?>" style="padding:0 0 0 2px;">
                 <img src="<?php echo site_url('assets/img/logo-mobile.png'); ?>" class="img-responsive" style="height: 50px;">
             </a>
         </div>
