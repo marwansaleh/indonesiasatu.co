@@ -43,9 +43,9 @@
 <div class="row" id="panel-menu-pilihan">
     <div class="col-sm-12">
         <div class="btn-group btn-group-justified">
-            <a class="btn btn-link" href="<?php echo site_url('utama'); ?>">Berita Utama</a>
-            <a class="btn btn-link" href="<?php echo site_url('populer'); ?>">Terpopuler</a>
-            <a class="btn btn-link" href="<?php echo site_url('newsindex'); ?>">Indeks</a>
+            <a class="btn btn-link" href="<?php echo site_url('utama'); ?>" style="color: #ffffff;">Berita Utama</a>
+            <a class="btn btn-link" href="<?php echo site_url('populer'); ?>" style="color: #ffffff;">Terpopuler</a>
+            <a class="btn btn-link" href="<?php echo site_url('newsindex'); ?>" style="color: #ffffff;">Indeks</a>
         </div>
     </div>
 </div>
