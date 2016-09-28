@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="col-sm-12 text-right">
-        <span class="small"><?php echo indonesia_date_format("%D, %d %M %Y"); ?></span>
+        <span class="small"><?php echo date('D, d-M-Y'); ?></span>
     </div>
 </nav>
 
