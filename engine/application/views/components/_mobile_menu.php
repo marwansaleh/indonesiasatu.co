@@ -35,7 +35,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-sm-12 text-right">
+    <div class="col-sm-12 text-right" style="margin-right:5px;">
         <span class="small"><?php echo date('D, d-M-Y'); ?></span>
     </div>
 </nav>
