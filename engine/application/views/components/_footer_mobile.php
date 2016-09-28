@@ -22,9 +22,8 @@
                     <a href="<?php echo site_url('category/ekonomi'); ?>" class="btn btn-link" role="button">Ekonomi</a>
                     <a href="<?php echo site_url('category/hankam'); ?>" class="btn btn-link" role="button">Hankam</a>
                     <a href="<?php echo site_url('category/politik'); ?>" class="btn btn-link" role="button">Politik</a>
-                    <a href="<?php echo site_url('category/industri'); ?>" class="btn btn-link" role="button">Industri</a>
                     <a href="<?php echo site_url('category/internasional'); ?>" class="btn btn-link" role="button">Internasional</a>
-                    <a href="<?php echo site_url('category/daerah'); ?>" class="btn btn-link" role="button">Daerah</a>
+                    <a href="<?php echo site_url('category/regional'); ?>" class="btn btn-link" role="button">Regional</a>
                 </div>
             </div>
         </div>
