@@ -40,7 +40,7 @@
     </div>
 </nav>
 
-<div class="row" id="panel-menu-pilihan">
+<div class="row" id="panel-menu-pilihan" style="background-color: red; color: white; font-weight: bold;">
     <div class="col-sm-12">
         <div class="btn-group btn-group-justified">
             <a class="btn btn-link" href="<?php echo site_url('utama'); ?>">Berita Utama</a>
