@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url('home'); ?>" style="padding:0 0 0 2px;">
+            <a class="navbar-brand" href="<?php echo site_url('home'); ?>" style="padding:0 0 0 5px;">
                 <img src="<?php echo site_url('assets/img/logo-mobile.png'); ?>" class="img-responsive" style="height: 50px;">
             </a>
         </div>
