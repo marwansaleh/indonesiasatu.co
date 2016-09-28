@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-xs-12">
                 <div class="bottom-menu btn-group btn-group-justified" role="group">
                     <a href="<?php echo site_url('category/tajuk'); ?>" class="btn btn-link" role="button">Tajuk</a>
                     <a href="<?php echo site_url('category/berita'); ?>" class="btn btn-link" role="button">Berita</a>
