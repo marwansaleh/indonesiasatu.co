@@ -88,7 +88,7 @@ if (!function_exists('indonesia_date_format')){
         
         //set Indonesian month name
         $bulan = array(
-            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember'
+            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
         );
         
         $bulan_short = array(
