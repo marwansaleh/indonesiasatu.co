@@ -311,7 +311,7 @@ class MY_Controller extends MY_BaseController {
     
     protected function _get_today_indonesia($timestamp=FALSE){
         $hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
-        $bulan = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember');
+        $bulan = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
         
         $date = getdate($timestamp ? $timestamp : time());
         $today = array(
