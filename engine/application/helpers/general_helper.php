@@ -92,7 +92,7 @@ if (!function_exists('indonesia_date_format')){
         );
         
         $bulan_short = array(
-            'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nop', 'Des'
+            'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'
         );
         
         $hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
@@ -117,7 +117,7 @@ if (!function_exists('get_indonesia_month')){
         );
         
         $bulan_short = array(
-            'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nop', 'Des'
+            'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'
         );
         
         if (!$month_index || $month_index < 1 || $month_index > 12){
