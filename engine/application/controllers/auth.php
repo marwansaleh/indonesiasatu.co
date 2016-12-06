@@ -384,6 +384,46 @@ class Auth extends MY_Controller {
         redirect('auth');
     }
     
+    function request_reset_password(){
+        $this->data['subview'] = 'login/reset_password_request';
+        $this->load->view('_layout_login', $this->data);
+    }
+    function reset_password($link = NULL){
+        $this->load->model('users/forgot_passwd_m');
+        if (!$link){
+            redirect('auth/reset_invalid_link');
+        }else{
+            $link = urldecode($link);
+            //check if link exists and never been used
+            $row_valid_check = $this->forgot_passwd_m->get_by(array('link_reset'=>$link,'used'=>0), TRUE);
+            if (!$row_valid_check){
+                redirect('auth/reset_invalid_link');
+            }else{
+                //check if link still valid
+                if ($row_valid_check->valid_time < time()){
+                    redirect('auth/reset_end_period');
+                }else{
+                    //update the link record that it has been used now
+                    $this->forgot_passwd_m->save(array('used'=>1), $row_valid_check->id);
+                    $this->data['email'] = $row_valid_check->email;
+                    //show reset form
+                    $this->data['subview'] = 'login/reset_password';
+                    $this->load->view('_layout_login', $this->data);
+                }
+            }
+        }
+    }
+    
+    function reset_invalid_link(){
+        $this->data['subview'] = 'login/reset_invalid_link';
+        $this->load->view('_layout_login', $this->data);
+    }
+    
+    function reset_end_period(){
+        $this->data['subview'] = 'login/reset_end_period';
+        $this->load->view('_layout_login', $this->data);
+    }
+    
     function hashit(){
         $subject = $this->input->get('subject');
         
