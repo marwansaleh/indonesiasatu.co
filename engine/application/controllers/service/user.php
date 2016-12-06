@@ -161,6 +161,90 @@ class User extends REST_Api {
             show_404();
         }
     }
+    
+    function resetpasswordrequest_post(){
+        $this->load->model('users/forgot_passwd_m');
+        $result = array('status'=> FALSE);
+        
+        $email = $this->post('email');
+        //check the email if registered in the system
+        if (!isset($this->user_m)){
+            $this->load->model('users/user_m');
+        }
+        //get the user by his email address
+        $user_record = $this->user_m->get_by(array('email'=>$email), TRUE);
+        if (!$user_record){
+            $result['message'] = 'Sorry. your email has not registered in the system. Please type your registered email address.';
+        }else{
+            //ok this user has registered email address, generate reset link
+            $valid_time = strtotime('tomorrow');
+            $reset_code = md5($valid_time. $email);
+            $encoded_time = urlencode($reset_code);
+            $reset_link = site_url('auth/reset_password/'. $encoded_time);
+            
+            //create email for this user
+            $subject = 'IndonesiaSatu.co - Link to Reset Password';
+            $recipient = $user_record->full_name .' <'. $email.'>';
+            $content = '<p>Dear '. $user_record->full_name.',</p><br>';
+            $content.= '<p>You receive thsi email because you request to reset password from IndonesiaSatu website. Please click this link <a href="'.  $reset_link.'">'.$reset_link.'</a> to reset the password.</p>';
+            $content.= '<p>This link only valid for 24 hours or '. date('D, d-M-Y H:i:s').'. </p>';
+            $content.= '<br><br><p>Regards<br>IndonesiaSatu.co Administrator</p>';
+            if (strlen($content) > 70){
+                $content = wordwrap($content, 70, "\r\n");
+            }
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            $headers .= 'From: IndonesiaSatu.co Administrator <marwan@indonesiasatu.co>' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+            $send_email = mail($recipient, $subject, $content, $headers);
+            if ($send_email){
+                //save to database that email reset password has been sent
+                $this->forgot_passwd_m->save(array(
+                    'email'         => $email,
+                    'link_reset'    => $reset_code,
+                    'valid_time'    => $valid_time,
+                    'used'          => 0
+                ));
+                
+                $result['status'] = TRUE;
+                $result['message'] = 'Your link to reset password has been sent to your email '.$email.'. Please check your email and follow the link. Please be sure that the link will be valid for 24 hours.';
+            }else{
+                $result['message'] = 'Sorry. We are failed to send you email to reset password. Please contact your administrator.';
+            }
+        }
+        
+        $this->response($result);
+    }
+    function resetpassword_post(){
+        $result = array('status'=> FALSE);
+        
+        $email = $this->post('email');
+        $new_password = $this->post('new_password');
+        $confirm_password = $this->post('confirm_password');
+        
+        //check if both password are match
+        if ($new_password != $confirm_password){
+            $result['message'] = 'Password did not match. Please make sure you type both password correctly.';
+        }else{
+            if (!isset($this->user_m)){
+                $this->load->model('users/user_m');
+            }
+            //get the user by his email address
+            $user_record = $this->user_m->get_by(array('email'=>$email), TRUE);
+            if (!$user_record){
+                //fatal error
+                $result['message'] = 'Fatal error. Your email address did not registered in our system. Please contact your administrator.';
+            }else{
+                //update new password for the user
+                $password = $this->users->hash($new_password);
+                $this->user_m->save(array('password'=>$password), $user_record->id);
+                $result['status'] = TRUE;
+            }
+            
+        }
+        
+        $this->response($result);
+    }
 }
 
 /*
