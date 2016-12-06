@@ -17,7 +17,7 @@
             </div>
             <label class="checkbox">
                 <input type="checkbox" name="remember" value="remember-me" <?php echo $remember?'checked="checked"':''; ?>> Remember me
-                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+                <span class="pull-right"> <a href="<?php echo site_url('auth/request_reset_password'); ?>"> Forgot Password?</a></span>
             </label>
             <button id="btn-login" class="btn btn-primary btn-lg btn-block" data-loading-text="loading..." type="submit">Login</button>
         </div>
