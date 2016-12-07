@@ -2,11 +2,13 @@
     <div id="alert-login" class="login-alert-content">
         
     </div>
-    <p style="width: 350px; margin: auto;">Please insert your new password for log in to <a href="<?php echo site_url(); ?>">IndonesiaSatu.co</a> system admin page</p>
+    
 </div>
 <div class="container">
     
     <form method="post" id="resetForm" class="login-form" action="<?php echo site_url('service/user/resetpassword'); ?>"> 
+        <p style="width: 350px; margin: auto;">Please insert your new password for log in to <a href="<?php echo site_url(); ?>">IndonesiaSatu.co</a> system admin page</p>
+        
         <input type="hidden" name="email" value="<?php echo $email; ?>">
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
