@@ -161,7 +161,7 @@ class Users extends MY_AdminController {
                     }
                     $headers  = 'MIME-Version: 1.0' . "\r\n";
                     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-                    $headers .= 'From: IndonesiaSatu.co Administrator <marwan@indonesiasatu.co>' . "\r\n" .
+                    $headers .= 'From: IndonesiaSatu.co Administrator <no-reply@indonesiasatu.co>' . "\r\n" .
                                 'X-Mailer: PHP/' . phpversion();
                     mail($recipient, $subject, $content, $headers);
                 }
