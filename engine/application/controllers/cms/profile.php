@@ -108,7 +108,7 @@ class Profile extends MY_AdminController {
                 
                 $this->users->update_session_me($postdata['full_name'], $postdata['username'], NULL, $postdata['avatar']);
                 
-                redirect('cms/profile/index?page='.$page);
+                redirect('cms/profile/index?id='.$id);
             }else{
                 $this->session->set_flashdata('message_type','error');
                 $this->session->set_flashdata('message', $this->user_m->get_last_message());
