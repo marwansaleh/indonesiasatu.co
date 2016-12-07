@@ -207,7 +207,7 @@ class User extends REST_Api {
                 ));
                 
                 $result['status'] = TRUE;
-                $result['message'] = 'Your link to reset password has been sent to your email '.$email.'. Please check your email and follow the link. Please be sure that the link will be valid for 24 hours.';
+                $result['message'] = 'Your link to reset password has been sent to your email address '.$email.'. Please check your email and follow the link. <br><br>Please be sure that the link will be valid for 24 hours.';
             }else{
                 $result['message'] = 'Sorry. We are failed to send you email to reset password. Please contact your administrator.';
             }
