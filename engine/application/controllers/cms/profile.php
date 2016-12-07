@@ -80,8 +80,6 @@ class Profile extends MY_AdminController {
                 $this->session->set_flashdata('message_type','success');
                 $this->session->set_flashdata('message', 'Data user saved successfully');
                 
-                $this->users->update_session_me($postdata['full_name'], $postdata['username'], NULL, $postdata['avatar']);
-                
                 //send email notification if user has email address
                 //get user
                 $user_record = $this->user_m->get($id);
@@ -107,6 +105,8 @@ class Profile extends MY_AdminController {
                                 'X-Mailer: PHP/' . phpversion();
                     mail($recipient, $subject, $content, $headers);
                 }
+                
+                $this->users->update_session_me($postdata['full_name'], $postdata['username'], NULL, $postdata['avatar']);
                 
                 redirect('cms/profile/index?page='.$page);
             }else{
