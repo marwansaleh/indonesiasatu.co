@@ -177,7 +177,7 @@ class User extends REST_Api {
             $result['message'] = 'Sorry. your email has not registered in the system. Please type your registered email address.';
         }else{
             //ok this user has registered email address, generate reset link
-            $valid_time = strtotime('tomorrow');
+            $valid_time = strtotime('+1 day');
             $reset_code = md5($valid_time. $email);
             $encoded_time = urlencode($reset_code);
             $reset_link = site_url('auth/reset_password/'. $encoded_time);
