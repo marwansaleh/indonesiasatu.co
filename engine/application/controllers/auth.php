@@ -395,20 +395,25 @@ class Auth extends MY_Controller {
         }else{
             $link = urldecode($link);
             //check if link exists and never been used
-            $row_valid_check = $this->forgot_passwd_m->get_by(array('link_reset'=>$link,'used'=>0), TRUE);
+            $row_valid_check = $this->forgot_passwd_m->get_by(array('link_reset'=>$link), TRUE);
             if (!$row_valid_check){
                 redirect('auth/reset_invalid_link');
             }else{
-                //check if link still valid
-                if ($row_valid_check->valid_time < time()){
-                    redirect('auth/reset_end_period');
+                //check if link has been used
+                if ($row_valid_check->used==1){
+                    redirect('auth/reset_link_used');
                 }else{
-                    //update the link record that it has been used now
-                    $this->forgot_passwd_m->save(array('used'=>1), $row_valid_check->id);
-                    $this->data['email'] = $row_valid_check->email;
-                    //show reset form
-                    $this->data['subview'] = 'login/reset_password';
-                    $this->load->view('_layout_login', $this->data);
+                    //check if link still valid
+                    if ($row_valid_check->valid_time < time()){
+                        redirect('auth/reset_end_period');
+                    }else{
+                        //update the link record that it has been used now
+                        $this->forgot_passwd_m->save(array('used'=>1), $row_valid_check->id);
+                        $this->data['email'] = $row_valid_check->email;
+                        //show reset form
+                        $this->data['subview'] = 'login/reset_password';
+                        $this->load->view('_layout_login', $this->data);
+                    }
                 }
             }
         }
@@ -421,6 +426,11 @@ class Auth extends MY_Controller {
     
     function reset_end_period(){
         $this->data['subview'] = 'login/reset_end_period';
+        $this->load->view('_layout_login', $this->data);
+    }
+    
+    function reset_link_used(){
+        $this->data['subview'] = 'login/reset_link_used';
         $this->load->view('_layout_login', $this->data);
     }
     
