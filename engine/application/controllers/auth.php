@@ -391,7 +391,7 @@ class Auth extends MY_Controller {
     function reset_password($link = NULL){
         $this->load->model('users/forgot_passwd_m');
         if (!$link){
-            redirect('auth/reset_invalid_link');
+            redirect('auth/reset_no_link');
         }else{
             $link = urldecode($link);
             //check if link exists and never been used
@@ -417,6 +417,11 @@ class Auth extends MY_Controller {
                 }
             }
         }
+    }
+    
+    function reset_no_link(){
+        $this->data['subview'] = 'login/reset_no_link';
+        $this->load->view('_layout_login', $this->data);
     }
     
     function reset_invalid_link(){
