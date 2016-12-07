@@ -239,6 +239,23 @@ class User extends REST_Api {
                 $password = $this->users->hash($new_password);
                 $this->user_m->save(array('password'=>$password), $user_record->id);
                 $result['status'] = TRUE;
+                
+                //create email to notify update user password
+                $subject = 'IndonesiaSatu.co: Update on User Account & Password';
+                $recipient = $user_record->full_name .' <'. $email.'>';
+                $content = '<p>Dear '. $user_record->full_name.',</p><br>';
+                $content.= '<p>This is a notification that you have changed user account and password recently. Please use this detail to log in to IndonesiaSatu.co admin page.</p>';
+                $content.= '<br>Username: '. $user_record->username;
+                $content.= '<br>Password: '. $new_password;
+                $content.= '<br><br><p>Regards<br>IndonesiaSatu.co Administrator</p>';
+                if (strlen($content) > 70){
+                    $content = wordwrap($content, 70, "\r\n");
+                }
+                $headers  = 'MIME-Version: 1.0' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                $headers .= 'From: IndonesiaSatu.co Administrator <marwan@indonesiasatu.co>' . "\r\n" .
+                            'X-Mailer: PHP/' . phpversion();
+                $send_email = mail($recipient, $subject, $content, $headers);
             }
             
         }
