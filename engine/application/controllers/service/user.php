@@ -187,7 +187,7 @@ class User extends REST_Api {
             $recipient = $user_record->full_name .' <'. $email.'>';
             $content = '<p>Dear '. $user_record->full_name.',</p><br>';
             $content.= '<p>You are receiving this email as a response to your request to reset account password in IndonesiaSatu.co website. Please click this link <a href="'.  $reset_link.'">'.$reset_link.'</a> to reset and create your new password.</p>';
-            $content.= '<br><p>Please note that the link will be valid for 24 hours or before '. date('D, d-M-Y H:i:s', $valid_time).'. </p>';
+            $content.= '<br><p>Please note that the link will be valid for 24 hours or before '. date('l, d F Y H:i:s', $valid_time).'. </p>';
             $content.= '<br><br><p>Regards<br>IndonesiaSatu.co Administrator</p>';
             if (strlen($content) > 70){
                 $content = wordwrap($content, 70, "\r\n");
