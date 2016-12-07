@@ -2,11 +2,11 @@
     <div id="alert-login" class="login-alert-content">
         
     </div>
-    <p style="width: 350px; margin: auto;">Please insert your email address that you used in account registration for <a href="<?php echo site_url(); ?>">IndonesiaSatu.co</a> website</p>
 </div>
 <div class="container">
-    
     <form method="post" id="resetForm" class="login-form" action="<?php echo site_url('service/user/resetpasswordrequest'); ?>"> 
+        <p style="width: 350px; margin: auto;">Please insert your email address that you used in account registration for <a href="<?php echo site_url(); ?>">IndonesiaSatu.co</a> website</p>
+        
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
             <div class="input-group">
