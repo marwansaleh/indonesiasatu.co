@@ -2,7 +2,7 @@
     <div id="alert-login" class="login-alert-content">
         
     </div>
-    <p>Please insert your new password for log in to <a href="<?php echo site_url(); ?>">IndonesiaSatu.co</a> system admin page</p>
+    <p style="width: 350px; margin: auto;">Please insert your new password for log in to <a href="<?php echo site_url(); ?>">IndonesiaSatu.co</a> system admin page</p>
 </div>
 <div class="container">
     
