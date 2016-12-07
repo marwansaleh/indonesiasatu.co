@@ -2,7 +2,7 @@
     <div id="alert-login" class="login-alert-content">
         
     </div>
-    <p>Please insert your email address that you used in account registration for <a href="<?php echo site_url(); ?>">IndonesiaSatu.co</a> website</p>
+    <p style="width: 350px; margin: auto;">Please insert your email address that you used in account registration for <a href="<?php echo site_url(); ?>">IndonesiaSatu.co</a> website</p>
 </div>
 <div class="container">
     
