@@ -88,5 +88,8 @@
     
         <!-- bootstrap -->
         <script src="<?php echo site_url(config_item('path_lib').'bootstrap/js/bootstrap.min.js'); ?>"></script>
+        
+        <!-- Flexslider -->
+        <script src="<?php echo site_url(config_item('path_lib').'flexslider/2.4/jquery.flexslider-min.js'); ?>"></script>
     </body>
 </html>
