@@ -20,7 +20,7 @@
     $(document).ready(function (){
         $('#mobile-top-advert').flexslider({
             animation: "slide",
-            slideshow: true,
+            //slideshow: true,
             controlNav: false,
             animationLoop: true,
             //itemWidth: 400,
