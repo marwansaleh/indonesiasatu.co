@@ -15,7 +15,21 @@
         </figure>
         <?php endif; ?>
         <div class="content">
+            <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_TOP])): ?>
+            <?php 
+            $contents = str_replace(array('<P','</p>','</P>'), array('<p','',''), $article->content); 
+            $paragraphs = preg_split('#<p([^>])*>#',$contents);
+            for ($i=0; $i<count($paragraphs); $i++){
+                echo $paragraphs[$i];
+                if ($i==1){
+                    //display advert
+                    $this->load->view('frontend/advert/mobile_article');
+                }
+            }
+            ?>
+            <?php else: ?>
             <?php echo $article->content; ?>
+            <?php endif; ?>
         </div>
         <div style="clear: both; float: left; width: 100%; margin-top: 10px;">
             <div class="share-blog">
