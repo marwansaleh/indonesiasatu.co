@@ -19,7 +19,7 @@
     $(document).ready(function (){
         $('#mobile-bottom-advert').flexslider({
             animation: "slide",
-            //slideshow: true,
+            slideshow: true,
             controlNav: false,
             animationLoop: true,
             //itemWidth: 400,
