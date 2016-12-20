@@ -1,4 +1,4 @@
-<div class="flexslider" id="mobile-bottom-advert" style="margin-bottom: 0;">
+<div <?php echo count($adverts[ADV_TYPE_MOBILE_BOTTOM])>1 ? 'class="flexslider"  style="margin-bottom: 0;"':'';?> id="mobile-bottom-advert">
     <ul class="slides">
         <?php foreach ($adverts[ADV_TYPE_MOBILE_BOTTOM] as $adv): ?>
         <li>
