@@ -543,7 +543,8 @@ if (!function_exists('advert_type')){
             ADV_TYPE_BOTTOM_LEFT => 'Bottom Left', 
             ADV_TYPE_MOBILE_TOP => 'Mobile Top',
             ADV_TYPE_MOBILE_BODY => 'Mobile Body',
-            ADV_TYPE_MOBILE_BOTTOM => 'Mobile Bottom'
+            ADV_TYPE_MOBILE_BOTTOM => 'Mobile Bottom',
+            ADV_TYPE_MOBILE_ARTICLE => 'Mobile Article'
             );
         
         if (!$type){
