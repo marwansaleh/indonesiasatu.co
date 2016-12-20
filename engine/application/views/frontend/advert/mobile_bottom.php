@@ -1,4 +1,4 @@
-<div class="flexslider" id="mobile-bottom-advert">
+<div class="flexslider" id="mobile-bottom-advert" style="margin-bottom: 0;">
     <ul class="slides">
         <?php foreach ($adverts[ADV_TYPE_MOBILE_BOTTOM] as $adv): ?>
         <li>
