@@ -12,7 +12,7 @@
     <?php endforeach; ?>
 </div>
 
-<?php if (count($adverts[ADV_TYPE_MOBILE_TOP])): ?>
+<?php if (count($adverts[ADV_TYPE_MOBILE_TOP])>1): ?>
 <script type="text/javascript">
     $(document).ready(function (){
         $('#mobile-top-advert').flexslider({
