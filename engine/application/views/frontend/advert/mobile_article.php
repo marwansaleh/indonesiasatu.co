@@ -1,4 +1,4 @@
-<div class="row" style="padding: 10px 0 10px 0;">
+<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
     <div <?php echo count($adverts[ADV_TYPE_MOBILE_ARTICLE])>1? 'class="flexslider" style="margin-bottom:0;"':'';?> id="mobile-article-advert">
         <ul class="slides">
             <?php foreach ($adverts[ADV_TYPE_MOBILE_ARTICLE] as $adv): ?>
