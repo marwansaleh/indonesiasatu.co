@@ -21,7 +21,7 @@
             $paragraphs = preg_split('#<p([^>])*>#',$contents);
             for ($i=0; $i<count($paragraphs); $i++){
                 echo $paragraphs[$i];
-                if ($i==0){
+                if ($i==1){
                     //display advert
                     $this->load->view('frontend/advert/mobile_article');
                 }
