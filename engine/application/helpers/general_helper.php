@@ -542,6 +542,7 @@ if (!function_exists('advert_type')){
         $types = array(ADV_TYPE_TOP => 'Top Advert', 
             ADV_TYPE_BOTTOM_LEFT => 'Bottom Left',
             ADV_TYPE_BOTTOM_MOST => 'Bottom',
+            ADV_TYPE_ARTICLE=> 'Inside Article',
             ADV_TYPE_MOBILE_TOP => 'Mobile Top',
             ADV_TYPE_MOBILE_BODY => 'Mobile Body',
             ADV_TYPE_MOBILE_BOTTOM => 'Mobile Bottom',
