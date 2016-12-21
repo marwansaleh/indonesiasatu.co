@@ -540,7 +540,8 @@ if (!function_exists('kelvin_2_celcius')){
 if (!function_exists('advert_type')){
     function advert_type($type=NULL){
         $types = array(ADV_TYPE_TOP => 'Top Advert', 
-            ADV_TYPE_BOTTOM_LEFT => 'Bottom Left', 
+            ADV_TYPE_BOTTOM_LEFT => 'Bottom Left',
+            ADV_TYPE_BOTTOM_MOST => 'Bottom',
             ADV_TYPE_MOBILE_TOP => 'Mobile Top',
             ADV_TYPE_MOBILE_BODY => 'Mobile Body',
             ADV_TYPE_MOBILE_BOTTOM => 'Mobile Bottom',
