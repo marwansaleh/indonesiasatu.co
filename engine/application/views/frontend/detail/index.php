@@ -61,6 +61,11 @@
     </div>
 </div>
 
+<!-- show advert if any -->
+<?php if ($adverts && isset($adverts[ADV_TYPE_ARTICLE])):
+$this->load->view('frontend/advert/in_article');
+endif; ?>
+
 <!-- related news -->
 <?php if ($related_news): ?>
 <div class="row">
