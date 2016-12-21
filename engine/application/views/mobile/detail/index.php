@@ -15,7 +15,7 @@
         </figure>
         <?php endif; ?>
         <div class="content">
-            <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_TOP])): ?>
+            <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_ARTICLE])): ?>
             <?php 
             $contents = str_replace(array('<P','</p>','</P>'), array('<p','',''), $article->content); 
             $paragraphs = preg_split('#<p([^>])*>#',$contents);
