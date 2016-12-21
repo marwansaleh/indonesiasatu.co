@@ -18,7 +18,7 @@
             <?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_ARTICLE])): ?>
             <?php 
             $contents = str_replace(array('<P','</p>','</P>'), array('<p','',''), $article->content); 
-            $paragraphs = preg_split('#<p([^>])*>#',$contents);
+            $paragraphs = explode('<p>', $contents); //preg_split('#<p([^>])*>#',$contents);
             for ($i=0; $i<count($paragraphs); $i++){
                 echo $paragraphs[$i];
                 if ($i==1){
