@@ -20,7 +20,7 @@
             $contents = str_replace(array('<P','</p>','</P>'), array('<p','',''), $article->content); 
             $paragraphs = explode('<p>', $contents); //preg_split('#<p([^>])*>#',$contents);
             for ($i=0; $i<count($paragraphs); $i++){
-                echo $paragraphs[$i];
+                echo '<p>'.$paragraphs[$i] .'</p>';
                 if ($i==1){
                     //display advert
                     $this->load->view('frontend/advert/mobile_article');
