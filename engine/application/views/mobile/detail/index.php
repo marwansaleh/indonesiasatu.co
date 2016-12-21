@@ -21,7 +21,7 @@
             $paragraphs = explode('<p>', $contents); //preg_split('#<p([^>])*>#',$contents);
             for ($i=0; $i<count($paragraphs); $i++){
                 echo '<p>'.$paragraphs[$i] .'</p>';
-                if ($i==1){
+                if ($i==3){
                     //display advert
                     $this->load->view('frontend/advert/mobile_article');
                 }
