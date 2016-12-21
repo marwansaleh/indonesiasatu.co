@@ -1,3 +1,6 @@
+<?php if ($adverts && isset($adverts[ADV_TYPE_MOBILE_ARTICLE])):
+$this->load->view('frontend/advert/bottom_most');
+endif; ?>
 
 <footer>
     <div class="container">
