@@ -1,6 +1,6 @@
 <?php if ($adverts && isset($adverts[ADV_TYPE_ARTICLE])): ?>
 <div class="row" style="margin-top:20px;">
-    <div class="col-sm-12  <?php echo count($adverts[ADV_TYPE_ARTICLE])>1?'flexslider':''; ?>" id="advert-article-desktop">
+    <div class="col-sm-12  <?php echo count($adverts[ADV_TYPE_ARTICLE])>1?'flexslider':''; ?>" style="margin-bottom:5px;" id="advert-article-desktop">
         <ul class="slides">
             <?php foreach ($adverts[ADV_TYPE_ARTICLE] as $adv): ?>
             <li>
