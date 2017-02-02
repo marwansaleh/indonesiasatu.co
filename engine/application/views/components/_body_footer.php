@@ -17,7 +17,7 @@ endif; ?>
                                 Pendiri/Pemimpin Redaksi: Valens Daki-Soo<br>
                                 Redaktur Pelaksana: Simon Leya<br>
                                 Penerbit: Divisi Publishing PT VERITAS DHARMA SATYA<br>
-                                Website: <a href="http://www.veritasdharmasatya.com" target="_blank" style="color: blue;">www.veritasdharmasatya.com</a><br>
+                                <!--Website: <a href="http://www.veritasdharmasatya.com" target="_blank" style="color: blue;">www.veritasdharmasatya.com</a><br>-->
                                 <!-- SIUP: 01290/24.1.0/31.71-01.1002/1.824.271/2015 -->
                             </p>
                             <p class="alamat">
@@ -25,7 +25,7 @@ endif; ?>
                                 Jl. Tebet Raya No. 25<br>
                                 Tebet Timur, Jakarta Selatan,<br>
                                 Telp:(021) 28542045, 28543705, Fax:(021) 26542232 Email: redaksi@indonesiasatu.co, iklan@indonesiasatu.co<br>
-                                Situs: <a href="<?php echo site_url(); ?>">www.indonesiasatu.co</a>,<a href="http://www.veritasdharmasatya.com" target="_blank">www.veritasdharmasatya.com</a><br>
+                                Situs: <a href="<?php echo site_url(); ?>">www.indonesiasatu.co</a>, <a href="http://www.veritasdharmasatya.com" target="_blank">www.veritasdharmasatya.com</a><br>
                                 Copyright@2015IndonesiaSatu.co
                             </p>
                         </div>
