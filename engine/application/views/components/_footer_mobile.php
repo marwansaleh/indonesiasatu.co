@@ -70,7 +70,7 @@
             Redaktur Pelaksana: Simon Leya
         </p>
         <p class="redaksi" style="font-size: 8px;">
-            Jl. Tebet Raya No. 25 Tebet Timur, Jakarta Selatan Telp:(021) 28542045, 28543705, Fax:(021) 26542232 
+            Graha VDS Lantai 2, Jl. Tebet Raya No. 25 Tebet, Jakarta Selatan Telp:(021) 28542045, 28543705, Fax:(021) 26542232 
             Email: <a href="mailto:redaksi@indonesiasatu.co">redaksi@indonesiasatu.co</a>, 
             <a href="mailto:iklan@indonesiasatu.co">iklan@indonesiasatu.co</a>
         </p>
