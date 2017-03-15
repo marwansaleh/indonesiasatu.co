@@ -5,7 +5,7 @@ $config['path_lib'] = 'lib/';
 $config['path_assets'] = 'assets/';
 
 $config['userfiles_base_url'] = 'http://images.indonesiasatu.co/';
-$config['userfiles_base_path'] = '/var/www/images.indonesiasatu.co/web/';
+$config['userfiles_base_path'] = '/var/www/clients/client9/web15/web/';
 
 $config['images'] = 'userfiles/images/';
 $config['rfthumbs'] = 'userfiles/rfthumbs/';
