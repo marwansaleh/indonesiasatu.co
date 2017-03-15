@@ -6,11 +6,15 @@ $testing = '/home/sloki/user/k2427808/sites/pre.indonesiasatu.co/www';
 $production_1 = '/home/sloki/user/k2427808/sites/indonesiasatu.co/www';
 $production_2 = '/home/sloki/user/k2427808/sites/www.indonesiasatu.co/www';
 
+$xtra = '/var/www/indonesiasatu.co/web';
+
 switch ($path){
     case $production_1:
         define('ENVIRONMENT', 'production'); break;
     case $production_2:
         define('ENVIRONMENT', 'production'); break;
+    case $xtra:
+        define('ENVIRONMENT', 'xtra'); break;
     case $testing: define('ENVIRONMENT', 'testing'); break;
     default: define('ENVIRONMENT', 'development');
 }
@@ -35,6 +39,9 @@ if (defined('ENVIRONMENT'))
                     error_reporting(E_ALL);
                     break;
 		case 'production':
+			error_reporting(0);
+		break;
+                case 'xtra':
 			error_reporting(0);
 		break;
 
