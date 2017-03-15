@@ -41,7 +41,7 @@ $base_url = $_SESSION['FILEMANAGER']['FM_BASEURL'];
 $upload_dir = $_SESSION['FILEMANAGER']['FM_UPLOAD_DIR'];
 $current_path = $_SESSION['FILEMANAGER']['FM_CURRENT_PATH'];
 $thumbs_base_path = $_SESSION['FILEMANAGER']['FM_THUMB_PATH'];
-print_r($_SESSION['FILEMANAGER']);
+
 // OPTIONAL SECURITY
 // if set to true only those will access RF whose url contains the access key(akey) like: 
 // <input type="button" href="../filemanager/dialog.php?field_id=imgField&lang=en_EN&akey=myPrivateKey" value="Files">
