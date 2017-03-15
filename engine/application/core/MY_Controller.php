@@ -462,7 +462,7 @@ class MY_AdminController extends MY_Controller {
                 'FM_THUMB_PATH'     => '../../'. ltrim(userfiles_basepath(config_item('rfthumbs')), '/'),
                 'FM_RESIZE_PATH'    => '../../'. ltrim(userfiles_basepath(config_item('thumbs')), '/')
             );
-        }else{
+        }else if (ENVIRONMENT=='xtra'){
             $filemanager = array(
                 'FM_BASEURL'        => rtrim(userfiles_baseurl(), '/'),
                 'FM_UPLOAD_DIR'     => '/' . userfiles_basepath(config_item('images')),
@@ -470,6 +470,15 @@ class MY_AdminController extends MY_Controller {
                 //'FM_THUMB_PATH'     => '../../../../images.indonesiasatu.co/www/'. config_item('rfthumbs'),
                 'FM_THUMB_PATH'     => '../../thumbs/',
                 'FM_RESIZE_PATH'    => '../../../../images.indonesiasatu.co/web/'. config_item('thumbs')
+            );
+        }else{
+            $filemanager = array(
+                'FM_BASEURL'        => rtrim(userfiles_baseurl(), '/'),
+                'FM_UPLOAD_DIR'     => '/' . userfiles_basepath(config_item('images')),
+                'FM_CURRENT_PATH'   => '../../../../images.indonesiasatu.co/www/'. config_item('images'),
+                //'FM_THUMB_PATH'     => '../../../../images.indonesiasatu.co/www/'. config_item('rfthumbs'),
+                'FM_THUMB_PATH'     => '../../thumbs/',
+                'FM_RESIZE_PATH'    => '../../../../images.indonesiasatu.co/www/'. config_item('thumbs')
             );
         }
         $_SESSION['FILEMANAGER'] = $filemanager;
