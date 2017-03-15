@@ -42,7 +42,7 @@ if (defined('ENVIRONMENT'))
 			error_reporting(0);
 		break;
                 case 'xtra':
-			error_reporting(0);
+			error_reporting(E_ALL);
 		break;
 
 		default:
