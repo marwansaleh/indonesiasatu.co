@@ -450,6 +450,7 @@ class MY_AdminController extends MY_Controller {
     
     private function _filemanager_setup(){
         if (!session_id()){
+             ini_set('session.save_handler', 'files');
             session_start();
         }
         
