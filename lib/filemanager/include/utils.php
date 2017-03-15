@@ -41,17 +41,20 @@ function rename_folder($old_path,$name,$transliteration){
 }
 
 function create_img($imgfile, $imgthumb, $newwidth, $newheight="",$option="crop") {
+    
+    write_log("create image dengan parameter imgfile:$imgfile, imgthumb:$imgthumb,newwidth:$newwidth, newheight:$newheight, option=$option");
     $timeLimit= ini_get('max_execution_time');
     set_time_limit(30);
     $result= false;
     if(image_check_memory_usage($imgfile,$newwidth,$newheight)){
         require_once('php_image_magician.php');
         $magicianObj = new imageLib($imgfile);
-        $magicianObj -> resizeImage($newwidth, $newheight, $option);
-        $magicianObj -> saveImage($imgthumb,80);
+        $magicianObj->resizeImage($newwidth, $newheight, $option);
+        $magicianObj->saveImage($imgthumb,80);
         $result= true;
     }
     set_time_limit($timeLimit);
+    write_log($result ? 'Berhasil create image':'Gagal create image');
     return $result;
 }
 
@@ -270,8 +273,11 @@ function endsWith($haystack, $needle)
 
 function new_thumbnails_creation($targetPath,$targetFile,$name,$current_path,$relative_image_creation,$relative_path_from_current_pos,$relative_image_creation_name_to_prepend,$relative_image_creation_name_to_append,$relative_image_creation_width,$relative_image_creation_height,$relative_image_creation_option,$fixed_image_creation,$fixed_path_from_filemanager,$fixed_image_creation_name_to_prepend,$fixed_image_creation_to_append,$fixed_image_creation_width,$fixed_image_creation_height,$fixed_image_creation_option){
     //create relative thumbs
+    write_log('Is calling me');
+    
     $all_ok=true;
     if($relative_image_creation){
+        write_log('Relative image creation');
 	foreach($relative_path_from_current_pos as $k=>$path){
 	    if($path!="" && $path[strlen($path)-1]!="/") $path.="/";
 	    if (!file_exists($targetPath.$path)) create_folder($targetPath.$path,false);
@@ -284,13 +290,25 @@ function new_thumbnails_creation($targetPath,$targetFile,$name,$current_path,$re
     
     //create fixed thumbs
     if($fixed_image_creation){
+        write_log('Fixed image creation');
 	foreach($fixed_path_from_filemanager as $k=>$path){
+            write_log('Looping :'.$k.'->'.$path);
 	    if($path!="" && $path[strlen($path)-1]!="/") $path.="/";
 	    $base_dir=$path.substr_replace($targetPath, '', 0, strlen($current_path));
-	    if (!file_exists($base_dir)) create_folder($base_dir,false);
+	    if (!file_exists($base_dir)){ 
+                write_log('create path '.$base_dir);
+                create_folder($base_dir,false);
+            }else{
+                write_log('Folder '.$base_dir.' exists');
+            }
 	    $info=pathinfo($name);
-	    if(!create_img($targetFile, $base_dir.$fixed_image_creation_name_to_prepend[$k].$info['filename'].$fixed_image_creation_to_append[$k].".".$info['extension'], $fixed_image_creation_width[$k], $fixed_image_creation_height[$k], $fixed_image_creation_option[$k]))
+            write_log('path info:'.json_encode($info));
+	    if(!create_img($targetFile, $base_dir.$fixed_image_creation_name_to_prepend[$k].$info['filename'].$fixed_image_creation_to_append[$k].".".$info['extension'], $fixed_image_creation_width[$k], $fixed_image_creation_height[$k], $fixed_image_creation_option[$k])){
 		$all_ok=false;
+                write_log('Gagal menbuat fixed image: '.$targetFile);
+            }else{
+                write_log('Berhasil membuat fixed image: '.$targetFile);
+            }
 	}
     }
     return $all_ok;
