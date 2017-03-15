@@ -8,6 +8,7 @@ $production_2 = '/home/sloki/user/k2427808/sites/www.indonesiasatu.co/www';
 
 $xtra = '/var/www/indonesiasatu.co/web';
 
+exit($path);
 switch ($path){
     case $production_1:
         define('ENVIRONMENT', 'production'); break;
