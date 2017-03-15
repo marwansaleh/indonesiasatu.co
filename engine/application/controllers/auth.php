@@ -76,9 +76,8 @@ class Auth extends MY_Controller {
             }
             
             $user = $this->users->login($username, $password);
-            
             $this->_write_log('Login using username:'.$username);
-            
+            $this->_write_log(json_encode($user));
             if (!$user){
                 $this->session->set_flashdata('message_type','error');
                 $this->session->set_flashdata('message', $this->users->get_message());
