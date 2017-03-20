@@ -349,7 +349,7 @@
         }
 
         // Handler for a message from ResponsiveFilemanager
-        $(‘.opener-class).on('click',function(){
+        $('.opener-class').on('click',function(){
           $(window).on('message', OnMessage);
           console.log('clicked');
         });
