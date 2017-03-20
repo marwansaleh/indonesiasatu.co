@@ -167,7 +167,7 @@
                                 <div class="input-group">
                                     <input type="text" readonly="true" class="form-control disabled" id="selected_image" name="selected_image" placeholder="Browse image..">
                                     <div class="input-group-btn">
-                                        <a href="http://images.indonesiasatu.co/filemanager/dialog.php?editor=0&type=1&lang=en_EN&popup=1&crossdomain=1&field_id=selected_image&relative_url=1&iframe=true&width=80%&height=80%"  rel="prettyPhoto" class="btn btn-default"><i class="fa fa-upload"></i> Browse Image</a>
+                                        <a href="http://images.indonesiasatu.co/filemanager/dialog.php?editor=0&type=1&lang=en_EN&popup=0&crossdomain=1&field_id=selected_image&relative_url=1&iframe=true&width=80%&height=80%"  rel="prettyPhoto" class="btn btn-default"><i class="fa fa-upload"></i> Browse Image</a>
                                     </div>
                                 </div>
                             </div>
