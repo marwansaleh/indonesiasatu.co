@@ -379,7 +379,7 @@
         external_filemanager_path:"<?php echo site_url(config_item('path_lib').'filemanager'); ?>/",
         filemanager_title:"Filemanager" ,
         filemanager_crossdomain: true,
-        external_plugins: { "filemanager" : "<?php echo site_url(config_item('path_lib').'filemanager/plugin.min.js'); ?>"},
+        external_plugins: { "filemanager" : "http://images.indonesiasatu.co/filemanager/plugin.min.js"},
         filemanager_access_key:"",
         relative_urls: false
     });
