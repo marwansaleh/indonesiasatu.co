@@ -291,7 +291,7 @@
         toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
         //toolbar2: "",
         image_advtab: true,
-        external_filemanager_path:"http://images.indonesiasatu.co/filemanager",
+        external_filemanager_path:"http://images.indonesiasatu.co/filemanager/",
         filemanager_title:"Filemanager" ,
         filemanager_crossdomain: true,
         external_plugins: { "filemanager" : "http://images.indonesiasatu.co/filemanager/plugin.min.js"},
