@@ -108,6 +108,7 @@ class Article extends MY_AdminController {
         $this->data['submit_url'] = site_url('cms/article/save?id='.$id.'&page='.$page);
         $this->data['back_url'] = site_url('cms/article/index?page='.$page);
         $this->data['subview'] = 'cms/article/edit';
+        $this->output->set_header('Access-Control-Allow-Origin: *');
         $this->load->view('_layout_admin', $this->data);
     }
     
