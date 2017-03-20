@@ -331,6 +331,28 @@
                 ArticleManagers.loadExtendedAttributes($(this).val());
             }
         });
+        
+        function OnMessage(e){
+          var event = e.originalEvent;
+           // Make sure the sender of the event is trusted
+           if(event.data.sender === 'responsivefilemanager'){
+              if(event.data.field_id){
+                var fieldID=event.data.field_id;
+                var url=event.data.url;
+                $('#'+fieldID).val(url).trigger('change');
+                $.fancybox.close();
+
+                // Delete handler of the message from ResponsiveFilemanager
+                $(window).off('message', OnMessage);
+              }
+           }
+        }
+
+        // Handler for a message from ResponsiveFilemanager
+        $(‘.opener-class).on('click',function(){
+          $(window).on('message', OnMessage);
+          console.log('clicked');
+        });
     });
 
     function create_url_title(sourceField,targetField){
