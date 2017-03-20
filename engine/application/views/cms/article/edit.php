@@ -272,92 +272,7 @@
     
     $(document).ready(function(){
         ArticleManagers.init();
-        
-        $('input[name="title"]').focus();
-        $('input#title').on('blur', function(){
-            if ($('input#url_title').val()==''){
-                $('#btn-gen-slug').click();
-            }
-        });
-        
-        $('#tags').tagsinput({
-            typeahead: {
-                source: <?php echo json_encode($tags);?>
-            }
-        })
-        
-        $('#btn-gen-slug').on('click',function(){
-            if (!$('#title').val()){
-                alert('URL title can not be empty. Please fill the title before execute link generation');
-                return false;
-            }
-            create_url_title('title', 'url_title');
-            var slug = $('#url_title').val();
-            
-            //test if url title is unique
-            $.getJSON('<?php echo site_url('service/article/urltitle_test'); ?>/'+$('#id').val(),{url_title:slug},function(result){
-                if (!result.unique){
-                    slug = result.modified;
-                    $('#url_title').val(slug);
-                }
-                
-                var base_controller = 'detail/';
-                var longUrl = '<?php echo site_url(); ?>' + base_controller + slug;
-                $.getJSON('<?php echo site_url('ajax/google_service/shortener'); ?>',{url:longUrl},function(result){
-                    if (result.success){
-                        $('#url_short').val(result.short);
-                    }else{
-                        alert(result.message);
-                    }
-                });
-            });
-        });
-        
-        $('.image-container').on('click','.remove-image',function(){
-            var src = $(this).attr('src');
-            $(this).parents('.image-item').remove()
-            
-            //update image url array
-            var images = $('#image_url').val();
-            images = images.split('|');
-            images.splice(images.indexOf(src),1);
-            
-            $('input#image_url').val(images.join('|'));
-            
-        });
-        
-        $('#category_id').on('change', function (){
-            if ($(this).val() > 0){
-                ArticleManagers.loadExtendedAttributes($(this).val());
-            }
-        });
-        
-        function OnMessage(e){
-          var event = e.originalEvent;
-           // Make sure the sender of the event is trusted
-           if(event.data.sender === 'responsivefilemanager'){
-              if(event.data.field_id){
-                var fieldID=event.data.field_id;
-                var url=event.data.url;
-                $('#'+fieldID).val(url).trigger('change');
-                $.fancybox.close();
-
-                // Delete handler of the message from ResponsiveFilemanager
-                $(window).off('message', OnMessage);
-              }
-           }
-        }
-
-        // Handler for a message from ResponsiveFilemanager
-        $('.opener-class').on('click',function(){
-          $(window).on('message', OnMessage);
-          console.log('clicked');
-        });
     });
-
-    function create_url_title(sourceField,targetField){
-        ArticleManagers.createUrlTitle(sourceField, targetField);
-    }
     
     function responsive_filemanager_callback(field_id){
         ArticleManagers.RFM_Callback(field_id);
@@ -391,10 +306,76 @@
         _baseMedium: '',
         _baseSmall: '',
         init: function (){
+            var _this = this;
             //set base image
             this.setBaseImage('ori', $('#base_ori_url').val());
             this.setBaseImage('medium', $('#base_medium_url').val());
             this.setBaseImage('small', $('#base_small_url').val());
+            
+            $('input[name="title"]').focus();
+            $('input#title').on('blur', function(){
+                if ($('input#url_title').val()==''){
+                    $('#btn-gen-slug').click();
+                }
+            });
+
+            $('#tags').tagsinput({
+                typeahead: {
+                    source: <?php echo json_encode($tags);?>
+                }
+            })
+
+            $('#btn-gen-slug').on('click',function(){
+                if (!$('#title').val()){
+                    alert('URL title can not be empty. Please fill the title before execute link generation');
+                    return false;
+                }
+                _this.createUrlTitle('title', 'url_title');
+                var slug = $('#url_title').val();
+
+                //test if url title is unique
+                $.getJSON('<?php echo site_url('service/article/urltitle_test'); ?>/'+$('#id').val(),{url_title:slug},function(result){
+                    if (!result.unique){
+                        slug = result.modified;
+                        $('#url_title').val(slug);
+                    }
+
+                    var base_controller = 'detail/';
+                    var longUrl = '<?php echo site_url(); ?>' + base_controller + slug;
+                    $.getJSON('<?php echo site_url('ajax/google_service/shortener'); ?>',{url:longUrl},function(result){
+                        if (result.success){
+                            $('#url_short').val(result.short);
+                        }else{
+                            alert(result.message);
+                        }
+                    });
+                });
+            });
+
+            $('.image-container').on('click','.remove-image',function(){
+                var src = $(this).attr('src');
+                $(this).parents('.image-item').remove()
+
+                //update image url array
+                var images = $('#image_url').val();
+                images = images.split('|');
+                images.splice(images.indexOf(src),1);
+
+                $('input#image_url').val(images.join('|'));
+
+            });
+
+            $('#category_id').on('change', function (){
+                if ($(this).val() > 0){
+                    ArticleManagers.loadExtendedAttributes($(this).val());
+                }
+            });
+            
+            // Handler for a message from ResponsiveFilemanager
+            $('.opener-class').on('click',function(){
+              $(window).on('message', _this.RFM_OnMessage());
+              console.log('clicked');
+            });
         },
         loadExtendedAttributes: function (categoryID){
             var _this = this;
@@ -523,6 +504,21 @@
             }
             
             return fullUrl;
+        },
+        RFM_OnMessage: function (e){
+          var event = e.originalEvent;
+           // Make sure the sender of the event is trusted
+           if(event.data.sender === 'responsivefilemanager'){
+              if(event.data.field_id){
+                var fieldID=event.data.field_id;
+                var url=event.data.url;
+                $('#'+fieldID).val(url).trigger('change');
+                $.fancybox.close();
+
+                // Delete handler of the message from ResponsiveFilemanager
+                $(window).off('message', $('.opener-class'));
+              }
+           }
         }
     };
 </script>
