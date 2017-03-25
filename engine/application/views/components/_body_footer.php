@@ -23,7 +23,7 @@ endif; ?>
                             <p class="alamat">
                                 <span class="text-bold alamat-judul">Alamat Redaksi:</span><br>
                                 Graha VDS Lantai 2, Jl. Tebet Raya No. 25 Tebet, Jakarta Selatan,<br>
-                                Telp:(021) 28542045, 28543705, Fax:(021) 26542232 Email: redaksi@indonesiasatu.co, iklan@indonesiasatu.co<br>
+                                Telp:(021) 28542045, 28543705, Fax:(021) 28542232 Email: redaksi@indonesiasatu.co, iklan@indonesiasatu.co<br>
                                 Situs: <a href="<?php echo site_url(); ?>">www.indonesiasatu.co</a>, <a href="http://www.veritasdharmasatya.com" target="_blank">www.veritasdharmasatya.com</a><br>
                                 Copyright@2015IndonesiaSatu.co
                             </p>
