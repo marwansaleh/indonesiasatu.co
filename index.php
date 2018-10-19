@@ -2,19 +2,11 @@
 date_default_timezone_set('Asia/Jakarta');
 
 $path = dirname(__FILE__);
-$testing = '/home/sloki/user/k2427808/sites/pre.indonesiasatu.co/www';
-$production_1 = '/home/sloki/user/k2427808/sites/indonesiasatu.co/www';
-$production_2 = '/home/sloki/user/k2427808/sites/www.indonesiasatu.co/www';
-$xtra = '/var/www/clients/client9/web9/web';
+$gcp_path = '/home/amazzura_biz/indonesiasatu.co';
 
 switch ($path){
-    case $production_1:
+    case $gcp_path:
         define('ENVIRONMENT', 'production'); break;
-    case $production_2:
-        define('ENVIRONMENT', 'production'); break;
-    case $xtra:
-        define('ENVIRONMENT', 'xtra'); break;
-    case $testing: define('ENVIRONMENT', 'testing'); break;
     default: define('ENVIRONMENT', 'development');
 }
 /*
@@ -39,9 +31,6 @@ if (defined('ENVIRONMENT'))
                     break;
 		case 'production':
 			error_reporting(0);
-		break;
-                case 'xtra':
-			error_reporting(E_ALL);
 		break;
 
 		default:
