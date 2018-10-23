@@ -49,10 +49,18 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
+
+/* Cloud google sql connection */
+$db['default']['username'] = 'ione_user';
+$db['default']['password'] = 'kBnyT6mYAdQbK6p';
+$db['default']['database'] = 'indonesiasatu_db';
+$db['default']['socket'] = '/cloudsql/dbsql-project:asia-southeast1:mysql-cloud-db';
+/*
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
-$db['default']['database'] = 'indonesiasatu_db';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['database'] = 'ione-db';
+*/
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = 'nsc_';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
@@ -63,6 +71,7 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+
 
 
 /* End of file database.php */

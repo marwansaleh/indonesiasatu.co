@@ -49,10 +49,17 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'k2427808_indon1';
-$db['default']['password'] = '9Qe79vs3Wd';
-$db['default']['database'] = 'k2427808_main';
-$db['default']['dbdriver'] = 'mysql';
+/* Cloud google sql connection */
+$db['default']['username'] = 'ione_user';
+$db['default']['password'] = 'kBnyT6mYAdQbK6p';
+$db['default']['database'] = 'indonesiasatu_db';
+$db['default']['socket'] = '/cloudsql/dbsql-project:asia-southeast1:mysql-cloud-db';
+/*
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'ione-db';
+*/
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = 'nsc_';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = FALSE;
